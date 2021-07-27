@@ -13,7 +13,7 @@ setup(
         'algorithmX',
     ],
     python_requires='>=3',
-    )
+)
 
 # notes so that e remembers how to do pypi
 # 1. make sure you've got the env open
