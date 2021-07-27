@@ -7,7 +7,7 @@ def test():
     
     pause(1000)
     
-    graph.add_node("a")
+    print(graph.node("a"))
 
 
 begin_pynode_next(test)

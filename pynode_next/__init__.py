@@ -31,7 +31,16 @@ class Graph:
         core.ax(lambda x: x.node(n._id).add())
         
         return n
-
+    
+    def node(self, id):
+        """Returns the node with the id specified."""
+        if isinstance(id, Node) and id._id in self._nodes:
+            return id
+        elif id in self._nodes:
+            return self._nodes[id]
+        else:
+            return None
+    
 
 graph = Graph()
 
