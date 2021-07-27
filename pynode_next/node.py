@@ -21,6 +21,9 @@ class Node:
         self._value = value
         core.ax(lambda x: x.node(self._id).label().text(value))
 
+    def value(self):
+        """Returns the node's value."""
+        return self._value
 
 if __name__ == "__main__":
     assert Node(id="cool")._value == "cool"
