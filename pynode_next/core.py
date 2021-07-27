@@ -9,7 +9,7 @@ class Core:
         base_path = os.path.relpath(__file__)
         custom_ui = f"{Path(base_path).parent}/ui.html"
 
-        print("serving ui found at", custom_ui)
+        #print("serving ui found at", custom_ui)
         self.server = algx.http_server(port=port, file=custom_ui)
 
         self.canvas = self.server.canvas()

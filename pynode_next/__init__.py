@@ -1,3 +1,5 @@
+import webbrowser
+
 from .misc import *
 from .node import *
 from .errors import *
@@ -5,5 +7,8 @@ from .edge import *
 from .core import core
 from .graph import graph
 
-def begin_pynode_next(func):
+def begin_pynode_next(func, open_browser=True):
+    if open_browser:
+        webbrowser.open(f"http://localhost:{core.port}")
     core.run(func)
+    
