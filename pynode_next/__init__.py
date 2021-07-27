@@ -37,6 +37,9 @@ class Graph:
         else:
             return None
 
+    def nodes(self):
+        """Returns all of the graph's nodes."""
+        return list(self._nodes.values())
 
 graph = Graph()
 

@@ -14,7 +14,7 @@ Graph
 - [x] graph.add_node(id=None, value=id) - Creates a Node(id, value) and adds it to the graph.
 - [ ] graph.remove_node(node) - Removes a node from the graph.
 - [x] graph.node(id) - Returns a node in the graph by its id.
-- [ ] graph.nodes() - Returns a list of all nodes in the graph.
+- [x] graph.nodes() - Returns a list of all nodes in the graph.
  
 - [ ] graph.add_edge(edge) - Adds an edge to the graph.
 - [ ] graph.add_edge(source, target, weight=None, directed=False) - Creates an Edge(source, target, weight, directed) and adds it to the graph.

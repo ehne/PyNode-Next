@@ -8,6 +8,7 @@ def test():
     print(graph.node("a"))
 
     graph.node("a").set_value("hi")
+    print(graph.nodes())
 
 
 begin_pynode_next(test)
