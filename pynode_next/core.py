@@ -15,13 +15,13 @@ class Core:
         self.canvas = self.server.canvas()
 
     def run(self, func):
-        """A decorator that runs a function in the PyNode Next web environment."""
+        """A function that runs a different function in the PyNode Next web environment."""
         self.canvas.onmessage("start", func)
         print(f"staring server on http://localhost:{self.port} — press ctrl+c to quit")
         self.server.start()
 
     def ax(self, func):
-        """A function that does all of the interfacing with AlgorithmX"""
+        """lets functions outside of this class interface with AlgorithmX."""
         func(self.canvas)
 
 
