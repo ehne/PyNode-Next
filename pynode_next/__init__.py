@@ -1,6 +1,7 @@
 from .misc import *
 from .node import *
 from .errors import *
+from .edge import *
 from .core import core
 from .graph import graph
 
