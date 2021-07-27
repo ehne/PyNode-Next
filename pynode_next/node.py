@@ -1,4 +1,5 @@
 from .misc import Color
+from .core import core
 
 class Node:
     def __init__(self, *args, **kwargs):
@@ -10,6 +11,10 @@ class Node:
 
         self._incident_edges = []
         self._color = Color.DARK_GREY
+    def set_value(self, value):
+        """Sets the node's value."""
+        self._value = value
+        core.ax(lambda x: x.node(self._id).label().text(value))
 
 
 if __name__ == "__main__":

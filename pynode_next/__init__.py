@@ -21,17 +21,17 @@ class Graph:
             n = args[0]
         else:
             n = Node(*args, **kwargs)
-        
+
         # Make sure there aren't two nodes with the same id
         if n._id in self._nodes:
             raise DuplicateNodeError(f"Duplicate node '{n._id}'")
 
         # add node to dict and canvas
         self._nodes[n._id] = n
-        core.ax(lambda x: x.node(n._id).add())
-        
+        core.ax(lambda x: x.node(n._id).add(labels={0: {"text": n._value}}))
+
         return n
-    
+
     def node(self, id):
         """Returns the node with the id specified."""
         if isinstance(id, Node) and id._id in self._nodes:
@@ -40,9 +40,10 @@ class Graph:
             return self._nodes[id]
         else:
             return None
-    
+
 
 graph = Graph()
+
 
 def begin_pynode_next(func):
     core.run(func)
