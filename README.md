@@ -72,7 +72,7 @@ Edge
 Miscellaneous
 - [x] Color(red, green, blue) - Custom color for use in node and edge animations, using 0-255 values for each component.
 - [x] Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.WHITE, Color.LIGHT_GREY, Color.GREY, Color.DARK_GREY, Color.BLACK, Color.TRANSPARENT - Predefined colors for use in node and edge animations.
-- [ ] pause(time) - Delays the next visual event for the specified number of milliseconds (note that this does not pause code execution).
+- [x] pause(time) - Delays the next visual event for the specified number of milliseconds (note that this does not pause code execution).
 - [ ] delay(func, time, args=[], repeat=False) - Executes a function after the specified number of milliseconds, with the optional args list of parameters. If repeat is set, the function will execute continuously until the delay is cancelled. Returns a delay_id integer referencing the delay.
 - [ ] cancel_delay(delay_id) - Cancels a scheduled delay event.
 - [ ] register_click_listener(func) - Registers a function which will be called whenever a node is clicked. The function must include a node parameter (e.g. def on_click(node)), which will receive the instance of the clicked node.

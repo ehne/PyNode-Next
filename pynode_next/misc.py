@@ -1,3 +1,5 @@
+from .core import core
+
 class Color:
     def __init__(self, red, green, blue):
         self._red = red
@@ -16,3 +18,6 @@ Color.LIGHT_GREY = Color(199, 199, 199)
 Color.GREY = Color(127, 127, 127)
 Color.DARK_GREY = Color(82, 82, 82)
 Color.BLACK = Color(0, 0, 0)
+
+def pause(pause_time):
+    core.ax(lambda x: x.pause(pause_time * 0.001))
