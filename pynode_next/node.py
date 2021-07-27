@@ -25,6 +25,9 @@ class Node:
         """Returns the node's value."""
         return self._value
 
+    def __str__(self):
+        return str(self._id)
+        
 if __name__ == "__main__":
     assert Node(id="cool")._value == "cool"
     assert Node("cool")._value == "cool"

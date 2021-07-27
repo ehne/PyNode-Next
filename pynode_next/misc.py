@@ -9,6 +9,9 @@ class Color:
     def hex_string(self):
         return "#%02x%02x%02x" % (self._red, self._green, self._blue)
 
+    def __str__(self):
+        return self.hex_string()
+
 Color.RED = Color(180, 0, 0)
 Color.GREEN = Color(0, 150, 0)
 Color.BLUE = Color(0, 0, 200)

@@ -28,3 +28,6 @@ class Edge:
         if source != None:
             return self.other_node(source)
         return self._target
+
+    def __str__(self):
+        return f"({self._source}, {self._target})"
