@@ -28,7 +28,6 @@ class Graph:
         self._nodes[n._id] = n
         ## TODO: below should just dispatch the node's data so that add_node(Node()) would be fully supported.
         core.ax(lambda x: x.node(n._id).add(labels={0: {"text": n._value}}))
-
         return n
 
     def remove_node(self, node):
@@ -96,6 +95,5 @@ class Graph:
     def has_edge(self, edge):
         """Checks if an edge exists in the graph."""
         return edge in self._has_edge_cache
-
 
 graph = Graph()

@@ -41,7 +41,7 @@ Node
 - [x] node.set_value(), node.value() - Sets/gets the value of the node.
 - [x] node.incident_edges(), node.incoming_edges(), node.outgoing_edges() - Returns a list of the node's incident/incoming/outgoing edges.
 - [ ] node.adjacent_nodes(), node.predecessor_nodes(), node.successor_nodes() - Returns a list of the node's adjacent/predecessor/successor nodes.
-- [ ] node.degree(), node.indegree(), node.outdegree() - Returns the node's degree/indegree/ outdegree.
+- [x] node.degree(), node.indegree(), node.outdegree() - Returns the node's degree/indegree/ outdegree.
 - [ ] node.set_attribute(name, value), node.attribute(name) - Sets/gets custom attributes for the node.
 - [ ] node.set_priority(value), node.priority(name) - Sets/gets a priority value used for comparison.
  
@@ -61,7 +61,7 @@ Edge
 - [ ] edge.set_directed(directed=True), edge.directed() - Sets/gets whether the edge is directed.
 - [x] edge.other_node(node) - Returns a node connected by the edge, other than the node specified.
 - [ ] edge.set_attribute(name, value), edge.attribute(name) - Sets/gets custom attributes for the edge.
-- [ ] edge.set_priority(value), edge.priority(name) - Sets/gets a priority value used for c-omparison.
+- [ ] edge.set_priority(value), edge.priority(name) - Sets/gets a priority value used for comparison.
  
 - [ ] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
 - [ ] edge.set_color(color=Color.LIGHT_GREY), edge.color() - Sets/gets the color of the edge.

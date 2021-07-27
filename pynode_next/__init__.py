@@ -10,5 +10,6 @@ from .graph import graph
 def begin_pynode_next(func, open_browser=True):
     if open_browser:
         webbrowser.open(f"http://localhost:{core.port}")
+    
     core.run(func)
     

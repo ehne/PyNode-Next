@@ -28,6 +28,26 @@ class Node:
     def incident_edges(self):
         """Returns the incident edges through the node."""
         return list(self._incident_edges)
+    
+    def incoming_edges(self):
+        """Returns the edges going into the node"""
+        return [e for e in self._incident_edges if not e._directed or e._target == self]
+
+    def outgoing_edges(self):
+        """Returns the edges going out of the node"""
+        return [e for e in self._incident_edges if not e._directed or e._source == self]
+
+    def degree(self):
+        """Returns the degree of the node."""
+        return len(self._incident_edges)
+    
+    def indegree(self): 
+        """Returns the number of edges going into the node."""
+        return len(self.incoming_edges())
+        
+    def outdegree(self): 
+        """Returns the number of edges going out of the node."""
+        return len(self.outgoing_edges())
 
     def __str__(self):
         return str(self._id)
