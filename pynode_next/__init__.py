@@ -20,7 +20,7 @@ class Graph:
 
         # Make sure there aren't two nodes with the same id
         if n._id in self._nodes:
-            raise DuplicateNodeError(f"Duplicate node '{n._id}'")
+            raise DuplicateNodeError(f"Duplicate node with id '{n._id}'")
 
         # add node to dict and canvas
         self._nodes[n._id] = n
@@ -40,6 +40,9 @@ class Graph:
     def nodes(self):
         """Returns all of the graph's nodes."""
         return list(self._nodes.values())
+    
+    def add_edge(self, *args, **kwargs):
+        pass
 
 graph = Graph()
 

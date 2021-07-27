@@ -9,6 +9,7 @@ def test():
 
     graph.node("a").set_value("hi")
     print(graph.nodes())
+    graph.add_node("a")
 
 
 begin_pynode_next(test)

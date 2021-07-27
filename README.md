@@ -55,11 +55,11 @@ Node
 - [ ] node.highlight(color=node.color(), size=node.size()*1.5) - Performs a highlight animation by temporarily changing the size and color of the node.
  
 Edge
-- [ ] Edge(source, target, weight=None, directed=False) - Creates an edge between the specified source and target nodes, with optional weight and directed properties.
-- [ ] edge.source(), edge.target() - Returns the edge's source/target nodes.
+- [x] Edge(source, target, weight=None, directed=False) - Creates an edge between the specified source and target nodes, with optional weight and directed properties.
+- [x] edge.source(), edge.target() - Returns the edge's source/target nodes.
 - [ ] edge.set_weight(weight=None), edge.weight() - Sets/gets the weight of the edge.
 - [ ] edge.set_directed(directed=True), edge.directed() - Sets/gets whether the edge is directed.
-- [ ] edge.other_node(node) - Returns a node connected by the edge, other than the node specified.
+- [x] edge.other_node(node) - Returns a node connected by the edge, other than the node specified.
 - [ ] edge.set_attribute(name, value), edge.attribute(name) - Sets/gets custom attributes for the edge.
 - [ ] edge.set_priority(value), edge.priority(name) - Sets/gets a priority value used for c-omparison.
  
