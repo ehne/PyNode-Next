@@ -52,6 +52,23 @@ class Node:
     def __str__(self):
         return str(self._id)
 
+    def _data(self):
+        """used internally to generate data to dispatch to algx"""
+        return {
+            "attrs": {
+                "nodes": {
+                    self._id: {
+                        "color": self._color,
+                        "labels": {
+                            0: {
+                                "text": self._value
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 if __name__ == "__main__":
     assert Node(id="cool")._value == "cool"
     assert Node("cool")._value == "cool"

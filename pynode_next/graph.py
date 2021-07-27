@@ -26,8 +26,8 @@ class Graph:
 
         # add node to dict and canvas
         self._nodes[n._id] = n
-        ## TODO: below should just dispatch the node's data so that add_node(Node()) would be fully supported.
-        core.ax(lambda x: x.node(n._id).add(labels={0: {"text": n._value}}))
+        # just sends all of the node's data
+        core.ax(lambda x: x.dispatch(n._data()))
         return n
 
     def remove_node(self, node):
