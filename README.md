@@ -16,13 +16,13 @@ Graph
 - [x] graph.node(id) - Returns a node in the graph by its id.
 - [x] graph.nodes() - Returns a list of all nodes in the graph.
  
-- [ ] graph.add_edge(edge) - Adds an edge to the graph.
-- [ ] graph.add_edge(source, target, weight=None, directed=False) - Creates an Edge(source, target, weight, directed) and adds it to the graph.
+- [x] graph.add_edge(edge) - Adds an edge to the graph.
+- [x] graph.add_edge(source, target, weight=None, directed=False) - Creates an Edge(source, target, weight, directed) and adds it to the graph.
 - [ ] graph.remove_edge(edge) - Removes an edge from the graph.
 - [ ] graph.remove_edge(node1, node2, directed=False) - Removes edge(s) between node1 and node2. If directed is set, only edges beginning at node1 will be removed.
  
-- [ ] graph.has_node(node) - Checks whether a node has been added to the graph.
-- [ ] graph.has_edge(edge) - Checks whether an edge has been added to the graph.
+- [x] graph.has_node(node) - Checks whether a node has been added to the graph.
+- [x] graph.has_edge(edge) - Checks whether an edge has been added to the graph.
 - [ ] graph.adjacent(node1, node2, directed=False) - Checks whether an edge exists between node1 and node2. If directed is set, the edge must begin at node1.
 - [ ] graph.edges_between(node1, node2, directed=False) - Returns a list of all edges between node1 and node2. If directed is set, only edges beginning at node1 will be included.
  
