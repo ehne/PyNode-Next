@@ -26,9 +26,13 @@ class Graph:
 
         # add node to dict and canvas
         self._nodes[n._id] = n
+        ## TODO: below should just dispatch the node's data so that add_node(Node()) would be fully supported.
         core.ax(lambda x: x.node(n._id).add(labels={0: {"text": n._value}}))
 
         return n
+
+    def remove_node(self, node):
+        pass
 
     def node(self, id):
         """Returns the node with the id specified."""
@@ -81,6 +85,7 @@ class Graph:
         self._edges.append(e)
         self._has_edge_cache[e] = True
         
+        # TODO: below should just dispatch the edge's data so that add_edge(Edge()) is fully supported
         core.ax(lambda x: x.edge((e._source._id, e._target._id)).add(color=str(e._color), directed=e._directed))
         return e
 
