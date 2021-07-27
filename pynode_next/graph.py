@@ -60,7 +60,7 @@ class Graph:
             # makes a new edge
             e = Edge(arg_source, arg_target, arg_weight, arg_directed)
         if self.has_edge(e):
-            DuplicateEdgeError(f"There is already an instance of the edge '{e}' in the graph")
+            raise DuplicateEdgeError(f"There is already an instance of the edge '{e}' in the graph")
         
         # saves the original sources so we can check if they actually exist in the graph
         original_source = e._source
