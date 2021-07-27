@@ -614,8 +614,16 @@ button[aria-label][data-balloon-pos] {
             const event = JSON.parse(eventStr);
             console.log(event)
             if (event.isPyNodeNext) {
-              if (event.type === "error") {
-                MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`)
+              switch (event.type) {
+                case "error":
+                  MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`)
+                  break;
+                  
+                case "alert":
+                  MSAlert(`${event.message}`)
+                
+                default:
+                  break;
               }
             } else {
               canvas.dispatch(event);
