@@ -3,10 +3,6 @@ from .node import *
 from .errors import *
 from .core import core
 
-
-class Edge:
-    pass
- 
 class Graph:
     def __init__(self):
         self._nodes = {}
