@@ -28,6 +28,7 @@ class Node:
     def set_color(self, color=Color.DARK_GREY):
         """Sets the node's color to the Color object specified."""
         self._color = color
+        core.ax(lambda x: x.node(self._id).color(str(self._color)))
         return self
 
     def color(self):
