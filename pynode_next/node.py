@@ -11,6 +11,11 @@ class Node:
 
         self._incident_edges = []
         self._color = Color.DARK_GREY
+    
+    def id(self):
+        """Returns the node's id"""
+        return self._id
+
     def set_value(self, value):
         """Sets the node's value."""
         self._value = value

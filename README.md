@@ -37,7 +37,7 @@ Note: All functions containing node parameters accept either a Node instance or 
  
 Node
 - [x] Node(id=None, value=id) - Creates a node with the specified id and value. Assigns a unique id integer if the specified id is None.
-- [ ] node.id() - Returns the id of the node.
+- [x] node.id() - Returns the id of the node.
 - [x] node.set_value(), node.value() - Sets/gets the value of the node.
 - [ ] node.incident_edges(), node.incoming_edges(), node.outgoing_edges() - Returns a list of the node's incident/incoming/outgoing edges.
 - [ ] node.adjacent_nodes(), node.predecessor_nodes(), node.successor_nodes() - Returns a list of the node's adjacent/predecessor/successor nodes.
