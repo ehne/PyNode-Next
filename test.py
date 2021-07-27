@@ -1,9 +1,13 @@
 from pynode_next import *
 
 def test():
-    core.ax(lambda x: x.node("a").add())
+    
+
+    graph.add_node("a")
+    
     pause(1000)
-    core.ax(lambda x: x.node("b").add())
+    
+    graph.add_node("a")
 
 
 begin_pynode_next(test)

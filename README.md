@@ -10,7 +10,7 @@ Goals:
 - implement all features of PyNode https://alexsocha.github.io/pynode/
 
 Graph
-- [ ] graph.add_node(node) - Adds a node to the graph.
+- [x] graph.add_node(node) - Adds a node to the graph.
 - [ ] graph.add_node(id=None, value=id) - Creates a Node(id, value) and adds it to the graph.
 - [ ] graph.remove_node(node) - Removes a node from the graph.
 - [ ] graph.node(id) - Returns a node in the graph by its id.
@@ -36,7 +36,7 @@ Graph
 Note: All functions containing node parameters accept either a Node instance or node id value.
  
 Node
-- [ ] Node(id=None, value=id) - Creates a node with the specified id and value. Assigns a unique id integer if the specified id is None.
+- [x] Node(id=None, value=id) - Creates a node with the specified id and value. Assigns a unique id integer if the specified id is None.
 - [ ] node.id() - Returns the id of the node.
 - [ ] node.set_value(), node.value() - Sets/gets the value of the node.
 - [ ] node.incident_edges(), node.incoming_edges(), node.outgoing_edges() - Returns a list of the node's incident/incoming/outgoing edges.
