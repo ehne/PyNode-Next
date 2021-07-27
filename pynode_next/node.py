@@ -25,6 +25,14 @@ class Node:
         """Returns the node's value."""
         return self._value
 
+    def set_color(self, color=Color.DARK_GREY):
+        """Sets the node's color to the Color object specified."""
+        self._color = color
+        return self
+
+    def color(self):
+        return self._color
+
     def incident_edges(self):
         """Returns the incident edges through the node."""
         return list(self._incident_edges)
@@ -58,7 +66,7 @@ class Node:
             "attrs": {
                 "nodes": {
                     self._id: {
-                        "color": self._color,
+                        "color": str(self._color),
                         "labels": {
                             0: {
                                 "text": self._value
