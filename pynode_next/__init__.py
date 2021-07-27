@@ -1,8 +1,7 @@
 from .color import *
+from .node import *
 from .core import core
 
-class Node:
-    pass
 
 class Edge:
     pass
