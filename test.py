@@ -1,13 +1,10 @@
 from pynode_next import *
 
 def test():
-    graph.add_node("a", value="huh")
-        
+    graph.add_node("a")
     graph.add_node("b")
-
-    graph.node("a").set_value("hi")
-    print(graph.nodes())
     
-
+    e = graph.add_edge("a", "b", directed=True)
+    graph.add_edge(e)
 
 begin_pynode_next(test)
