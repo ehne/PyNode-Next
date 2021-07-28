@@ -99,7 +99,6 @@ class Graph:
         self._edges.append(e)
         self._has_edge_cache[e] = True
 
-        # TODO: below should just dispatch the edge's data so that add_edge(Edge()) is fully supported
         core.ax(lambda x: x.dispatch(e._data()))
         return e
 
