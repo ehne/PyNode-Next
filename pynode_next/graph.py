@@ -40,7 +40,15 @@ class Graph:
         return node
 
     def remove_node(self, node):
-        pass
+        """Removes the specified node from the graph"""
+        n = self.node(node)
+
+        for edge in n._incident_edges:
+            self.remove_edge(edge)
+        
+        del self._nodes[n._id]
+        core.ax(lambda x: x.node(str(n._id)).remove())
+        return n
 
     @overloaded
     def node(self, id: str):
