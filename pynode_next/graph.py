@@ -17,14 +17,14 @@ class Graph:
     @overloaded
     def add_node(self, id: str):
         """Adds a node to the graph using an id."""
-        self.add_node(id, id)
+        return self.add_node(id, id)
 
     @overloads(add_node)
     def add_node(self, id: str, value: str):
         """Adds a node to the graph using an id and a value."""
         if value == None:
             value = id
-        self.add_node(Node(id, value))
+        return self.add_node(Node(id, value))
 
     @overloads(add_node)
     def add_node(self, node: Node):
@@ -62,7 +62,7 @@ class Graph:
     @overloaded
     def add_edge(self, source: Node, target: Node, weight=None, directed: bool = False):
         """Adds an edge by defining it's relation to other nodes."""
-        self.add_edge(Edge(source, target, weight, directed))
+        return self.add_edge(Edge(source, target, weight, directed))
 
     @overloads(add_edge)
     def add_edge(self, edge: Edge):
