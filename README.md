@@ -34,7 +34,7 @@ graph.add_node(Node("node_a", value="hihi"))
 - [x] graph.add_edge(edge) - Adds an edge to the graph.
 - [x] graph.add_edge(source, target, weight=None, directed=False) - Creates an Edge(source, target, weight, directed) and adds it to the graph.
 - [x] graph.remove_edge(edge) - Removes an edge from the graph.
-- [ ] graph.remove_edge(node1, node2, directed=False) - Removes edge(s) between node1 and node2. If directed is set, only edges beginning at node1 will be removed.
+- [x] graph.remove_edge(node1, node2, directed=False) - Removes edge(s) between node1 and node2. If directed is set, only edges beginning at node1 will be removed.
  
 - [x] graph.has_node(node) - Checks whether a node has been added to the graph.
 - [x] graph.has_edge(edge) - Checks whether an edge has been added to the graph.

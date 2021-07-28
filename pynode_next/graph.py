@@ -103,7 +103,12 @@ class Graph:
 
     @overloaded
     def remove_edge(self, nodeA, nodeB, directed: bool = False):
-        pass
+        edges_between = self.edges_between(nodeA, nodeB, directed)
+        edge_list = []
+        for edge in edges_between:
+            edge_list.append(edge_list)
+            self.remove_edge(edge)
+        return edge_list
 
     @overloads(remove_edge)
     def remove_edge(self, edge: Edge):
