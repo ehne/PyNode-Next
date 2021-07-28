@@ -1,3 +1,4 @@
+from typing import overload
 from .overloading import *
 
 from .misc import *
@@ -40,13 +41,19 @@ class Graph:
 
     def remove_node(self, node):
         pass
-
-    def node(self, id):
+    
+    @overloaded
+    def node(self, id: str):
         """Returns the node with the id specified."""
-        if isinstance(id, Node) and id._id in self._nodes:
-            return id
-        elif id in self._nodes:
+        if id in self._nodes:
             return self._nodes[id]
+        else:
+            return None
+
+    @overloads(node)
+    def node(self, node: Node):
+        if node._id in self._nodes:
+            return node
         else:
             return None
 
