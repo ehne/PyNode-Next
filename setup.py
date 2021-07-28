@@ -11,6 +11,7 @@ setup(
     packages = ['pynode_next'],
     install_requires=[
         'algorithmX',
+        'multipledispatch'
     ],
     python_requires='>=3',
 )

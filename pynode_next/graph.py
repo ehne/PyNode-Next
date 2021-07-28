@@ -1,8 +1,11 @@
+from multipledispatch import dispatch
+
 from .misc import *
 from .node import *
 from .errors import *
 from .edge import *
 from .core import core
+
 
 class Graph:
     def __init__(self):
@@ -10,16 +13,21 @@ class Graph:
         self._edges = []
         self._has_edge_cache = {}
 
-    def add_node(self, *args, **kwargs):
-        """Adds the node to the graph. Can be either the id/value combination or can be a Node object."""
-        # figure out what has been given to the function
-        if "node" in kwargs:
-            n = kwargs["node"]
-        elif len(args) > 0 and isinstance(args[0], Node):
-            n = args[0]
-        else:
-            n = Node(*args, **kwargs)
+    @dispatch(str)
+    def add_node(self, id):
+        """Adds a node to the graph using an id."""
+        self.add_node(id, id)
 
+    @dispatch(str, str)
+    def add_node(self, id, value):
+        """Adds a node to the graph using an id and a value."""
+        self.add_node(Node(id, value))
+
+    @dispatch(Node)
+    def add_node(self, node):
+        """Adds the node object to the graph."""
+
+        n = node
         # Make sure there aren't two nodes with the same id
         if n._id in self._nodes:
             raise DuplicateNodeError(f"Duplicate node with id '{n._id}'")

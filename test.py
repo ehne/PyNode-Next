@@ -2,12 +2,24 @@ from pynode_next import *
 
 def test():
     
-    graph.add_node("a")
-    graph.add_node("b")
-    #graph.add_node("a")
-    e = graph.add_edge("a", "b", directed=True)
-    print(graph.node("a").outgoing_edges())
-    pause(1000)
-    graph.node("a").set_color(Color.RED)
+    for i in "abcd":
+        graph.add_node(i)
+        #pause(23)
+    for ix, v in enumerate("xyz"):
+        graph.nodes()[ix].set_value(v)
+
+    
+    [graph.node(i).set_color(Color.RED) for i in "ac"]
+
+    for node in graph.nodes():
+        for node2 in graph.nodes():
+            graph.add_edge(node,node2)
+            #pause(23)
+    
+    e = Node("q", "Object!")
+    
+    graph.add_node(e)
+        
+#    core.ax(lambda x: x.dispatch({"attrs":{"edges":{"a-b-hihu":{}}}})
 
 begin_pynode_next(test)
