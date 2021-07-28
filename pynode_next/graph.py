@@ -85,7 +85,7 @@ class Graph:
         self._has_edge_cache[e] = True
         
         # TODO: below should just dispatch the edge's data so that add_edge(Edge()) is fully supported
-        core.ax(lambda x: x.edge((e._source._id, e._target._id)).add(color=str(e._color), directed=e._directed))
+        core.ax(lambda x: x.dispatch(e._data()))
         return e
 
     def has_node(self, node):
