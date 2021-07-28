@@ -60,7 +60,7 @@ class Graph:
         return list(self._nodes.values())
 
     @overloaded
-    def add_edge(self, source: Node, target: Node, weight=None, directed: bool = False):
+    def add_edge(self, source, target, weight=None, directed: bool = False):
         """Adds an edge by defining it's relation to other nodes."""
         return self.add_edge(Edge(source, target, weight, directed))
 
@@ -101,6 +101,28 @@ class Graph:
         core.ax(lambda x: x.dispatch(e._data()))
         return e
 
+    @overloaded
+    def remove_edge(self, nodeA, nodeB, directed: bool = False):
+        pass
+
+    @overloads(remove_edge)
+    def remove_edge(self, edge: Edge):
+        """Removes an edge object from the graph"""
+        edge._source._incident_edges.remove(edge)
+        edge._target._incident_edges.remove(edge)
+
+        self._edges.remove(edge)
+        del self._has_edge_cache[edge]
+
+        core.ax(
+            lambda x: x.dispatch(
+                {"attrs": {"edges": {str(edge._internal_id): {"remove": True}}}}
+            )
+        )
+        # core.ax(lambda x: x.edge(edge._internal_id).remove())
+
+        return edge
+
     def has_node(self, node):
         """Checks if a node exists in the graph."""
         return self.node(node) is not None
@@ -118,12 +140,13 @@ class Graph:
             edge_list = self.node(nodeA).outgoing_edges()
         else:
             edge_list = self.node(nodeA).incident_edges()
-        
+
         out_edges = []
         for edge in edge_list:
             if edge._target is self.node(nodeB) or edge._source is self.node(nodeB):
                 out_edges.append(edge)
-        
+
         return out_edges
+
 
 graph = Graph()
