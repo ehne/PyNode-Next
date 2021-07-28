@@ -31,3 +31,18 @@ class Edge:
 
     def __str__(self):
         return f"({self._source}, {self._target})"
+
+    def _data(self):
+        """used internally to generate data to dispatch to algx"""
+        return {
+            "attrs": {
+                "edges": {
+                    f"{self._internal_id}": {
+                        "color": str(self._color),
+                        "source": str(self._source),
+                        "target": str(self._target),
+                        "directed": self._directed
+                    }
+                }
+            }
+        }
