@@ -28,17 +28,15 @@ class Graph:
     @overloads(add_node)
     def add_node(self, node: Node):
         """Adds the node object to the graph."""
-
-        n = node
         # Make sure there aren't two nodes with the same id
-        if n._id in self._nodes:
-            raise DuplicateNodeError(f"Duplicate node with id '{n._id}'")
+        if node._id in self._nodes:
+            raise DuplicateNodeError(f"Duplicate node with id '{node._id}'")
 
         # add node to dict and canvas
-        self._nodes[n._id] = n
+        self._nodes[node._id] = node
         # just sends all of the node's data
-        core.ax(lambda x: x.dispatch(n._data()))
-        return n
+        core.ax(lambda x: x.dispatch(node._data()))
+        return node
 
     def remove_node(self, node):
         pass
