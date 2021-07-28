@@ -22,7 +22,9 @@ graph.add_node("node_a", "hihi")
 graph.add_node(Node("node_a", value="hihi"))
 ```
 
-Graph
+#### Todo
+
+##### Graph
 - [x] graph.add_node(node) - Adds a node to the graph.
 - [x] graph.add_node(id=None, value=id) - Creates a Node(id, value) and adds it to the graph.
 - [ ] graph.remove_node(node) - Removes a node from the graph.
@@ -48,7 +50,7 @@ Graph
 - [ ] graph.clear() - Deletes all nodes and edges from the graph.
 Note: All functions containing node parameters accept either a Node instance or node id value.
  
-Node
+##### Node
 - [x] Node(id=None, value=id) - Creates a node with the specified id and value. Assigns a unique id integer if the specified id is None.
 - [x] node.id() - Returns the id of the node.
 - [x] node.set_value(), node.value() - Sets/gets the value of the node.
@@ -67,7 +69,7 @@ Node
 - [ ] node.set_label_style(size=10, color=Color.GREY, outline=None, lable_id=None) - Sets the appearance of the node's label text (if no lable_id is specified, both labels will be affected).
 - [ ] node.highlight(color=node.color(), size=node.size()*1.5) - Performs a highlight animation by temporarily changing the size and color of the node.
  
-Edge
+##### Edge
 - [x] Edge(source, target, weight=None, directed=False) - Creates an edge between the specified source and target nodes, with optional weight and directed properties.
 - [x] edge.source(), edge.target() - Returns the edge's source/target nodes.
 - [ ] edge.set_weight(weight=None), edge.weight() - Sets/gets the weight of the edge.
@@ -82,7 +84,7 @@ Edge
 - [ ] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
 - [ ] edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True) - Performs a traversal animation on the edge, beginning at initial_node and using the specified color. If keep_path is set, the edge will remain colored.
  
-Miscellaneous
+##### Miscellaneous
 - [x] Color(red, green, blue) - Custom color for use in node and edge animations, using 0-255 values for each component.
 - [x] Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.WHITE, Color.LIGHT_GREY, Color.GREY, Color.DARK_GREY, Color.BLACK, Color.TRANSPARENT - Predefined colors for use in node and edge animations.
 - [x] pause(time) - Delays the next visual event for the specified number of milliseconds (note that this does not pause code execution).
