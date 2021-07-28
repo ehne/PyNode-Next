@@ -3,7 +3,7 @@ from pynode_next import *
 def test():
     
     for i in "abcd":
-        graph.add_node(Node("a", "b"))
+        graph.add_node(i)
         #pause(23)
     for ix, v in enumerate("xyz"):
         graph.nodes()[ix].set_value(v)
@@ -17,9 +17,10 @@ def test():
             #pause(23)
     
     e = Node("q", "Object!")
-    
+    print(graph.node(e))
     graph.add_node(e)
-        
+    print(graph.node(e))
+
 #    core.ax(lambda x: x.dispatch({"attrs":{"edges":{"a-b-hihu":{}}}})
 
 begin_pynode_next(test)

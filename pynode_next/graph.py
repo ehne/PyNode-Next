@@ -1,4 +1,4 @@
-from typing import overload
+from typing import Union
 from .overloading import *
 
 from .misc import *
@@ -54,29 +54,21 @@ class Graph:
     def node(self, node: Node):
         if node._id in self._nodes:
             return node
-        else:
-            return None
+        return None
 
     def nodes(self):
         """Returns all of the graph's nodes."""
         return list(self._nodes.values())
     
-    def add_edge(self, *args, **kwargs):
-        """Add an edge to the graph."""
-        # checks if edge is defined like add_edge(edge=Edge())
-        if "edge" in kwargs:
-            e = kwargs["edge"]
-        # checks if the edge is defined like add_edge(Edge())
-        elif len(args) > 0 and isinstance(args[0], Edge):
-            e = args[0]
-        else:
-            # splits up the args in their actual variables
-            arg_source = kwargs["source"] if "source" in kwargs else args[0]
-            arg_target = kwargs["target"] if "target" in kwargs else args[1]
-            arg_weight = kwargs["weight"] if "weight" in kwargs else args[2] if len(args) > 2 else None
-            arg_directed = kwargs["directed"] if "directed" in kwargs else args[3] if len(args) > 3 else False
-            # makes a new edge
-            e = Edge(arg_source, arg_target, arg_weight, arg_directed)
+    @overloaded
+    def add_edge(self, source, target, weight=None, directed=False):
+        """Adds an edge by defining it's relation to other nodes."""
+        self.add_edge(Edge(source, target, weight, directed))
+    
+    @overloads(add_edge)
+    def add_edge(self, edge: Edge):
+        """Add an edge object to the graph."""
+        e = edge
         if self.has_edge(e):
             raise DuplicateEdgeError(f"There is already an instance of the edge '{e}' in the graph")
         
