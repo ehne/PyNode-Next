@@ -1,4 +1,4 @@
-from multipledispatch import dispatch
+from .overloading import *
 
 from .misc import *
 from .node import *
@@ -13,18 +13,20 @@ class Graph:
         self._edges = []
         self._has_edge_cache = {}
 
-    @dispatch(str)
-    def add_node(self, id):
+    @overloaded
+    def add_node(self, id: str):
         """Adds a node to the graph using an id."""
         self.add_node(id, id)
 
-    @dispatch(str, str)
-    def add_node(self, id, value):
+    @overloads(add_node)
+    def add_node(self, id: str, value: str):
         """Adds a node to the graph using an id and a value."""
+        if value == None:
+            value = id
         self.add_node(Node(id, value))
 
-    @dispatch(Node)
-    def add_node(self, node):
+    @overloads(add_node)
+    def add_node(self, node: Node):
         """Adds the node object to the graph."""
 
         n = node
@@ -77,9 +79,11 @@ class Graph:
         original_source = e._source
         original_target = e._target
 
+        # incase the nodes were provided as node ids rather than objects.
         e._source = self.node(e._source)
         e._target = self.node(e._target)
         
+        # Makes sure that the source and target nodes are actually in the graph
         if e._source == None:
             raise NodeDoesntExistError(f"The node {original_source} does not exist in the graph")
         if e._target == None:
@@ -95,6 +99,19 @@ class Graph:
         # TODO: below should just dispatch the edge's data so that add_edge(Edge()) is fully supported
         core.ax(lambda x: x.dispatch(e._data()))
         return e
+
+    def remove_edge(self, *args, **kwargs):
+        removing_multiple = False
+        # stuff for if provided an Edge object.
+        if "edge" in kwargs:
+            e = kwargs["edge"]
+        elif len(args) > 0 and isinstance(args[0], Edge):
+            e = args[0]
+        # been given ids.
+        else:
+            arg_source = kwargs["node1"] if "node1" in kwargs else args[0]
+            arg_target = kwargs["node2"] if "node2" in kwargs else args[1]
+
 
     def has_node(self, node):
         """Checks if a node exists in the graph."""

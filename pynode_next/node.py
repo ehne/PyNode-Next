@@ -2,12 +2,9 @@ from .misc import Color
 from .core import core
 
 class Node:
-    def __init__(self, *args, **kwargs):
-        arg_id = kwargs["id"] if "id" in kwargs else args[0]
-        self._id = arg_id
-
-        arg_value = kwargs["value"] if "value" in kwargs else args[1] if len(args) > 1 else arg_id
-        self._value = arg_value
+    def __init__(self, id, value):
+        self._id = id
+        self._value = value
 
         self._incident_edges = []
         self._color = Color.DARK_GREY

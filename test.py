@@ -3,7 +3,7 @@ from pynode_next import *
 def test():
     
     for i in "abcd":
-        graph.add_node(i)
+        graph.add_node(node=Node("a", "b"))
         #pause(23)
     for ix, v in enumerate("xyz"):
         graph.nodes()[ix].set_value(v)

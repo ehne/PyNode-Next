@@ -9,6 +9,19 @@ A complete rewrite of PyNode for the modern era.
 Goals: 
 - implement all features of PyNode https://alexsocha.github.io/pynode/
 
+`* Note`: in trying to simplify the code, I've used function overloading. This means that for some functions that can take different forms of input (like graph.add_node(node) and graph.add_node(id, value)) you cannot use the keyword arguments.
+
+```python
+# so the below would not work:
+graph.add_node("node_a", value="hihi")
+
+# you would have to instead have to do:
+graph.add_node("node_a", "hihi")
+
+# or, you can create the Node as an object and use the keyword arguments:
+graph.add_node(Node("node_a", value="hihi"))
+```
+
 Graph
 - [x] graph.add_node(node) - Adds a node to the graph.
 - [x] graph.add_node(id=None, value=id) - Creates a Node(id, value) and adds it to the graph.
