@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Iterable
 from .overloading import *
 
 from .misc import *
@@ -45,7 +45,7 @@ class Graph:
 
         for edge in n._incident_edges:
             self.remove_edge(edge)
-        
+
         del self._nodes[n._id]
         core.ax(lambda x: x.node(str(n._id)).remove())
         return n
@@ -139,6 +139,14 @@ class Graph:
     def has_node(self, node):
         """Checks if a node exists in the graph."""
         return self.node(node) is not None
+
+    def add_all(self, elements: Iterable[Union[Node, Edge]]):
+        """Adds all node and edge objects from an iterable"""
+        for i in elements:
+            if isinstance(i, Node):
+                self.add_node(i)
+            elif isinstance(i, Edge):
+                self.add_edge(i)
 
     def has_edge(self, edge):
         """Checks if an edge exists in the graph."""

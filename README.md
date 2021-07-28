@@ -43,7 +43,7 @@ graph.add_node(Node("node_a", value="hihi"))
  
 - [ ] graph.set_directed(directed=True) - Sets whether all edges in the graph are directed.
 - [ ] graph.adjacency_matrix() - Creates and returns an adjacency matrix (2-dimensional dictionary, using node id values as keys) for the graph.
-- [ ] graph.add_all(elements) - Adds a list of Node and/or Edge elements to the graph.
+- [x] graph.add_all(elements) - Adds a list of Node and/or Edge elements to the graph.
 - [ ] graph.remove_all(elements) - Removes a list of Node and/or Edge elements from the graph.
 - [ ] graph.random(order, size, connected=True, multigraph=False, initial_id=0) - Returns a list of randomly connected nodes and edges, with order specifying the amount of nodes and size specifying the amount of edges. If connected is set, a path will exist between any pair of nodes (unless the amount of edges makes this impossible). If multigraph is set, a pair of nodes may be connected by multiple edges. Nodes are assigned incremental id values starting at initial_id.
 - [ ] graph.order(), graph.size() - Returns the number of nodes/edges in the graph.
