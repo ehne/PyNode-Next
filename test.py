@@ -20,6 +20,7 @@ def test():
     print(graph.node(e))
     graph.add_node(e)
     print(graph.node(e))
+    print(graph.edges_between("a", "b"))
 
 #    core.ax(lambda x: x.dispatch({"attrs":{"edges":{"a-b-hihu":{}}}})
 

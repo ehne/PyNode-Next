@@ -47,8 +47,7 @@ class Graph:
         """Returns the node with the id specified."""
         if id in self._nodes:
             return self._nodes[id]
-        else:
-            return None
+        return None
 
     @overloads(node)
     def node(self, node: Node):
@@ -102,18 +101,6 @@ class Graph:
         core.ax(lambda x: x.dispatch(e._data()))
         return e
 
-    def remove_edge(self, *args, **kwargs):
-        removing_multiple = False
-        # stuff for if provided an Edge object.
-        if "edge" in kwargs:
-            e = kwargs["edge"]
-        elif len(args) > 0 and isinstance(args[0], Edge):
-            e = args[0]
-        # been given ids.
-        else:
-            arg_source = kwargs["node1"] if "node1" in kwargs else args[0]
-            arg_target = kwargs["node2"] if "node2" in kwargs else args[1]
-
     def has_node(self, node):
         """Checks if a node exists in the graph."""
         return self.node(node) is not None
@@ -122,5 +109,21 @@ class Graph:
         """Checks if an edge exists in the graph."""
         return edge in self._has_edge_cache
 
+    def edges_between(self, nodeA, nodeB, directed=False):
+        """Returns all edges between the two nodes nodeA and nodeB. Setting directed to True means that the edges it returns will only be from nodeA to nodeB"""
+        if not self.has_node(nodeA) or not self.has_node(nodeB):
+            return []
+
+        if directed:
+            edge_list = self.node(nodeA).outgoing_edges()
+        else:
+            edge_list = self.node(nodeA).incident_edges()
+        
+        out_edges = []
+        for edge in edge_list:
+            if edge._target is self.node(nodeB) or edge._source is self.node(nodeB):
+                out_edges.append(edge)
+        
+        return out_edges
 
 graph = Graph()
