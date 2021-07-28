@@ -41,7 +41,7 @@ class Graph:
 
     def remove_node(self, node):
         pass
-    
+
     @overloaded
     def node(self, id: str):
         """Returns the node with the id specified."""
@@ -59,19 +59,21 @@ class Graph:
     def nodes(self):
         """Returns all of the graph's nodes."""
         return list(self._nodes.values())
-    
+
     @overloaded
-    def add_edge(self, source, target, weight=None, directed=False):
+    def add_edge(self, source: Node, target: Node, weight=None, directed: bool = False):
         """Adds an edge by defining it's relation to other nodes."""
         self.add_edge(Edge(source, target, weight, directed))
-    
+
     @overloads(add_edge)
     def add_edge(self, edge: Edge):
         """Add an edge object to the graph."""
         e = edge
         if self.has_edge(e):
-            raise DuplicateEdgeError(f"There is already an instance of the edge '{e}' in the graph")
-        
+            raise DuplicateEdgeError(
+                f"There is already an instance of the edge '{e}' in the graph"
+            )
+
         # saves the original sources so we can check if they actually exist in the graph
         original_source = e._source
         original_target = e._target
@@ -79,12 +81,16 @@ class Graph:
         # incase the nodes were provided as node ids rather than objects.
         e._source = self.node(e._source)
         e._target = self.node(e._target)
-        
+
         # Makes sure that the source and target nodes are actually in the graph
         if e._source == None:
-            raise NodeDoesntExistError(f"The node {original_source} does not exist in the graph")
+            raise NodeDoesntExistError(
+                f"The node {original_source} does not exist in the graph"
+            )
         if e._target == None:
-            raise NodeDoesntExistError(f"The node {original_target} does not exist in the graph")
+            raise NodeDoesntExistError(
+                f"The node {original_target} does not exist in the graph"
+            )
 
         # adds the incident edges to the nodes
         e._source._incident_edges.append(e)
@@ -92,7 +98,7 @@ class Graph:
 
         self._edges.append(e)
         self._has_edge_cache[e] = True
-        
+
         # TODO: below should just dispatch the edge's data so that add_edge(Edge()) is fully supported
         core.ax(lambda x: x.dispatch(e._data()))
         return e
@@ -109,7 +115,6 @@ class Graph:
             arg_source = kwargs["node1"] if "node1" in kwargs else args[0]
             arg_target = kwargs["node2"] if "node2" in kwargs else args[1]
 
-
     def has_node(self, node):
         """Checks if a node exists in the graph."""
         return self.node(node) is not None
@@ -117,5 +122,6 @@ class Graph:
     def has_edge(self, edge):
         """Checks if an edge exists in the graph."""
         return edge in self._has_edge_cache
+
 
 graph = Graph()
