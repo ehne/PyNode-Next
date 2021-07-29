@@ -55,7 +55,23 @@ class Node:
     def set_label(self, value, label_id=0):
         """Sets a node's label. 0 for top right and 1 for top left."""
         self._labels[0] = value
-        # core.ax(lambda x: )
+        label = ["tr", "tl"][label_id]
+        label_angle = [45, 45+90][label_id]
+        
+        core.ax(lambda x: x.dispatch({
+            "attrs": {
+                "nodes": {
+                    self._id: {
+                        "labels": {
+                            label: {
+                                "angle": label_angle,
+                                "text": value
+                            }
+                        }
+                    }
+                }
+            }
+        }))
 
     def label(self, label_id=0):
         return self._labels[label_id]

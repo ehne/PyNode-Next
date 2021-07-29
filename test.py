@@ -12,9 +12,8 @@ def test():
 
     graph.remove_edge("a", "b")
     graph.add_all([Node(i, i) for i in "zxy"])
-    graph.remove_node("a")
     pause(100)
-    graph.remove_all(graph.nodes())
+    graph.node("a").set_label("hi", label_id=1)    
     #graph.remove_edge(e)
 
 #    core.ax(lambda x: x.dispatch({"attrs":{"edges":{"a-b-hihu":{}}}})

@@ -62,7 +62,7 @@ Note: All functions containing node parameters accept either a Node instance or 
  
 - [ ] node.set_position(x, y, relative=False) - Sets the static position of the node. x and y are pixel coordinates, with (0, 0) being the top-left corner of the output window (the standard size of the window is 500x400). If relative is set, x and y should instead be values between 0.0 and 1.0, specifying the node's position as a percentage of the window size.
 - [ ] node.position() - Returns a tuple with the (x, y) coordinates of the node. Should be used in asynchronous function calls.
-- [ ] node.set_label(value, label_id=0), node.label(label_id) - Sets/gets the value of additional labels for the node (Use label_id=0 for the top-right label and label_id=1 for the top left-label).
+- [x] node.set_label(value, label_id=0), node.label(label_id) - Sets/gets the value of additional labels for the node (Use label_id=0 for the top-right label and label_id=1 for the top left-label).
 - [ ] node.set_size(size=12), node.size() - Sets/gets the radius of the node.
 - [x] node.set_color(color=Color.DARK_GREY), node.color() - Sets/gets the color of the node.
 - [ ] node.set_value_style(size=13, color=Color.WHITE, outline=None) - Sets the appearance of the node's value text (if no outline is specified, the node's background color will be used for the outline).
