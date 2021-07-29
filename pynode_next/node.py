@@ -8,6 +8,8 @@ class Node:
 
         self._incident_edges = []
         self._color = Color.DARK_GREY
+        
+        self._attrs = {}
     
     def id(self):
         """Returns the node's id"""
@@ -31,6 +33,14 @@ class Node:
     def color(self):
         return self._color
 
+    def set_attribute(self, name, value):
+        """Sets an attribute of a node"""
+        self._attrs[name] = value
+
+    def attribute(self, name):
+        """Returns a nodes named attribute"""
+        return self._attrs[name]
+    
     def incident_edges(self):
         """Returns the incident edges through the node."""
         return list(self._incident_edges)
