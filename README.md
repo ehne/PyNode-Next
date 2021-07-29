@@ -57,7 +57,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] node.incident_edges(), node.incoming_edges(), node.outgoing_edges() - Returns a list of the node's incident/incoming/outgoing edges.
 - [ ] node.adjacent_nodes(), node.predecessor_nodes(), node.successor_nodes() - Returns a list of the node's adjacent/predecessor/successor nodes.
 - [x] node.degree(), node.indegree(), node.outdegree() - Returns the node's degree/indegree/ outdegree.
-- [ ] node.set_attribute(name, value), node.attribute(name) - Sets/gets custom attributes for the node.
+- [x] node.set_attribute(name, value), node.attribute(name) - Sets/gets custom attributes for the node.
 - [ ] node.set_priority(value), node.priority(name) - Sets/gets a priority value used for comparison.
  
 - [ ] node.set_position(x, y, relative=False) - Sets the static position of the node. x and y are pixel coordinates, with (0, 0) being the top-left corner of the output window (the standard size of the window is 500x400). If relative is set, x and y should instead be values between 0.0 and 1.0, specifying the node's position as a percentage of the window size.
