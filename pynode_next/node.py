@@ -1,15 +1,26 @@
+import uuid
+
 from .misc import Color
 from .core import core
 
 class Node:
-    def __init__(self, id, value):
-        self._id = id
-        self._value = value
+    def __init__(self, id=None, value=None):
+        if id != None:
+            self._id = id
+        else:
+            self._id = str(uuid.uuid4())
+        
+        if value != None:
+            self._value = value
+        else:
+            self._value = self._id
 
         self._incident_edges = []
         self._color = Color.DARK_GREY
         
         self._attrs = {}
+
+        self._labels = {}
     
     def id(self):
         """Returns the node's id"""
@@ -41,6 +52,14 @@ class Node:
         """Returns a nodes named attribute"""
         return self._attrs[name]
     
+    def set_label(self, value, label_id=0):
+        """Sets a node's label. 0 for top right and 1 for top left."""
+        self._labels[0] = value
+        # core.ax(lambda x: )
+
+    def label(self, label_id=0):
+        return self._labels[label_id]
+
     def incident_edges(self):
         """Returns the incident edges through the node."""
         return list(self._incident_edges)
