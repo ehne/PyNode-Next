@@ -55,7 +55,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] node.id() - Returns the id of the node.
 - [x] node.set_value(), node.value() - Sets/gets the value of the node.
 - [x] node.incident_edges(), node.incoming_edges(), node.outgoing_edges() - Returns a list of the node's incident/incoming/outgoing edges.
-- [ ] node.adjacent_nodes(), node.predecessor_nodes(), node.successor_nodes() - Returns a list of the node's adjacent/predecessor/successor nodes.
+- [x] node.adjacent_nodes(), node.predecessor_nodes(), node.successor_nodes() - Returns a list of the node's adjacent/predecessor/successor nodes.
 - [x] node.degree(), node.indegree(), node.outdegree() - Returns the node's degree/indegree/ outdegree.
 - [x] node.set_attribute(name, value), node.attribute(name) - Sets/gets custom attributes for the node.
 - [ ] node.set_priority(value), node.priority(name) - Sets/gets a priority value used for comparison.
@@ -82,7 +82,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [ ] edge.set_color(color=Color.LIGHT_GREY), edge.color() - Sets/gets the color of the edge.
 - [ ] edge.set_weight_style(size=10, color=Color.GREY, outline=None) - Sets the appearance of the edge's weight text.
 - [ ] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
-- [ ] edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True) - Performs a traversal animation on the edge, beginning at initial_node and using the specified color. If keep_path is set, the edge will remain colored.
+- [x] edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True) - Performs a traversal animation on the edge, beginning at initial_node and using the specified color. If keep_path is set, the edge will remain colored.
  
 ##### Miscellaneous
 - [x] Color(red, green, blue) - Custom color for use in node and edge animations, using 0-255 values for each component.

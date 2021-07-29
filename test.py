@@ -2,20 +2,20 @@ from pynode_next import *
 
 def test():
     
-    for i in "ab":
+    for i in "abcd":
         graph.add_node(i)
-        #pause(23)
-    
-    graph.add_edge("a", "b")
-    graph.add_edge("a", "b")
+        pause(23)
+    for i in graph.nodes():
+        for j in graph.nodes():
+            graph.add_edge(i, j,None, directed=True)
+            pause(23)
     pause(1000)
-
-    graph.remove_edge("a", "b")
-    graph.add_all([Node(i, i) for i in "zxy"])
-    pause(100)
-    graph.node("a").set_label("hi", label_id=1)    
-    #graph.remove_edge(e)
-
+    for i in graph._edges:
+        i.traverse(keep_path=False)
+        pause(100)
+    #core.ax(lambda x: x.edge("ab").traverse(color="green"))
+    ##graph.remove_edge(e)
+    print([str(i) for i in graph.node("a").adjacent_nodes()])
 #    core.ax(lambda x: x.dispatch({"attrs":{"edges":{"a-b-hihu":{}}}})
 
-begin_pynode_next(test)
+begin_pynode_next(test, open_browser=False)

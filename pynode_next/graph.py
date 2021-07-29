@@ -123,7 +123,7 @@ class Graph:
         """Removes an edge object from the graph"""
         edge._source._incident_edges.remove(edge)
         edge._target._incident_edges.remove(edge)
-    
+
         self._edges.remove(edge)
         del self._has_edge_cache[edge]
 
