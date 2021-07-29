@@ -100,6 +100,34 @@ class Node:
         """Returns the number of edges going out of the node."""
         return len(self.outgoing_edges())
 
+    def adjacent_nodes(self):
+        """Returns a list of nodes that are adjacent to this node."""
+        node_list = []
+        for e in self._incident_edges:
+            if e._target is self:
+                node_list.append(e._source)
+            else:
+                node_list.append(e._target)
+        return node_list
+
+    def predecessor_nodes(self):
+        node_list = []
+        for e in self.incoming_edges():
+            if e._target is self:
+                node_list.append(e._source)
+            else:
+                node_list.append(e._target)
+        return node_list
+
+    def successor_nodes(self):
+        node_list = []
+        for e in self.outgoing_edges():
+            if e._target is self:
+                node_list.append(e._source)
+            else:
+                node_list.append(e._target)
+        return node_list
+
     def __str__(self):
         return str(self._id)
 
