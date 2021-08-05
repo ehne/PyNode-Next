@@ -18,4 +18,4 @@ def test():
     print([str(i) for i in graph.node("a").adjacent_nodes()])
 #    core.ax(lambda x: x.dispatch({"attrs":{"edges":{"a-b-hihu":{}}}})
 
-begin_pynode_next(test, open_browser=False)
+begin_pynode_next(test)

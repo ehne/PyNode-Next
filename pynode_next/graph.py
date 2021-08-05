@@ -55,13 +55,17 @@ class Graph:
         """Returns the node with the id specified."""
         if id in self._nodes:
             return self._nodes[id]
-        return None
+        raise NodeDoesntExistError(
+            f"The node '{id}' does not exist in the graph"
+        )
 
     @overloads(node)
     def node(self, node: Node):
         if node._id in self._nodes:
             return node
-        return None
+        raise NodeDoesntExistError(
+            f"The node '{node._id}' does not exist in the graph"
+        )
 
     def nodes(self):
         """Returns all of the graph's nodes."""
@@ -168,5 +172,18 @@ class Graph:
 
         return out_edges
 
+    def adjacent(self, nodeA, nodeB, directed=False):
+        """Checks if an edge between nodeA and nodeB exists. If directed is True, then the edge must start from nodeA"""
+        nodeA = self.node(nodeA)
+        nodeB = self.node(nodeB)
+        
+        node_list = nodeA.adjacent_nodes()
+        if directed == True:
+            node_list = nodeA.successor_nodes()
+        
+        for n in node_list:
+            if n is nodeB:
+                return True
+        return False
 
 graph = Graph()

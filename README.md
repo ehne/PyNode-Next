@@ -38,7 +38,7 @@ graph.add_node(Node("node_a", value="hihi"))
  
 - [x] graph.has_node(node) - Checks whether a node has been added to the graph.
 - [x] graph.has_edge(edge) - Checks whether an edge has been added to the graph.
-- [ ] graph.adjacent(node1, node2, directed=False) - Checks whether an edge exists between node1 and node2. If directed is set, the edge must begin at node1.
+- [x] graph.adjacent(node1, node2, directed=False) - Checks whether an edge exists between node1 and node2. If directed is set, the edge must begin at node1.
 - [x] graph.edges_between(node1, node2, directed=False) - Returns a list of all edges between node1 and node2. If directed is set, only edges beginning at node1 will be included.
  
 - [ ] graph.set_directed(directed=True) - Sets whether all edges in the graph are directed.
