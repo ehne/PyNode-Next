@@ -59,19 +59,7 @@ class Node:
         label = ["tr", "tl"][label_id]
         label_angle = [45, 45 + 90][label_id]
 
-        core.ax(
-            lambda x: x.dispatch(
-                {
-                    "attrs": {
-                        "nodes": {
-                            self._id: {
-                                "labels": {label: {"angle": label_angle, "text": value}}
-                            }
-                        }
-                    }
-                }
-            )
-        )
+        core.ax(lambda x: x.node(self._id).label(label).angle(label_angle).text(value))
 
     def label(self, label_id=0):
         return self._labels[label_id]
@@ -132,7 +120,7 @@ class Node:
         return str(self._id)
 
     def _data(self):
-        """used internally to generate data to dispatch to algx"""
+        """used internally to generate data to dispatch to algx."""
         return {
             "attrs": {
                 "nodes": {

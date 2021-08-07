@@ -4,6 +4,7 @@ def test():
     
     for i in "abcd":
         graph.add_node(i)
+        graph.node(i).set_label(f"hello {i}")
         pause(23)
     for i in graph.nodes():
         for j in graph.nodes():
