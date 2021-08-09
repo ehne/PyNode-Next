@@ -105,6 +105,18 @@ class Node:
     def label(self, label_id=0):
         return self._labels[label_id]
 
+    def set_label_style(self, size=10, color=Color.GREY, outline=None, label_id=None):
+        """Sets the style of any labels"""
+        if outline != None:
+            print("set_label_style(outline) is not supported by PyNode Next")
+        if label_id == None:
+            core.ax(lambda x: x.node(self._id).label('tr').size(size).color(str(color)))
+            core.ax(lambda x: x.node(self._id).label('tl').size(size).color(str(color)))
+        else:
+            label = ["tr", "tl"][label_id]
+            core.ax(lambda x: x.node(self._id).label(label).size(size).color(str(color)))
+        return self
+        
     def incident_edges(self):
         """Returns the incident edges through the node."""
         return list(self._incident_edges)
