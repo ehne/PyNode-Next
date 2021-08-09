@@ -52,13 +52,22 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r pynode_next.zip pynode_next
-
+      
+      - name: create release notes md file
+        run: touch RELEASE.md
+      
+      - name: write release notes to file
+        uses: DamianReeves/write-file-action@v1
+        with:
+          path: RELEASE.md
+          contents: ${{needs.check_for_new_version.outputs.release_notes}}
+          
        #upload it to the artifacts for now   
       - name: Upload release ${{steps.pynode_ver.outputs.ver}}
-        run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
+        run: gh release create ${{ env.VERSION }} -F "${{ env.MESSAGE_LOCATION }}" -t "${{ env.NAME }}" ${{ env.FILES }}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           VERSION: v${{needs.check_for_new_version.outputs.version}}
-          MESSAGE: ${{needs.check_for_new_version.outputs.release_notes}}
+          MESSAGE_LOCATION: RELEASE.md
           NAME: ${{needs.check_for_new_version.outputs.version}}
           FILES: pynode_next.zip
