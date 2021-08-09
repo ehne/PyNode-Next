@@ -38,7 +38,7 @@ class Node:
 
     def set_value_style(self, size=13, color=Color.WHITE, outline=None):
         if outline != None:
-            print("set_value_style(outline) is not supported by PyNode_next")
+            print("set_value_style(outline) is not supported by PyNode_Next")
         core.ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
         return self
 
