@@ -35,7 +35,7 @@ jobs:
           branches: | 
             ['main']
             
-      - run: echo "${{ steps.semantic.RELEASE_VERSION }}"
+      - run: echo "$RELEASE_VERSION"
       
       # zips the pynode_next folder
       - name: Zip up the folder
