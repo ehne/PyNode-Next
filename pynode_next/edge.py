@@ -14,6 +14,8 @@ class Edge:
 
         self._internal_id = uuid.uuid4()
 
+        self._attrs = {}
+
     def other_node(self, node):
         """Returns the other node than the specified node in the edge."""
         return (
@@ -33,6 +35,14 @@ class Edge:
         if source != None:
             return self.other_node(source)
         return self._target
+
+    def set_attribute(self, name, value):
+        """Sets an attribute of the edge"""
+        self._attrs[name] = value
+
+    def attribute(self, name):
+        """Gets an attribute of the edge"""
+        return self._attrs[name]
 
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
