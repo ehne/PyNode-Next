@@ -49,7 +49,7 @@ jobs:
       - name: Edit pynode_version.py    
         if: steps.semantic.outputs.new-release-published == 'true'
         run: |
-          echo "" > pynode_next/pynode_version.py 
+          echo "version = '$RELEASE_VERSION'" > pynode_next/pynode_version.py 
           
       - name: Commit pynode_version.py  
         if: steps.semantic.outputs.new-release-published == 'true'
