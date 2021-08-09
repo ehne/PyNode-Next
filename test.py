@@ -10,6 +10,11 @@ def test():
         for j in graph.nodes():
             graph.add_edge(i, j,None, directed=True)
             pause(23)
+
+    for i in graph.nodes():
+        i.highlight(color=Color.GREEN, size=50)
+        i.set_label_style(color=Color.RED)
+
     pause(1000)
     for i in graph._edges:
         i.traverse(keep_path=False)
