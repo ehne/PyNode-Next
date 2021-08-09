@@ -49,7 +49,9 @@ jobs:
       
       # upload it to the artifacts for now   
       - name: Upload release ${{steps.pynode_ver.outputs.ver}}
-        uses: softprops/action-gh-release@v1
-        with:
-          files: pynode_next.zip
-          tag_name: ${{steps.pynode_ver.outputs.ver}}
+        run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
+        env:
+          VERSION: ${{steps.pynode_ver.outputs.ver}}
+          MESSAGE: "A new release"
+          NAME: ${{steps.pynode_ver.outputs.ver}}
+          FILES: pynode_next.zip
