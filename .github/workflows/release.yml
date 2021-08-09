@@ -30,6 +30,8 @@ jobs:
         id: semantic
         with:
           dry_run: true
+          additional_packages: |
+            ['semantic-release-gitmoji']
           plugins: |
             ['semantic-release-gitmoji']
           branches: | 
