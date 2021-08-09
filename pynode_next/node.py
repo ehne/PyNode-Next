@@ -19,8 +19,8 @@ class Node:
         self._incident_edges = []
         self._color = Color.DARK_GREY
         self._size = 12
+        self._priority = 0
         self._attrs = {}
-
         self._labels = {}
 
     def id(self):
@@ -51,6 +51,15 @@ class Node:
     def size(self):
         """Returns the node's size"""
         return self._size
+
+    def set_priority(self, value):
+        """Sets a node's priority value."""
+        self._priority = value
+        return self
+
+    def priority(self):
+        """Gets a node's priority"""
+        return self._priority
 
     def set_color(self, color=Color.DARK_GREY):
         """Sets the node's color to the Color object specified."""
@@ -116,7 +125,7 @@ class Node:
             label = ["tr", "tl"][label_id]
             core.ax(lambda x: x.node(self._id).label(label).size(size).color(str(color)))
         return self
-        
+
     def incident_edges(self):
         """Returns the incident edges through the node."""
         return list(self._incident_edges)
