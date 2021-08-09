@@ -40,7 +40,7 @@ jobs:
             
   zip_and_upload:
     needs: check_for_new_version
-    if: jobs.check_for_new_version.NEW_RELEASE_PUBLISHED
+    if: ${{NEW_RELEASE_PUBLISHED}}
     name: zip and upload
     runs-on: ubuntu-latest
     steps:
