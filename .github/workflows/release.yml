@@ -43,13 +43,13 @@ jobs:
       
       # get version from setup.py
       - name: Get version number
-        run: echo "::set-output name=ver::$(python setup.py --version)\n"
+        run: echo "::set-output name=ver::$(python setup.py --version)"
         id: pynode_ver
       
-      - run: echo ${{steps.pynode_ver.outputs.ver}}
       
       # upload it to the artifacts for now   
-      - name: Upload release
+      - name: Upload release ${{steps.pynode_ver.outputs.ver}}
         uses: softprops/action-gh-release@v1
         with:
           files: pynode_next.zip
+          tag_name: ${{steps.pynode_ver.outputs.ver}}
