@@ -6,6 +6,8 @@
 # PyNode-Next
 A complete rewrite of PyNode for the modern era.
 
+[Download the latest release here](https://github.com/ehne/PyNode-Next/releases/latest)
+
 Goals: 
 - implement all features of PyNode https://alexsocha.github.io/pynode/
 
