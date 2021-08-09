@@ -39,4 +39,5 @@ jobs:
       - name: Upload release
         uses: actions/upload-artifact@v2
         with:
+          path: pynode_next.zip
           name: pynode_next.zip
