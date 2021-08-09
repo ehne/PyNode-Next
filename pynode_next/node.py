@@ -1,6 +1,6 @@
 import uuid
 
-from .misc import Color
+from .misc import *
 from .core import core
 
 
@@ -41,7 +41,7 @@ class Node:
             print("set_value_style(outline) is not supported by PyNode_next")
         core.ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
         return self
-        
+
     def set_size(self, size=12):
         """Sets the size of a node"""
         self._size = size
@@ -60,6 +60,31 @@ class Node:
 
     def color(self):
         return self._color
+
+    def highlight(self, color=None, size=None):
+        """Highlights a node for a small time, by increasing its size and changing its color."""
+        old_size = self._size
+
+        new_size = size
+        if size == None:
+            new_size = old_size * 1.5
+
+        old_color = self._color
+
+        new_color = color
+        if color == None:
+            new_color = Color.RED
+
+        core.ax(
+            lambda x: x.node(self._id)
+            .color(str(new_color))
+            .size(new_size)
+            .pause(0.5)
+            .color(str(old_color))
+            .size(old_size)
+        )
+
+        return self
 
     def set_attribute(self, name, value):
         """Sets an attribute of a node"""
