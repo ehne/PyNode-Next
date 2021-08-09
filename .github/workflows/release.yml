@@ -50,6 +50,7 @@ jobs:
         uses: test-room-7/action-update-file@v1
         with:
           file-path: pynode_next/pynode_version.py 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           commit-msg: |
             :bookmark: v${{steps.semantic.outputs.release-version}}
           
