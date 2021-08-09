@@ -8,14 +8,13 @@ class Core:
         self.port = 5050
         base_path = os.path.relpath(__file__)
         self.custom_ui = f"{Path(base_path).parent}/ui.html"
-
-        print("serving ui found at", self.custom_ui)
       
 
     def run(self, func):
         """A function that runs a different function in the PyNode Next web environment."""
         self.server = algx.http_server(port=self.port, file=self.custom_ui)
-
+        print("serving ui found at", self.custom_ui)
+        
         self.canvas = self.server.canvas()
         self.canvas.onmessage("start", func)
         print(f"staring server on http://localhost:{self.port} — press ctrl+c to quit")
