@@ -62,7 +62,7 @@ jobs:
           path: RELEASE.md
           contents: ${{needs.check_for_new_version.outputs.release_notes}}
       
-      - run: echo RELEASE.md
+      - run: cat RELEASE.md
       
        #upload it to the artifacts for now   
       #- name: Upload release ${{steps.pynode_ver.outputs.ver}}
