@@ -11,7 +11,10 @@ A complete rewrite of PyNode for the modern era.
 Goals: 
 - implement all features of PyNode https://alexsocha.github.io/pynode/
 
-`* Note`: in trying to simplify the code, I've used function overloading. This means that for some functions that can take different forms of input (like graph.add_node(node) and graph.add_node(id, value)) you cannot use the keyword arguments.
+
+#### Differences from the original PyNode
+
+- In trying to simplify the code, I've used function overloading. This means that for some functions that can take different forms of input (like graph.add_node(node) and graph.add_node(id, value)) you cannot use the keyword arguments.
 
 ```python
 # so the below would not work:
@@ -24,7 +27,11 @@ graph.add_node("node_a", "hihi")
 graph.add_node(Node("node_a", value="hihi"))
 ```
 
-*oh, also* the function overloading does mean that certain methods are strongly typed. IE. they will fail if you give them the wrong types. When i redo the docs, i will add notes about the correct types.
+- The function overloading does mean that certain methods are strongly typed. IE. they will fail if you give them the wrong types. When i redo the docs, i will add notes about the correct types.
+
+- `outline` options on methods don't exist any more. Text no longer has any outlines.
+- You can no longer compare nodes with other nodes like `NodeA > NodeB`. To do this now, you need to specify the priority: `NodeA.priority() > NodeB.priority()`
+
 
 #### Todo
 
