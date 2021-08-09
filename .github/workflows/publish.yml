@@ -57,7 +57,7 @@ jobs:
         run: touch RELEASE.md
       
       - name: write release notes to file
-        uses: DamianReeves/write-file-action@v1
+        uses: DamianReeves/write-file-action@v1.0
         with:
           path: RELEASE.md
           contents: ${{needs.check_for_new_version.outputs.release_notes}}
