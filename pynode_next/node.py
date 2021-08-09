@@ -36,6 +36,12 @@ class Node:
         """Returns the node's value."""
         return self._value
 
+    def set_value_style(self, size=13, color=Color.WHITE, outline=None):
+        if outline != None:
+            print("set_value_style(outline) is not supported by PyNode_next")
+        core.ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
+        return self
+        
     def set_size(self, size=12):
         """Sets the size of a node"""
         self._size = size
