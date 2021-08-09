@@ -15,8 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  zip_and_upload:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -34,10 +33,23 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r pynode_next.zip pynode_next
-          
+      
+      # sets up python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      
+      # get version from setup.py
+      - name: Get version number
+        run: echo "::set-output name=ver::$(python setup.py --version)\n"
+        id: pynode_ver
+      
+      - run: echo ${{steps.pynode_ver.outputs.ver}}
+      
       # upload it to the artifacts for now   
       - name: Upload release
-        uses: actions/upload-artifact@v2
+        uses: softprops/action-gh-release@v1
         with:
-          path: pynode_next.zip
-          name: pynode_next.zip
+          files: pynode_next.zip
