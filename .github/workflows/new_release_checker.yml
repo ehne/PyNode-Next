@@ -54,26 +54,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           commit-msg: |
             :bookmark: v${{steps.semantic.outputs.release-version}}
-          
-  zip_and_upload:
-    needs: check_for_new_version
-    if: ${{needs.check_for_new_version.outputs.new_release_published == 'true'}}
-    name: zip and upload
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      # zips the pynode_next folder
-      - name: Zip up the folder
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r pynode_next.zip pynode_next
-
-       #upload it to the artifacts for now   
-      - name: Upload release ${{steps.pynode_ver.outputs.ver}}
-        run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: v${{needs.check_for_new_version.outputs.version}}
-          MESSAGE: ${{needs.check_for_new_version.outputs.release_notes}}
-          NAME: ${{needs.check_for_new_version.outputs.version}}
-          FILES: pynode_next.zip
+            
