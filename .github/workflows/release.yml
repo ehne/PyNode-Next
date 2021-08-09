@@ -20,6 +20,9 @@ jobs:
   check_for_new_version:
     name: Check for new version
     runs-on: ubuntu-latest
+    outputs:
+      new_release_published: ${{steps.semantic.outputs.new-release-published}}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -40,7 +43,7 @@ jobs:
             
   zip_and_upload:
     needs: check_for_new_version
-    if: ${{NEW_RELEASE_PUBLISHED}}
+    if: ${{needs.check_for_new_version.outputs.new_release_published == 'true'}}
     name: zip and upload
     runs-on: ubuntu-latest
     steps:
