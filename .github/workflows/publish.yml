@@ -1,15 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: commit release check
+name: publish build
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-    paths-ignore:
-      - '.github/**'
-      - 'docs/**'
+    paths:
       - 'pynode_next/pynode_version.py'
 
   # Allows you to run this workflow manually from the Actions tab
@@ -41,20 +39,7 @@ jobs:
             ['semantic-release-gitmoji']
           branches: | 
             ['main']
-      - name: Edit pynode_version.py    
-        if: steps.semantic.outputs.new-release-published == 'true'
-        run: |
-          echo "version = '$RELEASE_VERSION'" > pynode_next/pynode_version.py 
-          
-      - name: Commit pynode_version.py  
-        if: steps.semantic.outputs.new-release-published == 'true'
-        uses: test-room-7/action-update-file@v1
-        with:
-          file-path: pynode_next/pynode_version.py 
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          commit-msg: |
-            :bookmark: v${{steps.semantic.outputs.release-version}}
-          
+            
   zip_and_upload:
     needs: check_for_new_version
     if: ${{needs.check_for_new_version.outputs.new_release_published == 'true'}}

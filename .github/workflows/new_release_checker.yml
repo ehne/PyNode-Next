@@ -1,0 +1,57 @@
+# This is a basic workflow to help you get started with Actions
+
+name: commit release check
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/**'
+      - 'docs/**'
+      - 'pynode_next/pynode_version.py'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check_for_new_version:
+    name: Check for new version
+    runs-on: ubuntu-latest
+    outputs:
+      new_release_published: ${{steps.semantic.outputs.new-release-published}}
+      version: ${{steps.semantic.outputs.release-version}}
+      release_notes: ${{steps.semantic.outputs.release-notes}}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # run semantic release so we can generate a new version
+      - name: Run semantic release
+        uses: codfish/semantic-release-action@additional-packages
+        id: semantic
+        with:
+          dry_run: true
+          additional_packages: |
+            ['semantic-release-gitmoji']
+          plugins: |
+            ['semantic-release-gitmoji']
+          branches: | 
+            ['main']
+      - name: Edit pynode_version.py    
+        if: steps.semantic.outputs.new-release-published == 'true'
+        run: |
+          echo "version = '$RELEASE_VERSION'" > pynode_next/pynode_version.py 
+          
+      - name: Commit pynode_version.py  
+        if: steps.semantic.outputs.new-release-published == 'true'
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: pynode_next/pynode_version.py 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit-msg: |
+            :bookmark: v${{steps.semantic.outputs.release-version}}
+            
