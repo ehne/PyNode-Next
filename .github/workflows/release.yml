@@ -30,7 +30,8 @@ jobs:
         id: semantic
         with:
           dry_run: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          plugins: |
+            ['@semantic-release/commit-analyzer', '@semantic-release/release-notes-generator']
           branches: | 
             ['main']
             
