@@ -68,7 +68,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] node.set_size(size=12), node.size() - Sets/gets the radius of the node.
 - [x] node.set_color(color=Color.DARK_GREY), node.color() - Sets/gets the color of the node.
 - [x] node.set_value_style(size=13, color=Color.WHITE, outline=None) - Sets the appearance of the node's value text (if no outline is specified, the node's background color will be used for the outline). (Outline is not supported by PyNode Next)
-- [ ] node.set_label_style(size=10, color=Color.GREY, outline=None, lable_id=None) - Sets the appearance of the node's label text (if no lable_id is specified, both labels will be affected).
+- [x] node.set_label_style(size=10, color=Color.GREY, outline=None, label_id=None) - Sets the appearance of the node's label text (if no label_id is specified, both labels will be affected).
 - [x] node.highlight(color=node.color(), size=node.size()*1.5) - Performs a highlight animation by temporarily changing the size and color of the node.
  
 ##### Edge
