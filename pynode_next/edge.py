@@ -43,6 +43,30 @@ class Edge:
     def attribute(self, name):
         """Gets an attribute of the edge"""
         return self._attrs[name]
+    
+    def set_color(self, color):
+        """Sets the colour of the edge. `color` needs to be a Color() object"""
+        self._color = color
+        core.ax(
+            lambda x: x.dispatch(
+                {
+                    "attrs": {
+                        "edges": {
+                            str(self._internal_id): {
+                                "color": {
+                                    "value": str(color),
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+        )
+        return self
+
+    def color(self):
+        """Gets the edge's color."""
+        return self._color
 
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
