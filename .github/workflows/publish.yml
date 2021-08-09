@@ -64,30 +64,17 @@ jobs:
           contents: |
             ${{needs.check_for_new_version.outputs.release_notes}}
       
-      - name: write release notes to file (custom path)
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: ${{github.workspace}}/RELEASE.md
-          write-mode: overwrite
-          contents: |
-            ${{needs.check_for_new_version.outputs.release_notes}}
-      
       - uses: actions/upload-artifact@v2.2.4
         with: 
           name: standard
           path: RELEASE.md
           
-      - uses: actions/upload-artifact@v2.2.4
-        with: 
-          name: custom path
-          path: ${{github.workspace}}/RELEASE.md
-      
        #upload it to the artifacts for now   
-      #- name: Upload release ${{steps.pynode_ver.outputs.ver}}
-      #  run: gh release create ${{ env.VERSION }} -F ${{ env.MESSAGE_LOCATION }} -t "${{ env.NAME }}" ${{ env.FILES }}
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.PAT }}
-      #    VERSION: v${{needs.check_for_new_version.outputs.version}}
-      #    MESSAGE_LOCATION: RELEASE.md
-      #    NAME: ${{needs.check_for_new_version.outputs.version}}
-      #    FILES: pynode_next.zip
+      - name: Upload release ${{steps.pynode_ver.outputs.ver}}
+        run: gh release create ${{ env.VERSION }} -F ${{ env.MESSAGE_LOCATION }} -t "${{ env.NAME }}" ${{ env.FILES }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          VERSION: v${{needs.check_for_new_version.outputs.version}}
+          MESSAGE_LOCATION: RELEASE.md
+          NAME: ${{needs.check_for_new_version.outputs.version}}
+          FILES: pynode_next.zip
