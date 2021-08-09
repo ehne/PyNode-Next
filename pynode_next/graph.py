@@ -186,4 +186,14 @@ class Graph:
                 return True
         return False
 
+    def clear(self):
+        """Completely resets the entire graph."""
+        es = list(self._edges)
+        for e in es:
+            self.remove_edge(e)
+        ns = list(self._nodes)
+        for n in ns:
+            self.remove_node(n)
+        return self
+        
 graph = Graph()
