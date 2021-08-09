@@ -11,6 +11,8 @@ on:
       - '.github/**'
       - 'docs/**'
       - 'pynode_next/pynode_version.py'
+      - '**.md'
+      - '**.adoc'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,10 +43,27 @@ jobs:
             ['semantic-release-gitmoji']
           branches: | 
             ['main']
+      
+      # edit the changelog
+      - name: Edit CHANGELOG.md  
+        if: steps.semantic.outputs.new-release-published == 'true'
+        run: |
+          echo "$RELEASE_NOTES" >> CHANGELOG.md
+          
+      - name: Commit CHANGELOG.md
+        if: steps.semantic.outputs.new-release-published == 'true'
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: CHANGELOG.md
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit-msg: |
+            :bookmark: v${{steps.semantic.outputs.release-version}}
+            
+      # save the update text
       - name: Edit pynode_version.py    
         if: steps.semantic.outputs.new-release-published == 'true'
         run: |
-          echo "version = '$RELEASE_VERSION'" > pynode_next/pynode_version.py 
+          echo "" > pynode_next/pynode_version.py 
           
       - name: Commit pynode_version.py  
         if: steps.semantic.outputs.new-release-published == 'true'
