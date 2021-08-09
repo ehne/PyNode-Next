@@ -31,11 +31,10 @@ jobs:
         with:
           dry_run: true
           plugins: |
-            ['@semantic-release/commit-analyzer', '@semantic-release/release-notes-generator']
+            ['semantic-release-gitmoji']
           branches: | 
             ['main']
             
-      - run: echo "$RELEASE_VERSION"
       
       # zips the pynode_next folder
       - name: Zip up the folder
