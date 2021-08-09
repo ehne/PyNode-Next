@@ -24,9 +24,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # run semantic release so we can generate a new version
+      - name: Run semantic release
+        uses: codfish/semantic-release-action@v1
+        id: semantic
+        with:
+          branches: | 
+            ['main']
+            
+      - run: echo "${{ semantic RELEASE_VERSION }}"
       
       # zips the pynode_next folder
       - name: Zip up the folder
@@ -41,18 +47,22 @@ jobs:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
       
+      - name: Install requirements (Algrx)
+        run: python -m pip install algorithmx
+      
       # get version from setup.py
       - name: Get version number
         run: echo "::set-output name=ver::$(python setup.py --version)"
         id: pynode_ver
       
       
+      
       # upload it to the artifacts for now   
-      - name: Upload release ${{steps.pynode_ver.outputs.ver}}
-        run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{steps.pynode_ver.outputs.ver}}
-          MESSAGE: "A new release"
-          NAME: ${{steps.pynode_ver.outputs.ver}}
-          FILES: pynode_next.zip
+      #- name: Upload release ${{steps.pynode_ver.outputs.ver}}
+      #  run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    VERSION: v${{steps.pynode_ver.outputs.ver}}
+      #    MESSAGE: "A new release"
+      #    NAME: ${{steps.pynode_ver.outputs.ver}}
+      #    FILES: pynode_next.zip
