@@ -60,6 +60,7 @@ jobs:
         uses: DamianReeves/write-file-action@v1.0
         with:
           path: RELEASE.md
+          write-mode: overwrite
           contents: |
             ${{needs.check_for_new_version.outputs.release_notes}}
       
@@ -67,6 +68,7 @@ jobs:
         uses: DamianReeves/write-file-action@v1.0
         with:
           path: ${{github.workspace}}/RELEASE.md
+          write-mode: overwrite
           contents: |
             ${{needs.check_for_new_version.outputs.release_notes}}
       
