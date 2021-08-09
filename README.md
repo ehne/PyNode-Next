@@ -69,7 +69,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] node.set_color(color=Color.DARK_GREY), node.color() - Sets/gets the color of the node.
 - [x] node.set_value_style(size=13, color=Color.WHITE, outline=None) - Sets the appearance of the node's value text (if no outline is specified, the node's background color will be used for the outline). (Outline is not supported by PyNode Next)
 - [ ] node.set_label_style(size=10, color=Color.GREY, outline=None, lable_id=None) - Sets the appearance of the node's label text (if no lable_id is specified, both labels will be affected).
-- [ ] node.highlight(color=node.color(), size=node.size()*1.5) - Performs a highlight animation by temporarily changing the size and color of the node.
+- [x] node.highlight(color=node.color(), size=node.size()*1.5) - Performs a highlight animation by temporarily changing the size and color of the node.
  
 ##### Edge
 - [x] Edge(source, target, weight=None, directed=False) - Creates an edge between the specified source and target nodes, with optional weight and directed properties.
