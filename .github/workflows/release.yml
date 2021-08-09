@@ -51,6 +51,7 @@ jobs:
       - name: Upload release ${{steps.pynode_ver.outputs.ver}}
         run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{steps.pynode_ver.outputs.ver}}
           MESSAGE: "A new release"
           NAME: ${{steps.pynode_ver.outputs.ver}}
