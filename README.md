@@ -22,6 +22,8 @@ graph.add_node("node_a", "hihi")
 graph.add_node(Node("node_a", value="hihi"))
 ```
 
+*oh, also* the function overloading does mean that certain methods are strongly typed. IE. they will fail if you give them the wrong types. When i redo the docs, i will add notes about the correct types.
+
 #### Todo
 
 ##### Graph

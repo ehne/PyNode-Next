@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+
+name: release
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    paths:
+      - 'setup.py'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  zip_and_upload:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+      
+      # zips the pynode_next folder
+      - name: Zip up the folder
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r pynode_next.zip pynode_next
+      
+      # sets up python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      
+      # get version from setup.py
+      - name: Get version number
+        run: echo "::set-output name=ver::$(python setup.py --version)"
+        id: pynode_ver
+      
+      
+      # upload it to the artifacts for now   
+      - name: Upload release ${{steps.pynode_ver.outputs.ver}}
+        run: gh release create ${{ env.VERSION }} -n "${{ env.MESSAGE }}" -t "${{ env.NAME }}" ${{ env.FILES }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{steps.pynode_ver.outputs.ver}}
+          MESSAGE: "A new release"
+          NAME: ${{steps.pynode_ver.outputs.ver}}
+          FILES: pynode_next.zip
