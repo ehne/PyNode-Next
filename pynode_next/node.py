@@ -18,7 +18,7 @@ class Node:
 
         self._incident_edges = []
         self._color = Color.DARK_GREY
-
+        self._size = 12
         self._attrs = {}
 
         self._labels = {}
@@ -35,6 +35,16 @@ class Node:
     def value(self):
         """Returns the node's value."""
         return self._value
+
+    def set_size(self, size=12):
+        """Sets the size of a node"""
+        self._size = size
+        core.ax(lambda x: x.node(self._id).size(size))
+        return self
+
+    def size(self):
+        """Returns the node's size"""
+        return self._size
 
     def set_color(self, color=Color.DARK_GREY):
         """Sets the node's color to the Color object specified."""
