@@ -60,11 +60,25 @@ jobs:
         uses: DamianReeves/write-file-action@v1.0
         with:
           path: RELEASE.md
-          contents: "${{needs.check_for_new_version.outputs.release_notes}}"
+          contents: |
+            ${{needs.check_for_new_version.outputs.release_notes}}
+      
+      - name: write release notes to file (custom path)
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ${{github.workspace}}/RELEASE.md
+          contents: |
+            ${{needs.check_for_new_version.outputs.release_notes}}
       
       - uses: actions/upload-artifact@v2.2.4
         with: 
+          name: standard
           path: RELEASE.md
+          
+      - uses: actions/upload-artifact@v2.2.4
+        with: 
+          name: custom path
+          path: ${{github.workspace}}/RELEASE.md
       
        #upload it to the artifacts for now   
       #- name: Upload release ${{steps.pynode_ver.outputs.ver}}
