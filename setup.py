@@ -1,5 +1,4 @@
 from setuptools import setup
-
 from pynode_next.pynode_version import version
 
 with open("README.md", "r") as fh:
