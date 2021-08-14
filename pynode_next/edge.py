@@ -12,7 +12,7 @@ class Edge:
         self._weight = weight
         if weight == None:
             self._weight = ""
-        
+
         self._color = Color.LIGHT_GREY
 
         self._internal_id = uuid.uuid4()
@@ -70,6 +70,18 @@ class Edge:
         """Gets the edge's color."""
         return self._color
 
+    def set_weight(self, weight):
+        """Sets the edge's weight. (Weight must be serialisable)"""
+        self._weight = weight
+        core.ax(
+            lambda x: self._dispatch_wrapper(x, {"labels": {1: {"text": str(weight)}}})
+        )
+        return self
+
+    def weight(self):
+        """Returns the edge's weight. Returns an empty string if weight wasn't defined at init and hasn't been changed since."""
+        return self._weight
+
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
             source = self._source
@@ -114,11 +126,7 @@ class Edge:
                         "source": str(self._source),
                         "target": str(self._target),
                         "directed": self._directed,
-                        "labels": {
-                            1: {
-                                "text": str(self._weight)
-                            }
-                        }
+                        "labels": {1: {"text": str(self._weight)}},
                     }
                 }
             }
