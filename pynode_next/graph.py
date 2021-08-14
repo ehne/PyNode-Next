@@ -191,5 +191,12 @@ class Graph:
         for n in ns:
             self.remove_node(n)
         return self
-        
+
+    def set_directed(self, directed=True):
+        """Sets whether or not all of the edges in the graph are directed."""
+        for i in self._edges:
+            i.set_directed(directed)
+        return self
+
+
 graph = Graph()
