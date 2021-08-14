@@ -89,7 +89,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] edge.set_attribute(name, value), edge.attribute(name) - Sets/gets custom attributes for the edge.
 - [ ] edge.set_priority(value), edge.priority(name) - Sets/gets a priority value used for comparison.
  
-- [ ] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
+- [x] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
 - [x] edge.set_color(color=Color.LIGHT_GREY), edge.color() - Sets/gets the color of the edge.
 - [ ] edge.set_weight_style(size=10, color=Color.GREY, outline=None) - Sets the appearance of the edge's weight text.
 - [ ] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
