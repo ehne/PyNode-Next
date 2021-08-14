@@ -31,6 +31,7 @@ graph.add_node(Node("node_a", value="hihi"))
 
 - `outline` options on methods don't exist any more. Text no longer has any outlines.
 - You can no longer compare nodes with other nodes like `NodeA > NodeB`. To do this now, you need to specify the priority: `NodeA.priority() > NodeB.priority()`
+- The above also applies to edges.
 
 
 #### Todo
@@ -83,16 +84,16 @@ Note: All functions containing node parameters accept either a Node instance or 
 ##### Edge
 - [x] Edge(source, target, weight=None, directed=False) - Creates an edge between the specified source and target nodes, with optional weight and directed properties.
 - [x] edge.source(), edge.target() - Returns the edge's source/target nodes.
-- [ ] edge.set_weight(weight=None), edge.weight() - Sets/gets the weight of the edge.
-- [ ] edge.set_directed(directed=True), edge.directed() - Sets/gets whether the edge is directed.
+- [x] edge.set_weight(weight=None), edge.weight() - Sets/gets the weight of the edge.
+- [x] edge.set_directed(directed=True), edge.directed() - Sets/gets whether the edge is directed.
 - [x] edge.other_node(node) - Returns a node connected by the edge, other than the node specified.
 - [x] edge.set_attribute(name, value), edge.attribute(name) - Sets/gets custom attributes for the edge.
-- [ ] edge.set_priority(value), edge.priority(name) - Sets/gets a priority value used for comparison.
+- [x] edge.set_priority(value), edge.priority() - Sets/gets a priority value used for comparison.
  
-- [ ] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
+- [x] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
 - [x] edge.set_color(color=Color.LIGHT_GREY), edge.color() - Sets/gets the color of the edge.
-- [ ] edge.set_weight_style(size=10, color=Color.GREY, outline=None) - Sets the appearance of the edge's weight text.
-- [ ] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
+- [x] edge.set_weight_style(size=10, color=Color.GREY, outline=None) - Sets the appearance of the edge's weight text.
+- [x] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
 - [x] edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True) - Performs a traversal animation on the edge, beginning at initial_node and using the specified color. If keep_path is set, the edge will remain colored.
  
 ##### Miscellaneous
