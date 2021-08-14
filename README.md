@@ -87,7 +87,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] edge.set_directed(directed=True), edge.directed() - Sets/gets whether the edge is directed.
 - [x] edge.other_node(node) - Returns a node connected by the edge, other than the node specified.
 - [x] edge.set_attribute(name, value), edge.attribute(name) - Sets/gets custom attributes for the edge.
-- [ ] edge.set_priority(value), edge.priority(name) - Sets/gets a priority value used for comparison.
+- [x] edge.set_priority(value), edge.priority() - Sets/gets a priority value used for comparison.
  
 - [x] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
 - [x] edge.set_color(color=Color.LIGHT_GREY), edge.color() - Sets/gets the color of the edge.
