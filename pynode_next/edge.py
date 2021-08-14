@@ -16,6 +16,10 @@ class Edge:
 
         self._attrs = {}
 
+    def _dispatch_wrapper(self, x, in_dict):
+        """Returns the in_dict inside of the attrs.edges[self._internal_id] dictionary, so it's slightly less bulky to look at."""
+        return x.dispatch({"attrs": {"edges": {str(self._internal_id): in_dict}}})
+
     def other_node(self, node):
         """Returns the other node than the specified node in the edge."""
         return (
@@ -43,23 +47,18 @@ class Edge:
     def attribute(self, name):
         """Gets an attribute of the edge"""
         return self._attrs[name]
-    
+
     def set_color(self, color):
         """Sets the colour of the edge. `color` needs to be a Color() object"""
         self._color = color
         core.ax(
-            lambda x: x.dispatch(
+            lambda x: self._dispatch_wrapper(
+                x,
                 {
-                    "attrs": {
-                        "edges": {
-                            str(self._internal_id): {
-                                "color": {
-                                    "value": str(color),
-                                }
-                            }
-                        }
+                    "color": {
+                        "value": str(color),
                     }
-                }
+                },
             )
         )
         return self
@@ -75,36 +74,24 @@ class Edge:
             source = initial_node
 
         core.ax(
-            lambda x: x.dispatch(
+            lambda x: self._dispatch_wrapper(
+                x,
                 {
-                    "attrs": {
-                        "edges": {
-                            str(self._internal_id): {
-                                "color": {
-                                    "animtype": "traverse",
-                                    "value": str(color),
-                                    "animsource": source._id,
-                                }
-                            }
-                        }
+                    "color": {
+                        "animtype": "traverse",
+                        "value": str(color),
+                        "animsource": source._id,
                     }
-                }
+                },
             )
         )
+
         # undoes the traversal color
         if not keep_path:
             pause(500)
             core.ax(
-                lambda x: x.dispatch(
-                    {
-                        "attrs": {
-                            "edges": {
-                                str(self._internal_id): {
-                                    "color": {"value": str(self._color)}
-                                }
-                            }
-                        }
-                    }
+                lambda x: self._dispatch_wrapper(
+                    x, {"color": {"value": str(self._color)}}
                 )
             )
         else:
