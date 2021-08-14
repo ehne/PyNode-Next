@@ -125,6 +125,26 @@ class Edge:
         """Gets the edge's priority"""
         return self._priority
 
+    def highlight(self, color=None, width=None):
+        if color == None:
+            color = self._color
+        if width == None:
+            width = self._thickness * 2
+
+        core.ax(
+            lambda x: self._dispatch_wrapper(
+                x, {"color": str(color), "thickness": width}
+            )
+        )
+        # resets the changes done
+        pause(500)
+        core.ax(
+            lambda x: self._dispatch_wrapper(
+                x, {"color": str(self._color), "thickness": self._thickness}
+            )
+        )
+        return self
+
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
             source = self._source
