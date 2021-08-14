@@ -93,7 +93,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 - [x] edge.set_width(width=2), edge.width() - Sets/gets the width of the edge.
 - [x] edge.set_color(color=Color.LIGHT_GREY), edge.color() - Sets/gets the color of the edge.
 - [x] edge.set_weight_style(size=10, color=Color.GREY, outline=None) - Sets the appearance of the edge's weight text.
-- [ ] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
+- [x] edge.highlight(color=edge.color(), width=edge.width()*2) - Performs a highlight animation by temporarily changing the width and color of the edge.
 - [x] edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True) - Performs a traversal animation on the edge, beginning at initial_node and using the specified color. If keep_path is set, the edge will remain colored.
  
 ##### Miscellaneous
