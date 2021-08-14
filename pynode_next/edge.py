@@ -14,7 +14,7 @@ class Edge:
             self._weight = ""
 
         self._thickness = 2
-
+        self._priority = 0
         self._color = Color.LIGHT_GREY
 
         self._internal_id = uuid.uuid4()
@@ -99,10 +99,19 @@ class Edge:
         self._thickness = weight
         core.ax(lambda x: self._dispatch_wrapper(x, {"thickness": weight}))
         return self
-    
+
     def width(self):
         """Returns the thickness of the edge."""
         return self._weight
+
+    def set_priority(self, value):
+        """Sets the edge's priority value."""
+        self._priority = value
+        return self
+
+    def priority(self):
+        """Gets the edge's priority"""
+        return self._priority
 
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
@@ -149,7 +158,7 @@ class Edge:
                         "target": str(self._target),
                         "directed": self._directed,
                         "labels": {1: {"text": str(self._weight)}},
-                        "thickness": self._thickness
+                        "thickness": self._thickness,
                     }
                 }
             }
