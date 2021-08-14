@@ -147,6 +147,15 @@ class Graph:
             elif isinstance(i, Edge):
                 self.add_edge(i)
             pause(20)
+    
+    def remove_all(self, elements: Iterable[Union[Node, Edge]]):
+        """Removes all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
+        for i in elements:
+            if isinstance(i, Node):
+                self.remove_node(i)
+            elif isinstance(i, Edge):
+                self.remove_edge(i)
+            pause(20)
 
     def has_edge(self, edge):
         """Checks if an edge exists in the graph."""
