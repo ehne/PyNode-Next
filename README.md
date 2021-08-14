@@ -83,7 +83,7 @@ Note: All functions containing node parameters accept either a Node instance or 
 ##### Edge
 - [x] Edge(source, target, weight=None, directed=False) - Creates an edge between the specified source and target nodes, with optional weight and directed properties.
 - [x] edge.source(), edge.target() - Returns the edge's source/target nodes.
-- [ ] edge.set_weight(weight=None), edge.weight() - Sets/gets the weight of the edge.
+- [x] edge.set_weight(weight=None), edge.weight() - Sets/gets the weight of the edge.
 - [ ] edge.set_directed(directed=True), edge.directed() - Sets/gets whether the edge is directed.
 - [x] edge.other_node(node) - Returns a node connected by the edge, other than the node specified.
 - [x] edge.set_attribute(name, value), edge.attribute(name) - Sets/gets custom attributes for the edge.
