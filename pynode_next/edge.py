@@ -82,6 +82,16 @@ class Edge:
         """Returns the edge's weight. Returns an empty string if weight wasn't defined at init and hasn't been changed since."""
         return self._weight
 
+    def set_directed(self, directed=True):
+        """Sets whether or not the edge is directed"""
+        self._directed = directed
+        core.ax(lambda x: self._dispatch_wrapper(x, {"directed": directed}))
+        return self
+    
+    def directed(self):
+        """Returns whether or not the edge is directed"""
+        return self._directed
+        
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
             source = self._source
