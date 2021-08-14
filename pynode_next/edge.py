@@ -7,9 +7,12 @@ class Edge:
     def __init__(self, source, target, weight=None, directed=False):
         self._source = source
         self._target = target
-        self._weight = weight
         self._directed = directed
 
+        self._weight = weight
+        if weight == None:
+            self._weight = ""
+        
         self._color = Color.LIGHT_GREY
 
         self._internal_id = uuid.uuid4()
@@ -111,6 +114,11 @@ class Edge:
                         "source": str(self._source),
                         "target": str(self._target),
                         "directed": self._directed,
+                        "labels": {
+                            1: {
+                                "text": str(self._weight)
+                            }
+                        }
                     }
                 }
             }
