@@ -147,7 +147,7 @@ class Graph:
             elif isinstance(i, Edge):
                 self.add_edge(i)
             pause(20)
-    
+
     def remove_all(self, elements: Iterable[Union[Node, Edge]]):
         """Removes all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
         for i in elements:
@@ -226,12 +226,13 @@ class Graph:
                 # sets default connectedness
                 current_row[c._id] = 0
             matrix[r._id] = current_row
-        
+
         # sets the values correctly
         for r in self.nodes():
             for c in r.successor_nodes():
                 matrix[r._id][c._id] += 1
 
         return matrix
+
 
 graph = Graph()
