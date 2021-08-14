@@ -13,6 +13,8 @@ class Edge:
         if weight == None:
             self._weight = ""
 
+        self._thickness = 2
+
         self._color = Color.LIGHT_GREY
 
         self._internal_id = uuid.uuid4()
@@ -87,11 +89,21 @@ class Edge:
         self._directed = directed
         core.ax(lambda x: self._dispatch_wrapper(x, {"directed": directed}))
         return self
-    
+
     def directed(self):
         """Returns whether or not the edge is directed"""
         return self._directed
-        
+
+    def set_width(self, weight=2):
+        """Sets the thickness of the edge."""
+        self._thickness = weight
+        core.ax(lambda x: self._dispatch_wrapper(x, {"thickness": weight}))
+        return self
+    
+    def width(self):
+        """Returns the thickness of the edge."""
+        return self._weight
+
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
         if initial_node == None:
             source = self._source
@@ -137,6 +149,7 @@ class Edge:
                         "target": str(self._target),
                         "directed": self._directed,
                         "labels": {1: {"text": str(self._weight)}},
+                        "thickness": self._thickness
                     }
                 }
             }
