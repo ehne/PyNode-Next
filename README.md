@@ -32,7 +32,7 @@ graph.add_node(Node("node_a", value="hihi"))
 - `outline` options on methods don't exist any more. Text no longer has any outlines.
 - You can no longer compare nodes with other nodes like `NodeA > NodeB`. To do this now, you need to specify the priority: `NodeA.priority() > NodeB.priority()`
 - The above also applies to edges.
-
+- `graph.random()` has been drastically simplified to just take `order` and `size` arguments.
 
 #### Todo
 
