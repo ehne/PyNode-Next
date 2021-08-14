@@ -216,4 +216,22 @@ class Graph:
         """Returns the size of the graph. that is, the number of edges"""
         return len(self._edges)
 
+    def adjacency_matrix(self):
+        """Returns the adjacency matrix of the graph as a dictionary"""
+        matrix = {}
+        # goes through and creates an empty row for each node
+        for r in self.nodes():
+            current_row = {}
+            for c in self.nodes():
+                # sets default connectedness
+                current_row[c._id] = 0
+            matrix[r._id] = current_row
+        
+        # sets the values correctly
+        for r in self.nodes():
+            for c in r.successor_nodes():
+                matrix[r._id][c._id] += 1
+
+        return matrix
+
 graph = Graph()
