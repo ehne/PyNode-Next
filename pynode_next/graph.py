@@ -1,4 +1,5 @@
 from typing import Union, Iterable
+from random import randint, choices
 from .overloading import *
 
 from .misc import *
@@ -233,6 +234,22 @@ class Graph:
                 matrix[r._id][c._id] += 1
 
         return matrix
+
+    @staticmethod
+    def random(order, size):
+        """Returns a random list of edges and nodes that may or may not be connected."""
+        nodes = []
+        edges = []
+
+        for i in range(order):
+            nodes.append(Node(str(i)))
+
+        while len(edges) != size:
+            source_node, target_node = choices(population=nodes, k=2)
+            e = Edge(source_node, target_node)
+            edges.append(e)
+
+        return nodes + edges
 
 
 graph = Graph()
