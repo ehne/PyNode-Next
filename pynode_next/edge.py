@@ -84,6 +84,18 @@ class Edge:
         """Returns the edge's weight. Returns an empty string if weight wasn't defined at init and hasn't been changed since."""
         return self._weight
 
+    def set_weight_style(self, size=10, color=Color.GREY, outline=None):
+        """Sets the edge's weight text style. These styles are not saved."""
+        if outline != None:
+            print("set_weight_style(outline) is not supported by PyNode_Next")
+
+        core.ax(
+            lambda x: self._dispatch_wrapper(
+                x, {"labels": {1: {"color": str(color), "size": size}}}
+            )
+        )
+        return self
+
     def set_directed(self, directed=True):
         """Sets whether or not the edge is directed"""
         self._directed = directed
