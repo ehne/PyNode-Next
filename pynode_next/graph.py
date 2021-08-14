@@ -208,5 +208,12 @@ class Graph:
             i.set_directed(directed)
         return self
 
+    def order(self):
+        """Returns the order of the graph. that is, the number of nodes"""
+        return len(self._nodes)
+
+    def size(self):
+        """Returns the size of the graph. that is, the number of edges"""
+        return len(self._edges)
 
 graph = Graph()
