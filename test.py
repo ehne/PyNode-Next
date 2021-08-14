@@ -1,21 +1,11 @@
 from pynode_next import *
+import random
 
 def test():
-    
-    for i in "ab":
-        graph.add_node(i)
-    e = Edge("a", "b")
-    graph.add_edge(e)
-    pause(500)
-    e.set_weight(100)
-    e.set_weight_style(color=Color.RED)
-    core.ax(lambda x: x.nodes("cd").add())
-    core.ax(lambda x: x.edge("cd").add())
-    pause(500)
-    core.ax(lambda x: x.edge("cd").highlight().color("#fa0"))
-    pause(500)
-    e.highlight(color=Color.GREEN)
+    g = graph.random(4, 3)
+    print(g)
     ##graph.remove_edge(e)
-    print([str(i) for i in graph.node("a").adjacent_nodes()])
-
+    #print([str(i) for i in graph.node("a").adjacent_nodes()])
+    pause(500)
+    graph.add_all(g)
 begin_pynode_next(test)

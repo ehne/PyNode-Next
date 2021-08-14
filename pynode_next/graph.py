@@ -1,4 +1,5 @@
 from typing import Union, Iterable
+from random import randint, choices
 from .overloading import *
 
 from .misc import *
@@ -55,17 +56,13 @@ class Graph:
         """Returns the node with the id specified."""
         if id in self._nodes:
             return self._nodes[id]
-        raise NodeDoesntExistError(
-            f"The node '{id}' does not exist in the graph"
-        )
+        raise NodeDoesntExistError(f"The node '{id}' does not exist in the graph")
 
     @overloads(node)
     def node(self, node: Node):
         if node._id in self._nodes:
             return node
-        raise NodeDoesntExistError(
-            f"The node '{node._id}' does not exist in the graph"
-        )
+        raise NodeDoesntExistError(f"The node '{node._id}' does not exist in the graph")
 
     def nodes(self):
         """Returns all of the graph's nodes."""
@@ -144,12 +141,22 @@ class Graph:
         return self.node(node) is not None
 
     def add_all(self, elements: Iterable[Union[Node, Edge]]):
-        """Adds all node and edge objects from an iterable"""
+        """Adds all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
         for i in elements:
             if isinstance(i, Node):
                 self.add_node(i)
             elif isinstance(i, Edge):
                 self.add_edge(i)
+            pause(20)
+
+    def remove_all(self, elements: Iterable[Union[Node, Edge]]):
+        """Removes all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
+        for i in elements:
+            if isinstance(i, Node):
+                self.remove_node(i)
+            elif isinstance(i, Edge):
+                self.remove_edge(i)
+            pause(20)
 
     def has_edge(self, edge):
         """Checks if an edge exists in the graph."""
@@ -176,11 +183,11 @@ class Graph:
         """Checks if an edge between nodeA and nodeB exists. If directed is True, then the edge must start from nodeA"""
         nodeA = self.node(nodeA)
         nodeB = self.node(nodeB)
-        
+
         node_list = nodeA.adjacent_nodes()
         if directed == True:
             node_list = nodeA.successor_nodes()
-        
+
         for n in node_list:
             if n is nodeB:
                 return True
@@ -195,5 +202,54 @@ class Graph:
         for n in ns:
             self.remove_node(n)
         return self
-        
+
+    def set_directed(self, directed=True):
+        """Sets whether or not all of the edges in the graph are directed."""
+        for i in self._edges:
+            i.set_directed(directed)
+        return self
+
+    def order(self):
+        """Returns the order of the graph. that is, the number of nodes"""
+        return len(self._nodes)
+
+    def size(self):
+        """Returns the size of the graph. that is, the number of edges"""
+        return len(self._edges)
+
+    def adjacency_matrix(self):
+        """Returns the adjacency matrix of the graph as a dictionary"""
+        matrix = {}
+        # goes through and creates an empty row for each node
+        for r in self.nodes():
+            current_row = {}
+            for c in self.nodes():
+                # sets default connectedness
+                current_row[c._id] = 0
+            matrix[r._id] = current_row
+
+        # sets the values correctly
+        for r in self.nodes():
+            for c in r.successor_nodes():
+                matrix[r._id][c._id] += 1
+
+        return matrix
+
+    @staticmethod
+    def random(order, size):
+        """Returns a random list of edges and nodes that may or may not be connected."""
+        nodes = []
+        edges = []
+
+        for i in range(order):
+            nodes.append(Node(str(i)))
+
+        while len(edges) != size:
+            source_node, target_node = choices(population=nodes, k=2)
+            e = Edge(source_node, target_node)
+            edges.append(e)
+
+        return nodes + edges
+
+
 graph = Graph()

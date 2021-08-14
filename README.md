@@ -32,7 +32,7 @@ graph.add_node(Node("node_a", value="hihi"))
 - `outline` options on methods don't exist any more. Text no longer has any outlines.
 - You can no longer compare nodes with other nodes like `NodeA > NodeB`. To do this now, you need to specify the priority: `NodeA.priority() > NodeB.priority()`
 - The above also applies to edges.
-
+- `graph.random()` has been drastically simplified to just take `order` and `size` arguments.
 
 #### Todo
 
@@ -53,12 +53,12 @@ graph.add_node(Node("node_a", value="hihi"))
 - [x] graph.adjacent(node1, node2, directed=False) - Checks whether an edge exists between node1 and node2. If directed is set, the edge must begin at node1.
 - [x] graph.edges_between(node1, node2, directed=False) - Returns a list of all edges between node1 and node2. If directed is set, only edges beginning at node1 will be included.
  
-- [ ] graph.set_directed(directed=True) - Sets whether all edges in the graph are directed.
-- [ ] graph.adjacency_matrix() - Creates and returns an adjacency matrix (2-dimensional dictionary, using node id values as keys) for the graph.
+- [x] graph.set_directed(directed=True) - Sets whether all edges in the graph are directed.
+- [x] graph.adjacency_matrix() - Creates and returns an adjacency matrix (2-dimensional dictionary, using node id values as keys) for the graph.
 - [x] graph.add_all(elements) - Adds a list of Node and/or Edge elements to the graph.
-- [ ] graph.remove_all(elements) - Removes a list of Node and/or Edge elements from the graph.
-- [ ] graph.random(order, size, connected=True, multigraph=False, initial_id=0) - Returns a list of randomly connected nodes and edges, with order specifying the amount of nodes and size specifying the amount of edges. If connected is set, a path will exist between any pair of nodes (unless the amount of edges makes this impossible). If multigraph is set, a pair of nodes may be connected by multiple edges. Nodes are assigned incremental id values starting at initial_id.
-- [ ] graph.order(), graph.size() - Returns the number of nodes/edges in the graph.
+- [x] graph.remove_all(elements) - Removes a list of Node and/or Edge elements from the graph.
+- [x] graph.random(order, size~~, connected=True, multigraph=False, initial_id=0~~) - Returns a list of randomly connected nodes and edges, with order specifying the amount of nodes and size specifying the amount of edges. 
+- [x] graph.order(), graph.size() - Returns the number of nodes/edges in the graph.
 - [x] graph.clear() - Deletes all nodes and edges from the graph.
 Note: All functions containing node parameters accept either a Node instance or node id value.
  
