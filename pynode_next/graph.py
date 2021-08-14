@@ -140,12 +140,13 @@ class Graph:
         return self.node(node) is not None
 
     def add_all(self, elements: Iterable[Union[Node, Edge]]):
-        """Adds all node and edge objects from an iterable"""
+        """Adds all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
         for i in elements:
             if isinstance(i, Node):
                 self.add_node(i)
             elif isinstance(i, Edge):
                 self.add_edge(i)
+            pause(20)
 
     def has_edge(self, edge):
         """Checks if an edge exists in the graph."""
