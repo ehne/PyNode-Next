@@ -8,6 +8,7 @@ from .errors import *
 from .edge import *
 from .core import core
 
+_generic_text = Union[str, int, float]
 
 class Graph:
     def __init__(self):
@@ -16,12 +17,12 @@ class Graph:
         self._has_edge_cache = {}
 
     @overloaded
-    def add_node(self, id: str):
+    def add_node(self, id: _generic_text):
         """Adds a node to the graph using an id."""
-        return self.add_node(id, id)
+        return self.add_node(Node(id, value=id))
 
     @overloads(add_node)
-    def add_node(self, id: str, value: str):
+    def add_node(self, id: _generic_text, value: _generic_text):
         """Adds a node to the graph using an id and a value."""
         if value == None:
             value = id
@@ -52,7 +53,7 @@ class Graph:
         return n
 
     @overloaded
-    def node(self, id: str):
+    def node(self, id: _generic_text):
         """Returns the node with the id specified."""
         if id in self._nodes:
             return self._nodes[id]
