@@ -8,6 +8,7 @@ from collections import namedtuple
 from functools import partial, wraps
 import inspect
 import sys
+import typing
 
 if sys.version_info[0] < 3:
     raise Exception("Module 'overloading' requires Python version 3.0 or higher.")
@@ -57,6 +58,7 @@ def register(dispatcher, func, hook=None):
                                "overloading must occur before '{1}' setup." \
                                .format(name, type(func).__name__))
     argspec = inspect.getfullargspec(getattr(func, '__wrapped__', func))
+    #print(argspec)
     if hook:
         dispatcher.hooks[hook] = func
     else:
@@ -73,7 +75,9 @@ def register(dispatcher, func, hook=None):
             dispatcher.default = func
         else:
             for i, param in enumerate(sig_full):
-                if not inspect.isclass(param) and param is not None:
+                # uses the tuple here to basically hack a custom Union type. Pylance hates it.
+                # the UnionGenericAlias is the class of a Union type
+                if not inspect.isclass(param) and not isinstance(param, tuple) and not isinstance(param, typing._UnionGenericAlias)  and param is not None:
                     raise OverloadingError(
                       "Failed to overload function '{0}': parameter '{1}' has "
                       "an annotation that is not a type."\
@@ -106,6 +110,7 @@ Match = namedtuple('Match', 'score, func')
 
 def find(dispatcher, args, kwargs):
     matches = [Match((-1,), None)]
+    #print(dispatcher.functions)
     for func, argspec, sig in dispatcher.functions:
         # Filter out keyword arguments that will be consumed by a catch-all parameter
         # or by keyword-only parameters.
@@ -135,6 +140,11 @@ def find(dispatcher, args, kwargs):
         for argname, value in args_by_key.items():
             expected_type = argspec.annotations.get(argname)
             if expected_type:
+                # if i gave it a union type, convert the union to a tuple
+                if isinstance(expected_type, typing._UnionGenericAlias):
+                    expected_type = typing.get_args(expected_type)
+                    if not isinstance(expected_type, tuple):
+                        OverloadingError(f"{expected_type} was not able to be converted to a tuple")
                 if isinstance(value, expected_type):
                     type_score += 1
                     if type(value) is expected_type:
