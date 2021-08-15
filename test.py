@@ -1,11 +1,13 @@
+import inspect
+from typing import Iterable, List, Union, get_args, _UnionGenericAlias
 from pynode_next import *
 import random
 
 def test():
-    g = graph.random(4, 3)
-    print(g)
-    ##graph.remove_edge(e)
-    #print([str(i) for i in graph.node("a").adjacent_nodes()])
-    pause(500)
-    graph.add_all(g)
+    graph.add_node("1")
+    graph.add_node(2)
+    graph.add_edge("1", 2)
+
+    print(graph.node(1))
+
 begin_pynode_next(test)
