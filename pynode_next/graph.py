@@ -1,11 +1,11 @@
 from typing import Union, Iterable
 from random import randint, choices
-from .overloading import *
+from .overloading import overloaded, overloads
 
-from .misc import *
-from .node import *
-from .errors import *
-from .edge import *
+from .misc import Color, pause
+from .node import Node
+from .errors import NodeDoesntExistError, DuplicateEdgeError, DuplicateNodeError
+from .edge import Edge
 from .core import core
 
 _generic_text = Union[str, int, float]

@@ -1,6 +1,6 @@
 import uuid
 
-from .misc import *
+from .misc import Color
 from .core import core
 
 

@@ -1,6 +1,7 @@
 import uuid
 
-from .misc import *
+from .misc import Color, pause
+from .core import core
 
 
 class Edge:
