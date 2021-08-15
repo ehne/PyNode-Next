@@ -10,7 +10,7 @@ class Edge:
         self._directed = directed
 
         self._weight = weight
-        if weight == None:
+        if weight is None:
             self._weight = ""
 
         self._thickness = 2
@@ -35,13 +35,13 @@ class Edge:
 
     def source(self, target=None):
         """Returns the edge's source node."""
-        if target != None:
+        if target is not None:
             return self.other_node(target)
         return self._source
 
     def target(self, source=None):
         """Returns the edge's target node."""
-        if source != None:
+        if source is not None:
             return self.other_node(source)
         return self._target
 
@@ -86,7 +86,7 @@ class Edge:
 
     def set_weight_style(self, size=10, color=Color.GREY, outline=None):
         """Sets the edge's weight text style. These styles are not saved."""
-        if outline != None:
+        if outline is not None:
             print("set_weight_style(outline) is not supported by PyNode_Next")
 
         core.ax(
@@ -126,9 +126,9 @@ class Edge:
         return self._priority
 
     def highlight(self, color=None, width=None):
-        if color == None:
+        if color is None:
             color = self._color
-        if width == None:
+        if width is None:
             width = self._thickness * 2
 
         core.ax(
@@ -146,7 +146,7 @@ class Edge:
         return self
 
     def traverse(self, initial_node=None, color=Color.RED, keep_path=True):
-        if initial_node == None:
+        if initial_node is None:
             source = self._source
         else:
             source = initial_node

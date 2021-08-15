@@ -6,12 +6,12 @@ from .core import core
 
 class Node:
     def __init__(self, id=None, value=None):
-        if id != None:
+        if id is not None:
             self._id = id
         else:
             self._id = str(uuid.uuid4())
 
-        if value != None:
+        if value is not None:
             self._value = value
         else:
             self._value = self._id
@@ -37,7 +37,7 @@ class Node:
         return self._value
 
     def set_value_style(self, size=13, color=Color.WHITE, outline=None):
-        if outline != None:
+        if outline is not None:
             print("set_value_style(outline) is not supported by PyNode_Next")
         core.ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
         return self
@@ -75,13 +75,13 @@ class Node:
         old_size = self._size
 
         new_size = size
-        if size == None:
+        if size is None:
             new_size = old_size * 1.5
 
         old_color = self._color
 
         new_color = color
-        if color == None:
+        if color is None:
             new_color = Color.RED
 
         core.ax(
@@ -116,9 +116,9 @@ class Node:
 
     def set_label_style(self, size=10, color=Color.GREY, outline=None, label_id=None):
         """Sets the style of any labels"""
-        if outline != None:
+        if outline is not None:
             print("set_label_style(outline) is not supported by PyNode Next")
-        if label_id == None:
+        if label_id is None:
             core.ax(lambda x: x.node(self._id).label('tr').size(size).color(str(color)))
             core.ax(lambda x: x.node(self._id).label('tl').size(size).color(str(color)))
         else:

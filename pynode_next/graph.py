@@ -24,7 +24,7 @@ class Graph:
     @overloads(add_node)
     def add_node(self, id: _generic_text, value: _generic_text):
         """Adds a node to the graph using an id and a value."""
-        if value == None:
+        if value is None:
             value = id
         return self.add_node(Node(id, value))
 
@@ -92,11 +92,11 @@ class Graph:
         e._target = self.node(e._target)
 
         # Makes sure that the source and target nodes are actually in the graph
-        if e._source == None:
+        if e._source is None:
             raise NodeDoesntExistError(
                 f"The node {original_source} does not exist in the graph"
             )
-        if e._target == None:
+        if e._target is None:
             raise NodeDoesntExistError(
                 f"The node {original_target} does not exist in the graph"
             )
@@ -186,7 +186,7 @@ class Graph:
         nodeB = self.node(nodeB)
 
         node_list = nodeA.adjacent_nodes()
-        if directed == True:
+        if directed:
             node_list = nodeA.successor_nodes()
 
         for n in node_list:
