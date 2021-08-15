@@ -8,12 +8,9 @@ class Error(Exception):
 
 class DuplicateNodeError(Error):
     """Raised when a node with the same id as a previous one was added."""
-    pass
 
 class DuplicateEdgeError(Error):
     """Raised when a edge with the exact same values has been added to the graph."""
-    pass
 
 class NodeDoesntExistError(Error):
     """Raised when a node does not exist in the graph"""
-    pass
