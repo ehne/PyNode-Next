@@ -15,6 +15,7 @@ if sys.version_info[0] < 3:
 
 __all__ = ['overloaded', 'overloads']
 
+_union_generic_type = type(typing.Union[None, typing.Any])
 
 def overloaded(func):
     name = getattr(func, '__name__', None)
@@ -77,7 +78,7 @@ def register(dispatcher, func, hook=None):
             for i, param in enumerate(sig_full):
                 # uses the tuple here to basically hack a custom Union type. Pylance hates it.
                 # the UnionGenericAlias is the class of a Union type
-                if not inspect.isclass(param) and not isinstance(param, tuple) and not isinstance(param, typing._UnionGenericAlias)  and param is not None:
+                if not inspect.isclass(param) and not isinstance(param, tuple) and not isinstance(param, _union_generic_type)  and param is not None:
                     raise OverloadingError(
                       "Failed to overload function '{0}': parameter '{1}' has "
                       "an annotation that is not a type."\
@@ -141,7 +142,8 @@ def find(dispatcher, args, kwargs):
             expected_type = argspec.annotations.get(argname)
             if expected_type:
                 # if i gave it a union type, convert the union to a tuple
-                if isinstance(expected_type, typing._UnionGenericAlias):
+                
+                if isinstance(expected_type, _union_generic_type):
                     expected_type = typing.get_args(expected_type)
                     if not isinstance(expected_type, tuple):
                         OverloadingError(f"{expected_type} was not able to be converted to a tuple")
