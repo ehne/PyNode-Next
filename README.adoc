@@ -1,0 +1,12 @@
+:doctype: book
+
+++++
+<p>
+  <img alt="logo" src="./assets/card.png" align="center" />
+</p>
+++++
+
+= PyNode Next
+> A complete rewrite of PyNode for the modern era.
+
+==
