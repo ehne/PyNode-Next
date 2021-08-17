@@ -15,9 +15,19 @@
 
 > A complete rewrite of PyNode for the modern era.
 
+++++
+<details>
+<summary>Table of contents</summary>
+++++
+
 toc::[]
 
-== Getting Started
+++++
+</details>
+++++
+
+
+== Getting started
 To get started, download the https://github.com/ehne/PyNode-Next/releases/latest[latest version of PyNode Next] and place the folder in your project's directory.
 
 [NOTE]
@@ -144,3 +154,103 @@ Returns the `Node` object of the node with the specified `id`. Raises a `NodeDoe
 |===
 
 === `graph.node(node)`
+Returns the `Node` object of the `Node` object given to it as long as that node is in the graph. Raises a `NodeDoesntExistError` if that node could not be found in the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `node` | {t_node}
+|===
+
+=== `graph.nodes()`
+Returns a list of all the nodes currently in the graph as `Node` objects.
+
+=== `graph.add_edge(source, target, weight=None, directed=False)`
+Adds an edge between the `source` and `target` nodes. To make the edge directed, set `directed` to `True`. `weight` sets the label of the edge.
+
+WARNING: This is one of the methods that is a little annoying with keyword arguments. If you are going to set `directed`, you need to make sure that you *also* set `weight`. Otherwise, the overloader will raise an error.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `source` | {t_node_generic}
+| `target` | {t_node_generic}
+| `weight` | `None`, `bool`, {t_generic_text}
+| `directed` | `bool`
+|===
+
+=== `graph.add_edge(edge)`
+Adds the `Edge` object specified to the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `edge` | `Edge`
+|===
+
+=== `graph.remove_edge(nodeA, nodeB, directed=False)`
+Removes the edge(s) between `nodeA` and `nodeB` from the graph. If `directed` is set, only edges starting at `nodeA` will be removed.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `nodeA` | {t_node_generic}
+| `nodeB` | {t_node_generic}
+| `directed` | `bool`
+|===
+
+=== `graph.remove_edge(edge)`
+Removes the `Edge` object specified from the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `edge` | `Edge`
+|===
+
+=== `graph.has_node(node)`
+Checks if a given `node` exists in the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `node` | {t_node_generic}
+|===
+
+=== `graph.has_edge(edge)`
+Checks if a given `edge` exists in the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `edge` | `Edge`
+|===
+
+=== `graph.add_all(elements)`
+Adds all `Node` and/or `Edge` objects in a list to the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `elements` | A list (iterable) containing `Node` and/or `Edge` objects.
+|===
+
+=== `graph.remove_all(elements)`
+Removes all `Node` and/or `Edge` objects in a list from the graph.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `elements` | A list (iterable) containing `Node` and/or `Edge` objects.
+|===
+
+=== `graph.adjacent(nodeA, nodeB, directed=False)`
+Checks if `nodeA` and `nodeB` are adjacent. If `directed` is set, then the edge must start from `nodeA`.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `nodeA` | {t_node_generic}
+| `nodeB` | {t_node_generic}
+| `directed` | `bool`
+|===
