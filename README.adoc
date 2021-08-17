@@ -2,6 +2,7 @@
 :t_generic_text: pass:[<code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code>] 
 :t_node_generic: pass:[<code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code>]
 :t_node: pass:[<code class="literal">Node</code>]
+:toc: macro
 
 ++++
 <p>
@@ -9,11 +10,12 @@
 </p>
 ++++
 
+[discrete]
 = PyNode Next
 
 > A complete rewrite of PyNode for the modern era.
 
-:toc:
+toc::[]
 
 == Getting Started
 To get started, download the https://github.com/ehne/PyNode-Next/releases/latest[latest version of PyNode Next] and place the folder in your project's directory.
