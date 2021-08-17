@@ -254,3 +254,36 @@ Checks if `nodeA` and `nodeB` are adjacent. If `directed` is set, then the edge 
 | `nodeB` | {t_node_generic}
 | `directed` | `bool`
 |===
+
+=== `graph.clear()`
+Completely resets the graph by removing all edges and nodes.
+
+=== `graph.set_directed(directed=True)`
+Sets whether the edges in the graph are directed or not.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `directed` | `bool`
+|===
+
+=== `graph.order()`
+Returns the order of the graph. That is, it returns the number of nodes in the graph.
+
+=== `graph.size()`
+Returns the size of the graph. That is, it returns the number of edges in the graph.
+
+=== `graph.adjacency_matrix()`
+Returns the adjacency matrix of the graph as a dictionary.
+
+=== `graph.random(order, size)`
+Returns a list of random `Node` and `Edge` elements that makes a graph with the order and size specified. The graph may or may not be fully connected.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `order` | `int`
+| `size` | `int`
+|===
+
+
