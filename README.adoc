@@ -21,6 +21,8 @@
 
 > A complete rewrite of PyNode for the modern era.
 
+PyNode Next allows you to easily create beautiful graph visualisations and animations. 
+
 ++++
 <details>
 <summary>Table of contents</summary>
@@ -562,6 +564,10 @@ NOTE: This *does not* pause code execution.
 === 🚧 `cancel_delay(delay_id)`
 
 === 🚧 `register_click_listener(func)`
+
+---
+
+Created by https://github.com/ehne[@ehne] in 2021. Based on PyNode by https://github.com/alexsocha[@alexsocha]
 
 
 ////
