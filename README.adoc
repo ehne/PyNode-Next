@@ -535,7 +535,33 @@ Performs a traversal animation on the edge, beginning at `initial_node`, using t
 | `keep_path` | `bool`
 |===
 
+== Miscellaneous functions
 
+=== `Color(red, green, blue)`
+Custom color for use in node and edge animations, using `0-255` integers for each argument.
+
+There are some predefined colours:
+* `Color.RED`
+* `Color.GREEN`
+* `Color.BLUE`
+* `Color.YELLOW`
+* `Color.WHITE`
+* `Color.LIGHT_GREY`
+* `Color.GREY`
+* `Color.DARK_GREY`
+* `Color.BLACK`
+* `Color.TRANSPARENT`
+
+=== `pause(time)`
+Delays the next visual event for the specified number of miliseconds.
+
+NOTE: This *does not* pause code execution.
+
+=== 🚧 `delay(func, time, args=[], repeat=False)`
+
+=== 🚧 `cancel_delay(delay_id)`
+
+=== 🚧 `register_click_listener(func)`
 
 
 ////
