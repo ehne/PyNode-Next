@@ -543,6 +543,7 @@ Performs a traversal animation on the edge, beginning at `initial_node`, using t
 Custom color for use in node and edge animations, using `0-255` integers for each argument.
 
 There are some predefined colours:
+
 * `Color.RED`
 * `Color.GREEN`
 * `Color.BLUE`
