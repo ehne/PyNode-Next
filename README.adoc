@@ -1,7 +1,13 @@
 :doctype: book
 :t_generic_text: pass:[<code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code>] 
+:t_generic_number: pass:[<code class="literal">int</code> or <code class="literal">float</code>] 
+
 :t_node_generic: pass:[<code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code>]
+
 :t_node: pass:[<code class="literal">Node</code>]
+:t_edge: pass:[<code class="literal">Edge</code>]
+:t_color: pass:[<code class="literal">Color</code>]
+
 :toc: macro
 
 ++++
@@ -284,6 +290,133 @@ Returns a list of random `Node` and `Edge` elements that makes a graph with the 
 | Argument | Accepted Types
 | `order` | `int`
 | `size` | `int`
+|===
+
+
+== `Node`
+
+=== `Node(id, value=id)`
+Creates a node with the specified `id` and `value`. If `value` is left blank, it defaults to the node's `id`.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `id` | {t_generic_text}
+| `value` | {t_generic_text}
+|===
+
+=== `node.id()`
+Returns the id of the node.
+
+=== `node.set_value(value)`, `node.value()`
+Sets/Gets the value of the node.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `value` | {t_generic_text}
+|===
+
+=== `node.incident_edges()`, `node.incoming_edges()`, `node.outgoing_edges()`
+Returns a list of the node's incident/incoming/outgoing edges.
+
+=== `node.adjacent_nodes()`, `node.predecessor_nodes()`, `node.successor_nodes()`
+Returns a list of the node's adjacent/predecessor/successor nodes.
+
+=== `node.degree()`, `node.indegree()`, `node.outdegree()`
+Returns the node's degree/indegree/outdegree.
+
+=== `node.set_attribute(name, value)`, `node.attribute(name)`
+Sets/Gets custom attributes for the node.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `name` | {t_generic_text}
+| `value` | {t_generic_text}
+|===
+
+=== `node.set_priority(value)`, `node.priority()`
+Sets/Gets the node's priority value.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `value` | {t_generic_number}
+|===
+
+=== `node.set_position()`, `node.position()`
+
+[IMPORTANT]
+====
+`node.set_position()` and `node.position()` have not been implemented in PyNode Next as yet.
+
+Have a look at the https://github.com/ehne/PyNode-Next/issues/2[GitHub issue] for more information. (Issue #2)
+====
+
+=== `node.set_label(value, label_id=0)`, `node.label(label_id)`
+Sets/Gets additional labels for the node. The labels do not override the node's value, but instead are placed next to the node.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `value` | {t_generic_text}
+| `label_id` | One of either `0` or `1`. (Use `0` for the top-right label and `1` for the top-left label)
+|===
+
+=== `node.set_size(size=12)`, `node.size()`
+Sets/Gets the radius of the node.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `size` | {t_generic_number}
+|===
+
+=== `node.set_color(color=Color.DARK_GREY)`, `node.color()`
+Sets/Gets the node's color.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `color` | {t_color}
+|===
+
+=== `node.set_value_style(size=13, color=Color.WHITE)`
+Sets the appearance of the node's value text.
+
+WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `size` | {t_generic_number}
+| `color` | {t_color}
+|===
+
+=== `node.set_label_style(size=10, color=Color.GREY, label_id=0)`
+Sets the appearance of the node's label text.
+
+WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
+
+CAUTION: Always use the keyword argument to choose the `label_id`. This is because PyNode placed the `outline` argument in the third argument location (`node.set_label_style(size=10, color=Color.GREY, outline=None, label_id=None)`). And to maintain backwards compatibility with PyNode, PyNode Next still has the `outline` argument in that position, even though it does nothing. 
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `size` | {t_generic_number}
+| `color` | {t_color}
+| `label_id` | One of either `0` or `1`. (Use `0` for the top-right label and `1` for the top-left label)
+|===
+
+=== `node.highlight(color=Color.RED, size=node.size()*1.5)`
+Plays a highlight animation where the node's color changes to that specified.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `color` | {t_color}
+| `size` | {t_generic_number}
 |===
 
 
