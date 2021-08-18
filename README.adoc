@@ -101,7 +101,7 @@ begin_pynode_next(run)
 |===
 
 == Differences from the original PyNode
-* Certain methods are strongly typed. Meaning that they only accept input of specific types. This is due to how the overloading system works, and will be documented whenever it pops up.
+* Certain methods are _strongly_ typed. Meaning that they only accept input of specific types. This is due to how the overloading system works, and will be documented whenever it pops up.
 * Keyword arguments (that's stuff like the `id=` in `add_node(id="a")`) might be broken in some methods due to the overloading system.
 * `outline` options on methods don't exist any more. Text no longer has any outlines.
 * You can no longer compare nodes with other nodes like `NodeA > NodeB`. To do this now, you need to specify the priority: `NodeA.priority() > NodeB.priority()`
@@ -345,7 +345,7 @@ Sets/Gets the node's priority value.
 | `value` | {t_generic_number}
 |===
 
-=== `node.set_position()`, `node.position()`
+=== 🚧 `node.set_position()`, `node.position()`
 
 [IMPORTANT]
 ====
@@ -418,6 +418,124 @@ Plays a highlight animation where the node's color changes to that specified.
 | `color` | {t_color}
 | `size` | {t_generic_number}
 |===
+
+== `Edge`
+
+=== `Edge(source, target, weight=None, directed=False)`
+Creates an edge between the `source` and `target` nodes. If `weight` is set, the edge will display it as a label. If `directed` is set, the edge will be directed, starting at the `source` node.
+
+CAUTION: If `weight` is initially set to `None`, there will be no label text. However, if you later use `edge.set_weight()` to change it to `None`, then it will display "None" as a label.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `source` | {t_node_generic}
+| `target` | {t_node_generic}
+| `weight` | `None`, `bool`, {t_generic_text}
+| `directed` | `bool`
+|===
+
+=== `edge.source()`, `edge.target()`
+Returns the edge's source/target nodes.
+
+=== `edge.set_weight(weight=None)`, `edge.weight()`
+Sets/Gets the weight of the edge.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `weight` | `None`, `bool`, {t_generic_text}
+|===
+
+=== `edge.set_directed(directed=True)`, `edge.directed()`
+Sets/Gets whether the edge is directed.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `directed` | `bool`
+|===
+
+=== `edge.other_node(node)`
+Returns the node connected by the edge that isn't the node specified.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `node` | {t_node_generic}
+|===
+
+=== `edge.set_attribute(name, value)`, `edge.attribute(name)`
+Sets/Gets custom attributes for the edge.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `name` | {t_generic_text}
+| `value` | {t_generic_text}
+|===
+
+=== `edge.set_priority(value)`, `edge.priority()`
+Sets/Gets the edge's priority value
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `value` | {t_generic_number}
+|===
+
+=== `edge.set_width(width=2)`, `edge.width()`
+Sets/Gets the edge's width/thickness.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `width` | {t_generic_number}
+|===
+
+=== `edge.set_color(color=Color.LIGHT_GREY)`, `edge.color()`
+Sets/Gets the edge's color.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `color` | {t_color}
+|===
+
+=== `edge.set_weight_style(size=10, color=Color.GREY)`
+Sets the appearance of the edge's weight label.
+
+WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `size` | {t_generic_number}
+| `color` | {t_color}
+|===
+
+=== `edge.highlight(color=edge.color(), width=edge.width()*2)`
+Performs a highlight animation by temporarily changing the width and color of the edge.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `color` | {t_color}
+| `width` | {t_generic_number}
+|===
+
+=== `edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)`
+Performs a traversal animation on the edge, beginning at `initial_node`, using the specified color. If `keep_path` is set, the edge will remain colored.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `initial_node` | {t_node_generic}
+| `color` | {t_color}
+| `keep_path` | `bool`
+|===
+
+
 
 
 ////
