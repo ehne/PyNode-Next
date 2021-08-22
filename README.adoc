@@ -106,3 +106,7 @@ begin_pynode_next(run)
 
 == Documentation
 The docs have been moved to https://github.com/ehne/PyNode-Next/tree/main/docs/documentation.adoc[docs/documentation.adoc]
+
+---
+
+Created by https://github.com/ehne[@ehne] in 2021. Based on PyNode by https://github.com/alexsocha[@alexsocha]
