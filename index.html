@@ -139,6 +139,7 @@
             grid-template-rows: 1fr 3fr;
             grid-template-columns: 100%;
             background-color: #f8f8f2;
+            position: relative;
         }
     
         @media (min-width: 40em) {
@@ -149,6 +150,20 @@
             .example-box {
                 width: 48%;
             }
+            .example-box.-arrow::before {
+            content: "";
+            position: absolute;
+            display: block;
+            background: url('./assets/arrow.svg') no-repeat center;
+            background-size: 100%;
+            z-index: 1;
+
+            width: 3.5em;
+            height: 3.5em;
+            top: 30%;
+            right: -3.25em;
+            transform: rotate(10deg);
+        }
         }
         
         .example-box > .example-code {
@@ -222,7 +237,7 @@
             </h1>
         </section>
         <section class="lead-in-example grid-item">
-            <div class="example-box">
+            <div class="example-box -arrow">
                 <div class="heading">
                     Write easy to understand Python code:
                 </div>
