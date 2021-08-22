@@ -23,16 +23,9 @@
 
 PyNode Next allows you to easily create beautiful graph visualisations and animations. 
 
-++++
-<details>
-<summary>Table of contents</summary>
-++++
 
 toc::[]
 
-++++
-</details>
-++++
 
 
 == Getting started
