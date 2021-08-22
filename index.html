@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyNode Next</title>
+    <style>/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}</style>
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@200;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/humanoid-light.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js" async onload="hljs.highlightAll()"></script>
+    <script src="./main.js" type="module"></script>
+    <style>
+        html {
+            --font-body: 'Bitter', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;;
+            --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+            --font-heading: 'Oswald', Sans-serif;
+
+            --fg: hsl(0, 0%, 10%);
+            --mfg: hsl(0, 0%, 20%);
+            --mg: hsl(0, 0%, 50%);
+            --mbg: hsl(0, 0%, 80%);
+            --bg: hsl(0, 0%, 90%);
+
+            --mu: 8px;
+
+            /* these aren't actually used because media queries don't use vars */
+            --bp-tablet: 40em; 
+            --bp-desktop: 90em;
+        }
+        html,body {
+            height: 100%;
+            width: 100%;
+            font-size: calc(2.2 * var(--mu));
+            background-color: var(--bg);
+            color: var(--fg);
+            line-height: 1.3;
+            position:relative;
+            font-family: var(--font-body);
+        }
+        code {
+            font-family: var(--font-mono);
+        }
+        .grid {
+            display:grid;
+            grid-template-columns:1fr minmax(80vw, 100%) 1fr;
+            align-items:start;
+            column-gap:min(5vw, calc(8 * var(--mu)))
+        }
+        .grid>.grid {
+            grid-column:1 / -1
+        }
+        .grid>*:not([class*="grid"]) {
+            grid-column:2
+        }
+        @media (min-width: 40em) {
+            .grid {
+                grid-template-columns:1fr repeat(12, minmax(calc(4 * var(--mu)), 100%)) 1fr;
+                column-gap:min(3vw, calc(10 * var(--mu)))
+            }
+            .grid>*:not([class*="grid"]) {
+                grid-column:4 / span 8
+            }
+        }
+        @media (min-width: 90em) {
+            .grid {
+                grid-template-columns:1fr repeat(12, calc(14 * var(--mu))) 1fr;
+                column-gap: calc(8 * var(--mu))
+            }
+        }
+        
+        
+
+        .nav {
+            background-color: var(--fg);
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: var(--mu) calc(2 * var(--mu));
+            color: var(--bg);
+            border-bottom: 4px solid var(--mfg);
+        }
+        .nav > img {
+            height: 3em
+        }
+        .nav > .items {
+            text-align: right;
+        }
+        .grow {
+            flex-grow: 1;
+        }
+
+        a, a:visited {
+            color: currentColor;
+        }
+        a:hover {
+            opacity: 80%;
+        }
+
+        main {
+            padding-bottom: 5em;
+        }
+        code {
+            font-size: 0.9em;
+        }
+        .lead-in > .slogan {
+            font-size: calc(4 * var(--mu));
+            line-height: 1.3;
+            margin: 1.25em 0 1em 0;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            text-align: center;
+            grid-column-start: 2;
+        }
+        @media (min-width: 40em) {
+            .lead-in > .slogan {
+                font-size: calc(7 * var(--mu));
+                grid-column-start: 3;
+                grid-column-end: span 10;
+            }
+        }
+
+        .lead-in-example {
+            display: block;
+            
+            grid-column-start: 2;
+            
+            width: 100%;
+            justify-content: space-between;
+        }
+        .example-box {
+            border: 2px solid var(--fg);
+            width: 100%;
+            
+            align-self: stretch;
+            display: grid;
+            grid-template-rows: 1fr 3fr;
+            grid-template-columns: 100%;
+            background-color: #f8f8f2;
+        }
+    
+        @media (min-width: 40em) {
+            .lead-in-example {
+                grid-column-end: span 12;
+                display: flex;
+            }
+            .example-box {
+                width: 48%;
+            }
+        }
+        
+        .example-box > .example-code {
+            padding: calc(2 * var(--mu)) var(--mu)
+        }
+        .example-box > .heading {
+            font-weight: bold;
+            background-color: var(--fg);
+            color: var(--bg);
+            text-align: center;
+            padding: calc(2 *  var(--mu));
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .example-viz {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+        .loading-spinner  {
+            width: calc(var(--mu) * 6);
+            height: calc(var(--mu) * 6);
+            border: var(--mu) solid var(--mbg);
+            border-bottom-color: var(--mg);
+            border-radius: 50%;
+            animation: yOS_rotation 1s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
+            
+        }
+        @keyframes yOS_rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
+        .summary {
+            padding: calc(4 * var(--mu)) 0;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        footer {
+            padding: calc(var(--mu) * 2);
+            font-size: calc(var(--mu) * 2);
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: calc(var(--mu) * 5);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <img src="./assets/logo_white.png" alt="PyNode Next logo" aria-label="Py Node Next">
+        <div class="grow"></div>
+        <div class="items">
+            <a href="https://github.com/ehne/PyNode-Next/blob/main/docs/documentation.adoc">Reference</a> /
+            <a href="https://github.com/ehne/PyNode-Next/releases/latest">Download</a> /
+            <a href="https://github.com/ehne/PyNode-Next">GitHub</a> / 
+            <a href="https://github.com/ehne/PyNode-Next/issues">Feedback</a>
+        </div>
+    </nav>
+    <main class="grid">
+        <section class="lead-in grid">
+            <h1 class="slogan grid-item">
+                A reliable graph theory library for those with things to get done.
+            </h1>
+        </section>
+        <section class="lead-in-example grid-item">
+            <div class="example-box">
+                <div class="heading">
+                    Write easy to understand Python code:
+                </div>
+                <div class="example-code">
+                    <pre><code class="language-python">from pynode_next import *
+
+def run():
+    for i in 'abc':
+        graph.add_node(i)
+        pause(100)
+    
+    pause(500)
+    graph.add_edge('a', 'b')
+    graph.add_edge('b', 'c')
+    
+begin_pynode_next(run)</code></pre>
+                </div>
+            </div>
+            <div class="example-box">
+                <div class="heading">
+                    Hit run and watch PyNode Next create a beautiful visualisation:
+                </div>
+                <lead-demo class="example-viz" id="pyNodeNextDemo"><div class="loading-spinner"></div></lead-demo>
+            </div>
+        </section>
+        <section class="summary grid">
+            <p>A complete rewrite of PyNode for the modern era. PyNode Next allows you to easily create beautiful graph visualisations and animations with a simple python interface. </p>
+        </section>
+    </main>
+    <footer>
+        Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a>
+    </footer>
+</body>
+</html>
