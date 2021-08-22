@@ -13,7 +13,7 @@ class LeadDemo extends Tonic {
                 }
                 .example-viz > .algx {
                     width: 100%;
-                    height: 100%
+                    height: calc(100% - var(--mu))
                 }
                 .example-viz > .button-container {
                     padding: var(--mu);
