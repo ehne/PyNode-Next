@@ -59,6 +59,8 @@ def run():
 begin_pynode_next(run)
 ----
 
+image::./docs/demo-min.gif[]
+
 == Migrating from PyNode
 PyNode Next has been designed to maintain the vast majority of all of the functions from the previous version of PyNode.
 
