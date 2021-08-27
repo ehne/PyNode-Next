@@ -57,12 +57,11 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: 'documentation.html'
-      - run: echo ${{github.event.head_commit}}
-      #- name: commit documentation.html
-       # uses: test-room-7/action-update-file@v1
-       # with:
-        #  file-path: documentation.html 
-       #   github-token: ${{ secrets.GITHUB_TOKEN }}
-        #  commit-msg: |
-        #    :rocket: new documentation
+      - name: commit documentation.html
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: documentation.html 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit-msg: |
+            :rocket: new documentation
       
