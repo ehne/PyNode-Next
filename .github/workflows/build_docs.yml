@@ -8,3 +8,18 @@ on:
   workflow_dispatch:
   
  
+jobs:
+  build_docs:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup Ruby, JRuby and TruffleRuby
+        uses: ruby/setup-ruby@v1.81.0
+        
+      - name: Setup Asciidoctor
+        uses: reitzig/actions-asciidoctor@v2.0.0
+        
+      - run: asciidoctor --version
