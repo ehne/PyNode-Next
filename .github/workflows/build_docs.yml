@@ -1,0 +1,46 @@
+name: build docs
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+  workflow_dispatch:
+  
+ 
+jobs:
+  build_docs:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup Ruby, JRuby and TruffleRuby
+        uses: ruby/setup-ruby@v1.81.0
+        with:
+          ruby-version: 3.0
+        
+      - name: Setup Asciidoctor
+        uses: reitzig/actions-asciidoctor@v2.0.0
+      
+      - name: move documentation.adoc out of docs folder temp
+        run: mv docs/documentation.adoc ./
+        
+      - name: checkout doc styles branch into docs folder
+        uses: actions/checkout@v2
+        with:
+          ref: 'asciidoc-styles'
+          path: 'docs'
+      
+      - name: move documentation.adoc back into the docs folder
+        run: mv documentation.adoc docs
+        
+      - run: cd docs && asciidoctor documentation.adoc
+      
+      - name: save documentation.html artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: 'documentation.html'
+          path: 'docs/documentation.html'
+      
