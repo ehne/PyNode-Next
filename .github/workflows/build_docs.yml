@@ -23,6 +23,11 @@ jobs:
         
       - name: Setup Asciidoctor
         uses: reitzig/actions-asciidoctor@v2.0.0
-      
-      - run: ls
+      - name: checkout doc styles branch into docs folder
+        uses: actions/checkout@v2
+        with:
+          ref: 'asciidoc-styles'
+          path: 'docs'
+          
+      - run: find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
       - run: asciidoctor --version
