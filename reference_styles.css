@@ -43,7 +43,7 @@ body{
     color: var(--bg);
     border-bottom: 4px solid var(--mfg);
 }
-.nav > img {
+.nav img {
     height: 3em
 }
 .nav > .items {
