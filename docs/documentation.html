@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.15">
+<title>Documentation</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+@import url(https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@200;700&display=swap);
+@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css);
+/* Default asciidoc style framework - important */
+/* CUSTOMISATIONS */
+/* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
+:root{
+     --font-body: 'Bitter', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+     --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+     --font-heading: 'Oswald', Sans-serif;
+
+     --maincolor:#FFFFFF;
+     --primarycolor:#000000;
+     --secondarycolor:#AAAAAA;
+     --tertiarycolor:#CCCCCC;
+     --sidebarbackground:#CACACA;
+     --linkcolor:#0D47A1;
+     --linkcoloralternate:#B71C1C;
+     --white:#FFFFFF;
+     --black:#000000;
+
+     --fg: hsl(0, 0%, 10%);
+     --mfg: hsl(0, 0%, 20%);
+     --mg: hsl(0, 0%, 50%);
+     --mbg: hsl(0, 0%, 80%);
+     --bg: hsl(0, 0%, 90%);
+
+     --mu: 8px
+}
+/* Text styles */
+body{
+    font-family: var(--font-body);
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+.nav {
+    background-color: var(--fg);
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: var(--mu) calc(2 * var(--mu));
+    color: var(--bg);
+    border-bottom: 4px solid var(--mfg);
+}
+.nav > img {
+    height: 3em
+}
+.nav > .items {
+    text-align: right;
+}
+.grow {
+    flex-grow: 1;
+}
+
+h1{
+    color: var(--fg) !important;
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+h2,h3,h4,h5,h6{
+    color: var(--mfg) !important;
+    font-family: var(--font-heading);
+}
+.title{
+    color:var(--fg) !important;
+    font-family:var(--font-heading);
+}
+
+a, a:visited {
+    color: currentColor;
+}
+a:hover {
+    opacity: 80%;
+}
+
+
+p{
+    font-family: var(--font-body) ! important
+}
+#toc.toc2 a:link{
+    color:
+}
+blockquote{
+    color:var(--secondarycolor) !important
+}
+.quoteblock{
+    color:var(--black)
+}
+.quoteblock blockquote:before{
+    color:var(--black)
+}
+code{
+    color:var(--fg);
+    background: transparent !important;
+    padding: 0px !important;
+    line-height: 1.3;
+}
+mark{
+    background-color: var(--tertiarycolor)
+}
+/* Text highlighting color */
+/* Table styles */
+th{
+    background-color: var(--maincolor);
+    color:var(--black) !important;
+}
+td{
+    background-color: var(--maincolor);
+    color: var(--black) !important
+}
+#toc.toc2{
+    background-color:var(--sidebarbackground);
+}
+#toctitle{
+    color:var(--white);
+}
+/* Responsiveness fixes */
+video {
+    max-width: 100%;
+}
+@media all and (max-width: 600px) {
+    table {
+        width: 55vw!important;
+        font-size: 3vw;
+    }
+}
+#footer {
+    display: none;
+}
+footer {
+    padding: calc(var(--mu) * 2);
+    font-size: calc(var(--mu) * 2);
+    opacity: 0.7;
+    text-align: center;
+    margin-bottom: calc(var(--mu) * 5);
+}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<nav class="nav">
+    <img src="../assets/logo_white.png" alt="PyNode Next logo" aria-label="Py Node Next">
+    <div class="grow"></div>
+    <div class="items">
+        <a href="https://github.com/ehne/PyNode-Next/blob/main/docs/documentation.adoc">Reference</a> /
+        <a href="https://github.com/ehne/PyNode-Next/releases/latest">Download</a> /
+        <a href="https://github.com/ehne/PyNode-Next">GitHub</a> /
+        <a href="https://github.com/ehne/PyNode-Next/issues">Feedback</a>
+    </div>
+</nav>
+<div id="header">
+<h1>Documentation</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_graph"><code>graph</code></a>
+<ul class="sectlevel2">
+<li><a href="#_graph_add_nodenode"><code>graph.add_node(node)</code></a></li>
+<li><a href="#_graph_add_nodeid"><code>graph.add_node(id)</code></a></li>
+<li><a href="#_graph_add_nodeid_value"><code>graph.add_node(id, value)</code></a></li>
+<li><a href="#_graph_remove_nodenode"><code>graph.remove_node(node)</code></a></li>
+<li><a href="#_graph_nodeid"><code>graph.node(id)</code></a></li>
+<li><a href="#_graph_nodenode"><code>graph.node(node)</code></a></li>
+<li><a href="#_graph_nodes"><code>graph.nodes()</code></a></li>
+<li><a href="#_graph_add_edgesource_target_weightnone_directedfalse"><code>graph.add_edge(source, target, weight=None, directed=False)</code></a></li>
+<li><a href="#_graph_add_edgeedge"><code>graph.add_edge(edge)</code></a></li>
+<li><a href="#_graph_remove_edgenodea_nodeb_directedfalse"><code>graph.remove_edge(nodeA, nodeB, directed=False)</code></a></li>
+<li><a href="#_graph_remove_edgeedge"><code>graph.remove_edge(edge)</code></a></li>
+<li><a href="#_graph_has_nodenode"><code>graph.has_node(node)</code></a></li>
+<li><a href="#_graph_has_edgeedge"><code>graph.has_edge(edge)</code></a></li>
+<li><a href="#_graph_add_allelements"><code>graph.add_all(elements)</code></a></li>
+<li><a href="#_graph_remove_allelements"><code>graph.remove_all(elements)</code></a></li>
+<li><a href="#_graph_adjacentnodea_nodeb_directedfalse"><code>graph.adjacent(nodeA, nodeB, directed=False)</code></a></li>
+<li><a href="#_graph_clear"><code>graph.clear()</code></a></li>
+<li><a href="#_graph_set_directeddirectedtrue"><code>graph.set_directed(directed=True)</code></a></li>
+<li><a href="#_graph_order"><code>graph.order()</code></a></li>
+<li><a href="#_graph_size"><code>graph.size()</code></a></li>
+<li><a href="#_graph_adjacency_matrix"><code>graph.adjacency_matrix()</code></a></li>
+<li><a href="#_graph_randomorder_size"><code>graph.random(order, size)</code></a></li>
+</ul>
+</li>
+<li><a href="#_node"><code>Node</code></a>
+<ul class="sectlevel2">
+<li><a href="#_nodeid_valueid"><code>Node(id, value=id)</code></a></li>
+<li><a href="#_node_id"><code>node.id()</code></a></li>
+<li><a href="#_node_set_valuevalue_node_value"><code>node.set_value(value)</code>, <code>node.value()</code></a></li>
+<li><a href="#_node_incident_edges_node_incoming_edges_node_outgoing_edges"><code>node.incident_edges()</code>, <code>node.incoming_edges()</code>, <code>node.outgoing_edges()</code></a></li>
+<li><a href="#_node_adjacent_nodes_node_predecessor_nodes_node_successor_nodes"><code>node.adjacent_nodes()</code>, <code>node.predecessor_nodes()</code>, <code>node.successor_nodes()</code></a></li>
+<li><a href="#_node_degree_node_indegree_node_outdegree"><code>node.degree()</code>, <code>node.indegree()</code>, <code>node.outdegree()</code></a></li>
+<li><a href="#_node_set_attributename_value_node_attributename"><code>node.set_attribute(name, value)</code>, <code>node.attribute(name)</code></a></li>
+<li><a href="#_node_set_priorityvalue_node_priority"><code>node.set_priority(value)</code>, <code>node.priority()</code></a></li>
+<li><a href="#_node_set_position_node_position">🚧 <code>node.set_position()</code>, <code>node.position()</code></a></li>
+<li><a href="#_node_set_labelvalue_label_id0_node_labellabel_id"><code>node.set_label(value, label_id=0)</code>, <code>node.label(label_id)</code></a></li>
+<li><a href="#_node_set_sizesize12_node_size"><code>node.set_size(size=12)</code>, <code>node.size()</code></a></li>
+<li><a href="#_node_set_colorcolorcolor_dark_grey_node_color"><code>node.set_color(color=Color.DARK_GREY)</code>, <code>node.color()</code></a></li>
+<li><a href="#_node_set_value_stylesize13_colorcolor_white"><code>node.set_value_style(size=13, color=Color.WHITE)</code></a></li>
+<li><a href="#_node_set_label_stylesize10_colorcolor_grey_label_id0"><code>node.set_label_style(size=10, color=Color.GREY, label_id=0)</code></a></li>
+<li><a href="#_node_highlightcolorcolor_red_sizenode_size1_5"><code>node.highlight(color=Color.RED, size=node.size()*1.5)</code></a></li>
+</ul>
+</li>
+<li><a href="#_edge"><code>Edge</code></a>
+<ul class="sectlevel2">
+<li><a href="#_edgesource_target_weightnone_directedfalse"><code>Edge(source, target, weight=None, directed=False)</code></a></li>
+<li><a href="#_edge_source_edge_target"><code>edge.source()</code>, <code>edge.target()</code></a></li>
+<li><a href="#_edge_set_weightweightnone_edge_weight"><code>edge.set_weight(weight=None)</code>, <code>edge.weight()</code></a></li>
+<li><a href="#_edge_set_directeddirectedtrue_edge_directed"><code>edge.set_directed(directed=True)</code>, <code>edge.directed()</code></a></li>
+<li><a href="#_edge_other_nodenode"><code>edge.other_node(node)</code></a></li>
+<li><a href="#_edge_set_attributename_value_edge_attributename"><code>edge.set_attribute(name, value)</code>, <code>edge.attribute(name)</code></a></li>
+<li><a href="#_edge_set_priorityvalue_edge_priority"><code>edge.set_priority(value)</code>, <code>edge.priority()</code></a></li>
+<li><a href="#_edge_set_widthwidth2_edge_width"><code>edge.set_width(width=2)</code>, <code>edge.width()</code></a></li>
+<li><a href="#_edge_set_colorcolorcolor_light_grey_edge_color"><code>edge.set_color(color=Color.LIGHT_GREY)</code>, <code>edge.color()</code></a></li>
+<li><a href="#_edge_set_weight_stylesize10_colorcolor_grey"><code>edge.set_weight_style(size=10, color=Color.GREY)</code></a></li>
+<li><a href="#_edge_highlightcoloredge_color_widthedge_width2"><code>edge.highlight(color=edge.color(), width=edge.width()*2)</code></a></li>
+<li><a href="#_edge_traverseinitial_nodeedge_source_colorcolor_red_keep_pathtrue"><code>edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)</code></a></li>
+</ul>
+</li>
+<li><a href="#_miscellaneous_functions">Miscellaneous functions</a>
+<ul class="sectlevel2">
+<li><a href="#_colorred_green_blue"><code>Color(red, green, blue)</code></a></li>
+<li><a href="#_pausetime"><code>pause(time)</code></a></li>
+<li><a href="#_delayfunc_time_args_repeatfalse">🚧 <code>delay(func, time, args=[], repeat=False)</code></a></li>
+<li><a href="#_cancel_delaydelay_id">🚧 <code>cancel_delay(delay_id)</code></a></li>
+<li><a href="#_register_click_listenerfunc">🚧 <code>register_click_listener(func)</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_graph"><code>graph</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_graph_add_nodenode"><code>graph.add_node(node)</code></h3>
+<div class="paragraph">
+<p>Adds <code>node</code> to the graph. Will raise an error if that node object has been added to the graph before.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>node</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_add_nodeid"><code>graph.add_node(id)</code></h3>
+<div class="paragraph">
+<p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to <code>id</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_add_nodeid_value"><code>graph.add_node(id, value)</code></h3>
+<div class="paragraph">
+<p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to their corresponding arguments.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_remove_nodenode"><code>graph.remove_node(node)</code></h3>
+<div class="paragraph">
+<p>Removes the specified node from the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>node</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_nodeid"><code>graph.node(id)</code></h3>
+<div class="paragraph">
+<p>Returns the <code>Node</code> object of the node with the specified <code>id</code>. Raises a <code>NodeDoesntExistError</code> if that node could not be found in the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_nodenode"><code>graph.node(node)</code></h3>
+<div class="paragraph">
+<p>Returns the <code>Node</code> object of the <code>Node</code> object given to it as long as that node is in the graph. Raises a <code>NodeDoesntExistError</code> if that node could not be found in the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>node</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_nodes"><code>graph.nodes()</code></h3>
+<div class="paragraph">
+<p>Returns a list of all the nodes currently in the graph as <code>Node</code> objects.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_graph_add_edgesource_target_weightnone_directedfalse"><code>graph.add_edge(source, target, weight=None, directed=False)</code></h3>
+<div class="paragraph">
+<p>Adds an edge between the <code>source</code> and <code>target</code> nodes. To make the edge directed, set <code>directed</code> to <code>True</code>. <code>weight</code> sets the label of the edge.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+This is one of the methods that is a little annoying with keyword arguments. If you are going to set <code>directed</code>, you need to make sure that you <strong>also</strong> set <code>weight</code>. Otherwise, the overloader will raise an error.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>source</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>target</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>weight</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>None</code>, <code>bool</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>directed</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_add_edgeedge"><code>graph.add_edge(edge)</code></h3>
+<div class="paragraph">
+<p>Adds the <code>Edge</code> object specified to the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>edge</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>Edge</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_remove_edgenodea_nodeb_directedfalse"><code>graph.remove_edge(nodeA, nodeB, directed=False)</code></h3>
+<div class="paragraph">
+<p>Removes the edge(s) between <code>nodeA</code> and <code>nodeB</code> from the graph. If <code>directed</code> is set, only edges starting at <code>nodeA</code> will be removed.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>nodeA</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>nodeB</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>directed</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_remove_edgeedge"><code>graph.remove_edge(edge)</code></h3>
+<div class="paragraph">
+<p>Removes the <code>Edge</code> object specified from the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>edge</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>Edge</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_has_nodenode"><code>graph.has_node(node)</code></h3>
+<div class="paragraph">
+<p>Checks if a given <code>node</code> exists in the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>node</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_has_edgeedge"><code>graph.has_edge(edge)</code></h3>
+<div class="paragraph">
+<p>Checks if a given <code>edge</code> exists in the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>edge</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>Edge</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_add_allelements"><code>graph.add_all(elements)</code></h3>
+<div class="paragraph">
+<p>Adds all <code>Node</code> and/or <code>Edge</code> objects in a list to the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>elements</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A list (iterable) containing <code>Node</code> and/or <code>Edge</code> objects.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_remove_allelements"><code>graph.remove_all(elements)</code></h3>
+<div class="paragraph">
+<p>Removes all <code>Node</code> and/or <code>Edge</code> objects in a list from the graph.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>elements</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A list (iterable) containing <code>Node</code> and/or <code>Edge</code> objects.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_adjacentnodea_nodeb_directedfalse"><code>graph.adjacent(nodeA, nodeB, directed=False)</code></h3>
+<div class="paragraph">
+<p>Checks if <code>nodeA</code> and <code>nodeB</code> are adjacent. If <code>directed</code> is set, then the edge must start from <code>nodeA</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>nodeA</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>nodeB</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>directed</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_clear"><code>graph.clear()</code></h3>
+<div class="paragraph">
+<p>Completely resets the graph by removing all edges and nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_graph_set_directeddirectedtrue"><code>graph.set_directed(directed=True)</code></h3>
+<div class="paragraph">
+<p>Sets whether the edges in the graph are directed or not.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>directed</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_graph_order"><code>graph.order()</code></h3>
+<div class="paragraph">
+<p>Returns the order of the graph. That is, it returns the number of nodes in the graph.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_graph_size"><code>graph.size()</code></h3>
+<div class="paragraph">
+<p>Returns the size of the graph. That is, it returns the number of edges in the graph.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_graph_adjacency_matrix"><code>graph.adjacency_matrix()</code></h3>
+<div class="paragraph">
+<p>Returns the adjacency matrix of the graph as a dictionary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_graph_randomorder_size"><code>graph.random(order, size)</code></h3>
+<div class="paragraph">
+<p>Returns a list of random <code>Node</code> and <code>Edge</code> elements that makes a graph with the order and size specified. The graph may or may not be fully connected.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>order</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>int</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>size</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>int</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_node"><code>Node</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_nodeid_valueid"><code>Node(id, value=id)</code></h3>
+<div class="paragraph">
+<p>Creates a node with the specified <code>id</code> and <code>value</code>. If <code>value</code> is left blank, it defaults to the node&#8217;s <code>id</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_id"><code>node.id()</code></h3>
+<div class="paragraph">
+<p>Returns the id of the node.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_node_set_valuevalue_node_value"><code>node.set_value(value)</code>, <code>node.value()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the value of the node.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_incident_edges_node_incoming_edges_node_outgoing_edges"><code>node.incident_edges()</code>, <code>node.incoming_edges()</code>, <code>node.outgoing_edges()</code></h3>
+<div class="paragraph">
+<p>Returns a list of the node&#8217;s incident/incoming/outgoing edges.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_node_adjacent_nodes_node_predecessor_nodes_node_successor_nodes"><code>node.adjacent_nodes()</code>, <code>node.predecessor_nodes()</code>, <code>node.successor_nodes()</code></h3>
+<div class="paragraph">
+<p>Returns a list of the node&#8217;s adjacent/predecessor/successor nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_node_degree_node_indegree_node_outdegree"><code>node.degree()</code>, <code>node.indegree()</code>, <code>node.outdegree()</code></h3>
+<div class="paragraph">
+<p>Returns the node&#8217;s degree/indegree/outdegree.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_node_set_attributename_value_node_attributename"><code>node.set_attribute(name, value)</code>, <code>node.attribute(name)</code></h3>
+<div class="paragraph">
+<p>Sets/Gets custom attributes for the node.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>name</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_set_priorityvalue_node_priority"><code>node.set_priority(value)</code>, <code>node.priority()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the node&#8217;s priority value.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_set_position_node_position">🚧 <code>node.set_position()</code>, <code>node.position()</code></h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>node.set_position()</code> and <code>node.position()</code> have not been implemented in PyNode Next as yet.</p>
+</div>
+<div class="paragraph">
+<p>Have a look at the <a href="https://github.com/ehne/PyNode-Next/issues/2">GitHub issue</a> for more information. (Issue #2)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_node_set_labelvalue_label_id0_node_labellabel_id"><code>node.set_label(value, label_id=0)</code>, <code>node.label(label_id)</code></h3>
+<div class="paragraph">
+<p>Sets/Gets additional labels for the node. The labels do not override the node&#8217;s value, but instead are placed next to the node.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>label_id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>One of either <code>0</code> or <code>1</code>. (Use <code>0</code> for the top-right label and <code>1</code> for the top-left label)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_set_sizesize12_node_size"><code>node.set_size(size=12)</code>, <code>node.size()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the radius of the node.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>size</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_set_colorcolorcolor_dark_grey_node_color"><code>node.set_color(color=Color.DARK_GREY)</code>, <code>node.color()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the node&#8217;s color.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_set_value_stylesize13_colorcolor_white"><code>node.set_value_style(size=13, color=Color.WHITE)</code></h3>
+<div class="paragraph">
+<p>Sets the appearance of the node&#8217;s value text.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+PyNode supported an argument <code>outline</code> to change the text outline&#8217;s color. PyNode Next does not support this argument, and will print a warning if you try to set it.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>size</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_set_label_stylesize10_colorcolor_grey_label_id0"><code>node.set_label_style(size=10, color=Color.GREY, label_id=0)</code></h3>
+<div class="paragraph">
+<p>Sets the appearance of the node&#8217;s label text.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+PyNode supported an argument <code>outline</code> to change the text outline&#8217;s color. PyNode Next does not support this argument, and will print a warning if you try to set it.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+Always use the keyword argument to choose the <code>label_id</code>. This is because PyNode placed the <code>outline</code> argument in the third argument location (<code>node.set_label_style(size=10, color=Color.GREY, outline=None, label_id=None)</code>). And to maintain backwards compatibility with PyNode, PyNode Next still has the <code>outline</code> argument in that position, even though it does nothing.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>size</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>label_id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>One of either <code>0</code> or <code>1</code>. (Use <code>0</code> for the top-right label and <code>1</code> for the top-left label)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_node_highlightcolorcolor_red_sizenode_size1_5"><code>node.highlight(color=Color.RED, size=node.size()*1.5)</code></h3>
+<div class="paragraph">
+<p>Plays a highlight animation where the node&#8217;s color changes to that specified.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>size</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edge"><code>Edge</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_edgesource_target_weightnone_directedfalse"><code>Edge(source, target, weight=None, directed=False)</code></h3>
+<div class="paragraph">
+<p>Creates an edge between the <code>source</code> and <code>target</code> nodes. If <code>weight</code> is set, the edge will display it as a label. If <code>directed</code> is set, the edge will be directed, starting at the <code>source</code> node.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+If <code>weight</code> is initially set to <code>None</code>, there will be no label text. However, if you later use <code>edge.set_weight()</code> to change it to <code>None</code>, then it will display "None" as a label.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>source</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>target</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>weight</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>None</code>, <code>bool</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>directed</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_source_edge_target"><code>edge.source()</code>, <code>edge.target()</code></h3>
+<div class="paragraph">
+<p>Returns the edge&#8217;s source/target nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_weightweightnone_edge_weight"><code>edge.set_weight(weight=None)</code>, <code>edge.weight()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the weight of the edge.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>weight</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>None</code>, <code>bool</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_directeddirectedtrue_edge_directed"><code>edge.set_directed(directed=True)</code>, <code>edge.directed()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets whether the edge is directed.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>directed</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_other_nodenode"><code>edge.other_node(node)</code></h3>
+<div class="paragraph">
+<p>Returns the node connected by the edge that isn&#8217;t the node specified.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>node</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_attributename_value_edge_attributename"><code>edge.set_attribute(name, value)</code>, <code>edge.attribute(name)</code></h3>
+<div class="paragraph">
+<p>Sets/Gets custom attributes for the edge.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>name</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_priorityvalue_edge_priority"><code>edge.set_priority(value)</code>, <code>edge.priority()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the edge&#8217;s priority value</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>value</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_widthwidth2_edge_width"><code>edge.set_width(width=2)</code>, <code>edge.width()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the edge&#8217;s width/thickness.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>width</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_colorcolorcolor_light_grey_edge_color"><code>edge.set_color(color=Color.LIGHT_GREY)</code>, <code>edge.color()</code></h3>
+<div class="paragraph">
+<p>Sets/Gets the edge&#8217;s color.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_set_weight_stylesize10_colorcolor_grey"><code>edge.set_weight_style(size=10, color=Color.GREY)</code></h3>
+<div class="paragraph">
+<p>Sets the appearance of the edge&#8217;s weight label.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+PyNode supported an argument <code>outline</code> to change the text outline&#8217;s color. PyNode Next does not support this argument, and will print a warning if you try to set it.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>size</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_highlightcoloredge_color_widthedge_width2"><code>edge.highlight(color=edge.color(), width=edge.width()*2)</code></h3>
+<div class="paragraph">
+<p>Performs a highlight animation by temporarily changing the width and color of the edge.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>width</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edge_traverseinitial_nodeedge_source_colorcolor_red_keep_pathtrue"><code>edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)</code></h3>
+<div class="paragraph">
+<p>Performs a traversal animation on the edge, beginning at <code>initial_node</code>, using the specified color. If <code>keep_path</code> is set, the edge will remain colored.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>initial_node</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>color</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Color</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>keep_path</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_miscellaneous_functions">Miscellaneous functions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_colorred_green_blue"><code>Color(red, green, blue)</code></h3>
+<div class="paragraph">
+<p>Custom color for use in node and edge animations, using <code>0-255</code> integers for each argument.</p>
+</div>
+<div class="paragraph">
+<p>There are some predefined colours:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Color.RED</code></p>
+</li>
+<li>
+<p><code>Color.GREEN</code></p>
+</li>
+<li>
+<p><code>Color.BLUE</code></p>
+</li>
+<li>
+<p><code>Color.YELLOW</code></p>
+</li>
+<li>
+<p><code>Color.WHITE</code></p>
+</li>
+<li>
+<p><code>Color.LIGHT_GREY</code></p>
+</li>
+<li>
+<p><code>Color.GREY</code></p>
+</li>
+<li>
+<p><code>Color.DARK_GREY</code></p>
+</li>
+<li>
+<p><code>Color.BLACK</code></p>
+</li>
+<li>
+<p><code>Color.TRANSPARENT</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pausetime"><code>pause(time)</code></h3>
+<div class="paragraph">
+<p>Delays the next visual event for the specified number of miliseconds.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This <strong>does not</strong> pause code execution.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delayfunc_time_args_repeatfalse">🚧 <code>delay(func, time, args=[], repeat=False)</code></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_cancel_delaydelay_id">🚧 <code>cancel_delay(delay_id)</code></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_register_click_listenerfunc">🚧 <code>register_click_listener(func)</code></h3>
+<hr>
+<div class="paragraph">
+<p>Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+<footer>
+    Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a>
+</footer>
+</body>
+</html>

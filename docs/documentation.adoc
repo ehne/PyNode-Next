@@ -1,4 +1,9 @@
 = Documentation
+:stylesheet: reference_styles.css
+:toc: left
+:docinfo: shared-header,shared-footer
+:last-update-label!:
+
 :t_generic_text: pass:[<code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code>] 
 :t_generic_number: pass:[<code class="literal">int</code> or <code class="literal">float</code>] 
 
@@ -7,7 +12,6 @@
 :t_node: pass:[<code class="literal">Node</code>]
 :t_edge: pass:[<code class="literal">Edge</code>]
 :t_color: pass:[<code class="literal">Color</code>]
-
 
 == `graph`
 

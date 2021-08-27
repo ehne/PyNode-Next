@@ -1,0 +1,137 @@
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+@import url(https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@200;700&display=swap);
+@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css);
+/* Default asciidoc style framework - important */
+/* CUSTOMISATIONS */
+/* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
+:root{
+     --font-body: 'Bitter', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+     --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+     --font-heading: 'Oswald', Sans-serif;
+
+     --maincolor:#FFFFFF;
+     --primarycolor:#000000;
+     --secondarycolor:#AAAAAA;
+     --tertiarycolor:#CCCCCC;
+     --sidebarbackground:#CACACA;
+     --linkcolor:#0D47A1;
+     --linkcoloralternate:#B71C1C;
+     --white:#FFFFFF;
+     --black:#000000;
+
+     --fg: hsl(0, 0%, 10%);
+     --mfg: hsl(0, 0%, 20%);
+     --mg: hsl(0, 0%, 50%);
+     --mbg: hsl(0, 0%, 80%);
+     --bg: hsl(0, 0%, 90%);
+
+     --mu: 8px
+}
+/* Text styles */
+body{
+    font-family: var(--font-body);
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+.nav {
+    background-color: var(--fg);
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: var(--mu) calc(2 * var(--mu));
+    color: var(--bg);
+    border-bottom: 4px solid var(--mfg);
+}
+.nav > img {
+    height: 3em
+}
+.nav > .items {
+    text-align: right;
+}
+.grow {
+    flex-grow: 1;
+}
+
+h1{
+    color: var(--fg) !important;
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+h2,h3,h4,h5,h6{
+    color: var(--mfg) !important;
+    font-family: var(--font-heading);
+}
+.title{
+    color:var(--fg) !important;
+    font-family:var(--font-heading);
+}
+
+a, a:visited {
+    color: currentColor;
+}
+a:hover {
+    opacity: 80%;
+}
+
+
+p{
+    font-family: var(--font-body) ! important
+}
+#toc.toc2 a:link{
+    color:
+}
+blockquote{
+    color:var(--secondarycolor) !important
+}
+.quoteblock{
+    color:var(--black)
+}
+.quoteblock blockquote:before{
+    color:var(--black)
+}
+code{
+    color:var(--fg);
+    background: transparent !important;
+    padding: 0px !important;
+    line-height: 1.3;
+}
+mark{
+    background-color: var(--tertiarycolor)
+}
+/* Text highlighting color */
+/* Table styles */
+th{
+    background-color: var(--maincolor);
+    color:var(--black) !important;
+}
+td{
+    background-color: var(--maincolor);
+    color: var(--black) !important
+}
+#toc.toc2{
+    background-color:var(--sidebarbackground);
+}
+#toctitle{
+    color:var(--white);
+}
+/* Responsiveness fixes */
+video {
+    max-width: 100%;
+}
+@media all and (max-width: 600px) {
+    table {
+        width: 55vw!important;
+        font-size: 3vw;
+    }
+}
+#footer {
+    display: none;
+}
+footer {
+    padding: calc(var(--mu) * 2);
+    font-size: calc(var(--mu) * 2);
+    opacity: 0.7;
+    text-align: center;
+    margin-bottom: calc(var(--mu) * 5);
+}
