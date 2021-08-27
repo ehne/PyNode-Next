@@ -35,7 +35,14 @@ jobs:
       
       - name: move documentation.adoc back into the docs folder
         run: mv documentation.adoc docs
-      
+        
+      - run: cd docs
       - run: find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
-      - run: asciidoctor --version
+      - run: asciidoctor documentation.adoc
+      
+      - name: save documentation.html artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: 'documentation.html'
+          path: 'documentation.html'
       
