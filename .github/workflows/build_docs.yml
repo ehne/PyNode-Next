@@ -23,5 +23,6 @@ jobs:
         
       - name: Setup Asciidoctor
         uses: reitzig/actions-asciidoctor@v2.0.0
-        
+      
+      - run: ls
       - run: asciidoctor --version
