@@ -62,6 +62,7 @@ jobs:
         with:
           file-path: documentation.html 
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'gh-pages'
           commit-msg: |
             :rocket: new documentation
       
