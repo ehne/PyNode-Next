@@ -42,7 +42,7 @@
 html,body {
     height: 100%;
     width: 100%;
-    font-size: calc(2.2 * var(--mu));
+    font-size: calc(2 * var(--mu));
     background-color: var(--bg);
     color: var(--fg);
     line-height: 1.3;
@@ -98,6 +98,7 @@ code {
     padding: var(--mu) calc(2 * var(--mu));
     color: var(--bg);
     border-bottom: 4px solid var(--mfg);
+    font-size: calc(2.2 * var(--mu));
 }
 .nav > a > img {
     height: 3em
@@ -280,7 +281,7 @@ footer {
     font-weight: bold;
 }
 
-.toc .sectlevel1 > li > a::before {
+.toc .sectlevel1 > li:not(:last-child) > a::before {
     content: "";
     background-image: url("https://ehne.github.io/PyNode-Next/assets/typedocicons.png");
     background-size: 238px 204px;
@@ -303,14 +304,33 @@ footer {
     background-position: -51px -68px;
 }
 
+.toc .sectlevel1 li:last-child .sectlevel2 > li > a::before {
+    content: "";
+    background-image: url("https://ehne.github.io/PyNode-Next/assets/typedocicons.png");
+    background-size: 238px 204px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+    margin: 0 3px 2px 0;
+    background-position: -136px -68px;
+}
+
+/* setting up specific icons */
+/* object literal */
 a[href="#_graph"]::before {
     background-position: 0px -17px !important;
 }
 
+/* constructor */
 a[href="#_init"]::before, a[href="#_init_2"]::before {
     background-position: -51px -102px !important;
 }
 
+/* interface */
+a[href="#_color_3"]::before {
+    background-position: 0px -68px !important;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
