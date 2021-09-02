@@ -146,7 +146,7 @@ footer {
 }
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <nav class="nav">
     <a href="https://ehne.github.io/PyNode-Next" style="display: block;"><img src="./assets/logo_white.png" alt="PyNode Next logo" aria-label="Py Node Next"></a>
     <div class="grow"></div>
@@ -159,18 +159,20 @@ footer {
 </nav>
 <div id="header">
 <h1>Documentation</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_graph"><code>graph</code></a>
+<li><a href="#_graph">graph</a>
 <ul class="sectlevel2">
-<li><a href="#_graph_add_nodenode"><code>graph.add_node(node)</code></a></li>
-<li><a href="#_graph_add_nodeid"><code>graph.add_node(id)</code></a></li>
-<li><a href="#_graph_add_nodeid_value"><code>graph.add_node(id, value)</code></a></li>
-<li><a href="#_graph_remove_nodenode"><code>graph.remove_node(node)</code></a></li>
-<li><a href="#_graph_nodeid"><code>graph.node(id)</code></a></li>
-<li><a href="#_graph_nodenode"><code>graph.node(node)</code></a></li>
-<li><a href="#_graph_nodes"><code>graph.nodes()</code></a></li>
+<li><a href="#_add_node">add_node</a></li>
+<li><a href="#_add_node_2">add_node</a></li>
+<li><a href="#_remove_node">remove_node</a></li>
+<li><a href="#_node">node</a></li>
+<li><a href="#_nodes">nodes</a></li>
 <li><a href="#_graph_add_edgesource_target_weightnone_directedfalse"><code>graph.add_edge(source, target, weight=None, directed=False)</code></a></li>
 <li><a href="#_graph_add_edgeedge"><code>graph.add_edge(edge)</code></a></li>
 <li><a href="#_graph_remove_edgenodea_nodeb_directedfalse"><code>graph.remove_edge(nodeA, nodeB, directed=False)</code></a></li>
@@ -188,7 +190,7 @@ footer {
 <li><a href="#_graph_randomorder_size"><code>graph.random(order, size)</code></a></li>
 </ul>
 </li>
-<li><a href="#_node"><code>Node</code></a>
+<li><a href="#_node_2"><code>Node</code></a>
 <ul class="sectlevel2">
 <li><a href="#_nodeid_valueid"><code>Node(id, value=id)</code></a></li>
 <li><a href="#_node_id"><code>node.id()</code></a></li>
@@ -235,15 +237,22 @@ footer {
 </ul>
 </div>
 </div>
-<div id="content">
+</div>
 <div class="sect1">
-<h2 id="_graph"><code>graph</code></h2>
+<h2 id="_graph">graph</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_graph_add_nodenode"><code>graph.add_node(node)</code></h3>
-<div class="paragraph">
-<p>Adds <code>node</code> to the graph. Will raise an error if that node object has been added to the graph before.</p>
+<h3 id="_add_node">add_node</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">add_node(node) <b class="conum">(1)</b>
+add_node(id) <b class="conum">(2)</b></code></pre>
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adds <code>node</code> to the graph. Will raise an error if that node object has been added to the graph before.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -266,12 +275,9 @@ footer {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_graph_add_nodeid"><code>graph.add_node(id)</code></h3>
-<div class="paragraph">
+</li>
+<li>
 <p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to <code>id</code>.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -294,9 +300,17 @@ footer {
 </tr>
 </tbody>
 </table>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_graph_add_nodeid_value"><code>graph.add_node(id, value)</code></h3>
+<h3 id="_add_node_2">add_node</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.add_node(id, value)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to their corresponding arguments.</p>
 </div>
@@ -332,7 +346,12 @@ footer {
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_remove_nodenode"><code>graph.remove_node(node)</code></h3>
+<h3 id="_remove_node">remove_node</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.remove_node(node)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Removes the specified node from the graph.</p>
 </div>
@@ -360,10 +379,17 @@ footer {
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_nodeid"><code>graph.node(id)</code></h3>
-<div class="paragraph">
-<p>Returns the <code>Node</code> object of the node with the specified <code>id</code>. Raises a <code>NodeDoesntExistError</code> if that node could not be found in the graph.</p>
+<h3 id="_node">node</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.node(id) <b class="conum">(1)</b>
+graph.node(node) <b class="conum">(2)</b></code></pre>
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Returns the <code>Node</code> object of the node with the specified <code>id</code>. Raises a <code>NodeDoesntExistError</code> if that node could not be found in the graph.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -386,12 +412,9 @@ footer {
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_graph_nodenode"><code>graph.node(node)</code></h3>
-<div class="paragraph">
+</li>
+<li>
 <p>Returns the <code>Node</code> object of the <code>Node</code> object given to it as long as that node is in the graph. Raises a <code>NodeDoesntExistError</code> if that node could not be found in the graph.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -414,9 +437,17 @@ footer {
 </tr>
 </tbody>
 </table>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_graph_nodes"><code>graph.nodes()</code></h3>
+<h3 id="_nodes">nodes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.nodes()</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Returns a list of all the nodes currently in the graph as <code>Node</code> objects.</p>
 </div>
@@ -832,7 +863,7 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_node"><code>Node</code></h2>
+<h2 id="_node_2"><code>Node</code></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_nodeid_valueid"><code>Node(id, value=id)</code></h3>
