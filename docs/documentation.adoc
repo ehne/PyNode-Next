@@ -626,11 +626,29 @@ CAUTION: If `weight` is initially set to `None`, there will be no label text. Ho
 | `directed` | `bool`
 |===
 
-=== `edge.source()`, `edge.target()`
-Returns the edge's source/target nodes.
+=== source
+[source, python]
+----
+edge.source()
+----
 
-=== `edge.set_weight(weight=None)`, `edge.weight()`
-Sets/Gets the weight of the edge.
+Returns the edge's source node.
+
+=== target
+[source, python]
+----
+edge.target()
+----
+
+Returns the edge's target node.
+
+=== set_weight
+[source, python]
+----
+edge.set_weight(weight=None)
+----
+
+Sets the weight of the edge.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -638,8 +656,22 @@ Sets/Gets the weight of the edge.
 | `weight` | `None`, `bool`, {t_generic_text}
 |===
 
-=== `edge.set_directed(directed=True)`, `edge.directed()`
-Sets/Gets whether the edge is directed.
+=== weight
+[source, python]
+----
+edge.weight()
+----
+
+Returns the weight of the edge.
+
+
+=== set_directed
+[source, python]
+----
+edge.set_directed(directed=True)
+----
+
+Sets whether the edge is directed.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -647,7 +679,22 @@ Sets/Gets whether the edge is directed.
 | `directed` | `bool`
 |===
 
-=== `edge.other_node(node)`
+=== directed
+[source, python]
+----
+edge.directed()
+----
+
+Returns whether the edge is directed or not.
+
+
+
+=== other_node
+[source, python]
+----
+edge.other_node(node)
+----
+
 Returns the node connected by the edge that isn't the node specified.
 
 [cols="a,a", width="100%", options="header"]
@@ -656,8 +703,14 @@ Returns the node connected by the edge that isn't the node specified.
 | `node` | {t_node_generic}
 |===
 
-=== `edge.set_attribute(name, value)`, `edge.attribute(name)`
-Sets/Gets custom attributes for the edge.
+
+=== set_attribute
+[source, python]
+----
+edge.set_attribute(name, value)
+----
+
+Sets custom attributes for the edge.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -666,8 +719,34 @@ Sets/Gets custom attributes for the edge.
 | `value` | {t_generic_text}
 |===
 
-=== `edge.set_priority(value)`, `edge.priority()`
-Sets/Gets the edge's priority value
+=== attribute
+[source, python]
+----
+edge.attribute(name)
+----
+
+Gets custom attributes for the edge.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `name` | {t_generic_text}
+|===
+
+=== set_priority
+[source, python]
+----
+edge.set_priority(value)
+----
+
+Sets the edge's priority value.
+
+=== priority
+[source, python]
+----
+edge.priority()
+----
+Gets the edge's priority value.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -675,8 +754,13 @@ Sets/Gets the edge's priority value
 | `value` | {t_generic_number}
 |===
 
-=== `edge.set_width(width=2)`, `edge.width()`
-Sets/Gets the edge's width/thickness.
+=== set_width
+[source, python]
+----
+edge.set_width(width=2)
+----
+
+Sets the edge's width/thickness.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -684,8 +768,21 @@ Sets/Gets the edge's width/thickness.
 | `width` | {t_generic_number}
 |===
 
-=== `edge.set_color(color=Color.LIGHT_GREY)`, `edge.color()`
-Sets/Gets the edge's color.
+=== width
+[source, python]
+----
+edge.width()
+----
+
+Gets the edge's width/thickness.
+
+=== set_color
+[source, python]
+----
+edge.set_color(color=Color.LIGHT_GREY)
+----
+
+Sets the edge's color.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -693,7 +790,20 @@ Sets/Gets the edge's color.
 | `color` | {t_color}
 |===
 
-=== `edge.set_weight_style(size=10, color=Color.GREY)`
+=== color
+[source, python]
+----
+edge.color()
+----
+
+Returns the edge's color.
+
+=== set_weight_style
+[source, python]
+----
+edge.set_weight_style(size=10, color=Color.GREY)
+----
+
 Sets the appearance of the edge's weight label.
 
 WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
@@ -705,7 +815,12 @@ WARNING: PyNode supported an argument `outline` to change the text outline's col
 | `color` | {t_color}
 |===
 
-=== `edge.highlight(color=edge.color(), width=edge.width()*2)`
+=== highlight
+[source, python]
+----
+edge.highlight(color=edge.color(), width=edge.width()*2)
+----
+
 Performs a highlight animation by temporarily changing the width and color of the edge.
 
 [cols="a,a", width="100%", options="header"]
@@ -715,7 +830,12 @@ Performs a highlight animation by temporarily changing the width and color of th
 | `width` | {t_generic_number}
 |===
 
-=== `edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)`
+=== traverse
+[source, python]
+----
+edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)
+----
+
 Performs a traversal animation on the edge, beginning at `initial_node`, using the specified color. If `keep_path` is set, the edge will remain colored.
 
 [cols="a,a", width="100%", options="header"]
@@ -728,7 +848,12 @@ Performs a traversal animation on the edge, beginning at `initial_node`, using t
 
 == Miscellaneous functions
 
-=== `Color(red, green, blue)`
+=== Color
+[source, python]
+----
+Color(red, green, blue)
+----
+
 Custom color for use in node and edge animations, using `0-255` integers for each argument.
 
 There are some predefined colours:
@@ -744,20 +869,34 @@ There are some predefined colours:
 * `Color.BLACK`
 * `Color.TRANSPARENT`
 
-=== `pause(time)`
+=== pause
+[source, python]
+----
+pause(time)
+----
+
 Delays the next visual event for the specified number of miliseconds.
 
 NOTE: This *does not* pause code execution.
 
-=== 🚧 `delay(func, time, args=[], repeat=False)`
+=== 🚧 delay 
+[source, python]
+----
+delay(func, time, args=[], repeat=False)
+----
 
-=== 🚧 `cancel_delay(delay_id)`
+=== 🚧 cancel_delay
+[source, python]
+----
+cancel_delay(delay_id)
+----
 
-=== 🚧 `register_click_listener(func)`
+=== 🚧 register_click_listener 
+[source, python]
+----
+register_click_listener(func)
+----
 
----
-
-Created by https://github.com/ehne[@ehne] in 2021. Based on PyNode by https://github.com/alexsocha[@alexsocha]
 
 
 ////
