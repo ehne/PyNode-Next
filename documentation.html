@@ -259,7 +259,7 @@ footer {
 .toc .sectlevel2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--mu);
+    gap: calc(0.5 * var(--mu));
     margin-left: 0
 }
 
@@ -393,26 +393,33 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/humanoi
 <li><a href="#_edge">Edge</a>
 <ul class="sectlevel2">
 <li><a href="#_init_2">__init__</a></li>
-<li><a href="#_edge_source_edge_target"><code>edge.source()</code>, <code>edge.target()</code></a></li>
-<li><a href="#_edge_set_weightweightnone_edge_weight"><code>edge.set_weight(weight=None)</code>, <code>edge.weight()</code></a></li>
-<li><a href="#_edge_set_directeddirectedtrue_edge_directed"><code>edge.set_directed(directed=True)</code>, <code>edge.directed()</code></a></li>
-<li><a href="#_edge_other_nodenode"><code>edge.other_node(node)</code></a></li>
-<li><a href="#_edge_set_attributename_value_edge_attributename"><code>edge.set_attribute(name, value)</code>, <code>edge.attribute(name)</code></a></li>
-<li><a href="#_edge_set_priorityvalue_edge_priority"><code>edge.set_priority(value)</code>, <code>edge.priority()</code></a></li>
-<li><a href="#_edge_set_widthwidth2_edge_width"><code>edge.set_width(width=2)</code>, <code>edge.width()</code></a></li>
-<li><a href="#_edge_set_colorcolorcolor_light_grey_edge_color"><code>edge.set_color(color=Color.LIGHT_GREY)</code>, <code>edge.color()</code></a></li>
-<li><a href="#_edge_set_weight_stylesize10_colorcolor_grey"><code>edge.set_weight_style(size=10, color=Color.GREY)</code></a></li>
-<li><a href="#_edge_highlightcoloredge_color_widthedge_width2"><code>edge.highlight(color=edge.color(), width=edge.width()*2)</code></a></li>
-<li><a href="#_edge_traverseinitial_nodeedge_source_colorcolor_red_keep_pathtrue"><code>edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)</code></a></li>
+<li><a href="#_source">source</a></li>
+<li><a href="#_target">target</a></li>
+<li><a href="#_set_weight">set_weight</a></li>
+<li><a href="#_weight">weight</a></li>
+<li><a href="#_set_directed_2">set_directed</a></li>
+<li><a href="#_directed">directed</a></li>
+<li><a href="#_other_node">other_node</a></li>
+<li><a href="#_set_attribute_2">set_attribute</a></li>
+<li><a href="#_attribute_2">attribute</a></li>
+<li><a href="#_set_priority_2">set_priority</a></li>
+<li><a href="#_priority_2">priority</a></li>
+<li><a href="#_set_width">set_width</a></li>
+<li><a href="#_width">width</a></li>
+<li><a href="#_set_color_2">set_color</a></li>
+<li><a href="#_color_2">color</a></li>
+<li><a href="#_set_weight_style">set_weight_style</a></li>
+<li><a href="#_highlight_2">highlight</a></li>
+<li><a href="#_traverse">traverse</a></li>
 </ul>
 </li>
 <li><a href="#_miscellaneous_functions">Miscellaneous functions</a>
 <ul class="sectlevel2">
-<li><a href="#_colorred_green_blue"><code>Color(red, green, blue)</code></a></li>
-<li><a href="#_pausetime"><code>pause(time)</code></a></li>
-<li><a href="#_delayfunc_time_args_repeatfalse">🚧 <code>delay(func, time, args=[], repeat=False)</code></a></li>
-<li><a href="#_cancel_delaydelay_id">🚧 <code>cancel_delay(delay_id)</code></a></li>
-<li><a href="#_register_click_listenerfunc">🚧 <code>register_click_listener(func)</code></a></li>
+<li><a href="#_color_3">Color</a></li>
+<li><a href="#_pause">pause</a></li>
+<li><a href="#_delay">🚧 delay</a></li>
+<li><a href="#_cancel_delay">🚧 cancel_delay</a></li>
+<li><a href="#_register_click_listener">🚧 register_click_listener</a></li>
 </ul>
 </li>
 </ul>
@@ -1882,15 +1889,36 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_source_edge_target"><code>edge.source()</code>, <code>edge.target()</code></h3>
+<h3 id="_source">source</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.source()</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Returns the edge&#8217;s source/target nodes.</p>
+<p>Returns the edge&#8217;s source node.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_weightweightnone_edge_weight"><code>edge.set_weight(weight=None)</code>, <code>edge.weight()</code></h3>
+<h3 id="_target">target</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.target()</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Sets/Gets the weight of the edge.</p>
+<p>Returns the edge&#8217;s target node.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_weight">set_weight</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_weight(weight=None)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sets the weight of the edge.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1916,9 +1944,25 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_directeddirectedtrue_edge_directed"><code>edge.set_directed(directed=True)</code>, <code>edge.directed()</code></h3>
+<h3 id="_weight">weight</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.weight()</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Sets/Gets whether the edge is directed.</p>
+<p>Returns the weight of the edge.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_directed_2">set_directed</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_directed(directed=True)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sets whether the edge is directed.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1944,7 +1988,23 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_other_nodenode"><code>edge.other_node(node)</code></h3>
+<h3 id="_directed">directed</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.directed()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns whether the edge is directed or not.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_node">other_node</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.other_node(node)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Returns the node connected by the edge that isn&#8217;t the node specified.</p>
 </div>
@@ -1972,9 +2032,14 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_attributename_value_edge_attributename"><code>edge.set_attribute(name, value)</code>, <code>edge.attribute(name)</code></h3>
+<h3 id="_set_attribute_2">set_attribute</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_attribute(name, value)</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Sets/Gets custom attributes for the edge.</p>
+<p>Sets custom attributes for the edge.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2008,9 +2073,58 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_priorityvalue_edge_priority"><code>edge.set_priority(value)</code>, <code>edge.priority()</code></h3>
+<h3 id="_attribute_2">attribute</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.attribute(name)</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Sets/Gets the edge&#8217;s priority value</p>
+<p>Gets custom attributes for the edge.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>name</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_set_priority_2">set_priority</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_priority(value)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sets the edge&#8217;s priority value.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_priority_2">priority</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.priority()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Gets the edge&#8217;s priority value.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2036,9 +2150,14 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_widthwidth2_edge_width"><code>edge.set_width(width=2)</code>, <code>edge.width()</code></h3>
+<h3 id="_set_width">set_width</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_width(width=2)</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Sets/Gets the edge&#8217;s width/thickness.</p>
+<p>Sets the edge&#8217;s width/thickness.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2064,9 +2183,25 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_colorcolorcolor_light_grey_edge_color"><code>edge.set_color(color=Color.LIGHT_GREY)</code>, <code>edge.color()</code></h3>
+<h3 id="_width">width</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.width()</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Sets/Gets the edge&#8217;s color.</p>
+<p>Gets the edge&#8217;s width/thickness.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_color_2">set_color</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_color(color=Color.LIGHT_GREY)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sets the edge&#8217;s color.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2092,7 +2227,23 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_set_weight_stylesize10_colorcolor_grey"><code>edge.set_weight_style(size=10, color=Color.GREY)</code></h3>
+<h3 id="_color_2">color</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.color()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns the edge&#8217;s color.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_weight_style">set_weight_style</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.set_weight_style(size=10, color=Color.GREY)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Sets the appearance of the edge&#8217;s weight label.</p>
 </div>
@@ -2140,7 +2291,12 @@ PyNode supported an argument <code>outline</code> to change the text outline&#82
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_highlightcoloredge_color_widthedge_width2"><code>edge.highlight(color=edge.color(), width=edge.width()*2)</code></h3>
+<h3 id="_highlight_2">highlight</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.highlight(color=edge.color(), width=edge.width()*2)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Performs a highlight animation by temporarily changing the width and color of the edge.</p>
 </div>
@@ -2176,7 +2332,12 @@ PyNode supported an argument <code>outline</code> to change the text outline&#82
 </table>
 </div>
 <div class="sect2">
-<h3 id="_edge_traverseinitial_nodeedge_source_colorcolor_red_keep_pathtrue"><code>edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)</code></h3>
+<h3 id="_traverse">traverse</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">edge.traverse(initial_node=edge.source(), color=Color.RED, keep_path=True)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Performs a traversal animation on the edge, beginning at <code>initial_node</code>, using the specified color. If <code>keep_path</code> is set, the edge will remain colored.</p>
 </div>
@@ -2225,7 +2386,12 @@ PyNode supported an argument <code>outline</code> to change the text outline&#82
 <h2 id="_miscellaneous_functions">Miscellaneous functions</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_colorred_green_blue"><code>Color(red, green, blue)</code></h3>
+<h3 id="_color_3">Color</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">Color(red, green, blue)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Custom color for use in node and edge animations, using <code>0-255</code> integers for each argument.</p>
 </div>
@@ -2268,7 +2434,12 @@ PyNode supported an argument <code>outline</code> to change the text outline&#82
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pausetime"><code>pause(time)</code></h3>
+<h3 id="_pause">pause</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">pause(time)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Delays the next visual event for the specified number of miliseconds.</p>
 </div>
@@ -2286,18 +2457,27 @@ This <strong>does not</strong> pause code execution.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_delayfunc_time_args_repeatfalse">🚧 <code>delay(func, time, args=[], repeat=False)</code></h3>
-
+<h3 id="_delay">🚧 delay</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">delay(func, time, args=[], repeat=False)</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_cancel_delaydelay_id">🚧 <code>cancel_delay(delay_id)</code></h3>
-
+<h3 id="_cancel_delay">🚧 cancel_delay</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">cancel_delay(delay_id)</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_register_click_listenerfunc">🚧 <code>register_click_listener(func)</code></h3>
-<hr>
-<div class="paragraph">
-<p>Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a></p>
+<h3 id="_register_click_listener">🚧 register_click_listener</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">register_click_listener(func)</code></pre>
+</div>
 </div>
 </div>
 </div>
