@@ -173,21 +173,19 @@ footer {
 <li><a href="#_remove_node">remove_node</a></li>
 <li><a href="#_node">node</a></li>
 <li><a href="#_nodes">nodes</a></li>
-<li><a href="#_graph_add_edgesource_target_weightnone_directedfalse"><code>graph.add_edge(source, target, weight=None, directed=False)</code></a></li>
-<li><a href="#_graph_add_edgeedge"><code>graph.add_edge(edge)</code></a></li>
-<li><a href="#_graph_remove_edgenodea_nodeb_directedfalse"><code>graph.remove_edge(nodeA, nodeB, directed=False)</code></a></li>
-<li><a href="#_graph_remove_edgeedge"><code>graph.remove_edge(edge)</code></a></li>
-<li><a href="#_graph_has_nodenode"><code>graph.has_node(node)</code></a></li>
-<li><a href="#_graph_has_edgeedge"><code>graph.has_edge(edge)</code></a></li>
-<li><a href="#_graph_add_allelements"><code>graph.add_all(elements)</code></a></li>
-<li><a href="#_graph_remove_allelements"><code>graph.remove_all(elements)</code></a></li>
-<li><a href="#_graph_adjacentnodea_nodeb_directedfalse"><code>graph.adjacent(nodeA, nodeB, directed=False)</code></a></li>
-<li><a href="#_graph_clear"><code>graph.clear()</code></a></li>
-<li><a href="#_graph_set_directeddirectedtrue"><code>graph.set_directed(directed=True)</code></a></li>
-<li><a href="#_graph_order"><code>graph.order()</code></a></li>
-<li><a href="#_graph_size"><code>graph.size()</code></a></li>
-<li><a href="#_graph_adjacency_matrix"><code>graph.adjacency_matrix()</code></a></li>
-<li><a href="#_graph_randomorder_size"><code>graph.random(order, size)</code></a></li>
+<li><a href="#_add_edge">add_edge</a></li>
+<li><a href="#_remove_edge">remove_edge</a></li>
+<li><a href="#_has_node">has_node</a></li>
+<li><a href="#_has_edge">has_edge</a></li>
+<li><a href="#_add_all">add_all</a></li>
+<li><a href="#_remove_all">remove_all</a></li>
+<li><a href="#_adjacent">adjacent</a></li>
+<li><a href="#_clear">clear</a></li>
+<li><a href="#_set_directed">set_directed</a></li>
+<li><a href="#_order">order</a></li>
+<li><a href="#_size">size</a></li>
+<li><a href="#_adjacency_matrix">adjacency_matrix</a></li>
+<li><a href="#_random">random</a></li>
 </ul>
 </li>
 <li><a href="#_node_2"><code>Node</code></a>
@@ -245,8 +243,8 @@ footer {
 <h3 id="_add_node">add_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">add_node(node) <b class="conum">(1)</b>
-add_node(id) <b class="conum">(2)</b></code></pre>
+<pre class="highlight"><code class="language-python" data-lang="python">graph.add_node(node) # <b class="conum">(1)</b>
+graph.add_node(id) # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -382,8 +380,8 @@ add_node(id) <b class="conum">(2)</b></code></pre>
 <h3 id="_node">node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-python" data-lang="python">graph.node(id) <b class="conum">(1)</b>
-graph.node(node) <b class="conum">(2)</b></code></pre>
+<pre class="highlight"><code class="language-python" data-lang="python">graph.node(id) # <b class="conum">(1)</b>
+graph.node(node) # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -453,10 +451,17 @@ graph.node(node) <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_graph_add_edgesource_target_weightnone_directedfalse"><code>graph.add_edge(source, target, weight=None, directed=False)</code></h3>
-<div class="paragraph">
-<p>Adds an edge between the <code>source</code> and <code>target</code> nodes. To make the edge directed, set <code>directed</code> to <code>True</code>. <code>weight</code> sets the label of the edge.</p>
+<h3 id="_add_edge">add_edge</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.add_edge(source, target, weight=None, directed=False) # <b class="conum">(1)</b>
+graph.add_edge(edge) # <b class="conum">(2)</b></code></pre>
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adds an edge between the <code>source</code> and <code>target</code> nodes. To make the edge directed, set <code>directed</code> to <code>True</code>. <code>weight</code> sets the label of the edge.</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -515,12 +520,9 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_graph_add_edgeedge"><code>graph.add_edge(edge)</code></h3>
-<div class="paragraph">
+</li>
+<li>
 <p>Adds the <code>Edge</code> object specified to the graph.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -543,12 +545,22 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </tr>
 </tbody>
 </table>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_graph_remove_edgenodea_nodeb_directedfalse"><code>graph.remove_edge(nodeA, nodeB, directed=False)</code></h3>
-<div class="paragraph">
-<p>Removes the edge(s) between <code>nodeA</code> and <code>nodeB</code> from the graph. If <code>directed</code> is set, only edges starting at <code>nodeA</code> will be removed.</p>
+<h3 id="_remove_edge">remove_edge</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.remove_edge(nodeA, nodeB, directed=False) # <b class="conum">(1)</b>
+graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removes the edge(s) between <code>nodeA</code> and <code>nodeB</code> from the graph. If <code>directed</code> is set, only edges starting at <code>nodeA</code> will be removed.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -587,11 +599,11 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_graph_remove_edgeedge"><code>graph.remove_edge(edge)</code></h3>
-<div class="paragraph">
+</li>
+<li>
 <p>Removes the <code>Edge</code> object specified from the graph.</p>
+</li>
+</ol>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -617,7 +629,12 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_has_nodenode"><code>graph.has_node(node)</code></h3>
+<h3 id="_has_node">has_node</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.has_node(node)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Checks if a given <code>node</code> exists in the graph.</p>
 </div>
@@ -645,7 +662,12 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_has_edgeedge"><code>graph.has_edge(edge)</code></h3>
+<h3 id="_has_edge">has_edge</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.has_edge(edge)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Checks if a given <code>edge</code> exists in the graph.</p>
 </div>
@@ -673,7 +695,12 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_add_allelements"><code>graph.add_all(elements)</code></h3>
+<h3 id="_add_all">add_all</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.add_all(elements)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Adds all <code>Node</code> and/or <code>Edge</code> objects in a list to the graph.</p>
 </div>
@@ -701,7 +728,12 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_remove_allelements"><code>graph.remove_all(elements)</code></h3>
+<h3 id="_remove_all">remove_all</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.remove_all(elements)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Removes all <code>Node</code> and/or <code>Edge</code> objects in a list from the graph.</p>
 </div>
@@ -729,7 +761,12 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_adjacentnodea_nodeb_directedfalse"><code>graph.adjacent(nodeA, nodeB, directed=False)</code></h3>
+<h3 id="_adjacent">adjacent</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.adjacent(nodeA, nodeB, directed=False)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Checks if <code>nodeA</code> and <code>nodeB</code> are adjacent. If <code>directed</code> is set, then the edge must start from <code>nodeA</code>.</p>
 </div>
@@ -773,13 +810,23 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_clear"><code>graph.clear()</code></h3>
+<h3 id="_clear">clear</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.clear()</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Completely resets the graph by removing all edges and nodes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_graph_set_directeddirectedtrue"><code>graph.set_directed(directed=True)</code></h3>
+<h3 id="_set_directed">set_directed</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.set_directed(directed=True)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Sets whether the edges in the graph are directed or not.</p>
 </div>
@@ -807,25 +854,45 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </table>
 </div>
 <div class="sect2">
-<h3 id="_graph_order"><code>graph.order()</code></h3>
+<h3 id="_order">order</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.order()</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Returns the order of the graph. That is, it returns the number of nodes in the graph.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_graph_size"><code>graph.size()</code></h3>
+<h3 id="_size">size</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.size()</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Returns the size of the graph. That is, it returns the number of edges in the graph.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_graph_adjacency_matrix"><code>graph.adjacency_matrix()</code></h3>
+<h3 id="_adjacency_matrix">adjacency_matrix</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.adjacency_matrix()</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Returns the adjacency matrix of the graph as a dictionary.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_graph_randomorder_size"><code>graph.random(order, size)</code></h3>
+<h3 id="_random">random</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">graph.random(order, size)</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Returns a list of random <code>Node</code> and <code>Edge</code> elements that makes a graph with the order and size specified. The graph may or may not be fully connected.</p>
 </div>
