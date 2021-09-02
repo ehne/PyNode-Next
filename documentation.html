@@ -145,6 +145,221 @@ footer {
     margin-bottom: calc(var(--mu) * 5);
 }
 </style>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 </head>
 <body class="article">
 <nav class="nav">
@@ -243,8 +458,8 @@ footer {
 <h3 id="_add_node">add_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.add_node(node) # <b class="conum">(1)</b>
-graph.add_node(id) # <b class="conum">(2)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> # <b class="conum">(1)</b>
+<span class="n">graph</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -306,7 +521,7 @@ graph.add_node(id) # <b class="conum">(2)</b></code></pre>
 <h3 id="_add_node_2">add_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.add_node(id, value)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -347,7 +562,7 @@ graph.add_node(id) # <b class="conum">(2)</b></code></pre>
 <h3 id="_remove_node">remove_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.remove_node(node)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -380,8 +595,8 @@ graph.add_node(id) # <b class="conum">(2)</b></code></pre>
 <h3 id="_node">node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.node(id) # <b class="conum">(1)</b>
-graph.node(node) # <b class="conum">(2)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> # <b class="conum">(1)</b>
+<span class="n">graph</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -443,7 +658,7 @@ graph.node(node) # <b class="conum">(2)</b></code></pre>
 <h3 id="_nodes">nodes</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.nodes()</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">nodes</span><span class="p">()</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -454,8 +669,8 @@ graph.node(node) # <b class="conum">(2)</b></code></pre>
 <h3 id="_add_edge">add_edge</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.add_edge(source, target, weight=None, directed=False) # <b class="conum">(1)</b>
-graph.add_edge(edge) # <b class="conum">(2)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> # <b class="conum">(1)</b>
+<span class="n">graph</span><span class="p">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -553,8 +768,8 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 <h3 id="_remove_edge">remove_edge</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.remove_edge(nodeA, nodeB, directed=False) # <b class="conum">(1)</b>
-graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">nodeA</span><span class="p">,</span> <span class="n">nodeB</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> # <b class="conum">(1)</b>
+<span class="n">graph</span><span class="p">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span> # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -632,7 +847,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_has_node">has_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.has_node(node)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">has_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -665,7 +880,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_has_edge">has_edge</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.has_edge(edge)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -698,7 +913,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_add_all">add_all</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.add_all(elements)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">add_all</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -731,7 +946,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_remove_all">remove_all</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.remove_all(elements)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">remove_all</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -764,7 +979,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_adjacent">adjacent</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.adjacent(nodeA, nodeB, directed=False)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">adjacent</span><span class="p">(</span><span class="n">nodeA</span><span class="p">,</span> <span class="n">nodeB</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -813,7 +1028,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_clear">clear</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.clear()</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -824,7 +1039,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_set_directed">set_directed</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.set_directed(directed=True)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">set_directed</span><span class="p">(</span><span class="n">directed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -857,7 +1072,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_order">order</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.order()</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">order</span><span class="p">()</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -868,7 +1083,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_size">size</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.size()</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">size</span><span class="p">()</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -879,7 +1094,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_adjacency_matrix">adjacency_matrix</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.adjacency_matrix()</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">adjacency_matrix</span><span class="p">()</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -890,7 +1105,7 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_random">random</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">graph.random(order, size)</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">graph</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
