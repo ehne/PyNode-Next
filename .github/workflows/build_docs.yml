@@ -36,7 +36,7 @@ jobs:
       - name: move documentation.adoc back into the docs folder
         run: mv documentation.adoc docs
         
-      - run: cd docs && asciidoctor documentation.adoc
+      - run: cd docs && gem install rouge && asciidoctor documentation.adoc
       
       - name: save documentation.html artifact
         uses: actions/upload-artifact@v2.2.4
