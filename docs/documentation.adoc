@@ -455,7 +455,7 @@ node.priority()
 Gets the node's priority value.
 
 
-=== 🚧 set_position ``, `node.position()`
+=== 🚧 set_position
 [source, python]
 ----
 node.set_position()
