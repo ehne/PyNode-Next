@@ -3,7 +3,6 @@
 :toc: macro
 :docinfo: shared-header,shared-footer
 :last-update-label!:
-:source-highlighter: rouge
 
 :t_generic_text: pass:[<code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code>] 
 :t_generic_number: pass:[<code class="literal">int</code> or <code class="literal">float</code>] 
