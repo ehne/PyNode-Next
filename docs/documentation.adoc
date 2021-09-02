@@ -1,6 +1,6 @@
 = Documentation
 :stylesheet: reference_styles.css
-:toc: left
+:toc: macro
 :docinfo: shared-header,shared-footer
 :last-update-label!:
 
@@ -13,28 +13,39 @@
 :t_edge: pass:[<code class="literal">Edge</code>]
 :t_color: pass:[<code class="literal">Color</code>]
 
+toc::[]
 
-== `graph`
+== graph
 
-=== `graph.add_node(node)`
-Adds `node` to the graph. Will raise an error if that node object has been added to the graph before.
+=== add_node
+[source, python]
+----
+add_node(node) <.>
+add_node(id) <.>
+----
 
+. Adds `node` to the graph. Will raise an error if that node object has been added to the graph before.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `node` | {t_node}
 |===
 
-=== `graph.add_node(id)`
-Adds a node to the graph with the `id` and `value` set to `id`.
-
+. Adds a node to the graph with the `id` and `value` set to `id`.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `id` | {t_generic_text}
 |===
 
-=== `graph.add_node(id, value)`
+=== add_node
+[source, python]
+----
+graph.add_node(id, value)
+----
+
 Adds a node to the graph with the `id` and `value` set to their corresponding arguments.
 
 [cols="a,a", width="100%", options="header"]
@@ -44,7 +55,12 @@ Adds a node to the graph with the `id` and `value` set to their corresponding ar
 | `value` | {t_generic_text}
 |===
 
-=== `graph.remove_node(node)`
+=== remove_node
+[source, python]
+----
+graph.remove_node(node)
+----
+
 Removes the specified node from the graph.
 
 [cols="a,a", width="100%", options="header"]
@@ -53,25 +69,35 @@ Removes the specified node from the graph.
 | `node` | {t_node_generic}
 |===
 
-=== `graph.node(id)`
-Returns the `Node` object of the node with the specified `id`. Raises a `NodeDoesntExistError` if that node could not be found in the graph.
+=== node
+[source, python]
+----
+graph.node(id) <.>
+graph.node(node) <.>
+----
 
+. Returns the `Node` object of the node with the specified `id`. Raises a `NodeDoesntExistError` if that node could not be found in the graph.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `id` | {t_generic_text}
 |===
 
-=== `graph.node(node)`
-Returns the `Node` object of the `Node` object given to it as long as that node is in the graph. Raises a `NodeDoesntExistError` if that node could not be found in the graph.
-
+. Returns the `Node` object of the `Node` object given to it as long as that node is in the graph. Raises a `NodeDoesntExistError` if that node could not be found in the graph.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `node` | {t_node}
 |===
 
-=== `graph.nodes()`
+=== nodes
+[source, python]
+----
+graph.nodes()
+----
+
 Returns a list of all the nodes currently in the graph as `Node` objects.
 
 === `graph.add_edge(source, target, weight=None, directed=False)`
