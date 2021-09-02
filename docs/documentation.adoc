@@ -146,7 +146,7 @@ graph.remove_edge(edge) # <.>
 |===
 
 . Removes the `Edge` object specified from the graph.
-
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -287,9 +287,14 @@ Returns a list of random `Node` and `Edge` elements that makes a graph with the 
 |===
 
 
-== `Node`
+== Node
 
-=== `Node(id, value=id)`
+=== \\__init__
+[source, python]
+----
+Node(id, value=id)
+----
+
 Creates a node with the specified `id` and `value`. If `value` is left blank, it defaults to the node's `id`.
 
 [cols="a,a", width="100%", options="header"]
@@ -299,11 +304,21 @@ Creates a node with the specified `id` and `value`. If `value` is left blank, it
 | `value` | {t_generic_text}
 |===
 
-=== `node.id()`
+=== id
+[source, python]
+----
+node.id()
+----
+
 Returns the id of the node.
 
-=== `node.set_value(value)`, `node.value()`
-Sets/Gets the value of the node.
+=== set_value
+[source, python]
+----
+node.set_value(value)
+----
+
+Sets the value of the node.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -311,17 +326,89 @@ Sets/Gets the value of the node.
 | `value` | {t_generic_text}
 |===
 
-=== `node.incident_edges()`, `node.incoming_edges()`, `node.outgoing_edges()`
-Returns a list of the node's incident/incoming/outgoing edges.
+=== value
+[source, python]
+----
+node.value()
+----
 
-=== `node.adjacent_nodes()`, `node.predecessor_nodes()`, `node.successor_nodes()`
-Returns a list of the node's adjacent/predecessor/successor nodes.
+Gets the value of the node.
 
-=== `node.degree()`, `node.indegree()`, `node.outdegree()`
-Returns the node's degree/indegree/outdegree.
+=== incident_edges
+[source, python]
+----
+node.incident_edges()
+----
 
-=== `node.set_attribute(name, value)`, `node.attribute(name)`
-Sets/Gets custom attributes for the node.
+Returns a list of the node's incident edges.
+
+=== incoming_edges
+[source, python]
+----
+node.incoming_edges()
+----
+Returns a list of the node's incoming edges.
+
+=== outgoing_edges
+[source, python]
+----
+node.outgoing_edges()
+----
+
+Returns a list of the node's outgoing edges.
+
+=== adjacent_nodes
+[source, python]
+----
+node.adjacent_nodes()
+----
+
+Returns a list of the node's adjacent nodes.
+
+=== predecessor_nodes
+[source, python]
+----
+node.predecessor_nodes()
+----
+Returns a list of the node's predecessor nodes.
+
+=== successor_nodes
+[source, python]
+----
+node.successor_nodes()
+----
+
+Returns a list of the node's successor nodes.
+
+=== degree
+[source, python]
+----
+node.degree()
+----
+Returns the node's degree.
+
+=== indegree
+[source, python]
+----
+node.indegree()
+----
+Returns the node's indegree.
+
+=== outdegree
+[source, python]
+----
+node.outdegree()
+----
+Returns the node's outdegree.
+
+
+=== set_attribute
+[source, python]
+----
+node.set_attribute(name, value)
+----
+
+Sets custom attributes for the node.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -330,8 +417,28 @@ Sets/Gets custom attributes for the node.
 | `value` | {t_generic_text}
 |===
 
-=== `node.set_priority(value)`, `node.priority()`
-Sets/Gets the node's priority value.
+=== attribute
+[source, python]
+----
+node.attribute(name)
+----
+
+Gets custom attributes for the node.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `name` | {t_generic_text}
+|===
+
+
+=== set_priority
+[source, python]
+----
+node.set_priority(value)
+----
+
+Sets the node's priority value.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -339,17 +446,48 @@ Sets/Gets the node's priority value.
 | `value` | {t_generic_number}
 |===
 
-=== 🚧 `node.set_position()`, `node.position()`
+=== priority
+[source, python]
+----
+node.priority()
+----
+
+Gets the node's priority value.
+
+
+=== 🚧 set_position ``, `node.position()`
+[source, python]
+----
+node.set_position()
+----
 
 [IMPORTANT]
 ====
-`node.set_position()` and `node.position()` have not been implemented in PyNode Next as yet.
+`node.set_position()` has not been implemented in PyNode Next as yet.
 
 Have a look at the https://github.com/ehne/PyNode-Next/issues/2[GitHub issue] for more information. (Issue #2)
 ====
 
-=== `node.set_label(value, label_id=0)`, `node.label(label_id)`
-Sets/Gets additional labels for the node. The labels do not override the node's value, but instead are placed next to the node.
+=== 🚧 position
+[source, python]
+----
+node.position()
+----
+
+[IMPORTANT]
+====
+`node.position()` has not been implemented in PyNode Next as yet.
+
+Have a look at the https://github.com/ehne/PyNode-Next/issues/2[GitHub issue] for more information. (Issue #2)
+====
+
+=== set_label
+[source, python]
+----
+node.set_label(value, label_id=0)
+----
+
+Sets additional labels for the node. The labels do not override the node's value, but instead are placed next to the node.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -358,8 +496,27 @@ Sets/Gets additional labels for the node. The labels do not override the node's 
 | `label_id` | One of either `0` or `1`. (Use `0` for the top-right label and `1` for the top-left label)
 |===
 
-=== `node.set_size(size=12)`, `node.size()`
-Sets/Gets the radius of the node.
+=== label
+[source, python]
+----
+node.label(label_id)
+----
+
+Gets additional labels for the node. The labels do not override the node's value, but instead are placed next to the node.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `label_id` | One of either `0` or `1`. (Use `0` for the top-right label and `1` for the top-left label)
+|===
+
+=== set_size
+[source, python]
+----
+node.set_size(size=12)
+----
+
+Sets the radius of the node.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -367,8 +524,20 @@ Sets/Gets the radius of the node.
 | `size` | {t_generic_number}
 |===
 
-=== `node.set_color(color=Color.DARK_GREY)`, `node.color()`
-Sets/Gets the node's color.
+=== size
+[source, python]
+----
+node.size()
+----
+
+Gets the radius of the node.
+
+=== set_color
+[source, python]
+----
+node.set_color(color=Color.DARK_GREY)
+----
+Sets the node's color.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -376,7 +545,20 @@ Sets/Gets the node's color.
 | `color` | {t_color}
 |===
 
-=== `node.set_value_style(size=13, color=Color.WHITE)`
+=== color
+[source, python]
+----
+node.color()
+----
+Gets the node's color.
+
+
+=== set_value_style
+[source, python]
+----
+node.set_value_style(size=13, color=Color.WHITE)
+----
+
 Sets the appearance of the node's value text.
 
 WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
@@ -388,7 +570,12 @@ WARNING: PyNode supported an argument `outline` to change the text outline's col
 | `color` | {t_color}
 |===
 
-=== `node.set_label_style(size=10, color=Color.GREY, label_id=0)`
+=== set_label_style 
+[source, python]
+----
+node.set_label_style(size=10, color=Color.GREY, label_id=0)
+----
+
 Sets the appearance of the node's label text.
 
 WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
@@ -403,7 +590,12 @@ CAUTION: Always use the keyword argument to choose the `label_id`. This is becau
 | `label_id` | One of either `0` or `1`. (Use `0` for the top-right label and `1` for the top-left label)
 |===
 
-=== `node.highlight(color=Color.RED, size=node.size()*1.5)`
+=== highlight 
+[source, python]
+----
+node.highlight(color=Color.RED, size=node.size()*1.5)
+----
+
 Plays a highlight animation where the node's color changes to that specified.
 
 [cols="a,a", width="100%", options="header"]
@@ -413,9 +605,14 @@ Plays a highlight animation where the node's color changes to that specified.
 | `size` | {t_generic_number}
 |===
 
-== `Edge`
+== Edge
 
-=== `Edge(source, target, weight=None, directed=False)`
+=== \\__init__
+[source, python]
+----
+Edge(source, target, weight=None, directed=False)
+----
+
 Creates an edge between the `source` and `target` nodes. If `weight` is set, the edge will display it as a label. If `directed` is set, the edge will be directed, starting at the `source` node.
 
 CAUTION: If `weight` is initially set to `None`, there will be no label text. However, if you later use `edge.set_weight()` to change it to `None`, then it will display "None" as a label.
