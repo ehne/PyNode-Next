@@ -250,7 +250,7 @@ footer {
 .toc .sectlevel2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--mu);
+    gap: calc(0.5 * var(--mu));
     margin-left: 0
 }
 
