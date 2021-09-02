@@ -1,6 +1,8 @@
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 @import url(https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@200;700&display=swap);
-@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css);
+@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css); 
+
 /* Default asciidoc style framework - important */
 /* CUSTOMISATIONS */
 /* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
@@ -27,12 +29,57 @@
 
      --mu: 8px
 }
-/* Text styles */
-body{
-    font-family: var(--font-body);
+
+html,body {
+    height: 100%;
+    width: 100%;
+    font-size: calc(2.2 * var(--mu));
     background-color: var(--bg);
     color: var(--fg);
+    line-height: 1.3;
+    position:relative;
+    font-family: var(--font-body);
+    -moz-osx-font-smoothing: never;
 }
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--fg)
+}
+
+code {
+    font-family: var(--font-mono);
+}
+.grid {
+    display:grid;
+    grid-template-columns:1fr minmax(80vw, 100%) 1fr;
+    align-items:start;
+    column-gap:min(5vw, calc(8 * var(--mu)))
+}
+.grid>.grid {
+    grid-column:1 / -1
+}
+.grid>*:not([class*="grid"]) {
+    grid-column:2
+}
+@media (min-width: 40em) {
+    .grid {
+        grid-template-columns:1fr repeat(12, minmax(calc(4 * var(--mu)), 100%)) 1fr;
+        column-gap:min(3vw, calc(10 * var(--mu)))
+    }
+    .grid>*:not([class*="grid"]) {
+        grid-column:4 / span 8
+    }
+}
+@media (min-width: 90em) {
+    .grid {
+        grid-template-columns:1fr repeat(12, calc(14 * var(--mu))) 1fr;
+        column-gap: calc(8 * var(--mu))
+    }
+}
+
+
 
 .nav {
     background-color: var(--fg);
@@ -43,7 +90,7 @@ body{
     color: var(--bg);
     border-bottom: 4px solid var(--mfg);
 }
-.nav img {
+.nav > a > img {
     height: 3em
 }
 .nav > .items {
@@ -53,20 +100,6 @@ body{
     flex-grow: 1;
 }
 
-h1{
-    color: var(--fg) !important;
-    font-family: var(--font-heading);
-    font-weight: 800;
-}
-h2,h3,h4,h5,h6{
-    color: var(--mfg) !important;
-    font-family: var(--font-heading);
-}
-.title{
-    color:var(--fg) !important;
-    font-family:var(--font-heading);
-}
-
 a, a:visited {
     color: currentColor;
 }
@@ -74,64 +107,193 @@ a:hover {
     opacity: 80%;
 }
 
-
-p{
-    font-family: var(--font-body) ! important
+main, #content {
+    padding-bottom: 5em;
 }
-#toc.toc2 a:link{
-    color:
+code {
+    font-size: 0.9em;
 }
-blockquote{
-    color:var(--secondarycolor) !important
-}
-.quoteblock{
-    color:var(--black)
-}
-.quoteblock blockquote:before{
-    color:var(--black)
-}
-code{
-    color:var(--fg);
-    background: transparent !important;
-    padding: 0px !important;
+.lead-in > .slogan {
+    font-size: calc(4 * var(--mu));
     line-height: 1.3;
+    margin: 1.25em 0 1em 0;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-align: center;
+    grid-column-start: 2;
 }
-mark{
-    background-color: var(--tertiarycolor)
-}
-/* Text highlighting color */
-/* Table styles */
-th{
-    background-color: var(--maincolor);
-    color:var(--black) !important;
-}
-td{
-    background-color: var(--maincolor);
-    color: var(--black) !important
-}
-#toc.toc2{
-    background-color:var(--sidebarbackground);
-}
-#toctitle{
-    color:var(--white);
-}
-/* Responsiveness fixes */
-video {
-    max-width: 100%;
-}
-@media all and (max-width: 600px) {
-    table {
-        width: 55vw!important;
-        font-size: 3vw;
+@media (min-width: 40em) {
+    .lead-in > .slogan {
+        font-size: calc(7 * var(--mu));
+        grid-column-start: 3;
+        grid-column-end: span 10;
     }
 }
-#footer {
-    display: none;
+
+.lead-in-example {
+    display: block;
+    
+    grid-column-start: 2;
+    
+    width: 100%;
+    justify-content: space-between;
 }
+.example-box {
+    border: 2px solid var(--fg);
+    width: 100%;
+    
+    align-self: stretch;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 100%;
+    background-color: #f8f8f2;
+    position: relative;
+}
+
+@media (min-width: 40em) {
+    .lead-in-example {
+        grid-column-end: span 12;
+        display: flex;
+    }
+    .example-box {
+        width: 48%;
+    }
+    .example-box.-arrow::before {
+    content: "";
+    position: absolute;
+    display: block;
+    background: url('./assets/arrow.svg') no-repeat center;
+    background-size: 100%;
+    z-index: 1;
+
+    width: 3.5em;
+    height: 3.5em;
+    top: 30%;
+    right: -3.25em;
+    transform: rotate(10deg);
+}
+}
+
+.example-box > .example-code {
+    padding: calc(2 * var(--mu)) var(--mu)
+}
+.example-box > .heading {
+    font-weight: bold;
+    background-color: var(--fg);
+    color: var(--bg);
+    text-align: center;
+    padding: calc(2 *  var(--mu));
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-viz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+.loading-spinner  {
+    width: calc(var(--mu) * 6);
+    height: calc(var(--mu) * 6);
+    border: var(--mu) solid var(--mbg);
+    border-bottom-color: var(--mg);
+    border-radius: 50%;
+    animation: yOS_rotation 1s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
+    
+}
+@keyframes yOS_rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+.summary {
+    padding: calc(4 * var(--mu)) 0;
+    line-height: 1.6;
+    text-align: center;
+}
+
 footer {
     padding: calc(var(--mu) * 2);
     font-size: calc(var(--mu) * 2);
     opacity: 0.7;
     text-align: center;
     margin-bottom: calc(var(--mu) * 5);
+}
+
+.conum {
+    font-weight: 500;
+    color: #c0c0bd
+}
+
+#toctitle {
+    display: none;
+}
+
+
+#toc a {
+    color: var(--fg);
+    font-family: var(--font-body) !important;
+}
+
+#toc a:hover {
+    color: var(--fg);
+    opacity: 80%;
+    text-decoration: underline;
+}
+
+.toc .sectlevel2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--mu);
+    margin-left: 0
+}
+
+@media (min-width: 40em) {
+    .toc .sectlevel2 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.toc .sectlevel1 > li {
+    margin-bottom: calc(4 * var(--mu));
+    display: block;
+}
+
+.toc .sectlevel1 > li > a {
+    margin-bottom: var(--mu);
+    display: block;
+    font-weight: bold;
+}
+
+.toc .sectlevel1 > li > a::before {
+    content: "";
+    background-image: url("https://ehne.github.io/PyNode-Next/assets/typedocicons.png");
+    background-size: 238px 204px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+    margin: 0 3px 2px 0;
+    background-position: 0px -34px;
+}
+.toc .sectlevel1 li:not(:last-child) .sectlevel2 > li > a::before {
+    content: "";
+    background-image: url("https://ehne.github.io/PyNode-Next/assets/typedocicons.png");
+    background-size: 238px 204px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+    margin: 0 3px 2px 0;
+    background-position: -51px -68px;
+}
+
+a[href="#_graph"]::before {
+    background-position: 0px -17px !important;
 }
