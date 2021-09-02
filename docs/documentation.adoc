@@ -20,8 +20,8 @@ toc::[]
 === add_node
 [source, python]
 ----
-add_node(node) <.>
-add_node(id) <.>
+graph.add_node(node) # <.>
+graph.add_node(id) # <.>
 ----
 
 . Adds `node` to the graph. Will raise an error if that node object has been added to the graph before.
@@ -72,8 +72,8 @@ Removes the specified node from the graph.
 === node
 [source, python]
 ----
-graph.node(id) <.>
-graph.node(node) <.>
+graph.node(id) # <.>
+graph.node(node) # <.>
 ----
 
 . Returns the `Node` object of the node with the specified `id`. Raises a `NodeDoesntExistError` if that node could not be found in the graph.
@@ -100,11 +100,17 @@ graph.nodes()
 
 Returns a list of all the nodes currently in the graph as `Node` objects.
 
-=== `graph.add_edge(source, target, weight=None, directed=False)`
-Adds an edge between the `source` and `target` nodes. To make the edge directed, set `directed` to `True`. `weight` sets the label of the edge.
+=== add_edge
+[source, python]
+----
+graph.add_edge(source, target, weight=None, directed=False) # <.>
+graph.add_edge(edge) # <.>
+----
 
+. Adds an edge between the `source` and `target` nodes. To make the edge directed, set `directed` to `True`. `weight` sets the label of the edge.
++
 WARNING: This is one of the methods that is a little annoying with keyword arguments. If you are going to set `directed`, you need to make sure that you *also* set `weight`. Otherwise, the overloader will raise an error.
-
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -114,18 +120,23 @@ WARNING: This is one of the methods that is a little annoying with keyword argum
 | `directed` | `bool`
 |===
 
-=== `graph.add_edge(edge)`
-Adds the `Edge` object specified to the graph.
-
+. Adds the `Edge` object specified to the graph.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `edge` | `Edge`
 |===
 
-=== `graph.remove_edge(nodeA, nodeB, directed=False)`
-Removes the edge(s) between `nodeA` and `nodeB` from the graph. If `directed` is set, only edges starting at `nodeA` will be removed.
+=== remove_edge
+[source, python]
+----
+graph.remove_edge(nodeA, nodeB, directed=False) # <.>
+graph.remove_edge(edge) # <.>
+----
 
+. Removes the edge(s) between `nodeA` and `nodeB` from the graph. If `directed` is set, only edges starting at `nodeA` will be removed.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -134,8 +145,7 @@ Removes the edge(s) between `nodeA` and `nodeB` from the graph. If `directed` is
 | `directed` | `bool`
 |===
 
-=== `graph.remove_edge(edge)`
-Removes the `Edge` object specified from the graph.
+. Removes the `Edge` object specified from the graph.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -143,7 +153,12 @@ Removes the `Edge` object specified from the graph.
 | `edge` | `Edge`
 |===
 
-=== `graph.has_node(node)`
+=== has_node
+[source, python]
+----
+graph.has_node(node)
+----
+
 Checks if a given `node` exists in the graph.
 
 [cols="a,a", width="100%", options="header"]
@@ -152,7 +167,12 @@ Checks if a given `node` exists in the graph.
 | `node` | {t_node_generic}
 |===
 
-=== `graph.has_edge(edge)`
+=== has_edge
+[source, python]
+----
+graph.has_edge(edge)
+----
+
 Checks if a given `edge` exists in the graph.
 
 [cols="a,a", width="100%", options="header"]
@@ -161,7 +181,12 @@ Checks if a given `edge` exists in the graph.
 | `edge` | `Edge`
 |===
 
-=== `graph.add_all(elements)`
+=== add_all
+[source, python]
+----
+graph.add_all(elements)
+----
+
 Adds all `Node` and/or `Edge` objects in a list to the graph.
 
 [cols="a,a", width="100%", options="header"]
@@ -170,7 +195,12 @@ Adds all `Node` and/or `Edge` objects in a list to the graph.
 | `elements` | A list (iterable) containing `Node` and/or `Edge` objects.
 |===
 
-=== `graph.remove_all(elements)`
+=== remove_all
+[source, python]
+----
+graph.remove_all(elements)
+----
+
 Removes all `Node` and/or `Edge` objects in a list from the graph.
 
 [cols="a,a", width="100%", options="header"]
@@ -179,7 +209,12 @@ Removes all `Node` and/or `Edge` objects in a list from the graph.
 | `elements` | A list (iterable) containing `Node` and/or `Edge` objects.
 |===
 
-=== `graph.adjacent(nodeA, nodeB, directed=False)`
+=== adjacent
+[source, python]
+----
+graph.adjacent(nodeA, nodeB, directed=False)
+----
+
 Checks if `nodeA` and `nodeB` are adjacent. If `directed` is set, then the edge must start from `nodeA`.
 
 [cols="a,a", width="100%", options="header"]
@@ -190,10 +225,20 @@ Checks if `nodeA` and `nodeB` are adjacent. If `directed` is set, then the edge 
 | `directed` | `bool`
 |===
 
-=== `graph.clear()`
+=== clear
+[source, python]
+----
+graph.clear()
+----
+
 Completely resets the graph by removing all edges and nodes.
 
-=== `graph.set_directed(directed=True)`
+=== set_directed
+[source, python]
+----
+graph.set_directed(directed=True)
+----
+
 Sets whether the edges in the graph are directed or not.
 
 [cols="a,a", width="100%", options="header"]
@@ -202,16 +247,36 @@ Sets whether the edges in the graph are directed or not.
 | `directed` | `bool`
 |===
 
-=== `graph.order()`
+=== order
+[source, python]
+----
+graph.order()
+----
+
 Returns the order of the graph. That is, it returns the number of nodes in the graph.
 
-=== `graph.size()`
+=== size
+[source, python]
+----
+graph.size()
+----
+
 Returns the size of the graph. That is, it returns the number of edges in the graph.
 
-=== `graph.adjacency_matrix()`
+=== adjacency_matrix
+[source, python]
+----
+graph.adjacency_matrix()
+----
+
 Returns the adjacency matrix of the graph as a dictionary.
 
-=== `graph.random(order, size)`
+=== random
+[source, python]
+----
+graph.random(order, size)
+----
+
 Returns a list of random `Node` and `Edge` elements that makes a graph with the order and size specified. The graph may or may not be fully connected.
 
 [cols="a,a", width="100%", options="header"]
