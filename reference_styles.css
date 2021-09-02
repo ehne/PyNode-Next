@@ -297,3 +297,7 @@ footer {
 a[href="#_graph"]::before {
     background-position: 0px -17px !important;
 }
+
+a[href="#_init"]::before, a[href="#_init_2"]::before {
+    background-position: -51px -102px !important;
+}
