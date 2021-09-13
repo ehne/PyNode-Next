@@ -6,8 +6,6 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
-  
- 
 jobs:
   build_docs:
     name: Build documentation
@@ -15,35 +13,35 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-        
+
       - name: Setup Ruby, JRuby and TruffleRuby
         uses: ruby/setup-ruby@v1.81.0
         with:
           ruby-version: 3.0
-        
+
       - name: Setup Asciidoctor
         uses: reitzig/actions-asciidoctor@v2.0.0
-      
+
       - name: move documentation.adoc out of docs folder temp
         run: mv docs/documentation.adoc ./
-        
+
       - name: checkout doc styles branch into docs folder
         uses: actions/checkout@v2
         with:
           ref: 'asciidoc-styles'
           path: 'docs'
-      
+
       - name: move documentation.adoc back into the docs folder
         run: mv documentation.adoc docs
-        
+
       - run: cd docs && gem install rouge && asciidoctor -r ./shiki.rb documentation.adoc
-      
+
       - name: save documentation.html artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: 'documentation.html'
           path: 'docs/documentation.html'
-          
+
   save_to_gh_pages:
     name: save artifact to github pages
     runs-on: ubuntu-latest
@@ -60,9 +58,8 @@ jobs:
       - name: commit documentation.html
         uses: test-room-7/action-update-file@v1
         with:
-          file-path: documentation.html 
+          file-path: documentation.html
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'gh-pages'
           commit-msg: |
             :rocket: new documentation
-      
