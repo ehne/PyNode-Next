@@ -7,234 +7,8 @@
 <meta name="generator" content="Asciidoctor 2.0.16">
 <title>Documentation</title>
 <style>
-@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
-/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-@import url(https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@200;700&display=swap);
-@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css); 
-
-/* Default asciidoc style framework - important */
-/* CUSTOMISATIONS */
-/* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
-:root{
-     --font-body: 'Bitter', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-     --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
-     --font-heading: 'Oswald', Sans-serif;
-
-     --maincolor:#FFFFFF;
-     --primarycolor:#000000;
-     --secondarycolor:#AAAAAA;
-     --tertiarycolor:#CCCCCC;
-     --sidebarbackground:#CACACA;
-     --linkcolor:#0D47A1;
-     --linkcoloralternate:#B71C1C;
-     --white:#FFFFFF;
-     --black:#000000;
-
-     --fg: hsl(0, 0%, 10%);
-     --mfg: hsl(0, 0%, 20%);
-     --mg: hsl(0, 0%, 50%);
-     --mbg: hsl(0, 0%, 80%);
-     --bg: hsl(0, 0%, 90%);
-
-     --mu: 8px
-}
-
-html,body {
-    height: 100%;
-    width: 100%;
-    font-size: calc(2 * var(--mu));
-    background-color: var(--bg);
-    color: var(--fg);
-    line-height: 1.3;
-    position:relative;
-    font-family: var(--font-body);
-    -moz-osx-font-smoothing: never;
-}
-
-h1,h2,h3,h4,h5,h6 {
-    font-family: var(--font-heading);
-    font-weight: bold;
-    color: var(--fg)
-}
-
-code {
-    font-family: var(--font-mono);
-}
-.grid {
-    display:grid;
-    grid-template-columns:1fr minmax(80vw, 100%) 1fr;
-    align-items:start;
-    column-gap:min(5vw, calc(8 * var(--mu)))
-}
-.grid>.grid {
-    grid-column:1 / -1
-}
-.grid>*:not([class*="grid"]) {
-    grid-column:2
-}
-@media (min-width: 40em) {
-    .grid {
-        grid-template-columns:1fr repeat(12, minmax(calc(4 * var(--mu)), 100%)) 1fr;
-        column-gap:min(3vw, calc(10 * var(--mu)))
-    }
-    .grid>*:not([class*="grid"]) {
-        grid-column:4 / span 8
-    }
-}
-@media (min-width: 90em) {
-    .grid {
-        grid-template-columns:1fr repeat(12, calc(14 * var(--mu))) 1fr;
-        column-gap: calc(8 * var(--mu))
-    }
-}
-
-
-
-.nav {
-    background-color: var(--fg);
-    display: flex;
-    width: 100%;
-    align-items: center;
-    padding: var(--mu) calc(2 * var(--mu));
-    color: var(--bg);
-    border-bottom: 4px solid var(--mfg);
-    font-size: calc(2.2 * var(--mu));
-}
-.nav > a > img {
-    height: 3em
-}
-.nav > .items {
-    text-align: right;
-}
-.grow {
-    flex-grow: 1;
-}
-
-a, a:visited {
-    color: currentColor;
-}
-a:hover {
-    opacity: 80%;
-}
-
-main, #content {
-    padding-bottom: 5em;
-}
-code {
-    font-size: 0.9em;
-}
-.lead-in > .slogan {
-    font-size: calc(4 * var(--mu));
-    line-height: 1.3;
-    margin: 1.25em 0 1em 0;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    text-align: center;
-    grid-column-start: 2;
-}
-@media (min-width: 40em) {
-    .lead-in > .slogan {
-        font-size: calc(7 * var(--mu));
-        grid-column-start: 3;
-        grid-column-end: span 10;
-    }
-}
-
-.lead-in-example {
-    display: block;
-    
-    grid-column-start: 2;
-    
-    width: 100%;
-    justify-content: space-between;
-}
-.example-box {
-    border: 2px solid var(--fg);
-    width: 100%;
-    
-    align-self: stretch;
-    display: grid;
-    grid-template-rows: 1fr 3fr;
-    grid-template-columns: 100%;
-    background-color: #f8f8f2;
-    position: relative;
-}
-
-@media (min-width: 40em) {
-    .lead-in-example {
-        grid-column-end: span 12;
-        display: flex;
-    }
-    .example-box {
-        width: 48%;
-    }
-    .example-box.-arrow::before {
-    content: "";
-    position: absolute;
-    display: block;
-    background: url('./assets/arrow.svg') no-repeat center;
-    background-size: 100%;
-    z-index: 1;
-
-    width: 3.5em;
-    height: 3.5em;
-    top: 30%;
-    right: -3.25em;
-    transform: rotate(10deg);
-}
-}
-
-.example-box > .example-code {
-    padding: calc(2 * var(--mu)) var(--mu)
-}
-.example-box > .heading {
-    font-weight: bold;
-    background-color: var(--fg);
-    color: var(--bg);
-    text-align: center;
-    padding: calc(2 *  var(--mu));
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.example-viz {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-}
-.loading-spinner  {
-    width: calc(var(--mu) * 6);
-    height: calc(var(--mu) * 6);
-    border: var(--mu) solid var(--mbg);
-    border-bottom-color: var(--mg);
-    border-radius: 50%;
-    animation: yOS_rotation 1s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
-    
-}
-@keyframes yOS_rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-} 
-.summary {
-    padding: calc(4 * var(--mu)) 0;
-    line-height: 1.6;
-    text-align: center;
-}
-
-footer {
-    padding: calc(var(--mu) * 2);
-    font-size: calc(var(--mu) * 2);
-    opacity: 0.7;
-    text-align: center;
-    margin-bottom: calc(var(--mu) * 5);
-}
+@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Source+Code+Pro&display=swap);
+@import url(./assets/main.css);
 
 .conum {
     font-weight: 500;
@@ -245,22 +19,10 @@ footer {
     display: none;
 }
 
-
-#toc a {
-    color: var(--fg);
-    font-family: var(--font-body) !important;
-}
-
-#toc a:hover {
-    color: var(--fg);
-    opacity: 80%;
-    text-decoration: underline;
-}
-
 .toc .sectlevel2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: calc(0.5 * var(--mu));
+    gap: calc(0.5 * 8px);
     margin-left: 0
 }
 
@@ -271,12 +33,12 @@ footer {
 }
 
 .toc .sectlevel1 > li {
-    margin-bottom: calc(4 * var(--mu));
+    margin-bottom: calc(4 * 8px);
     display: block;
 }
 
 .toc .sectlevel1 > li > a {
-    margin-bottom: var(--mu);
+    margin-bottom: 8px;
     display: block;
     font-weight: bold;
 }
@@ -339,10 +101,9 @@ a[href="#_color_3"]::before {
 href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/humanoid-light.min.css">
 
 <nav class="nav">
-    <a href="https://ehne.github.io/PyNode-Next" style="display: block;"><img src="./assets/logo_white.png" alt="PyNode Next logo" aria-label="Py Node Next"></a>
-    <div class="grow"></div>
+    <img src="./assets/logo_black.png" alt="PyNode Next logo" aria-label="Py Node Next">
     <div class="items">
-        <a href="https://github.com/ehne/PyNode-Next/blob/main/docs/documentation.adoc">Reference</a> /
+        <a href="/PyNode-Next">Home</a> /
         <a href="https://github.com/ehne/PyNode-Next/releases/latest">Download</a> /
         <a href="https://github.com/ehne/PyNode-Next">GitHub</a> /
         <a href="https://github.com/ehne/PyNode-Next/issues">Feedback</a>
