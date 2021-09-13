@@ -1,274 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PyNode Next</title>
-    <style>/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}</style>
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Oswald:wght@200;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/humanoid-light.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js" async onload="hljs.highlightAll()"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Source+Code+Pro&display=swap" rel="stylesheet">
     <script src="./main.js" type="module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
     <style>
-        html {
-            --font-body: 'Bitter', Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;;
-            --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
-            --font-heading: 'Oswald', Sans-serif;
-
-            --fg: hsl(0, 0%, 10%);
-            --mfg: hsl(0, 0%, 20%);
-            --mg: hsl(0, 0%, 50%);
-            --mbg: hsl(0, 0%, 80%);
-            --bg: hsl(0, 0%, 90%);
-
-            --mu: 8px;
-
-            /* these aren't actually used because media queries don't use vars */
-            --bp-tablet: 40em; 
-            --bp-desktop: 90em;
+        :root {
+            --background-body: #fff;
+            --background: #efefef;
+            --background-alt: #f7f7f7;
+            --selection: #79ffe1;
+            --text-main: #363636;
+            --text-bright: #000;
+            --text-muted: #70777f;
+            --links: #0070f3;
+            --focus: #0070f3ab;
+            --border: #dbdbdb;
+            --code: #000;
+            --animation-duration: 0.1s;
+            --button-base: #d0cfcf;
+            --button-hover: #9b9b9b;
+            --scrollbar-thumb: rgb(170, 170, 170);
+            --scrollbar-thumb-hover: var(--button-hover);
+            --form-placeholder: #949494;
+            --form-text: #1d1d1d;
+            --variable: #f81ce5;
+            --highlight: #ff0;
         }
-        html,body {
-            height: 100%;
-            width: 100%;
-            font-size: calc(2.2 * var(--mu));
-            background-color: var(--bg);
-            color: var(--fg);
-            line-height: 1.3;
-            position:relative;
-            font-family: var(--font-body);
-        }
-        code {
-            font-family: var(--font-mono);
-        }
-        .grid {
-            display:grid;
-            grid-template-columns:1fr minmax(80vw, 100%) 1fr;
-            align-items:start;
-            column-gap:min(5vw, calc(8 * var(--mu)))
-        }
-        .grid>.grid {
-            grid-column:1 / -1
-        }
-        .grid>*:not([class*="grid"]) {
-            grid-column:2
-        }
-        @media (min-width: 40em) {
-            .grid {
-                grid-template-columns:1fr repeat(12, minmax(calc(4 * var(--mu)), 100%)) 1fr;
-                column-gap:min(3vw, calc(10 * var(--mu)))
-            }
-            .grid>*:not([class*="grid"]) {
-                grid-column:4 / span 8
-            }
-        }
-        @media (min-width: 90em) {
-            .grid {
-                grid-template-columns:1fr repeat(12, calc(14 * var(--mu))) 1fr;
-                column-gap: calc(8 * var(--mu))
-            }
-        }
-        
-        
-
         .nav {
-            background-color: var(--fg);
             display: flex;
-            width: 100%;
+            justify-content: space-between;
             align-items: center;
-            padding: var(--mu) calc(2 * var(--mu));
-            color: var(--bg);
-            border-bottom: 4px solid var(--mfg);
+            margin-bottom: 40px;
         }
-        .nav > img {
-            height: 3em
+
+        .nav>img {
+            height: 4em
         }
-        .nav > .items {
+
+        .nav>.items {
             text-align: right;
         }
-        .grow {
-            flex-grow: 1;
-        }
-
-        a, a:visited {
-            color: currentColor;
-        }
-        a:hover {
-            opacity: 80%;
-        }
-
-        main {
-            padding-bottom: 5em;
-        }
         code {
-            font-size: 0.9em;
-        }
-        .lead-in > .slogan {
-            font-size: calc(4 * var(--mu));
-            line-height: 1.3;
-            margin: 1.25em 0 1em 0;
-            font-family: var(--font-heading);
-            font-weight: 800;
-            text-align: center;
-            grid-column-start: 2;
-        }
-        @media (min-width: 40em) {
-            .lead-in > .slogan {
-                font-size: calc(7 * var(--mu));
-                grid-column-start: 3;
-                grid-column-end: span 10;
-            }
+            font-family: 'Source Code Pro', 'SFMono-Regular',Menlo,Consolas,Monaco,Liberation Mono,'Lucida Console',monospace;
+            font-size: 13px;
         }
 
-        .lead-in-example {
-            display: block;
-            
-            grid-column-start: 2;
-            
+        .loading-skeleton  {
             width: 100%;
-            justify-content: space-between;
+            height: 257px;
+            background: linear-gradient(270deg, var(--background) 45%, #ffffff 50%, var(--background) 55%);
+            background-size: 300% 300%;
+            border-radius: 6px;
+            animation: skeleton 2s ease infinite;
         }
-        .example-box {
-            border: 2px solid var(--fg);
-            width: 100%;
-            
-            align-self: stretch;
-            display: grid;
-            grid-template-rows: 1fr 3fr;
-            grid-template-columns: 100%;
-            background-color: #f8f8f2;
-            position: relative;
+        @keyframes skeleton { 
+            0%{background-position:110% 50%}
+            100%{background-position:-10% 50%}
         }
-    
-        @media (min-width: 40em) {
-            .lead-in-example {
-                grid-column-end: span 12;
-                display: flex;
-            }
-            .example-box {
-                width: 48%;
-            }
-            .example-box.-arrow::before {
-            content: "";
-            position: absolute;
-            display: block;
-            background: url('./assets/arrow.svg') no-repeat center;
-            background-size: 100%;
-            z-index: 1;
-
-            width: 3.5em;
-            height: 3.5em;
-            top: 30%;
-            right: -3.25em;
-            transform: rotate(10deg);
+        code:not(pre.shiki>code) {
+            background-color: transparent;
+            color: var(--variable);
+            font-size: .9em;
+            white-space: pre-wrap;
+            padding: 0
         }
-        }
-        
-        .example-box > .example-code {
-            padding: calc(2 * var(--mu)) var(--mu)
-        }
-        .example-box > .heading {
-            font-weight: bold;
-            background-color: var(--fg);
-            color: var(--bg);
-            text-align: center;
-            padding: calc(2 *  var(--mu));
-            align-self: stretch;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .example-viz {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            align-self: center;
-        }
-        .loading-spinner  {
-            width: calc(var(--mu) * 6);
-            height: calc(var(--mu) * 6);
-            border: var(--mu) solid var(--mbg);
-            border-bottom-color: var(--mg);
-            border-radius: 50%;
-            animation: yOS_rotation 1s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
-            
-        }
-        @keyframes yOS_rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        } 
-        .summary {
-            padding: calc(4 * var(--mu)) 0;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        footer {
-            padding: calc(var(--mu) * 2);
-            font-size: calc(var(--mu) * 2);
-            opacity: 0.7;
-            text-align: center;
-            margin-bottom: calc(var(--mu) * 5);
+        code:not(pre.shiki>code)::before, code:not(pre.shiki>code)::after {
+            content: '`'
         }
     </style>
+
+
 </head>
+
 <body>
     <nav class="nav">
-        <img src="./assets/logo_white.png" alt="PyNode Next logo" aria-label="Py Node Next">
-        <div class="grow"></div>
+        <img src="./assets/logo_black.png" alt="PyNode Next logo" aria-label="Py Node Next">
         <div class="items">
             <a href="https://github.com/ehne/PyNode-Next/blob/main/docs/documentation.adoc">Reference</a> /
             <a href="https://github.com/ehne/PyNode-Next/releases/latest">Download</a> /
-            <a href="https://github.com/ehne/PyNode-Next">GitHub</a> / 
+            <a href="https://github.com/ehne/PyNode-Next">GitHub</a> /
             <a href="https://github.com/ehne/PyNode-Next/issues">Feedback</a>
         </div>
     </nav>
-    <main class="grid">
-        <section class="lead-in grid">
-            <h1 class="slogan grid-item">
-                A reliable graph theory library for those with things to get done.
-            </h1>
-        </section>
-        <section class="lead-in-example grid-item">
-            <div class="example-box -arrow">
-                <div class="heading">
-                    Write easy to understand Python code:
-                </div>
-                <div class="example-code">
-                    <pre><code class="language-python">from pynode_next import *
+    <main>
+        <blockquote>A complete rewrite of PyNode for the modern era.</blockquote>
+        <p>PyNode Next allows you to easily create beautiful graph visualisations and animations.</p>
+        <h2 id="getting_started">Getting Started</h2>
+        <p>
+            To get started, download the <a href="https://github.com/ehne/PyNode-Next/releases/latest">latest version of PyNode Next</a> and place the folder in your project’s directory.
+            You will also need to make sure you have <a href="https://github.com/algrx/algorithmx-python#installation">installed AlgorithmX</a>. 
+            Then just create a new file with code from the demo below and change the stuff inside <code>run()</code> to be your code.
+            Code reference can be found by clicking the link in the navigation at the top of this page.
+        </p>
+        
+        <h2 id="demo">Demo</h2>
+        <pre class="shiki" style="background-color: #ffffff"><code><span class="line"><span style="color: #D32F2F">from</span><span style="color: #24292EFF"> pynode_next </span><span style="color: #D32F2F">import</span><span style="color: #24292EFF"> </span><span style="color: #D32F2F">*</span></span>
+            <span class="line"></span>
+<span class="line"><span style="color: #D32F2F">def</span><span style="color: #24292EFF"> </span><span style="color: #6F42C1">run</span><span style="color: #24292EFF">():</span></span>
+<span class="line"><span style="color: #24292EFF">    </span><span style="color: #D32F2F">for</span><span style="color: #24292EFF"> i </span><span style="color: #D32F2F">in</span><span style="color: #24292EFF"> </span><span style="color: #22863A">'abc'</span><span style="color: #24292EFF">:</span></span>
+<span class="line"><span style="color: #24292EFF">        graph.</span><span style="color: #6F42C1">add_node(i)</span></span>
+<span class="line"><span style="color: #24292EFF">        </span><span style="color: #6F42C1">pause(</span><span style="color: #1976D2">100</span><span style="color: #6F42C1">)</span></span>
+<span class="line"><span style="color: #24292EFF">    </span></span>
+<span class="line"><span style="color: #24292EFF">    </span><span style="color: #6F42C1">pause(</span><span style="color: #1976D2">500</span><span style="color: #6F42C1">)</span></span>
+<span class="line"><span style="color: #24292EFF">    graph.</span><span style="color: #6F42C1">add_edge(</span><span style="color: #22863A">'a'</span><span style="color: #6F42C1">, </span><span style="color: #22863A">'b'</span><span style="color: #6F42C1">)</span></span>
+<span class="line"><span style="color: #24292EFF">    graph.</span><span style="color: #6F42C1">add_edge(</span><span style="color: #22863A">'b'</span><span style="color: #6F42C1">, </span><span style="color: #22863A">'c'</span><span style="color: #6F42C1">)</span></span>
+<span class="line"><span style="color: #24292EFF">    </span></span>
+<span class="line"><span style="color: #6F42C1">begin_pynode_next(run)</span></span></code></pre>
+        <lead-demo class="example-viz" id="pyNodeNextDemo">
+            <div class="loading-skeleton"></div>
+        </lead-demo>
 
-def run():
-    for i in 'abc':
-        graph.add_node(i)
-        pause(100)
-    
-    pause(500)
-    graph.add_edge('a', 'b')
-    graph.add_edge('b', 'c')
-    
-begin_pynode_next(run)</code></pre>
-                </div>
-            </div>
-            <div class="example-box">
-                <div class="heading">
-                    Hit run and watch PyNode Next create a beautiful visualisation:
-                </div>
-                <lead-demo class="example-viz" id="pyNodeNextDemo"><div class="loading-spinner"></div></lead-demo>
-            </div>
-        </section>
-        <section class="summary grid">
-            <p>A complete rewrite of PyNode for the modern era. PyNode Next allows you to easily create beautiful graph visualisations and animations with a simple python interface. </p>
-        </section>
+        <h2 id="migrating">Migrating from PyNode</h2>
+        <p>
+            PyNode Next has been designed to maintain the vast majority of all of the functions from the previous version of PyNode.
+            Switching to PyNode Next should be as simple as replacing <code>from pynode.main import *</code> with <code>from pynode_next import *</code>. 
+            And adding a <code>_next</code> to the <code>begin_pynode</code> function call.
+        </p>
+        <table>
+            <thead>
+                <th>PyNode</th>
+                <th>PyNode Next</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <pre class="shiki" style="background-color: #ffffff"><code><span class="line"><span style="color: #D32F2F">from</span><span style="color: #24292EFF"> pynode.main </span><span style="color: #D32F2F">import</span><span style="color: #24292EFF"> </span><span style="color: #D32F2F">*</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D32F2F">def</span><span style="color: #24292EFF"> </span><span style="color: #6F42C1">run</span><span style="color: #24292EFF">()</span></span>
+<span class="line"><span style="color: #24292EFF">    </span><span style="color: #C2C3C5"># code</span></span>
+<span class="line"><span style="color: #24292EFF">    graph.</span><span style="color: #6F42C1">add_node(</span><span style="color: #22863A">"a"</span><span style="color: #6F42C1">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6F42C1">begin_pynode(run)</span></span></code></pre>
+                    </td>
+                    <td>
+                        <pre class="shiki" style="background-color: #ffffff"><code><span class="line"><span style="color: #D32F2F">from</span><span style="color: #24292EFF"> pynode_next </span><span style="color: #D32F2F">import</span><span style="color: #24292EFF"> </span><span style="color: #D32F2F">*</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D32F2F">def</span><span style="color: #24292EFF"> </span><span style="color: #6F42C1">run</span><span style="color: #24292EFF">()</span></span>
+<span class="line"><span style="color: #24292EFF">    </span><span style="color: #C2C3C5"># code</span></span>
+<span class="line"><span style="color: #24292EFF">    graph.</span><span style="color: #6F42C1">add_node(</span><span style="color: #22863A">"a"</span><span style="color: #6F42C1">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6F42C1">begin_pynode_next(run)</span></span></code></pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="diff">Differences from the original PyNode</h2>
+        <ul>
+            <li>
+                Certain methods are strongly typed. 
+                Meaning that they only accept input of specific types. 
+                This is due to how the overloading system works, and will be documented whenever it pops up.
+            </li>
+            <li>Keyword arguments (that’s stuff like the <code>id=</code> in <code>add_node(id="a")</code>) might be broken in some methods due to the overloading system.</li>
+            <li>outline options on methods don’t exist any more. Text no longer has any outlines.</li>
+            <li>You can no longer compare nodes with other nodes like <code>NodeA > NodeB</code>. To do this now, you need to specify the priority: <code>NodeA.priority() > NodeB.priority()</code></li>
+            <li>The above also applies to edges.</li>
+            <li><code>graph.random()</code> has been drastically simplified to just take <code>order</code> and <code>size</code> arguments.</li>
+            <li><code>node.position()</code> has not been implemented yet. (The rendering library PyNode Next uses has a different coordinate system to that of the original PyNode)</li>
+        </ul>
     </main>
     <footer>
-        Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a>
+        Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a
+            href="https://github.com/alexsocha">@alexsocha</a>
     </footer>
 </body>
+
 </html>

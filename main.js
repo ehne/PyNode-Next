@@ -1,5 +1,6 @@
 import Tonic from 'https://cdn.skypack.dev/@optoolco/tonic';
 
+
 class LeadDemo extends Tonic {
     stylesheet() {
         if (this.props.loadedALGX) {
@@ -7,16 +8,18 @@ class LeadDemo extends Tonic {
                 .example-viz {
                     display: grid;
                     grid-template-rows: auto 1fr;
-                    height: 100%;
+                    height: 300px;
                     width: 100%;
-                    grid-template-columns: 1fr
+                    grid-template-columns: 1fr;
                 }
                 .example-viz > .algx {
                     width: 100%;
-                    height: calc(100% - var(--mu))
+                    height: calc(100% - 8px);
+                    border: 1px solid var(--background);
+                    border-radius: 6px;
+                    margin-top: 0.5em;
                 }
                 .example-viz > .button-container {
-                    padding: var(--mu);
                     width: 100%
                 }
                 .example-viz > .button-container > button {
@@ -88,7 +91,7 @@ class LeadDemo extends Tonic {
             `
         }
         return this.html`
-            <div class="loading-spinner"></div>
+            <div class="loading-skeleton"></div>
         `
     }
 }
