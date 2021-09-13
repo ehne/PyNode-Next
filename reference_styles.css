@@ -10,6 +10,10 @@
     display: none;
 }
 
+.toc ul {
+    margin-left: 0
+}
+
 .toc .sectlevel2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -83,4 +87,21 @@ a[href="#_init"]::before, a[href="#_init_2"]::before {
 /* interface */
 a[href="#_color_3"]::before {
     background-position: 0px -68px !important;
+}
+
+.admonitionblock > table {
+    display: inline;
+}
+.admonitionblock .icon {
+    display: none;
+}
+
+.admonitionblock.note::before {
+    content: 'ℹ️'
+}
+.admonitionblock.warning::before {
+    content: '⚠️'
+}
+.admonitionblock.caution::before {
+    content: '⁉️'
 }
