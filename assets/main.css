@@ -917,13 +917,13 @@ code {
   0%{background-position:110% 50%}
   100%{background-position:-10% 50%}
 }
-code:not(pre.shiki>code) {
+code:not(pre>code) {
   background-color: transparent;
   color: var(--variable);
   font-size: .9em;
   white-space: pre-wrap;
   padding: 0
 }
-code:not(pre.shiki>code)::before, code:not(pre.shiki>code)::after {
+code:not(pre>code)::before, code:not(pre>code)::after {
   content: '`'
 }
