@@ -104,8 +104,9 @@ a[href="#_color_3"]::before {
 }
 
 .admonitionblock {
-    background: 1px solid var(--background);
+    border: 1px solid var(--background);
     border-radius: 6px;
+    padding: 8px
 }
 .admonitionblock > table {
     display: inline;
@@ -114,7 +115,7 @@ a[href="#_color_3"]::before {
     display: none;
 }
 .admonitionblock .icon {
-    width: 20%
+    width: auto
 }
 .admonitionblock.note .icon::before {
     content: 'ℹ️'
@@ -124,6 +125,9 @@ a[href="#_color_3"]::before {
 }
 .admonitionblock.caution .icon::before {
     content: '⁉️'
+}
+.admonitionblock.important .icon::before {
+    content: '🚧'
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
