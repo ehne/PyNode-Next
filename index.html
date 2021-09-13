@@ -10,72 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Source+Code+Pro&display=swap" rel="stylesheet">
     <script src="./main.js" type="module"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
-    <style>
-        :root {
-            --background-body: #fff;
-            --background: #efefef;
-            --background-alt: #f7f7f7;
-            --selection: #79ffe1;
-            --text-main: #363636;
-            --text-bright: #000;
-            --text-muted: #70777f;
-            --links: #0070f3;
-            --focus: #0070f3ab;
-            --border: #dbdbdb;
-            --code: #000;
-            --animation-duration: 0.1s;
-            --button-base: #d0cfcf;
-            --button-hover: #9b9b9b;
-            --scrollbar-thumb: rgb(170, 170, 170);
-            --scrollbar-thumb-hover: var(--button-hover);
-            --form-placeholder: #949494;
-            --form-text: #1d1d1d;
-            --variable: #f81ce5;
-            --highlight: #ff0;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
+    <link rel="stylesheet" href="./assets/main.css">
 
-        .nav>img {
-            height: 4em
-        }
-
-        .nav>.items {
-            text-align: right;
-        }
-        code {
-            font-family: 'Source Code Pro', 'SFMono-Regular',Menlo,Consolas,Monaco,Liberation Mono,'Lucida Console',monospace;
-            font-size: 13px;
-        }
-
-        .loading-skeleton  {
-            width: 100%;
-            height: 257px;
-            background: linear-gradient(270deg, var(--background) 45%, #ffffff 50%, var(--background) 55%);
-            background-size: 300% 300%;
-            border-radius: 6px;
-            animation: skeleton 2s ease infinite;
-        }
-        @keyframes skeleton { 
-            0%{background-position:110% 50%}
-            100%{background-position:-10% 50%}
-        }
-        code:not(pre.shiki>code) {
-            background-color: transparent;
-            color: var(--variable);
-            font-size: .9em;
-            white-space: pre-wrap;
-            padding: 0
-        }
-        code:not(pre.shiki>code)::before, code:not(pre.shiki>code)::after {
-            content: '`'
-        }
-    </style>
 
 
 </head>
