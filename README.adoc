@@ -30,4 +30,4 @@ image::./docs/demo-min.gif[]
 
 ---
 
-Created by https://github.com/ehne[@ehne] in 2021. Based on PyNode by https://github.com/alexsocha[@alexsocha]
+Created by https://github.com/ehne[@ehne] in 2021. Based on PyNode by https://github.com/alexsocha[@alexsocha]. image:https://www.codefactor.io/repository/github/ehne/pynode-next/badge/main[]
