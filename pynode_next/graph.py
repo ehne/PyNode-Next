@@ -39,6 +39,11 @@ class Graph:
         self._nodes[node._id] = node
         # just sends all of the node's data
         core.ax(lambda x: x.dispatch(node._data()))
+        # sets the node's click handler
+        if core.callback != None:
+            print("registered?", node._id)
+            core.ax(lambda x: x.nodes([node._id]).onclick(core.callback))
+
         return node
 
     def remove_node(self, node):
@@ -236,6 +241,12 @@ class Graph:
 
         return matrix
 
+    def _register_click_handler(self, func):
+        new_func = lambda n: func(self.node(n))
+        core.callback = new_func
+        node_list = [i._id for i in self.nodes()]
+        core.ax(lambda x: x.nodes(node_list).onclick(new_func))
+
     @staticmethod
     def random(order, size):
         """Returns a random list of edges and nodes that may or may not be connected."""
@@ -254,3 +265,4 @@ class Graph:
 
 
 graph = Graph()
+register_click_handler = graph._register_click_handler

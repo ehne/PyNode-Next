@@ -8,6 +8,7 @@ class Core:
         self.port = 5050
         base_path = os.path.relpath(__file__)
         self.custom_ui = f"{Path(base_path).parent}/ui.html"
+        self.callback = None
       
 
     def run(self, func):
@@ -34,5 +35,6 @@ class Core:
         """Normalises a relative position that is an element of the interval [0, 1] to the interval [-1, 1]"""
         # formula used: (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min 
         return (val * 2) - 1
+        
 
 core = Core()

@@ -598,6 +598,7 @@ button[aria-label][data-balloon-pos] {
             const height = document.getElementById('output').clientHeight;
             // immediately resize the canvas
             canvas.withQ(null).duration(0).size([width, height]);
+            
         }
 
         // main canvas
@@ -633,13 +634,14 @@ button[aria-label][data-balloon-pos] {
 
         // open the websocket
         let socket = initSocket(function() {}, dispatch);
-
+        
         canvas.onreceive(function(event) {
             // send messages to the server through the websocket
             socket.send(JSON.stringify(event));
         })
 
         function start() {
+            
             if (running === false) {
                 // trigger start
                 canvas.message('start');

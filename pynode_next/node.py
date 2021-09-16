@@ -206,7 +206,8 @@ class Node:
                 "nodes": {
                     self._id: {
                         "color": str(self._color),
-                        "labels": {0: {"text": self._value}}
+                        "labels": {0: {"text": self._value}},
+                        "listenclick": True
                     }
                 }
             }

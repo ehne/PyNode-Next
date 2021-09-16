@@ -893,12 +893,19 @@ delay(func, time, args=[], repeat=False)
 cancel_delay(delay_id)
 ----
 
-=== 🚧 register_click_listener 
+=== register_click_listener 
 [source, python]
 ----
 register_click_listener(func)
 ----
 
+Registers a function that will be called when a node is clicked. 
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `func` | `Callable[Node]` (That's a function that as its only input argument takes a `Node` object that was clicked, something like `def on_click(node)`)
+|===
 
 
 ////

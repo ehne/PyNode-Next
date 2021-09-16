@@ -4,7 +4,8 @@ from pynode_next import *
 import random
 
 def test():
-    graph.add_node("(0, 0)").set_position(0, 0)
-    graph.add_node("(1, 1)").set_position(1, 1)
+    graph.add_node("a")
+    register_click_handler(lambda x: print(x._data()))
+    
 
 begin_pynode_next(test)
