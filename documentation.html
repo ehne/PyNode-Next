@@ -250,7 +250,7 @@ a[href="#_color_3"]::before {
 <li><a href="#_pause">pause</a></li>
 <li><a href="#_delay">🚧 delay</a></li>
 <li><a href="#_cancel_delay">🚧 cancel_delay</a></li>
-<li><a href="#_register_click_listener">🚧 register_click_listener</a></li>
+<li><a href="#_register_click_listener">register_click_listener</a></li>
 </ul>
 </li>
 </ul>
@@ -2318,12 +2318,37 @@ This <strong>does not</strong> pause code execution.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_register_click_listener">🚧 register_click_listener</h3>
+<h3 id="_register_click_listener">register_click_listener</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="shiki highlight"><code class="language-python" data-lang="python">register_click_listener(func)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Registers a function that will be called when a node is clicked.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>func</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>Callable[Node]</code> (That&#8217;s a function that as its only input argument takes a <code>Node</code> object that was clicked, something like <code>def on_click(node)</code>)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
