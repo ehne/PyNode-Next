@@ -208,8 +208,8 @@ a[href="#_color_3"]::before {
 <li><a href="#_attribute">attribute</a></li>
 <li><a href="#_set_priority">set_priority</a></li>
 <li><a href="#_priority">priority</a></li>
-<li><a href="#_set_position">🚧 set_position</a></li>
-<li><a href="#_position">🚧 position</a></li>
+<li><a href="#_set_position">set_position</a></li>
+<li><a href="#_position">position</a></li>
 <li><a href="#_set_label">set_label</a></li>
 <li><a href="#_label">label</a></li>
 <li><a href="#_set_size">set_size</a></li>
@@ -1267,36 +1267,67 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_set_position">🚧 set_position</h3>
+<h3 id="_set_position">set_position</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">node.set_position()</code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">node.set_position(x, y, relative=True)</code></pre>
 </div>
 </div>
-<div class="admonitionblock important">
+<div class="paragraph">
+<p>Sets the node&#8217;s position on the canvas. Uses relative positions whereby (0, 0) is the bottom-left corner and (1, 1) is the top-right corner.</p>
+</div>
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Important</div>
+<div class="title">Warning</div>
 </td>
 <td class="content">
-<div class="paragraph">
-<p><code>node.set_position()</code> has not been implemented in PyNode Next as yet.</p>
-</div>
-<div class="paragraph">
-<p>Have a look at the <a href="https://github.com/ehne/PyNode-Next/issues/2">GitHub issue</a> for more information. (Issue #2)</p>
-</div>
+The relative option is a legacy argument from PyNode. PyNode Next only supports the relative positioning system. If you try to set relative to <code>False</code>, it will throw an error.
 </td>
 </tr>
 </table>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>x</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code> between 0 and 1.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>y</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code> between 0 and 1.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="_position">🚧 position</h3>
+<h3 id="_position">position</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="shiki highlight"><code class="language-python" data-lang="python">node.position()</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Returns the node&#8217;s position that was set. Note that it will not return the position of the node if it has not been set.</p>
 </div>
 <div class="admonitionblock important">
 <table>
