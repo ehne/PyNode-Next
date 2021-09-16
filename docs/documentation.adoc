@@ -481,14 +481,7 @@ WARNING: The relative option is a legacy argument from PyNode. PyNode Next only 
 node.position()
 ----
 
-Returns the node's position that was set. Note that it will not return the position of the node if it has not been set.
-
-[IMPORTANT]
-====
-`node.position()` has not been implemented in PyNode Next as yet.
-
-Have a look at the https://github.com/ehne/PyNode-Next/issues/2[GitHub issue] for more information. (Issue #2)
-====
+Returns the node's position that was set. Note that it will not return the position of the node if it has not been set. Returns the position as a list with the format `[x, y]`.
 
 === set_label
 [source, python]
