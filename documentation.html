@@ -2344,7 +2344,7 @@ This <strong>does not</strong> pause code execution.
 <p><code>func</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>Callable[Node]</code> (That&#8217;s a function that as its only input argument takes a <code>Node</code> object that was clicked, something like <code>def on_click(node)</code>)</p>
+<p><code>Callable[[Node], None]</code>. That is, a function that as its only input argument takes a <code>Node</code> object that was clicked, something like <code>def on_click(node)</code>. And does not return anything.</p>
 </div></div></td>
 </tr>
 </tbody>
