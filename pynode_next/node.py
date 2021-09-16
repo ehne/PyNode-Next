@@ -1,3 +1,4 @@
+from pynode_next.errors import NodePositionError
 import uuid
 
 from .misc import Color
@@ -22,6 +23,7 @@ class Node:
         self._priority = 0
         self._attrs = {}
         self._labels = {}
+        self._pos = []
 
     def id(self):
         """Returns the node's id"""
@@ -178,21 +180,41 @@ class Node:
                 node_list.append(e._target)
         return node_list
 
+    def set_position(self, x, y, relative=True):
+        """Sets the node's position. Relative is the only style you can use"""
+        if not relative:
+            raise NodePositionError("Cannot call node.set_position() with relative=False")
+        
+        self._pos = [x, y]
+        
+        x_norm = core.normalise_to_canvas(x)
+        y_norm = core.normalise_to_canvas(y)
+        core.ax(lambda a: a.node(self._id).pos((f"{x_norm}cx", f"{y_norm}cy")))
+        return self
+
+    def position(self):
+        """Returns the node's relative position as a list of [x, y]"""
+        return self._pos
+    
     def __str__(self):
         return str(self._id)
 
     def _data(self):
         """used internally to generate data to dispatch to algx."""
-        return {
+        base = {
             "attrs": {
                 "nodes": {
                     self._id: {
                         "color": str(self._color),
-                        "labels": {0: {"text": self._value}},
+                        "labels": {0: {"text": self._value}}
                     }
                 }
             }
         }
+        if self._pos != []:
+            base["attrs"]["nodes"][self._id]["pos"] = [core.normalise_to_canvas(i) for i in self._pos]
+
+        return base
 
 
 if __name__ == "__main__":

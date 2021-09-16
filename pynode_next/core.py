@@ -30,4 +30,9 @@ class Core:
         # print("loaded Canvas")
         display(self.canvas)
 
+    def normalise_to_canvas(self, val):
+        """Normalises a relative position that is an element of the interval [0, 1] to the interval [-1, 1]"""
+        # formula used: (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min 
+        return (val * 2) - 1
+
 core = Core()

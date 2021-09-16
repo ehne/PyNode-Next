@@ -14,3 +14,6 @@ class DuplicateEdgeError(Error):
 
 class NodeDoesntExistError(Error):
     """Raised when a node does not exist in the graph"""
+
+class NodePositionError(Error):
+    """Raised when a node's position is set with the relative argument set to false"""
