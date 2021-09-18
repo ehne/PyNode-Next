@@ -859,17 +859,7 @@ Color(red, green, blue)
 Custom color for use in node and edge animations, using `0-255` integers for each argument.
 
 There are some predefined colours:
-
-* `Color.RED`
-* `Color.GREEN`
-* `Color.BLUE`
-* `Color.YELLOW`
-* `Color.WHITE`
-* `Color.LIGHT_GREY`
-* `Color.GREY`
-* `Color.DARK_GREY`
-* `Color.BLACK`
-* `Color.TRANSPARENT`
+`Color.RED`, `Color.GREEN`, `Color.BLUE`, `Color.YELLOW`, `Color.WHITE`, `Color.LIGHT_GREY`, `Color.GREY`, `Color.DARK_GREY`, `Color.BLACK`, `Color.TRANSPARENT`
 
 === pause
 [source, python]
