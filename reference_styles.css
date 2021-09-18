@@ -148,3 +148,7 @@ a[href="#_color_3"]::before {
 .sect2 > h3 {
     margin-top: 0px;
 }
+
+.arabic {
+    padding-left: 12px;
+}
