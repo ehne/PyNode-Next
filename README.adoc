@@ -21,7 +21,7 @@
 
 > A complete rewrite of PyNode for the modern era.
 
-PyNode Next allows you to easily create beautiful graph visualisations and animations. 
+PyNode Next allows you to easily create beautiful graph visualisations and animations. Has been tested on macOS and Linux.
 
 Find out more at https://ehne.github.io/PyNode-Next
 
