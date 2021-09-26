@@ -10,6 +10,6 @@ from .graph import graph, register_click_handler
 def begin_pynode_next(func, open_browser=True):
     if open_browser:
         webbrowser.open(f"http://localhost:{core.port}")
-    
+
     core.run(func)
     
