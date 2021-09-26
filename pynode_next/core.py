@@ -17,7 +17,10 @@ class Core:
         print("serving ui found at", self.custom_ui)
         
         self.canvas = self.server.canvas()
-        self.canvas.onmessage("start", func)
+        def pynode_func():
+            self.canvas.duration(0).zoom(1.7)
+            func()
+        self.canvas.onmessage("start", pynode_func)
         print(f"staring server on http://localhost:{self.port} — press ctrl+c to quit")
         self.server.start()
 
