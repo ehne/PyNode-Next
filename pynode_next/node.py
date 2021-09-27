@@ -33,6 +33,7 @@ class Node:
         """Sets the node's value."""
         self._value = value
         core.ax(lambda x: x.node(self._id).label().text(value))
+        return self
 
     def value(self):
         """Returns the node's value."""
@@ -100,6 +101,7 @@ class Node:
     def set_attribute(self, name, value):
         """Sets an attribute of a node"""
         self._attrs[name] = value
+        return self
 
     def attribute(self, name):
         """Returns a nodes named attribute"""
@@ -112,6 +114,7 @@ class Node:
         label_angle = [45, 45 + 90][label_id]
 
         core.ax(lambda x: x.node(self._id).label(label).angle(label_angle).text(value))
+        return self
 
     def label(self, label_id=0):
         return self._labels[label_id]
