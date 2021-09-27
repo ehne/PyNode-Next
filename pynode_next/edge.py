@@ -49,6 +49,7 @@ class Edge:
     def set_attribute(self, name, value):
         """Sets an attribute of the edge"""
         self._attrs[name] = value
+        return self
 
     def attribute(self, name):
         """Gets an attribute of the edge"""
@@ -176,6 +177,7 @@ class Edge:
         else:
             # stores the changed color
             self._color = color
+        return self
 
     def __str__(self):
         return f"({self._source}, {self._target})"
