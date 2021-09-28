@@ -1,5 +1,4 @@
 import webbrowser
-
 from .misc import *
 from .node import *
 from .errors import *
@@ -12,4 +11,3 @@ def begin_pynode_next(func, open_browser=True):
         webbrowser.open(f"http://localhost:{core.port}")
 
     core.run(func)
-    
