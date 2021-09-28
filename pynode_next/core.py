@@ -5,7 +5,7 @@ import os
 
 class Core:
     def __init__(self, port=5050):
-        self.port = 5050
+        self.port = port
         base_path = os.path.relpath(__file__)
         self.custom_ui = f"{Path(base_path).parent}/ui.html"
         self.callback = None
@@ -13,7 +13,12 @@ class Core:
 
     def run(self, func):
         """A function that runs a different function in the PyNode Next web environment."""
-        self.server = algx.http_server(port=self.port, file=self.custom_ui)
+        while 1:
+            try:
+                self.server = algx.http_server(port=self.port, file=self.custom_ui)
+                break
+            except:
+                self.port += 1
         print("serving ui found at", self.custom_ui)
         
         self.canvas = self.server.canvas()

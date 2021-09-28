@@ -7,7 +7,6 @@ import random
 
 
 def test():
-    raise Error('hello')
     graph.add_node("a")
     graph.add_node("b")
     pause(500)
