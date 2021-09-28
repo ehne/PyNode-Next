@@ -41,7 +41,6 @@ class Graph:
         core.ax(lambda x: x.dispatch(node._data()))
         # sets the node's click handler
         if core.callback != None:
-            print("registered?", node._id)
             core.ax(lambda x: x.nodes([node._id]).onclick(core.callback))
 
         return node
