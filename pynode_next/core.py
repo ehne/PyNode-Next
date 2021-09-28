@@ -17,7 +17,7 @@ class Core:
             try:
                 self.server = algx.http_server(port=self.port, file=self.custom_ui)
                 break
-            except:
+            except OSError:
                 self.port += 1
         print("serving ui found at", self.custom_ui)
         
