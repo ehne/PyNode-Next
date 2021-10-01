@@ -1,3 +1,48 @@
 <footer>
     Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a>
 </footer>
+
+<script type="module">
+import Tonic from 'https://cdn.skypack.dev/@optoolco/tonic';
+
+class VersionSwitcher extends Tonic {
+	constructor () {
+		super()
+	}
+	async connected () {
+		this.props.isLoaded = false;
+		let response = await fetch('https://api.github.com/repos/ehne/PyNode-Next/tags');
+		const data = await response.json()
+		console.log(data)
+		this.props.currentVersion = data[0].name
+		this.props.tagNames = data.map(i => i.name)
+		this.props.isLoaded = true
+		await this.reRender()
+	}
+	render () {
+        if (this.props.isLoaded) {
+            const links = this.props.tagNames.map(i => {
+                return this.html`
+                    <li><a href="https://github.com/ehne/PyNode-Next/blob/${i}/docs/documentation.adoc">Documentation for <code>${i}</code></a></li>
+                `
+            })
+            return this.html`
+                <details>
+                    <summary>This is the documentation for <code>${this.props.currentVersion}</code> of software. Previous versions are available.</summary>
+                    <ul>
+                        ${links}
+                    </ul>
+                </details>
+            `
+        }
+        return this.html`
+            <details>
+                <summary>This is the documentation for the latest version of software. Previous versions are available.</summary>
+                <p>loading</p>
+            </details>
+        `
+    }
+}
+
+Tonic.add(VersionSwitcher)
+</script>
