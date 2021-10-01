@@ -174,6 +174,11 @@ a[href="#_color_3"]::before {
         <a href="https://github.com/ehne/PyNode-Next/issues">Feedback</a>
     </div>
 </nav>
+
+
+<nav>
+    <version-switcher></version-switcher>
+</nav>
 <div id="header">
 <h1>Documentation</h1>
 </div>
@@ -2356,5 +2361,67 @@ This <strong>does not</strong> pause code execution.
 <footer>
     Created by <a href="https://github.com/ehne">@ehne</a> in 2021. Based on PyNode by <a href="https://github.com/alexsocha">@alexsocha</a>
 </footer>
+
+<script type="module">
+import Tonic from 'https://cdn.skypack.dev/@optoolco/tonic';
+
+function parseSemver (inString) {
+    const split = inString.replace('v', '').split('.')
+    return split.map(i => parseInt(i))
+}
+
+class VersionSwitcher extends Tonic {
+	constructor () {
+		super()
+	}
+	async connected () {
+		this.props.isLoaded = false;
+		let response = await fetch('https://api.github.com/repos/ehne/PyNode-Next/tags');
+		const data = await response.json()
+		console.log(data)
+		this.props.currentVersion = data[0].name
+		this.props.tagNames = data.map(i => i.name)
+		this.props.isLoaded = true
+		await this.reRender()
+	}
+	render () {
+        if (this.props.isLoaded) {
+            const links = this.props.tagNames.map(i => {
+                // show nothing for the non-version one.
+                if (i === 'pynode_next.zip') {
+                    return this.html``
+                }
+                const [vBreaking, vFeature, vPatch] = parseSemver(i)
+                // show the readme for versions before the documentation.adoc file
+                if (vBreaking === 1 && vFeature < 7) {
+                    return this.html`
+                        <li><a href="https://github.com/ehne/PyNode-Next/tree/${i}#todo">Documentation for <code>${i}</code></a></li>
+                    `
+                }
+                // show the documentation.adoc file on github
+                return this.html`
+                    <li><a href="https://github.com/ehne/PyNode-Next/blob/${i}/docs/documentation.adoc">Documentation for <code>${i}</code></a></li>
+                `
+            })
+            return this.html`
+                <details>
+                    <summary>This is the documentation for <code>${this.props.currentVersion}</code> of PyNode Next. Docs for previous versions are available.</summary>
+                    <ul>
+                        ${links}
+                    </ul>
+                </details>
+            `
+        }
+        return this.html`
+            <details>
+                <summary>This is the documentation for the latest version of PyNode Next. Docs for previous versions are available.</summary>
+                <p>loading...</p>
+            </details>
+        `
+    }
+}
+
+Tonic.add(VersionSwitcher)
+</script>
 </body>
 </html>
