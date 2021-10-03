@@ -22,6 +22,7 @@ toc::[]
 [source, python]
 ----
 graph.add_node(node) # <.>
+graph.add_node(id, value) # <.>
 graph.add_node(id) # <.>
 ----
 
@@ -33,6 +34,15 @@ graph.add_node(id) # <.>
 | `node` | {t_node}
 |===
 
+. Adds a node to the graph with the `id` and `value` set to their corresponding arguments.
++
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `id` | {t_generic_text}
+| `value` | {t_generic_text}
+|===
+
 . Adds a node to the graph with the `id` and `value` set to `id`.
 +
 [cols="a,a", width="100%", options="header"]
@@ -41,20 +51,7 @@ graph.add_node(id) # <.>
 | `id` | {t_generic_text}
 |===
 
-=== add_node
-[source, python]
-----
-graph.add_node(id, value)
-----
 
-Adds a node to the graph with the `id` and `value` set to their corresponding arguments.
-
-[cols="a,a", width="100%", options="header"]
-|===
-| Argument | Accepted Types
-| `id` | {t_generic_text}
-| `value` | {t_generic_text}
-|===
 
 === remove_node
 [source, python]
