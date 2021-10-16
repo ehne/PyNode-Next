@@ -21,24 +21,21 @@ toc::[]
 === add_node
 [source, python]
 ----
-graph.add_node(node)
+graph.add_node(node) # <.>
+graph.add_node(id, value) # <.>
+graph.add_node(id) # <.>
 ----
 
-Adds `node` to the graph. Will raise an error if that node object has been added to the graph before.
-
+. Adds `node` to the graph. Will raise an error if that node object has been added to the graph before.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `node` | {t_node}
 |===
 
-[source, python]
-----
-graph.add_node(id, value)
-----
-
-Adds a node to the graph with the `id` and `value` set to their corresponding arguments.
-
+. Adds a node to the graph with the `id` and `value` set to their corresponding arguments.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -46,20 +43,13 @@ Adds a node to the graph with the `id` and `value` set to their corresponding ar
 | `value` | {t_generic_text}
 |===
 
-[source, python]
-----
-graph.add_node(id)
-----
-
-Adds a node to the graph with the `id` and `value` set to `id`.
-
+. Adds a node to the graph with the `id` and `value` set to `id`.
++
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
 | `id` | {t_generic_text}
 |===
-
-
 
 === remove_node
 [source, python]
