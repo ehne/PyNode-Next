@@ -284,12 +284,15 @@ a[href="#_color_3"]::before {
 <h3 id="_add_node">add_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_node(node)</code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_node(node) # <b class="conum">(1)</b>
+graph.add_node(id, value) # <b class="conum">(2)</b>
+graph.add_node(id) # <b class="conum">(3)</b></code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Adds <code>node</code> to the graph. Will raise an error if that node object has been added to the graph before.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -312,14 +315,9 @@ a[href="#_color_3"]::before {
 </tr>
 </tbody>
 </table>
-<div class="listingblock">
-<div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_node(id, value)</code></pre>
-</div>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to their corresponding arguments.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -350,14 +348,9 @@ a[href="#_color_3"]::before {
 </tr>
 </tbody>
 </table>
-<div class="listingblock">
-<div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_node(id)</code></pre>
-</div>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to <code>id</code>.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -380,6 +373,9 @@ a[href="#_color_3"]::before {
 </tr>
 </tbody>
 </table>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_remove_node">remove_node</h3>
