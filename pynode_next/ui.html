@@ -244,6 +244,25 @@
 text {
   font-family: var(--font-stack);
 }
+.versionWarning {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1em;
+  font-size: 1.2em;
+  text-align: center;
+  background-color: hsl(0, 100%, 60%);
+  color: #fff;
+  display: none;
+}
+.versionWarning a {
+  color: #fff;
+}
+.versionWarning a:hover {
+  opacity: 0.8;
+}
         </style>
 <style>
 
@@ -506,6 +525,7 @@ text {
   fill: #fff;
   text-shadow: 0px 1px 4px rgba(0,0,0,0.98);
 }
+
 </style>
         
     </head>
@@ -582,6 +602,8 @@ text {
         </div>
         <div class="toast" id="toast">
         </div>
+        <div class="versionWarning" id="versionWarning">
+        </div>
     </body>
 
     <script>
@@ -618,6 +640,18 @@ text {
         let running = false;
         // whether the simulation has been stopped
         let stopped = true;
+        
+        async function checkOutdated(currentVersion) {
+          let response = await fetch('https://api.github.com/repos/ehne/PyNode-Next/tags');
+		      const data = await response.json();
+
+          if (data[0].name !== `v${currentVersion}`) {
+            $("#versionWarning").animate({
+              opacity: "show",
+              bottom: "show",
+            }, 336, "swing").html(`You are using an older version of PyNode Next. <a href="https://github.com/ehne/PyNode-Next/releases/latest">Version ${data[0].name.replace('v', '')} is now available.</a>`);
+          }
+        }
 
         function dispatch(eventStr) {
             // receive messages from the server and send them to the client
@@ -632,6 +666,9 @@ text {
                 case "alert":
                   MSAlert(`${event.message}`)
                 
+                case "version":
+                  checkOutdated(event.message)
+
                 default:
                   break;
               }
@@ -642,7 +679,9 @@ text {
         }
 
         // open the websocket
-        let socket = initSocket(function() {}, dispatch);
+        let socket = initSocket(function() {
+          canvas.message('getVersion');
+        }, dispatch);
         
         canvas.onreceive(function(event) {
             // send messages to the server through the websocket
