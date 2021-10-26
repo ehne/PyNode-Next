@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="icon" href="https://raw.githubusercontent.com/algrx/algorithmx/master/img/logo.svg?sanitize=true" type="image/svg+xml">
 
-        <title>PyNode Next</title>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://raw.githubusercontent.com/algrx/algorithmx/master/img/logo.svg?sanitize=true"
+        type="image/svg+xml">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <title>PyNode Next</title>
 
-        <script src="https://cdn.jsdelivr.net/gh/ehne/PyNode-Next/assets/algx.js"></script>
-        <script src="https://d3js.org/d3-color.v2.min.js"></script>
-        <script src="https://d3js.org/d3-dispatch.v2.min.js"></script>
-        <script src="https://d3js.org/d3-ease.v2.min.js"></script>
-        <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
-        <script src="https://d3js.org/d3-selection.v2.min.js"></script>
-        <script src="https://d3js.org/d3-timer.v2.min.js"></script>
-        <script src="https://d3js.org/d3-transition.v2.min.js"></script>
-        <script src="https://unpkg.com/save-svg-as-png@1.4.17/lib/saveSvgAsPng.js"></script>
-        <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-        <style>
-            :root {
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/ehne/PyNode-Next/assets/algx.js"></script>
+    <script src="https://d3js.org/d3-color.v2.min.js"></script>
+    <script src="https://d3js.org/d3-dispatch.v2.min.js"></script>
+    <script src="https://d3js.org/d3-ease.v2.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
+    <script src="https://d3js.org/d3-selection.v2.min.js"></script>
+    <script src="https://d3js.org/d3-timer.v2.min.js"></script>
+    <script src="https://d3js.org/d3-transition.v2.min.js"></script>
+    <script src="https://unpkg.com/save-svg-as-png@1.4.17/lib/saveSvgAsPng.js"></script>
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <style>
+        :root {
             --balloon-border-radius: 2px;
             --balloon-color: hsl(0, 0%, 50%);
             --balloon-text-color: #fff;
             --balloon-font-size: 0.9em;
             --balloon-move: 4px;
-            
+
             --canvas-background: hsl(0, 0%, 100%);
             --header-background: hsl(0, 0%, 10%);
             --button-background: hsl(0, 0%, 80%);
@@ -38,766 +41,952 @@
 
             --button-text: hsl(0, 0%, 20%);
             --header-text: hsl(0, 0%, 90%);
-            
+
             --link-text: hsl(0, 0%, 100%);
             --link-text--hover: hsla(0, 0%, 100%, 0.8);
 
             --button-background--highlight: hsl(100, 100%, 80%);
             --button-text--highlight: hsl(100, 100%, 20%);
             --font-stack: "Oswald", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-            }
-            
-            html {
-                height: 100%;
-            }
-            html,body{
-                background-color: var(--canvas-background);
-            }
-            body {
-                height: 100%;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                font-family: var(--font-stack);
-            }
+        }
 
-            .header {
-                display: flex;
-                /*position: fixed;
+        html {
+            height: 100%;
+        }
+
+        html,
+        body {
+            background-color: var(--canvas-background);
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: var(--font-stack);
+        }
+
+        .header {
+            display: flex;
+            /*position: fixed;
                 z-index: 50;
                 top:0;
                 left:0;
                 right:0;*/
-                background-color: var(--header-background);
-                padding:8px;
-                align-items: center;
-                border-bottom: 4px solid var(--button-text);
-            }
-            .header__title{
-                font-size: 1.75em;
-                color: var(--header-text);
-                display: flex;
-                padding-left: 0.2em;
-            }
-            .header__title > img {
-                height: 2em
-            }
-            .header__spacer{
-                flex-grow:1
-            }
-            .header__icons {
-                display: inline-flex;
-                justify-self: flex-end;
-                
-            }
-            .header__icons>* {
-                margin-left:8px
+            background-color: var(--header-background);
+            padding: 8px;
+            align-items: center;
+            border-bottom: 4px solid var(--button-text);
+        }
 
+        .header__title {
+            font-size: 1.75em;
+            color: var(--header-text);
+            display: flex;
+            padding-left: 0.2em;
+        }
+
+        .header__title>img {
+            height: 2em
+        }
+
+        .header__spacer {
+            flex-grow: 1
+        }
+
+        .header__icons {
+            display: inline-flex;
+            justify-self: flex-end;
+
+        }
+
+        .header__icons>* {
+            margin-left: 8px
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .button {
+            --bg: var(--button-background);
+            background-color: var(--bg);
+            color: var(--button-text);
+            padding: 8px;
+            display: flex;
+            border-radius: 0.4em;
+            cursor: pointer;
+            transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
+            font-family: var(--font-stack);
+        }
+
+        .button:hover {
+            --bg: var(--button-background--hover);
+        }
+
+        .button:focus {
+            /*border: 2px solid red;*/
+            outline: none;
+            box-shadow: inset 0px 0px 0px 2px var(--bg), inset 0px 0px 0px 4px var(--canvas-background);
+        }
+
+        .button:active {
+            --bg: var(--button-background--click)
+        }
+
+        .button.-svg {
+            --bg: #f5ba3d;
+            color: #4f3c14
+        }
+
+        .button.-svg:hover {
+            --bg: #EBB23A;
+        }
+
+        .button.-svg:active {
+            --bg: #e0aa37;
+        }
+
+        .output {
+            flex: auto;
+            display: flex;
+            backface-visibility: hidden;
+            z-index: 0
+        }
+
+        .algorithmx {
+            position: absolute;
+        }
+
+        .icon {
+            width: 1.75em;
+            height: 1.75em
+        }
+
+        small {
+            font-size: 0.6em;
+            margin-left: 8px;
+        }
+
+        a.link {
+            color: var(--link-text)
+        }
+
+        a.link:hover {
+            color: var(--link-text--hover)
+        }
+
+        .button.-is-highlight {
+            animation: button-highlight 0.7s ease 0.5s 2 normal none;
+        }
+
+        @keyframes button-highlight {
+            0.0% {
+                background: var(--button-background);
+                color: var(--button-text);
             }
-            
-            .hidden {
-                display: none !important;
+
+            100% {
+                background: var(--button-background);
+                color: var(--button-text);
             }
-            .button {
-                --bg: var(--button-background);
-                background-color: var(--bg);
-                color:var(--button-text);
-                padding:8px;
-                display: flex;
-                border-radius: 0.4em;
-                cursor: pointer;
-                transition:all cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
-                font-family: var(--font-stack);
+
+            50.2% {
+                background: var(--button-background--highlight);
+                color: var(--button-text--highlight);
             }
-            .button:hover{
-                --bg: var(--button-background--hover);
+        }
+
+        .ui.vertical.divider {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            margin: 0rem;
+            padding: 0em;
+            width: auto;
+            height: 50%;
+            line-height: 0em;
+            text-align: center;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .ui.vertical.divider:before,
+        .ui.vertical.divider:after {
+            position: absolute;
+            left: 50%;
+            content: '';
+            z-index: 3;
+            border-left: 0.5px solid var(--button-background);
+            border-right: 0.5px solid var(--button-background);
+            width: 0%;
+            height: calc(100% - 1rem);
+        }
+
+        .ui.vertical.divider:before {
+            top: -100%;
+        }
+
+        .ui.vertical.divider:after {
+            top: auto;
+            bottom: 0px;
+        }
+
+        .orbox {
+            position: relative;
+            border: 1px solid var(--button-background);
+            border-radius: 0.5em
+        }
+
+        .orbox__container {
+            display: flex;
+        }
+
+        .orbox__half {
+            padding: 1em;
+            width: 50%;
+            text-align: center;
+        }
+
+        .orbox__half>h3 {
+            margin: 0.3em;
+            margin-top: 0px;
+            line-height: 1;
+        }
+
+        .orbox__half>p {
+            margin: 0.4em
+        }
+
+        .orbox__half>button {
+            margin-top: 1em;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center !important;
+            border: none;
+            justify-content: center;
+        }
+
+        .modal__footer>* {
+            margin: 0px;
+            color: var(--balloon-color);
+            font-weight: 300;
+            text-align: center;
+        }
+
+        text {
+            font-family: var(--font-stack);
+        }
+
+        .versionWarning {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 1em;
+            font-size: 1.2em;
+            text-align: center;
+            background-color: hsl(0, 100%, 60%);
+            color: #fff;
+            display: none;
+        }
+
+        .versionWarning a {
+            color: #fff;
+        }
+
+        .versionWarning a:hover {
+            opacity: 0.8;
+        }
+    </style>
+    <style>
+        button[aria-label][data-balloon-pos] {
+            overflow: visible;
+        }
+
+        [aria-label][data-balloon-pos] {
+            position: relative;
+            cursor: pointer;
+        }
+
+        [aria-label][data-balloon-pos]:after {
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.18s ease-out 0.18s;
+            text-indent: 0;
+            font-family: var(--font-stack);
+            font-weight: normal;
+            font-style: normal;
+            text-shadow: none;
+            font-size: var(--balloon-font-size);
+            background: var(--balloon-color);
+            color: var(--balloon-text-color);
+            border-radius: var(--balloon-border-radius);
+            content: attr(aria-label);
+            padding: .5em 1em;
+            position: absolute;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        [aria-label][data-balloon-pos]:before {
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-top-color: var(--balloon-color);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.18s ease-out 0.18s;
+            content: "";
+            position: absolute;
+            z-index: 10;
+        }
+
+        [aria-label][data-balloon-pos]:hover:before,
+        [aria-label][data-balloon-pos]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-visible]:before,
+        [aria-label][data-balloon-pos][data-balloon-visible]:after,
+        [aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:before,
+        [aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:after {
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        [aria-label][data-balloon-pos].font-awesome:after {
+            font-family: FontAwesome, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-break]:after {
+            white-space: pre;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-break][data-balloon-length]:after {
+            white-space: pre-line;
+            word-break: break-word;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-blunt]:before,
+        [aria-label][data-balloon-pos][data-balloon-blunt]:after {
+            transition: none;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:after {
+            transform: translate(-50%, 0);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:before {
+            transform: translate(-50%, 0);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:after {
+            left: 0;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:before {
+            left: 5px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:after {
+            right: 0;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:before {
+            right: 5px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:after,
+        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:after {
+            transform: translate(0, 0);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:before,
+        [aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:before,
+        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:before,
+        [aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:before {
+            transform: translate(0, 0);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos^="up"]:before,
+        [aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
+            bottom: 100%;
+            transform-origin: top;
+            transform: translate(0, var(--balloon-move));
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
+            margin-bottom: 10px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="up"]:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="up"]:after {
+            left: 50%;
+            transform: translate(-50%, var(--balloon-move));
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:before,
+        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
+            top: 100%;
+            transform: translate(0, calc(var(--balloon-move) * -1));
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
+            margin-top: 10px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:before {
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-bottom-color: var(--balloon-color);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="down"]:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="down"]:before {
+            left: 50%;
+            transform: translate(-50%, calc(var(--balloon-move) * -1));
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:after {
+            transform: translate(0, -50%);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:before,
+        [aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:before {
+            transform: translate(0, -50%);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="left"]:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
+            right: 100%;
+            top: 50%;
+            transform: translate(var(--balloon-move), -50%);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="left"]:after {
+            margin-right: 10px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-left-color: var(--balloon-color);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="right"]:after,
+        [aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
+            left: 100%;
+            top: 50%;
+            transform: translate(calc(var(--balloon-move) * -1), -50%);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="right"]:after {
+            margin-left: 10px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-right-color: var(--balloon-color);
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-length]:after {
+            white-space: normal;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-length="small"]:after {
+            width: 80px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-length="medium"]:after {
+            width: 150px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-length="large"]:after {
+            width: 260px;
+        }
+
+        [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
+            width: 380px;
+        }
+
+        @media screen and (max-width: 768px) {
+            [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
+                width: 90vw;
             }
-            .button:focus {
-              /*border: 2px solid red;*/
-              outline: none;
-              box-shadow: inset 0px 0px 0px 2px var(--bg), inset 0px 0px 0px 4px var(--canvas-background);
-            }
-            .button:active{
-                --bg: var(--button-background--click)
-            }
-            .button.-svg {
-              --bg: #f5ba3d;
-              color: #4f3c14
-            }
-            .button.-svg:hover {
-              --bg:#EBB23A;
-            }
-            .button.-svg:active {
-              --bg: #e0aa37;
-            }
-            .output {
-                flex: auto;
-                display: flex;
-                backface-visibility: hidden;
-                z-index:0
-            }
-            
-            .algorithmx {
-                position: absolute;
-            }
-            .icon{
-                width: 1.75em;
-                height:1.75em
-            }
-            small {
-                font-size: 0.6em;
-                margin-left: 8px;
-            }
-            a.link {
-                color:var(--link-text)
-            }
-            a.link:hover{
-                color: var(--link-text--hover)
-            }
-            .button.-is-highlight{
-                animation: button-highlight 0.7s ease 0.5s 2 normal none;
-            }
-            @keyframes button-highlight {
-                0.0%{
-                    background: var(--button-background);
-                    color: var(--button-text);
-                }
-                100%{
-                    background: var(--button-background);
-                    color: var(--button-text);
-                }
-                50.2%{
-                    background: var(--button-background--highlight);
-                    color: var(--button-text--highlight);
-                }
-             }
-             .ui.vertical.divider {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  margin: 0rem;
-  padding: 0em;
-  width: auto;
-  height: 50%;
-  line-height: 0em;
-  text-align: center;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-.ui.vertical.divider:before,
-.ui.vertical.divider:after {
-  position: absolute;
-  left: 50%;
-  content: '';
-  z-index: 3;
-  border-left: 0.5px solid var(--button-background);
-  border-right: 0.5px solid var(--button-background);
-  width: 0%;
-  height: calc(100% -  1rem );
-}
-.ui.vertical.divider:before {
-  top: -100%;
-}
-.ui.vertical.divider:after {
-  top: auto;
-  bottom: 0px;
-}
-.orbox {
-  position: relative;
-  border: 1px solid var(--button-background);
-  border-radius: 0.5em
-}
-.orbox__container {
-  display: flex;
-}
-.orbox__half {
-  padding: 1em;
-  width:50%;
-  text-align: center;
-}
-.orbox__half > h3 {
-  margin: 0.3em;
-  margin-top: 0px;
-  line-height: 1;
-}
-.orbox__half > p {
-  margin: 0.4em
-}
-.orbox__half > button {
-  margin-top: 1em;
-  width: 100%;
-  font-weight: bold;
-  font-size: 1.1em;
-  text-align: center !important;
-  border: none;
-  justify-content: center;
-}
+        }
 
-.modal__footer > * {
-  margin: 0px;
-  color: var(--balloon-color);
-  font-weight: 300;
-  text-align: center;
-}
-
-text {
-  font-family: var(--font-stack);
-}
-.versionWarning {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 1em;
-  font-size: 1.2em;
-  text-align: center;
-  background-color: hsl(0, 100%, 60%);
-  color: #fff;
-  display: none;
-}
-.versionWarning a {
-  color: #fff;
-}
-.versionWarning a:hover {
-  opacity: 0.8;
-}
-        </style>
-<style>
-
-button[aria-label][data-balloon-pos] {
-  overflow: visible; }
-
-[aria-label][data-balloon-pos] {
-  position: relative;
-  cursor: pointer; }
-  [aria-label][data-balloon-pos]:after {
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.18s ease-out 0.18s;
-    text-indent: 0;
-    font-family: var(--font-stack);
-    font-weight: normal;
-    font-style: normal;
-    text-shadow: none;
-    font-size: var(--balloon-font-size);
-    background: var(--balloon-color);
-    color: var(--balloon-text-color);
-    border-radius: var(--balloon-border-radius);
-    content: attr(aria-label);
-    padding: .5em 1em;
-    position: absolute;
-    white-space: nowrap;
-    z-index: 10; }
-  [aria-label][data-balloon-pos]:before {
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-top-color: var(--balloon-color);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.18s ease-out 0.18s;
-    content: "";
-    position: absolute;
-    z-index: 10; }
-  [aria-label][data-balloon-pos]:hover:before, [aria-label][data-balloon-pos]:hover:after, [aria-label][data-balloon-pos][data-balloon-visible]:before, [aria-label][data-balloon-pos][data-balloon-visible]:after, [aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:before, [aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:after {
-    opacity: 1;
-    pointer-events: none; }
-  [aria-label][data-balloon-pos].font-awesome:after {
-    font-family: FontAwesome, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
-  [aria-label][data-balloon-pos][data-balloon-break]:after {
-    white-space: pre; }
-  [aria-label][data-balloon-pos][data-balloon-break][data-balloon-length]:after {
-    white-space: pre-line;
-    word-break: break-word; }
-  [aria-label][data-balloon-pos][data-balloon-blunt]:before, [aria-label][data-balloon-pos][data-balloon-blunt]:after {
-    transition: none; }
-  [aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:after, [aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:after, [aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:after, [aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:after {
-    transform: translate(-50%, 0); }
-  [aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:before, [aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:before, [aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:before, [aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:before {
-    transform: translate(-50%, 0); }
-  [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:after {
-    left: 0; }
-  [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:before {
-    left: 5px; }
-  [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:after {
-    right: 0; }
-  [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:before {
-    right: 5px; }
-  [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:after, [aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:after, [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:after, [aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:after {
-    transform: translate(0, 0); }
-  [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:before, [aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:before, [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:before, [aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:before {
-    transform: translate(0, 0); }
-  [aria-label][data-balloon-pos][data-balloon-pos^="up"]:before, [aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
-    bottom: 100%;
-    transform-origin: top;
-    transform: translate(0, var(--balloon-move)); }
-  [aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
-    margin-bottom: 10px; }
-  [aria-label][data-balloon-pos][data-balloon-pos="up"]:before, [aria-label][data-balloon-pos][data-balloon-pos="up"]:after {
-    left: 50%;
-    transform: translate(-50%, var(--balloon-move)); }
-  [aria-label][data-balloon-pos][data-balloon-pos^="down"]:before, [aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
-    top: 100%;
-    transform: translate(0, calc(var(--balloon-move) * -1)); }
-  [aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
-    margin-top: 10px; }
-  [aria-label][data-balloon-pos][data-balloon-pos^="down"]:before {
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-bottom-color: var(--balloon-color); }
-  [aria-label][data-balloon-pos][data-balloon-pos="down"]:after, [aria-label][data-balloon-pos][data-balloon-pos="down"]:before {
-    left: 50%;
-    transform: translate(-50%, calc(var(--balloon-move) * -1)); }
-  [aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:after, [aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:after, [aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:after, [aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:after {
-    transform: translate(0, -50%); }
-  [aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:before, [aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:before, [aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:before, [aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:before {
-    transform: translate(0, -50%); }
-  [aria-label][data-balloon-pos][data-balloon-pos="left"]:after, [aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
-    right: 100%;
-    top: 50%;
-    transform: translate(var(--balloon-move), -50%); }
-  [aria-label][data-balloon-pos][data-balloon-pos="left"]:after {
-    margin-right: 10px; }
-  [aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-left-color: var(--balloon-color); }
-  [aria-label][data-balloon-pos][data-balloon-pos="right"]:after, [aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
-    left: 100%;
-    top: 50%;
-    transform: translate(calc(var(--balloon-move) * -1), -50%); }
-  [aria-label][data-balloon-pos][data-balloon-pos="right"]:after {
-    margin-left: 10px; }
-  [aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-right-color: var(--balloon-color); }
-  [aria-label][data-balloon-pos][data-balloon-length]:after {
-    white-space: normal; }
-  [aria-label][data-balloon-pos][data-balloon-length="small"]:after {
-    width: 80px; }
-  [aria-label][data-balloon-pos][data-balloon-length="medium"]:after {
-    width: 150px; }
-  [aria-label][data-balloon-pos][data-balloon-length="large"]:after {
-    width: 260px; }
-  [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
-    width: 380px; }
-    @media screen and (max-width: 768px) {
-      [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
-        width: 90vw; } }
-  [aria-label][data-balloon-pos][data-balloon-length="fit"]:after {
-    width: 100%; }
+        [aria-label][data-balloon-pos][data-balloon-length="fit"]:after {
+            width: 100%;
+        }
 
 
-    .modal__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+        .modal__overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
 
-.modal__container {
-  background-color: var(--canvas-background);
-  padding: 30px;
-  max-width: 500px;
-  max-height: 100vh;
-  border-radius: 4px;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
+        .modal__container {
+            background-color: var(--canvas-background);
+            padding: 30px;
+            max-width: 500px;
+            max-height: 100vh;
+            border-radius: 4px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
 
-.modal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.modal__title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.25;
-  box-sizing: border-box;
-}
+        .modal__title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 600;
+            font-size: 1.25rem;
+            line-height: 1.25;
+            box-sizing: border-box;
+        }
 
-.modal__close {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-}
+        .modal__close {
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+        }
 
-.modal__header .modal__close:before { content: "\2715"; }
+        .modal__header .modal__close:before {
+            content: "\2715";
+        }
 
-.modal__content {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-  color: rgba(0,0,0,.8);
-}
+        .modal__content {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            color: rgba(0, 0, 0, .8);
+        }
 
 
 
 
 
-/**************************\
+        /**************************\
   Demo Animation Style
 \**************************/
-@keyframes mmfadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
+        @keyframes mmfadeIn {
+            from {
+                opacity: 0;
+            }
 
-@keyframes mmfadeOut {
-    from { opacity: 1; }
-      to { opacity: 0; }
-}
+            to {
+                opacity: 1;
+            }
+        }
 
-@keyframes mmslideIn {
-  from { transform: translateY(15%); }
-    to { transform: translateY(0); }
-}
+        @keyframes mmfadeOut {
+            from {
+                opacity: 1;
+            }
 
-@keyframes mmslideOut {
-    from { transform: translateY(0); }
-    to { transform: translateY(-10%); }
-}
+            to {
+                opacity: 0;
+            }
+        }
 
-.micromodal-slide {
-  display: none;
-}
+        @keyframes mmslideIn {
+            from {
+                transform: translateY(15%);
+            }
 
-.micromodal-slide.is-open {
-  display: block;
-}
+            to {
+                transform: translateY(0);
+            }
+        }
 
-.micromodal-slide[aria-hidden="false"] .modal__overlay {
-  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
+        @keyframes mmslideOut {
+            from {
+                transform: translateY(0);
+            }
 
-.micromodal-slide[aria-hidden="false"] .modal__container {
-  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
-}
+            to {
+                transform: translateY(-10%);
+            }
+        }
 
-.micromodal-slide[aria-hidden="true"] .modal__overlay {
-  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
+        .micromodal-slide {
+            display: none;
+        }
 
-.micromodal-slide[aria-hidden="true"] .modal__container {
-  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
-}
+        .micromodal-slide.is-open {
+            display: block;
+        }
 
-.micromodal-slide .modal__container,
-.micromodal-slide .modal__overlay {
-  will-change: transform;
-}
+        .micromodal-slide[aria-hidden="false"] .modal__overlay {
+            animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
 
-.toast{
-    display:none;
-    position:fixed;
-    right: 14px;
-    bottom:14px;
-    width: min( 376px, 70vw );
-    background-color: var(--header-background);
-    color: var(--header-text);
-    padding:14px;
-    margin: auto;
-    border-left: 4px solid orange;
-}
+        .micromodal-slide[aria-hidden="false"] .modal__container {
+            animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+        }
 
-text {
-  /*paint-order: stroke;
+        .micromodal-slide[aria-hidden="true"] .modal__overlay {
+            animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        .micromodal-slide[aria-hidden="true"] .modal__container {
+            animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+        }
+
+        .micromodal-slide .modal__container,
+        .micromodal-slide .modal__overlay {
+            will-change: transform;
+        }
+
+        .toast {
+            display: none;
+            position: fixed;
+            right: 14px;
+            bottom: 14px;
+            width: min(376px, 70vw);
+            background-color: var(--header-background);
+            color: var(--header-text);
+            padding: 14px;
+            margin: auto;
+            border-left: 4px solid orange;
+        }
+
+        text {
+            /*paint-order: stroke;
   stroke: black;
   stroke-width: 2px;
   fill: #fff;
   stroke-linejoin: round;*/
-  fill: #fff;
-  text-shadow: 0px 1px 4px rgba(0,0,0,0.98);
-}
+            fill: #fff;
+            text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.98);
+        }
+    </style>
 
-</style>
-        
-    </head>
+</head>
 
-    <body onresize="resize()">
-      
-        <div class="header">
-            <div class="header__title">
-                <img src="https://cdn.jsdelivr.net/gh/ehne/PyNode-Next/assets/logo_white.png">
-         
+<body onresize="resize()">
+
+    <div class="header">
+        <div class="header__title">
+            <img src="https://cdn.jsdelivr.net/gh/ehne/PyNode-Next/assets/logo_white.png">
+
+        </div>
+        <div class="header__spacer"></div>
+        <div class="header__icons">
+            <a href="https://ehne.github.io/PyNode-Next/documentation.html" class="button -with-icon" target="_blank"
+                rel="noopener" aria-label="PyNode Next documentation (new tab)" data-balloon-pos="down-right">
+                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <div class="button -with-icon" onclick="openDownloadModal()" aria-label="Download image of graph"
+                data-balloon-pos="down-right">
+                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
+                        clip-rule="evenodd"></path>
+                </svg>
             </div>
-            <div class="header__spacer"></div>
-            <div class="header__icons">
-                <a href="https://ehne.github.io/PyNode-Next/documentation.html" class="button -with-icon"  target="_blank" rel="noopener" aria-label="PyNode Next documentation (new tab)" data-balloon-pos="down-right">
-                    <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
-                </a>
-                <div class="button -with-icon" onclick="openDownloadModal()" aria-label="Download image of graph" data-balloon-pos="down-right">
-<svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg>
-                </div>
-                <div class="button -with-icon -is-highlight" onclick="clickPlay()" aria-label="Play/Pause" data-balloon-pos="down-right">
-                    <svg class="icon" id="button-play" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                    <svg class="icon hidden" id="button-pause" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                </div>
-                <!-- <div class="button -with-icon" onclick="window.location = window.location" aria-label="Reload the page" data-balloon-pos="down-right">
+            <div class="button -with-icon -is-highlight" onclick="clickPlay()" aria-label="Play/Pause"
+                data-balloon-pos="down-right">
+                <svg class="icon" id="button-play" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <svg class="icon hidden" id="button-pause" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <!-- <div class="button -with-icon" onclick="window.location = window.location" aria-label="Reload the page" data-balloon-pos="down-right">
                     <svg class="icon" id="button-reset" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path></svg>
 
                 </div> -->
-                
-                
-            </div>
-            
+
+
         </div>
-        <div class="output" id="output"></div>
-        <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-          <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+
+    </div>
+    <div class="output" id="output"></div>
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
             <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-              <header class="modal__header">
-                <h2 class="modal__title" id="modal-1-title">
-                  Download graph image
-                </h2>
-                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-              </header>
-              <main class="modal__content" id="modal-1-content">
-                <div class="orbox">
-                  <div class="orbox__container">
-                    <div class="orbox__half">
-                      <h3>SVG</h3>
-                      <p>• Infinitely scalable</p>
-                      <p>• Up to 96% smaller <br>than a PNG</p>
-                      <button class="button -svg" onclick="saveSvg()">Download SVG</button>
+                <header class="modal__header">
+                    <h2 class="modal__title" id="modal-1-title">
+                        Download graph image
+                    </h2>
+                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                </header>
+                <main class="modal__content" id="modal-1-content">
+                    <div class="orbox">
+                        <div class="orbox__container">
+                            <div class="orbox__half">
+                                <h3>SVG</h3>
+                                <p>• Infinitely scalable</p>
+                                <p>• Up to 96% smaller <br>than a PNG</p>
+                                <button class="button -svg" onclick="saveSvg()">Download SVG</button>
+                            </div>
+                            <div class="orbox__half">
+                                <h3>PNG</h3>
+                                <p>• Fixed resolution</p>
+                                <p>• Easy to include in documents</p>
+                                <button class="button" onclick="saveImage()">Download PNG</button>
+                            </div>
+                        </div>
+                        <div class="ui vertical divider">
+                            Or
+                        </div>
+
                     </div>
-                    <div class="orbox__half">
-                      <h3>PNG</h3>
-                      <p>• Fixed resolution</p>
-                      <p>• Easy to include in documents</p>
-                      <button class="button" onclick="saveImage()">Download PNG</button>
-                    </div>
-                  </div>
-                  <div class="ui vertical divider">
-                  Or
-                </div>
-                  
-                </div>
-                
-                
-                
-              </main>
-              <footer class="modal__footer">
-                <p>
-                  Note: The image that is saved is what you can see in the viewer. Both versions have transparent backgrounds.                </p>
-              </footer>
+
+
+
+                </main>
+                <footer class="modal__footer">
+                    <p>
+                        Note: The image that is saved is what you can see in the viewer. Both versions have transparent
+                        backgrounds. </p>
+                </footer>
             </div>
-          </div>
         </div>
-        <div class="toast" id="toast">
-        </div>
-        <div class="versionWarning" id="versionWarning">
-        </div>
-    </body>
+    </div>
+    <div class="toast" id="toast">
+    </div>
+    <div class="versionWarning" id="versionWarning">
+    </div>
+</body>
 
-    <script>
-        MicroModal.init()
+<script>
+    MicroModal.init()
 
-        function MSAlert(_text) {
-          // stops any currently running animations
-          $("#toast").finish();
-          //sets the text content to be text (makes it so you cant give it html lol)
-          $("#toast").text(_text);
-          // animates the alert popping up, waiting, and then sliding down.
-          $("#toast").animate({
+    function MSAlert(_text) {
+        // stops any currently running animations
+        $("#toast").finish();
+        //sets the text content to be text (makes it so you cant give it html lol)
+        $("#toast").text(_text);
+        // animates the alert popping up, waiting, and then sliding down.
+        $("#toast").animate({
             opacity: "show",
             bottom: "show",
-          }, 336, "swing").delay(4000).animate({
+        }, 336, "swing").delay(4000).animate({
             opacity: "hide",
             bottom: "hide",
-          }, 336, "swing");
-        }
+        }, 336, "swing");
+    }
 
-        function resize() {
-            const width = document.getElementById('output').clientWidth;
-            const height = document.getElementById('output').clientHeight;
-            // immediately resize the canvas
-            canvas.withQ(null).duration(0).size([width, height]);
-            
-        }
+    function resize() {
+        const width = document.getElementById('output').clientWidth;
+        const height = document.getElementById('output').clientHeight;
+        // immediately resize the canvas
+        canvas.withQ(null).duration(0).size([width, height]);
 
-        // main canvas
-        let canvas = algorithmx.createCanvas('output');
-        resize();
+    }
 
-        // whether the simulation is running (only false while the page is loading)
-        let running = false;
-        // whether the simulation has been stopped
-        let stopped = true;
-        
-        async function checkOutdated(currentVersion) {
-          let response = await fetch('https://api.github.com/repos/ehne/PyNode-Next/tags');
-		      const data = await response.json();
+    // main canvas
+    let canvas = algorithmx.createCanvas('output');
+    resize();
 
-          if (data[0].name !== `v${currentVersion}`) {
+    // whether the simulation is running (only false while the page is loading)
+    let running = false;
+    // whether the simulation has been stopped
+    let stopped = true;
+
+    async function checkOutdated(currentVersion) {
+        let response = await fetch('https://api.github.com/repos/ehne/PyNode-Next/tags');
+        const data = await response.json();
+
+        if (data[0].name !== `v${currentVersion}`) {
             $("#versionWarning").animate({
-              opacity: "show",
-              bottom: "show",
+                opacity: "show",
+                bottom: "show",
             }, 336, "swing").html(`You are using an older version of PyNode Next. <a href="https://github.com/ehne/PyNode-Next/releases/latest">Version ${data[0].name.replace('v', '')} is now available.</a>`);
-          }
         }
+    }
 
-        function dispatch(eventStr) {
-            // receive messages from the server and send them to the client
-            const event = JSON.parse(eventStr);
-            console.log(event)
-            if (event.isPyNodeNext) {
-              switch (event.type) {
+    function dispatch(eventStr) {
+        // receive messages from the server and send them to the client
+        const event = JSON.parse(eventStr);
+        console.log(event)
+        if (event.isPyNodeNext) {
+            switch (event.type) {
                 case "error":
-                  MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`)
-                  break;
-                  
+                    MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`)
+                    break;
+
                 case "alert":
-                  MSAlert(`${event.message}`)
-                
+                    MSAlert(`${event.message}`)
+
                 case "version":
-                  checkOutdated(event.message)
+                    checkOutdated(event.message)
 
                 default:
-                  break;
-              }
-            } else {
-              canvas.dispatch(event);
+                    break;
             }
-            
+        } else {
+            canvas.dispatch(event);
         }
 
-        // open the websocket
-        let socket = initSocket(function() {
-          canvas.message('getVersion');
-        }, dispatch);
-        
-        canvas.onreceive(function(event) {
-            // send messages to the server through the websocket
-            socket.send(JSON.stringify(event));
-        })
+    }
 
-        function start() {
-            
-            if (running === false) {
-                // trigger start
-                canvas.message('start');
-                // allow time for buffering
-                canvas.queues().stop();
-                setTimeout(() => canvas.queues().start(), 10);
-            } else {
-                // immediately resume all queues
-                canvas.queues().start();
-            }
-            running = true
-            stopped = false
-        }
+    // open the websocket
+    let socket = initSocket(function () {
+        canvas.message('getVersion');
+    }, dispatch);
 
-        function stop() {
-            // stop all queues
-            canvas.queues().stop();
-            stopped = true;
-        }
+    canvas.onreceive(function (event) {
+        // send messages to the server through the websocket
+        socket.send(JSON.stringify(event));
+    })
 
-        function restart() {
-            // immediately cancel all scheduled events on all event queues
-            canvas.queues().clear();
+    function start() {
 
-            canvas.queue().start(); // make sure that the main queue is running
-            canvas.duration(0.2).remove(); // clear graphics
-
-            // send a start message
+        if (running === false) {
+            // trigger start
             canvas.message('start');
-
-            // allow time for buffering and remove animations, then start all queues
+            // allow time for buffering
             canvas.queues().stop();
-            setTimeout(function() {
-                resize();
-                canvas.queues().start();
-            }, 330);
-
-            running = true;
-            stopped = false;
+            setTimeout(() => canvas.queues().start(), 10);
+        } else {
+            // immediately resume all queues
+            canvas.queues().start();
         }
+        running = true
+        stopped = false
+    }
 
-        function clickPlay() {
-            if (stopped) {
-                d3.select('#button-play').attr('class', 'icon hidden');
-                d3.select('#button-pause').attr('class', 'icon');
-                reconnect(start);
-            } else {
-                // data-icon="bx:bx-play-circle"
-                
-                d3.select('#button-pause').attr('class', 'icon hidden');
-                d3.select('#button-play').attr('class', 'icon');
-                stop();
-            }
-        }
+    function stop() {
+        // stop all queues
+        canvas.queues().stop();
+        stopped = true;
+    }
 
-        function clickReset() {
-            // rotating animation
-            d3.select('#button-reset').transition().duration(350).styleTween('transform', function rotateTween() {
-                let i = d3.interpolate(0, 360);
-                return function(t) { return "rotate(" + i(t) + "deg)" };
-            })
-            d3.select('#button-play').attr('class', 'icon');
+    function restart() {
+        // immediately cancel all scheduled events on all event queues
+        canvas.queues().clear();
+
+        canvas.queue().start(); // make sure that the main queue is running
+        canvas.duration(0.2).remove(); // clear graphics
+
+        // send a start message
+        canvas.message('start');
+
+        // allow time for buffering and remove animations, then start all queues
+        canvas.queues().stop();
+        setTimeout(function () {
+            resize();
+            canvas.queues().start();
+        }, 330);
+
+        running = true;
+        stopped = false;
+    }
+
+    function clickPlay() {
+        if (stopped) {
+            d3.select('#button-play').attr('class', 'icon hidden');
+            d3.select('#button-pause').attr('class', 'icon');
+            reconnect(start);
+        } else {
+            // data-icon="bx:bx-play-circle"
+
             d3.select('#button-pause').attr('class', 'icon hidden');
-            restart()
-            reconnect(restart);
+            d3.select('#button-play').attr('class', 'icon');
+            stop();
         }
+    }
 
-        function reconnect(onConnect) {
-            // attempt to reconnect the socket if the server has restarted
-            if (socket.readyState !== socket.OPEN)
-                socket = initSocket(function (socket) { onConnect() }, dispatch);
-            else onConnect();
-        }
+    function clickReset() {
+        // rotating animation
+        d3.select('#button-reset').transition().duration(350).styleTween('transform', function rotateTween() {
+            let i = d3.interpolate(0, 360);
+            return function (t) { return "rotate(" + i(t) + "deg)" };
+        })
+        d3.select('#button-play').attr('class', 'icon');
+        d3.select('#button-pause').attr('class', 'icon hidden');
+        restart()
+        reconnect(restart);
+    }
 
-        function initSocket(onOpen, onMessage) {
-            // open socket on next port
-            const socket = new WebSocket('ws://localhost:' + (parseInt(location.port) + 1));
+    function reconnect(onConnect) {
+        // attempt to reconnect the socket if the server has restarted
+        if (socket.readyState !== socket.OPEN)
+            socket = initSocket(function (socket) { onConnect() }, dispatch);
+        else onConnect();
+    }
 
-            socket.onopen = function () {
-                if (onOpen) onOpen(socket);
-            }
-            socket.onmessage = function (event) {
-                if (onMessage) onMessage(event.data);
-                //console.log("initSocket.socket.onmessage", event.data)
-            }
-            return socket;
-        }
-        function openDownloadModal() {
-          MicroModal.show('modal-1');
-        }
-        function saveImage() {
-            saveSvgAsPng(document.querySelector(".algorithmx"), `PyNode-Next-${new Date().toLocaleString()}.png`)
-        }
+    function initSocket(onOpen, onMessage) {
+        // open socket on next port
+        const socket = new WebSocket('ws://localhost:' + (parseInt(location.port) + 1));
 
-        function saveSvg() {
-            const name = `PyNode-Next-${new Date().toLocaleString()}.svg`
-            const svgEl = document.querySelector(".algorithmx")
-            svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-            var svgData = svgEl.outerHTML;
-            var preface = '<?xml version="1.0" standalone="no"?>\r\n';
-            var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
-            var svgUrl = URL.createObjectURL(svgBlob);
-            var downloadLink = document.createElement("a");
-            downloadLink.href = svgUrl;
-            downloadLink.download = name;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+        socket.onopen = function () {
+            if (onOpen) onOpen(socket);
         }
-    </script>
+        socket.onmessage = function (event) {
+            if (onMessage) onMessage(event.data);
+            //console.log("initSocket.socket.onmessage", event.data)
+        }
+        return socket;
+    }
+    function openDownloadModal() {
+        MicroModal.show('modal-1');
+    }
+    function saveImage() {
+        saveSvgAsPng(document.querySelector(".algorithmx"), `PyNode-Next-${new Date().toLocaleString()}.png`)
+    }
+
+    function saveSvg() {
+        const name = `PyNode-Next-${new Date().toLocaleString()}.svg`
+        const svgEl = document.querySelector(".algorithmx")
+        svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        var svgData = svgEl.outerHTML;
+        var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+        var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
+        var svgUrl = URL.createObjectURL(svgBlob);
+        var downloadLink = document.createElement("a");
+        downloadLink.href = svgUrl;
+        downloadLink.download = name;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+</script>
+
 </html>
