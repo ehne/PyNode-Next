@@ -211,15 +211,17 @@ class Node:
                         "color": str(self._color),
                         "labels": {0: {"text": self._value}},
                         "listenclick": True,
-                        "size": self._size,
-                        'labels': {
-                            'tr': { 'angle': 45, 'text': self._labels[0] },
-                            'tl': { 'angle': 135, 'text': self._labels[1] }
-                        }
+                        "size": self._size
                     }
                 }
             }
         }
+
+        if 0 in self._labels.keys():
+            base['attrs']['nodes'][self._id]['labels']['tr'] = { 'angle': 45, 'text': self._labels[0] }
+        if 1 in self._labels.keys():
+            base['attrs']['nodes'][self._id]['labels']['tl'] = { 'angle': 135, 'text': self._labels[1] }
+
         if self._pos != []:
             base["attrs"]["nodes"][self._id]["pos"] = [core.normalise_to_canvas(i) for i in self._pos]
 
