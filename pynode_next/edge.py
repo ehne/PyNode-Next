@@ -25,7 +25,7 @@ class Edge:
         self._in_graph = False
 
     def __ax(self, func):
-        """Runs the specified AlgorithmX function only if the node is in the graph"""
+        """Runs the specified AlgorithmX function only if the edge is in the graph"""
         if self._in_graph:
             core.ax(func)
 
