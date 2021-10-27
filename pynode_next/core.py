@@ -1,5 +1,6 @@
 import algorithmx as algx
 from pathlib import Path
+from .pynode_version import version
 import os
 
 
@@ -11,7 +12,7 @@ class Core:
         self.callback = None
       
 
-    def run(self, func):
+    def run(self, func, check_for_new_version):
         """A function that runs a different function in the PyNode Next web environment."""
         while 1:
             try:
@@ -26,6 +27,11 @@ class Core:
             self.canvas.duration(0).zoom(1.7)
             func()
         self.canvas.onmessage("start", pynode_func)
+
+        if check_for_new_version:
+            version_dispatch_dict = {'isPyNodeNext': True, 'type': 'version', 'message': version}
+            self.canvas.onmessage("getVersion", lambda: self.canvas.dispatch(version_dispatch_dict))
+
         print(f"staring server on http://localhost:{self.port} — press ctrl+c to quit")
         self.server.start()
 

@@ -7,10 +7,10 @@ import random
 
 
 def test():
-    graph.add_node("a")
-    graph.add_node("b")
-    pause(500)
-    graph.add_edge("a", "b")
-    register_click_handler(lambda x: x.set_color(Color.GREEN))
-    
+    a = Node('a')
+    b = Node('b')
+    e = Edge('a', 'b').set_color(Color.RED)
+
+    graph.add_all([a, b, e])
+
 begin_pynode_next(test)

@@ -22,6 +22,13 @@ class Edge:
 
         self._attrs = {}
 
+        self._in_graph = False
+
+    def __ax(self, func):
+        """Runs the specified AlgorithmX function only if the node is in the graph"""
+        if self._in_graph:
+            core.ax(func)
+
     def _dispatch_wrapper(self, x, in_dict):
         """Returns the in_dict inside of the attrs.edges[self._internal_id] dictionary, so it's slightly less bulky to look at."""
         return x.dispatch({"attrs": {"edges": {str(self._internal_id): in_dict}}})
@@ -58,7 +65,7 @@ class Edge:
     def set_color(self, color):
         """Sets the colour of the edge. `color` needs to be a Color() object"""
         self._color = color
-        core.ax(
+        self.__ax(
             lambda x: self._dispatch_wrapper(
                 x,
                 {
@@ -77,7 +84,7 @@ class Edge:
     def set_weight(self, weight):
         """Sets the edge's weight. (Weight must be serialisable)"""
         self._weight = weight
-        core.ax(
+        self.__ax(
             lambda x: self._dispatch_wrapper(x, {"labels": {1: {"text": str(weight)}}})
         )
         return self
@@ -91,7 +98,7 @@ class Edge:
         if outline is not None:
             print("set_weight_style(outline) is not supported by PyNode_Next")
 
-        core.ax(
+        self.__ax(
             lambda x: self._dispatch_wrapper(
                 x, {"labels": {1: {"color": str(color), "size": size}}}
             )
@@ -101,7 +108,7 @@ class Edge:
     def set_directed(self, directed=True):
         """Sets whether or not the edge is directed"""
         self._directed = directed
-        core.ax(lambda x: self._dispatch_wrapper(x, {"directed": directed}))
+        self.__ax(lambda x: self._dispatch_wrapper(x, {"directed": directed}))
         return self
 
     def directed(self):
@@ -111,7 +118,7 @@ class Edge:
     def set_width(self, weight=2):
         """Sets the thickness of the edge."""
         self._thickness = weight
-        core.ax(lambda x: self._dispatch_wrapper(x, {"thickness": weight}))
+        self.__ax(lambda x: self._dispatch_wrapper(x, {"thickness": weight}))
         return self
 
     def width(self):
@@ -133,14 +140,14 @@ class Edge:
         if width is None:
             width = self._thickness * 2
 
-        core.ax(
+        self.__ax(
             lambda x: self._dispatch_wrapper(
                 x, {"color": str(color), "thickness": width}
             )
         )
         # resets the changes done
         pause(500)
-        core.ax(
+        self.__ax(
             lambda x: self._dispatch_wrapper(
                 x, {"color": str(self._color), "thickness": self._thickness}
             )
@@ -153,7 +160,7 @@ class Edge:
         else:
             source = initial_node
 
-        core.ax(
+        self.__ax(
             lambda x: self._dispatch_wrapper(
                 x,
                 {
@@ -169,7 +176,7 @@ class Edge:
         # undoes the traversal color
         if not keep_path:
             pause(500)
-            core.ax(
+            self.__ax(
                 lambda x: self._dispatch_wrapper(
                     x, {"color": {"value": str(self._color)}}
                 )
