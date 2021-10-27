@@ -37,6 +37,7 @@ class Graph:
 
         # add node to dict and canvas
         self._nodes[node._id] = node
+        node._in_graph = True
         # just sends all of the node's data
         core.ax(lambda x: x.dispatch(node._data()))
         # sets the node's click handler

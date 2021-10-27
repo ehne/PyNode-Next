@@ -25,6 +25,14 @@ class Node:
         self._labels = {}
         self._pos = []
 
+        self._in_graph = False
+
+    # __ makes a private method
+    def __ax(self, func):
+        """Runs the specified AlgorithmX function only if the node is in the graph"""
+        if self._in_graph:
+            core.ax(func)
+
     def id(self):
         """Returns the node's id"""
         return self._id
@@ -32,7 +40,7 @@ class Node:
     def set_value(self, value):
         """Sets the node's value."""
         self._value = value
-        core.ax(lambda x: x.node(self._id).label().text(value))
+        self.__ax(lambda x: x.node(self._id).label().text(value))
         return self
 
     def value(self):
@@ -42,13 +50,13 @@ class Node:
     def set_value_style(self, size=13, color=Color.WHITE, outline=None):
         if outline is not None:
             print("set_value_style(outline) is not supported by PyNode_Next")
-        core.ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
+        self.__ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
         return self
 
     def set_size(self, size=12):
         """Sets the size of a node"""
         self._size = size
-        core.ax(lambda x: x.node(self._id).size(size))
+        self.__ax(lambda x: x.node(self._id).size(size))
         return self
 
     def size(self):
@@ -67,7 +75,7 @@ class Node:
     def set_color(self, color=Color.DARK_GREY):
         """Sets the node's color to the Color object specified."""
         self._color = color
-        core.ax(lambda x: x.node(self._id).color(str(self._color)))
+        self.__ax(lambda x: x.node(self._id).color(str(self._color)))
         return self
 
     def color(self):
@@ -87,7 +95,7 @@ class Node:
         if color is None:
             new_color = Color.RED
 
-        core.ax(
+        self.__ax(
             lambda x: x.node(self._id)
             .color(str(new_color))
             .size(new_size)
@@ -113,7 +121,7 @@ class Node:
         label = ["tr", "tl"][label_id]
         label_angle = [45, 45 + 90][label_id]
 
-        core.ax(lambda x: x.node(self._id).label(label).angle(label_angle).text(value))
+        self.__ax(lambda x: x.node(self._id).label(label).angle(label_angle).text(value))
         return self
 
     def label(self, label_id=0):
@@ -124,11 +132,11 @@ class Node:
         if outline is not None:
             print("set_label_style(outline) is not supported by PyNode Next")
         if label_id is None:
-            core.ax(lambda x: x.node(self._id).label('tr').size(size).color(str(color)))
-            core.ax(lambda x: x.node(self._id).label('tl').size(size).color(str(color)))
+            self.__ax(lambda x: x.node(self._id).label('tr').size(size).color(str(color)))
+            self.__ax(lambda x: x.node(self._id).label('tl').size(size).color(str(color)))
         else:
             label = ["tr", "tl"][label_id]
-            core.ax(lambda x: x.node(self._id).label(label).size(size).color(str(color)))
+            self.__ax(lambda x: x.node(self._id).label(label).size(size).color(str(color)))
         return self
 
     def incident_edges(self):
@@ -192,7 +200,7 @@ class Node:
         
         x_norm = core.normalise_to_canvas(x)
         y_norm = core.normalise_to_canvas(y)
-        core.ax(lambda a: a.node(self._id).pos((f"{x_norm}cx", f"{y_norm}cy")))
+        self.__ax(lambda a: a.node(self._id).pos((f"{x_norm}cx", f"{y_norm}cy")))
         return self
 
     def position(self):
