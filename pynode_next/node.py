@@ -210,7 +210,12 @@ class Node:
                     self._id: {
                         "color": str(self._color),
                         "labels": {0: {"text": self._value}},
-                        "listenclick": True
+                        "listenclick": True,
+                        "size": self._size,
+                        'labels': {
+                            'tr': { 'angle': 45, 'text': self._labels[0] },
+                            'tl': { 'angle': 135, 'text': self._labels[1] }
+                        }
                     }
                 }
             }

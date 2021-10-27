@@ -8,9 +8,7 @@ import random
 
 def test():
     graph.add_node("a")
-    graph.add_node("b")
-    pause(500)
-    graph.add_edge("a", "b")
-    register_click_handler(lambda x: x.set_color(Color.GREEN))
+    graph.add_node("b").set_size(50)
+    graph.node('b').set_label('top right').set_label('top left', 1)
     
 begin_pynode_next(test)
