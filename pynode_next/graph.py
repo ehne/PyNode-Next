@@ -113,6 +113,7 @@ class Graph:
         self._edges.append(e)
         self._has_edge_cache[e] = True
 
+        e._in_graph = True
         core.ax(lambda x: x.dispatch(e._data()))
         return e
 

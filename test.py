@@ -7,9 +7,10 @@ import random
 
 
 def test():
-    graph.add_node("a").set_value('1')
-    n = Node('b').set_value('2').set_size(50)
-    pause(1000)
-    graph.add_node(n)
-    
+    a = Node('a')
+    b = Node('b')
+    e = Edge('a', 'b').set_color(Color.RED)
+
+    graph.add_all([a, b, e])
+
 begin_pynode_next(test)
