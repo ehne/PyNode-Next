@@ -271,6 +271,7 @@ a[href="#_color_3"]::before {
 <li><a href="#_delay">🚧 delay</a></li>
 <li><a href="#_cancel_delay">🚧 cancel_delay</a></li>
 <li><a href="#_register_click_listener">register_click_listener</a></li>
+<li><a href="#_begin_pynode_next">begin_pynode_next</a></li>
 </ul>
 </li>
 </ul>
@@ -2325,6 +2326,58 @@ This <strong>does not</strong> pause code execution.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>Callable[[Node], None]</code>. That is, a function that as its only input argument takes a <code>Node</code> object that was clicked, something like <code>def on_click(node)</code>. And does not return anything.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_begin_pynode_next">begin_pynode_next</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="shiki highlight"><code class="language-python" data-lang="python">begin_pynode_next(func, open_browser=True, check_for_new_version=True)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Begins PyNode Next.
+And loads the <code>func</code> to run when the play button is pressed in the interface.
+If <code>open_browser</code> is set to true, it will automatically open the PyNode Next interface in the default browser.
+If <code>check_for_new_version</code> is set to true, it will check if there is a new version of PyNode Next version available.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>func</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>Callable[[], None]</code>. That is, a function that doesn&#8217;t have any input arguments and doesn&#8217;t return anything.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>open_browser</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>check_for_new_version</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
 </div></div></td>
 </tr>
 </tbody>
