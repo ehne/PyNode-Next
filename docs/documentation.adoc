@@ -892,6 +892,24 @@ Registers a function that will be called when a node is clicked.
 | `func` | `Callable[[Node], None]`. That is, a function that as its only input argument takes a `Node` object that was clicked, something like `def on_click(node)`. And does not return anything.
 |===
 
+=== begin_pynode_next
+[source, python]
+----
+begin_pynode_next(func, open_browser=True, check_for_new_version=True)
+----
+
+Begins PyNode Next.
+And loads the `func` to run when the play button is pressed in the interface.
+If `open_browser` is set to true, it will automatically open the PyNode Next interface in the default browser.
+If `check_for_new_version` is set to true, it will check if there is a new version of PyNode Next version available.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `func` | `Callable[[], None]`. That is, a function that doesn't have any input arguments and doesn't return anything.
+| `open_browser` | `bool`
+| `check_for_new_version` | `bool`
+|===
 
 ////
 = OLD README
