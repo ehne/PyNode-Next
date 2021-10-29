@@ -166,6 +166,7 @@
             cursor: pointer;
             transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
             font-family: var(--font-stack);
+            margin-bottom: 4px
         }
 
         .row-button:hover {
@@ -252,10 +253,16 @@
             opacity: 0.8;
         }
 
+        .header__row.-MSAlert.-alert {
+            --color: 206, 100%, 41%;
+        }
+        .header__row.-MSAlert.-error {
+            --color: 40, 100%, 50%;
+        }
         .header__row.-MSAlert {
-            border: 1px solid hsl(206, 100%, 41%);
+            border: 1px solid hsl(var(--color));
             background-color: var(--canvas-background);
-            box-shadow: 0 0 7px 0 hsla(206, 100%, 41%, 0.88);
+            box-shadow: 0 0 7px 0 hsla(var(--color), 0.88);
             color: #000;
             display: none;
             width: calc(var(--navbar-width) - 4px);
@@ -350,14 +357,15 @@
 
 <script>
 
-    function MSAlert(_text, _speed=336) {
-        const elem = $('<div></div>').text(_text).addClass('header__row -MSAlert')
+    function MSAlert(_text, _opts={}) {
+        const {speed, extraClass} = {speed: 336, extraClass: '-alert', ..._opts}
+        const elem = $('<div></div>').text(_text).addClass(`header__row -MSAlert ${extraClass}`)
         $('.floating-stack').append(elem)
         // animates the alert popping up, waiting, and then sliding down.
         elem.animate({
             opacity: "show",
             bottom: "show"
-        }, _speed, "swing").delay(4000).animate({
+        }, speed, "swing").delay(4000).animate({
             opacity: "hide",
             bottom: "hide",
         }, 336, "swing");
@@ -400,13 +408,13 @@
         if (event.isPyNodeNext) {
             switch (event.type) {
                 case "error":
-                    MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`)
+                    MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`, {extraClass:'-error'})
                     break;
 
                 case "alert":
                     console.log(event.message)
                     if (event.message.time !== undefined) {
-                        MSAlert(`${event.message.text}`, parseInt(event.message.time))
+                        MSAlert(`${event.message.text}`, {speed: parseInt(event.message.time)})
                         return 1
                     }
                     MSAlert(`${event.message}`)

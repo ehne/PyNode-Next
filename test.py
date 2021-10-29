@@ -17,10 +17,13 @@ def test():
         global z
         graph.add_node(z)
         z = z + 1
+        core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": 'hi'}))
+
     
     t = delay(func, 1000, repeat=True)
 
     register_click_handler(lambda x: cancel_delay(t))
+    core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "error", "message": 'hi'}))
     
 
 begin_pynode_next(test)
