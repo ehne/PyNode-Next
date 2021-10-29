@@ -862,21 +862,39 @@ There are some predefined colours:
 pause(time)
 ----
 
-Delays the next visual event for the specified number of miliseconds.
+Delays the next visual event for the specified number of milliseconds.
 
 NOTE: This *does not* pause code execution.
 
-=== 🚧 delay 
+=== delay 
 [source, python]
 ----
 delay(func, time, args=[], repeat=False)
 ----
 
-=== 🚧 cancel_delay
+Runs the function after the specified number of milliseconds, with the optional `args` list of arguments for the `func`. If `repeat` is set to true, the function will run repeatedly (with the specified time delay) until cancelled. Returns the `delay_id` of the delay.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `func` | Any function
+| `time` | {t_generic_number}
+| `args` | A `List` to pass as arguments to `func`
+| `repeat` | `bool`
+|===
+
+=== cancel_delay
 [source, python]
 ----
 cancel_delay(delay_id)
 ----
+
+Cancels the specified delay.
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `delay_id` | A delay ID returned from the `delay` function
+|===
 
 === register_click_listener 
 [source, python]

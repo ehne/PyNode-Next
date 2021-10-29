@@ -3,21 +3,24 @@ from sys import excepthook
 from types import DynamicClassAttribute
 from typing import Iterable, List, Union, final, get_args
 from pynode_next import *
-import random
 
 
 def test():
-    for i in range(100):
-        graph.add_node(i)
-        pause(24)
-        
-    def click(node):
-        core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": f'You have selected node {node}'}))
-        node.set_color(Color.RED)
-    
-    register_click_handler(click)
+    global z
+    a = Node('a')
+    b = Node('b')
+    e = Edge('a', 'b').set_color(Color.RED)
 
-        
-        
+    graph.add_all([a, b, e])
+    z = 1
+    def func():
+        global z
+        graph.add_node(z)
+        z = z + 1
+    
+    t = delay(func, 1000, repeat=True)
+
+    register_click_handler(lambda x: cancel_delay(t))
+    
 
 begin_pynode_next(test)
