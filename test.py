@@ -7,10 +7,13 @@ import random
 
 
 def test():
-    a = Node('a')
-    b = Node('b')
-    e = Edge('a', 'b').set_color(Color.RED)
+    for i in range(100):
+        graph.add_node(i)
+        
+    pause(100)
+    core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": 'hello, this is an alert sent via python.'}))
 
-    graph.add_all([a, b, e])
+        
+        
 
 begin_pynode_next(test)
