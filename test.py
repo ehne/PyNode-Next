@@ -9,9 +9,13 @@ import random
 def test():
     for i in range(100):
         graph.add_node(i)
+        pause(24)
         
-    pause(100)
-    core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": 'hello, this is an alert sent via python.'}))
+    def click(node):
+        core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": f'You have selected node {node}'}))
+        node.set_color(Color.RED)
+    
+    register_click_handler(click)
 
         
         

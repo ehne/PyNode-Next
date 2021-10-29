@@ -236,8 +236,8 @@
 
         .header__row.-versionWarning {
             text-align: center;
-            background-color: hsl(0, 100%, 60%);
-            box-shadow: 0 0 7px 0 hsla(0, 100%, 60%, 0.88);
+            background-color: hsl(8, 100%, 50%);
+            box-shadow: 0 0 7px 0 hsla(8, 100%, 50%, 0.88);
             color: #fff;
             display: none;
             width: var(--navbar-width);
@@ -253,9 +253,9 @@
         }
 
         .header__row.-MSAlert {
-            border: 2px solid hsl(245, 100%, 60%);
+            border: 1px solid hsl(206, 100%, 41%);
             background-color: var(--canvas-background);
-            box-shadow: 0 0 7px 0 hsla(245, 100%, 60%, 0.88);
+            box-shadow: 0 0 7px 0 hsla(206, 100%, 41%, 0.88);
             color: #000;
             display: none;
             width: calc(var(--navbar-width) - 4px);
@@ -270,6 +270,21 @@
             fill: #fff;
             text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.98);
         }
+
+        @keyframes mmslideIn {
+            from {
+                transform: translateY(15%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .floating-stack>.header__row {
+            animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+        }
+
     </style>
 </head>
 
@@ -328,8 +343,6 @@
         <div class="header__row -versionWarning" id="versionWarning">
             Outdated version
         </div>
-        <div class="header__row -MSAlert" id="toast">
-        </div>
     </div>
 
     <div class="output" id="output"></div>
@@ -338,14 +351,12 @@
 <script>
 
     function MSAlert(_text, _speed=336) {
-        // stops any currently running animations
-        $("#toast").finish();
-        //sets the text content to be text (makes it so you cant give it html lol)
-        $("#toast").text(_text);
+        const elem = $('<div></div>').text(_text).addClass('header__row -MSAlert')
+        $('.floating-stack').append(elem)
         // animates the alert popping up, waiting, and then sliding down.
-        $("#toast").animate({
+        elem.animate({
             opacity: "show",
-            bottom: "show",
+            bottom: "show"
         }, _speed, "swing").delay(4000).animate({
             opacity: "hide",
             bottom: "hide",
