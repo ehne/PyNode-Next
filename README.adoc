@@ -19,7 +19,7 @@
 [discrete]
 = PyNode Next
 
-> A complete rewrite of PyNode for the modern era. _Five times faster than the original PyNode_.
+> A complete rewrite of PyNode for the modern era. _Up to five times faster than the original PyNode_.
 
 PyNode Next allows you to easily create beautiful graph visualisations and animations. Has been tested on macOS and Linux, and should work with Windows.
 
