@@ -1,3 +1,5 @@
+from threading import Timer as ThreadingTimer
+import uuid
 from .core import core
 
 class Color:
@@ -24,3 +26,32 @@ Color.BLACK = Color(0, 0, 0)
 
 def pause(pause_time):
     core.ax(lambda x: x.pause(pause_time * 0.001))
+
+# delay stuff:
+
+__intervals = {}
+
+def delay(func, time, args=[], repeat=False):
+    """Executes the given function after the specified number of miliseconds with the optional arguments. If repeat is set the function will run again until the delay is cancelled. Returns the delay id"""
+    new_func = lambda: func(*args)
+    t_id = str(uuid.uuid4())
+
+    if not repeat:
+        # set up the timer to execute once
+        t = ThreadingTimer(time / 1000.0, new_func)
+        __intervals[t_id] = t
+        t.start()
+    else:
+        # set up the timer to execute many times
+        def loop_func(timer_id, func_to_loop, time):
+            t = ThreadingTimer(time / 1000.0, loop_func, (timer_id, func_to_loop, time))
+            __intervals[timer_id] = t
+            t.start()
+            func_to_loop()
+        loop_func(t_id, new_func, time)
+
+    return t_id
+
+def cancel_delay(delay_id):
+    """Cancels the given delay."""
+    __intervals[delay_id].cancel()
