@@ -268,8 +268,8 @@ a[href="#_color_3"]::before {
 <ul class="sectlevel2">
 <li><a href="#_color_3">Color</a></li>
 <li><a href="#_pause">pause</a></li>
-<li><a href="#_delay">🚧 delay</a></li>
-<li><a href="#_cancel_delay">🚧 cancel_delay</a></li>
+<li><a href="#_delay">delay</a></li>
+<li><a href="#_cancel_delay">cancel_delay</a></li>
 <li><a href="#_register_click_listener">register_click_listener</a></li>
 <li><a href="#_begin_pynode_next">begin_pynode_next</a></li>
 </ul>
@@ -2267,7 +2267,7 @@ PyNode supported an argument <code>outline</code> to change the text outline&#82
 </div>
 </div>
 <div class="paragraph">
-<p>Delays the next visual event for the specified number of miliseconds.</p>
+<p>Delays the next visual event for the specified number of milliseconds.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2283,20 +2283,94 @@ This <strong>does not</strong> pause code execution.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_delay">🚧 delay</h3>
+<h3 id="_delay">delay</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="shiki highlight"><code class="language-python" data-lang="python">delay(func, time, args=[], repeat=False)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Runs the function after the specified number of milliseconds, with the optional <code>args</code> list of arguments for the <code>func</code>. If <code>repeat</code> is set to true, the function will run repeatedly (with the specified time delay) until cancelled. Returns the <code>delay_id</code> of the delay.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>func</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Any function</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>time</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">int</code> or <code class="literal">float</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>args</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A <code>List</code> to pass as arguments to <code>func</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>repeat</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="_cancel_delay">🚧 cancel_delay</h3>
+<h3 id="_cancel_delay">cancel_delay</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="shiki highlight"><code class="language-python" data-lang="python">cancel_delay(delay_id)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Cancels the specified delay.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>delay_id</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A delay ID returned from the <code>delay</code> function</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_register_click_listener">register_click_listener</h3>
