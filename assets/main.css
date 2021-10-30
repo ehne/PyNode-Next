@@ -933,7 +933,7 @@ code:not(pre>code)::before, code:not(pre>code)::after {
 }
 
 .banner {
-  background-image: linear-gradient(to right, #9866F0, #EB4D50);
+  background-image: linear-gradient(to right, #7928ca, #eb367f);
   color: #fff;
   padding: 16px;
   margin-bottom: 16px;
