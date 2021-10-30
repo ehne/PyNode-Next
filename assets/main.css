@@ -927,3 +927,30 @@ code:not(pre>code) {
 code:not(pre>code)::before, code:not(pre>code)::after {
   content: '`'
 }
+
+.banner-link, .banner-link:hover {
+  text-decoration: none;
+}
+
+.banner {
+  background-image: linear-gradient(to right, #9866F0, #EB4D50);
+  color: #fff;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.banner > * {
+  color: #fff
+}
+.banner > h2 {
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+.banner > p:last-child {
+  margin-bottom: 0px;
+}
+
+.banner > p:last-child:hover {
+  text-decoration: underline;
+}
