@@ -6,10 +6,7 @@ from pynode_next import *
 
 
 def test():
-    a = Node('a')
-    b = Node('b')
-    e = Edge('a', 'b').set_color(Color.RED)
-
-    graph.add_all([a, b, e])    
+    a = graph.add_node('a')
+    a.set_position(0,0)
 
 begin_pynode_next(test)
