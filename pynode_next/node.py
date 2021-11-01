@@ -187,8 +187,8 @@ class Node:
                 node_list.append(e._target)
         return node_list
 
-        """Sets the node's position. Relative is the only style you can use"""
     def set_position(self, x, y):
+        """Sets the node's position. (0, 0) is the bottom left of the screen, (1, 1) is the top right"""
         self._pos = [x, y]
         
         x_norm = core.normalise_to_canvas(x)
