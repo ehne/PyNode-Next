@@ -125,10 +125,8 @@ class Node:
     def label(self, label_id=0):
         return self._labels[label_id]
 
-    def set_label_style(self, size=10, color=Color.GREY, outline=None, label_id=None):
+    def set_label_style(self, size=10, color=Color.GREY, label_id=None):
         """Sets the style of any labels"""
-        if outline is not None:
-            print("set_label_style(outline) is not supported by PyNode Next")
         if label_id is None:
             self.__ax(lambda x: x.node(self._id).label('tr').size(size).color(str(color)))
             self.__ax(lambda x: x.node(self._id).label('tl').size(size).color(str(color)))
