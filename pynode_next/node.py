@@ -47,9 +47,7 @@ class Node:
         """Returns the node's value."""
         return self._value
 
-    def set_value_style(self, size=13, color=Color.WHITE, outline=None):
-        if outline is not None:
-            print("set_value_style(outline) is not supported by PyNode_Next")
+    def set_value_style(self, size=13, color=Color.WHITE):
         self.__ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
         return self
 
