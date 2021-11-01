@@ -187,11 +187,8 @@ class Node:
                 node_list.append(e._target)
         return node_list
 
-    def set_position(self, x, y, relative=True):
         """Sets the node's position. Relative is the only style you can use"""
-        if not relative:
-            raise NodePositionError("Cannot call node.set_position() with relative=False")
-        
+    def set_position(self, x, y):
         self._pos = [x, y]
         
         x_norm = core.normalise_to_canvas(x)
