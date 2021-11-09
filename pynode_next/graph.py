@@ -16,35 +16,64 @@ class Graph:
         self._edges = []
         self._has_edge_cache = {}
 
-    @overloaded
-    def add_node(self, id: _generic_text):
-        """Adds a node to the graph using an id."""
-        return self.add_node(Node(id, value=id))
+    def add(self, element):
+        """Adds either a node or an edge object to the graph"""
+        elem_type = type(element)
+        if elem_type == Node:
+            # Make sure there aren't two nodes with the same id
+            if element._id in self._nodes:
+                raise DuplicateNodeError(f"Duplicate node with id '{element._id}'")
 
-    @overloads(add_node)
-    def add_node(self, id: _generic_text, value: _generic_text):
-        """Adds a node to the graph using an id and a value."""
+            # add node to dict and canvas
+            self._nodes[element._id] = element
+            element._in_graph = True
+            # just sends all of the node's data
+            core.ax(lambda x: x.dispatch(element._data()))
+            # sets the node's click handler
+            if core.callback != None:
+                core.ax(lambda x: x.nodes([element._id]).onclick(core.callback))
+            return Node
+        elif elem_type == Edge:
+            e = element
+            if self.has_edge(e):
+                raise DuplicateEdgeError(
+                    f"There is already an instance of the edge '{e}' in the graph"
+                )
+
+            # saves the original sources so we can check if they actually exist in the graph
+            original_source = e._source
+            original_target = e._target
+
+            # incase the nodes were provided as node ids rather than objects.
+            e._source = self.node(e._source)
+            e._target = self.node(e._target)
+
+            # Makes sure that the source and target nodes are actually in the graph
+            if e._source is None:
+                raise NodeDoesntExistError(
+                    f"The node {original_source} does not exist in the graph"
+                )
+            if e._target is None:
+                raise NodeDoesntExistError(
+                    f"The node {original_target} does not exist in the graph"
+                )
+
+            # adds the incident edges to the nodes
+            e._source._incident_edges.append(e)
+            e._target._incident_edges.append(e)
+
+            self._edges.append(e)
+            self._has_edge_cache[e] = True
+
+            e._in_graph = True
+            core.ax(lambda x: x.dispatch(e._data()))
+            return e
+
+    def add_node(self, id, value=None):
+        """Adds a node to the graph using an id."""
         if value is None:
             value = id
-        return self.add_node(Node(id, value))
-
-    @overloads(add_node)
-    def add_node(self, node: Node):
-        """Adds the node object to the graph."""
-        # Make sure there aren't two nodes with the same id
-        if node._id in self._nodes:
-            raise DuplicateNodeError(f"Duplicate node with id '{node._id}'")
-
-        # add node to dict and canvas
-        self._nodes[node._id] = node
-        node._in_graph = True
-        # just sends all of the node's data
-        core.ax(lambda x: x.dispatch(node._data()))
-        # sets the node's click handler
-        if core.callback != None:
-            core.ax(lambda x: x.nodes([node._id]).onclick(core.callback))
-
-        return node
+        return self.add(Node(id, value))
 
     def remove_node(self, node):
         """Removes the specified node from the graph"""
@@ -74,48 +103,9 @@ class Graph:
         """Returns all of the graph's nodes."""
         return list(self._nodes.values())
 
-    @overloaded
     def add_edge(self, source, target, weight="", directed: bool = False):
         """Adds an edge by defining it's relation to other nodes."""
-        return self.add_edge(Edge(source, target, weight, directed))
-
-    @overloads(add_edge)
-    def add_edge(self, edge: Edge):
-        """Add an edge object to the graph."""
-        e = edge
-        if self.has_edge(e):
-            raise DuplicateEdgeError(
-                f"There is already an instance of the edge '{e}' in the graph"
-            )
-
-        # saves the original sources so we can check if they actually exist in the graph
-        original_source = e._source
-        original_target = e._target
-
-        # incase the nodes were provided as node ids rather than objects.
-        e._source = self.node(e._source)
-        e._target = self.node(e._target)
-
-        # Makes sure that the source and target nodes are actually in the graph
-        if e._source is None:
-            raise NodeDoesntExistError(
-                f"The node {original_source} does not exist in the graph"
-            )
-        if e._target is None:
-            raise NodeDoesntExistError(
-                f"The node {original_target} does not exist in the graph"
-            )
-
-        # adds the incident edges to the nodes
-        e._source._incident_edges.append(e)
-        e._target._incident_edges.append(e)
-
-        self._edges.append(e)
-        self._has_edge_cache[e] = True
-
-        e._in_graph = True
-        core.ax(lambda x: x.dispatch(e._data()))
-        return e
+        return self.add(Edge(source, target, weight, directed))
 
     @overloaded
     def remove_edge(self, nodeA, nodeB, directed: bool = False):
@@ -150,10 +140,7 @@ class Graph:
     def add_all(self, elements: Iterable[Union[Node, Edge]]):
         """Adds all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
         for i in elements:
-            if isinstance(i, Node):
-                self.add_node(i)
-            elif isinstance(i, Edge):
-                self.add_edge(i)
+            self.add(i)
             pause(20)
 
     def remove_all(self, elements: Iterable[Union[Node, Edge]]):
