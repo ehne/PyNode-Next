@@ -23,7 +23,6 @@
     <script src="https://d3js.org/d3-timer.v2.min.js"></script>
     <script src="https://d3js.org/d3-transition.v2.min.js"></script>
     <script src="https://unpkg.com/save-svg-as-png@1.4.17/lib/saveSvgAsPng.js"></script>
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <style>
         :root {
             --balloon-border-radius: 2px;
@@ -33,21 +32,18 @@
             --balloon-move: 4px;
 
             --canvas-background: hsl(0, 0%, 100%);
-            --header-background: hsl(0, 0%, 10%);
             --button-background: hsl(0, 0%, 80%);
 
-            --button-background--hover: hsla(0, 0%, 80%, 0.8);
-            --button-background--click: hsla(0, 0%, 80%, 0.6);
-
-            --button-text: hsl(0, 0%, 20%);
-            --header-text: hsl(0, 0%, 90%);
+            --button-background--hover: hsl(0, 0%, 100%);
+            --button-background--click: hsla(0, 0%, 60%);
 
             --link-text: hsl(0, 0%, 100%);
             --link-text--hover: hsla(0, 0%, 100%, 0.8);
 
-            --button-background--highlight: hsl(100, 100%, 80%);
-            --button-text--highlight: hsl(100, 100%, 20%);
-            --font-stack: "Oswald", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+            --button-text--highlight: hsl(100, 100%, 60%);
+            --font-stack: "Oswald", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+            --navbar-width: 270px
         }
 
         html {
@@ -67,41 +63,75 @@
             font-family: var(--font-stack);
         }
 
-        .header {
-            display: flex;
-            /*position: fixed;
-                z-index: 50;
-                top:0;
-                left:0;
-                right:0;*/
-            background-color: var(--header-background);
-            padding: 8px;
-            align-items: center;
-            border-bottom: 4px solid var(--button-text);
+
+        .floating-stack {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 100;
         }
 
-        .header__title {
+        .floating-stack>* {
+            margin-bottom: 16px;
+
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 9px 0 #00000088;
+
+        }
+
+        .header__row {
+            padding: 8px;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header__row p {
+            width: var(--navbar-width);
+            margin-top: 4px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .header__row.-main {
+            background-color: #111;
+            border-radius: 8px;
+        }
+
+        .header__row.-flex {
+            display: flex;
+        }
+
+        .header__left {
             font-size: 1.75em;
             color: var(--header-text);
             display: flex;
             padding-left: 0.2em;
         }
 
-        .header__title>img {
-            height: 2em
+        .header__left>img {
+            height: 1.5em
         }
 
         .header__spacer {
-            flex-grow: 1
+            width: 30px;
+            margin-right: 4px;
         }
 
-        .header__icons {
+        .header__right {
             display: inline-flex;
             justify-self: flex-end;
-
+            margin-right: 4px;
         }
 
-        .header__icons>* {
+        .header__right>* {
             margin-left: 8px
         }
 
@@ -110,42 +140,41 @@
         }
 
         .button {
-            --bg: var(--button-background);
-            background-color: var(--bg);
-            color: var(--button-text);
-            padding: 8px;
+            color: var(--button-background);
             display: flex;
-            border-radius: 0.4em;
+
             cursor: pointer;
             transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
-            font-family: var(--font-stack);
+
         }
 
         .button:hover {
-            --bg: var(--button-background--hover);
-        }
-
-        .button:focus {
-            /*border: 2px solid red;*/
-            outline: none;
-            box-shadow: inset 0px 0px 0px 2px var(--bg), inset 0px 0px 0px 4px var(--canvas-background);
+            color: var(--button-background--hover);
         }
 
         .button:active {
-            --bg: var(--button-background--click)
+            color: var(--button-background--click)
         }
 
-        .button.-svg {
-            --bg: #f5ba3d;
-            color: #4f3c14
+        .row-button {
+            background-color: var(--button-background);
+            width: 100%;
+            outline: none;
+            border: none;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
+            font-family: var(--font-stack);
+            margin-bottom: 4px
         }
 
-        .button.-svg:hover {
-            --bg: #EBB23A;
+        .row-button:hover {
+            background-color: var(--button-background--hover)
         }
 
-        .button.-svg:active {
-            --bg: #e0aa37;
+        .row-button:active {
+            color: var(--button-background--click)
         }
 
         .output {
@@ -160,8 +189,8 @@
         }
 
         .icon {
-            width: 1.75em;
-            height: 1.75em
+            width: 2em;
+            height: 2em
         }
 
         small {
@@ -183,91 +212,16 @@
 
         @keyframes button-highlight {
             0.0% {
-                background: var(--button-background);
-                color: var(--button-text);
+                color: var(--bg);
             }
 
             100% {
-                background: var(--button-background);
-                color: var(--button-text);
+                color: var(--bg);
             }
 
-            50.2% {
-                background: var(--button-background--highlight);
+            50% {
                 color: var(--button-text--highlight);
             }
-        }
-
-        .ui.vertical.divider {
-            position: absolute;
-            z-index: 2;
-            top: 50%;
-            left: 50%;
-            margin: 0rem;
-            padding: 0em;
-            width: auto;
-            height: 50%;
-            line-height: 0em;
-            text-align: center;
-            -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-        }
-
-        .ui.vertical.divider:before,
-        .ui.vertical.divider:after {
-            position: absolute;
-            left: 50%;
-            content: '';
-            z-index: 3;
-            border-left: 0.5px solid var(--button-background);
-            border-right: 0.5px solid var(--button-background);
-            width: 0%;
-            height: calc(100% - 1rem);
-        }
-
-        .ui.vertical.divider:before {
-            top: -100%;
-        }
-
-        .ui.vertical.divider:after {
-            top: auto;
-            bottom: 0px;
-        }
-
-        .orbox {
-            position: relative;
-            border: 1px solid var(--button-background);
-            border-radius: 0.5em
-        }
-
-        .orbox__container {
-            display: flex;
-        }
-
-        .orbox__half {
-            padding: 1em;
-            width: 50%;
-            text-align: center;
-        }
-
-        .orbox__half>h3 {
-            margin: 0.3em;
-            margin-top: 0px;
-            line-height: 1;
-        }
-
-        .orbox__half>p {
-            margin: 0.4em
-        }
-
-        .orbox__half>button {
-            margin-top: 1em;
-            width: 100%;
-            font-weight: bold;
-            font-size: 1.1em;
-            text-align: center !important;
-            border: none;
-            justify-content: center;
         }
 
         .modal__footer>* {
@@ -281,344 +235,47 @@
             font-family: var(--font-stack);
         }
 
-        .versionWarning {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            padding: 1em;
-            font-size: 1.2em;
+        .header__row.-versionWarning {
             text-align: center;
-            background-color: hsl(0, 100%, 60%);
+            background-color: hsl(8, 100%, 50%);
+            box-shadow: 0 0 7px 0 hsla(8, 100%, 50%, 0.88);
             color: #fff;
             display: none;
+            width: var(--navbar-width);
+            border-radius: 8px;
         }
 
-        .versionWarning a {
+        .header__row.-versionWarning a {
             color: #fff;
         }
 
-        .versionWarning a:hover {
+        .header__row.-versionWarning a:hover {
             opacity: 0.8;
         }
-    </style>
-    <style>
-        button[aria-label][data-balloon-pos] {
-            overflow: visible;
+
+        .header__row.-MSAlert.-alert {
+            --color: 206, 100%, 41%;
         }
-
-        [aria-label][data-balloon-pos] {
-            position: relative;
-            cursor: pointer;
+        .header__row.-MSAlert.-error {
+            --color: 40, 100%, 50%;
         }
-
-        [aria-label][data-balloon-pos]:after {
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.18s ease-out 0.18s;
-            text-indent: 0;
-            font-family: var(--font-stack);
-            font-weight: normal;
-            font-style: normal;
-            text-shadow: none;
-            font-size: var(--balloon-font-size);
-            background: var(--balloon-color);
-            color: var(--balloon-text-color);
-            border-radius: var(--balloon-border-radius);
-            content: attr(aria-label);
-            padding: .5em 1em;
-            position: absolute;
-            white-space: nowrap;
-            z-index: 10;
-        }
-
-        [aria-label][data-balloon-pos]:before {
-            width: 0;
-            height: 0;
-            border: 5px solid transparent;
-            border-top-color: var(--balloon-color);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.18s ease-out 0.18s;
-            content: "";
-            position: absolute;
-            z-index: 10;
-        }
-
-        [aria-label][data-balloon-pos]:hover:before,
-        [aria-label][data-balloon-pos]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-visible]:before,
-        [aria-label][data-balloon-pos][data-balloon-visible]:after,
-        [aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:before,
-        [aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:after {
-            opacity: 1;
-            pointer-events: none;
-        }
-
-        [aria-label][data-balloon-pos].font-awesome:after {
-            font-family: FontAwesome, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-break]:after {
-            white-space: pre;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-break][data-balloon-length]:after {
-            white-space: pre-line;
-            word-break: break-word;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-blunt]:before,
-        [aria-label][data-balloon-pos][data-balloon-blunt]:after {
-            transition: none;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:after {
-            transform: translate(-50%, 0);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:before {
-            transform: translate(-50%, 0);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:after {
-            left: 0;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:before {
-            left: 5px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:after {
-            right: 0;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:before {
-            right: 5px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:after,
-        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:after {
-            transform: translate(0, 0);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:before,
-        [aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:before,
-        [aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:before,
-        [aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:before {
-            transform: translate(0, 0);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos^="up"]:before,
-        [aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
-            bottom: 100%;
-            transform-origin: top;
-            transform: translate(0, var(--balloon-move));
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
-            margin-bottom: 10px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="up"]:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="up"]:after {
-            left: 50%;
-            transform: translate(-50%, var(--balloon-move));
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:before,
-        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
-            top: 100%;
-            transform: translate(0, calc(var(--balloon-move) * -1));
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
-            margin-top: 10px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos^="down"]:before {
-            width: 0;
-            height: 0;
-            border: 5px solid transparent;
-            border-bottom-color: var(--balloon-color);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="down"]:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="down"]:before {
-            left: 50%;
-            transform: translate(-50%, calc(var(--balloon-move) * -1));
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:after {
-            transform: translate(0, -50%);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:before,
-        [aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:before {
-            transform: translate(0, -50%);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="left"]:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
-            right: 100%;
-            top: 50%;
-            transform: translate(var(--balloon-move), -50%);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="left"]:after {
-            margin-right: 10px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
-            width: 0;
-            height: 0;
-            border: 5px solid transparent;
-            border-left-color: var(--balloon-color);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="right"]:after,
-        [aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
-            left: 100%;
-            top: 50%;
-            transform: translate(calc(var(--balloon-move) * -1), -50%);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="right"]:after {
-            margin-left: 10px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
-            width: 0;
-            height: 0;
-            border: 5px solid transparent;
-            border-right-color: var(--balloon-color);
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-length]:after {
-            white-space: normal;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-length="small"]:after {
-            width: 80px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-length="medium"]:after {
-            width: 150px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-length="large"]:after {
-            width: 260px;
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
-            width: 380px;
-        }
-
-        @media screen and (max-width: 768px) {
-            [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
-                width: 90vw;
-            }
-        }
-
-        [aria-label][data-balloon-pos][data-balloon-length="fit"]:after {
-            width: 100%;
-        }
-
-
-        .modal__overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .modal__container {
+        .header__row.-MSAlert {
+            border: 1px solid hsl(var(--color));
             background-color: var(--canvas-background);
-            padding: 30px;
-            max-width: 500px;
-            max-height: 100vh;
-            border-radius: 4px;
-            overflow-y: auto;
-            box-sizing: border-box;
+            box-shadow: 0 0 7px 0 hsla(var(--color), 0.88);
+            color: #000;
+            display: none;
+            width: calc(var(--navbar-width) - 4px);
+            border-radius: 8px;
         }
-
-        .modal__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal__title {
-            margin-top: 0;
-            margin-bottom: 0;
-            font-weight: 600;
-            font-size: 1.25rem;
-            line-height: 1.25;
-            box-sizing: border-box;
-        }
-
-        .modal__close {
-            background: transparent;
-            border: 0;
-            cursor: pointer;
-        }
-
-        .modal__header .modal__close:before {
-            content: "\2715";
-        }
-
-        .modal__content {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            line-height: 1.5;
-            color: rgba(0, 0, 0, .8);
-        }
-
-
-
-
-
-        /**************************\
-  Demo Animation Style
-\**************************/
-        @keyframes mmfadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes mmfadeOut {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
+        text {
+            /*paint-order: stroke;
+            stroke: black;
+            stroke-width: 2px;
+            fill: #fff;
+            stroke-linejoin: round;*/
+            fill: #fff;
+            text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.98);
         }
 
         @keyframes mmslideIn {
@@ -631,182 +288,84 @@
             }
         }
 
-        @keyframes mmslideOut {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-10%);
-            }
-        }
-
-        .micromodal-slide {
-            display: none;
-        }
-
-        .micromodal-slide.is-open {
-            display: block;
-        }
-
-        .micromodal-slide[aria-hidden="false"] .modal__overlay {
-            animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-        }
-
-        .micromodal-slide[aria-hidden="false"] .modal__container {
+        .floating-stack>.header__row {
             animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
         }
 
-        .micromodal-slide[aria-hidden="true"] .modal__overlay {
-            animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-        }
-
-        .micromodal-slide[aria-hidden="true"] .modal__container {
-            animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
-        }
-
-        .micromodal-slide .modal__container,
-        .micromodal-slide .modal__overlay {
-            will-change: transform;
-        }
-
-        .toast {
-            display: none;
-            position: fixed;
-            right: 14px;
-            bottom: 14px;
-            width: min(376px, 70vw);
-            background-color: var(--header-background);
-            color: var(--header-text);
-            padding: 14px;
-            margin: auto;
-            border-left: 4px solid orange;
-        }
-
-        text {
-            /*paint-order: stroke;
-  stroke: black;
-  stroke-width: 2px;
-  fill: #fff;
-  stroke-linejoin: round;*/
-            fill: #fff;
-            text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.98);
-        }
     </style>
-
 </head>
 
 <body onresize="resize()">
-
-    <div class="header">
-        <div class="header__title">
-            <img src="https://cdn.jsdelivr.net/gh/ehne/PyNode-Next/assets/logo_white.png">
-
-        </div>
-        <div class="header__spacer"></div>
-        <div class="header__icons">
-            <a href="https://ehne.github.io/PyNode-Next/documentation.html" class="button -with-icon" target="_blank"
-                rel="noopener" aria-label="PyNode Next documentation (new tab)" data-balloon-pos="down-right">
-                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </a>
-            <div class="button -with-icon" onclick="openDownloadModal()" aria-label="Download image of graph"
-                data-balloon-pos="down-right">
-                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-            <div class="button -with-icon -is-highlight" onclick="clickPlay()" aria-label="Play/Pause"
-                data-balloon-pos="down-right">
-                <svg class="icon" id="button-play" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                        clip-rule="evenodd"></path>
-                </svg>
-                <svg class="icon hidden" id="button-pause" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-            <!-- <div class="button -with-icon" onclick="window.location = window.location" aria-label="Reload the page" data-balloon-pos="down-right">
-                    <svg class="icon" id="button-reset" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path></svg>
-
-                </div> -->
-
-
-        </div>
-
-    </div>
-    <div class="output" id="output"></div>
-    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-                <header class="modal__header">
-                    <h2 class="modal__title" id="modal-1-title">
-                        Download graph image
-                    </h2>
-                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-                </header>
-                <main class="modal__content" id="modal-1-content">
-                    <div class="orbox">
-                        <div class="orbox__container">
-                            <div class="orbox__half">
-                                <h3>SVG</h3>
-                                <p>• Infinitely scalable</p>
-                                <p>• Up to 96% smaller <br>than a PNG</p>
-                                <button class="button -svg" onclick="saveSvg()">Download SVG</button>
-                            </div>
-                            <div class="orbox__half">
-                                <h3>PNG</h3>
-                                <p>• Fixed resolution</p>
-                                <p>• Easy to include in documents</p>
-                                <button class="button" onclick="saveImage()">Download PNG</button>
-                            </div>
-                        </div>
-                        <div class="ui vertical divider">
-                            Or
-                        </div>
-
+    <div class="floating-stack">
+        <div class="header">
+            <div class="header__row -main -flex">
+                <div class="header__left">
+                    <img src="https://cdn.jsdelivr.net/gh/ehne/PyNode-Next/assets/logo_white.png">
+                </div>
+                <div class="header__spacer"></div>
+                <div class="header__right">
+                    <!--<div class="button" onclick="window.location = window.location" aria-label="Reload the page" title="Reload the page">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" id="button-refresh" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                          </svg>
+                    </div> -->
+                    <a href="https://ehne.github.io/PyNode-Next/documentation.html" class="button" target="_blank"
+                        rel="noopener" aria-label="PyNode Next documentation (new tab)" title="PyNode Next documentation (new tab)">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <div class="button" onclick="openDownloadModal()" aria-label="Download image of graph" title="Download image of graph">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
+                                clip-rule="evenodd"></path>
+                        </svg>
                     </div>
-
-
-
-                </main>
-                <footer class="modal__footer">
-                    <p>
-                        Note: The image that is saved is what you can see in the viewer. Both versions have transparent
-                        backgrounds. </p>
-                </footer>
+                    <div class="button -is-highlight" onclick="clickPlay()" aria-label="Play/Pause" title="Play/Pause">
+                        <svg class="icon" id="button-play" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <svg class="icon hidden" id="button-pause" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="header__row hidden" id="imageDownload">
+                <button class="row-button" onclick="saveSvg()">Download SVG</button>
+                <button class="row-button" onclick="saveImage()">Download PNG</button>
+                <p> Note: The image that is saved is what you can see in the viewer. Both versions have transparent
+                    backgrounds. </p>
             </div>
         </div>
+        <div class="header__row -versionWarning" id="versionWarning">
+            Outdated version
+        </div>
     </div>
-    <div class="toast" id="toast">
-    </div>
-    <div class="versionWarning" id="versionWarning">
-    </div>
+
+    <div class="output" id="output"></div>
 </body>
 
 <script>
-    MicroModal.init()
 
-    function MSAlert(_text) {
-        // stops any currently running animations
-        $("#toast").finish();
-        //sets the text content to be text (makes it so you cant give it html lol)
-        $("#toast").text(_text);
+    function MSAlert(_text, _opts={}) {
+        const {speed, extraClass} = {speed: 336, extraClass: '-alert', ..._opts}
+        const elem = $('<div></div>').text(_text).addClass(`header__row -MSAlert ${extraClass}`)
+        $('.floating-stack').append(elem)
         // animates the alert popping up, waiting, and then sliding down.
-        $("#toast").animate({
+        elem.animate({
             opacity: "show",
-            bottom: "show",
-        }, 336, "swing").delay(4000).animate({
+            bottom: "show"
+        }, speed, "swing").delay(4000).animate({
             opacity: "hide",
             bottom: "hide",
         }, 336, "swing");
@@ -818,6 +377,7 @@
         // immediately resize the canvas
         canvas.withQ(null).duration(0).size([width, height]);
 
+        document.documentElement.style.setProperty('--navbar-width', `${$('.header').width() - 16}px`);
     }
 
     // main canvas
@@ -848,14 +408,21 @@
         if (event.isPyNodeNext) {
             switch (event.type) {
                 case "error":
-                    MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`)
+                    MSAlert(`⚠️ ${event.message} — Check your Python console for more info.`, {extraClass:'-error'})
                     break;
 
                 case "alert":
+                    console.log(event.message)
+                    if (event.message.time !== undefined) {
+                        MSAlert(`${event.message.text}`, {speed: parseInt(event.message.time)})
+                        return 1
+                    }
                     MSAlert(`${event.message}`)
+                    break;
 
                 case "version":
                     checkOutdated(event.message)
+                    break;
 
                 default:
                     break;
@@ -966,10 +533,12 @@
         return socket;
     }
     function openDownloadModal() {
-        MicroModal.show('modal-1');
+        //MicroModal.show('modal-1');
+        $('#imageDownload').toggleClass('hidden')
     }
     function saveImage() {
         saveSvgAsPng(document.querySelector(".algorithmx"), `PyNode-Next-${new Date().toLocaleString()}.png`)
+        $('#imageDownload').toggleClass('hidden')
     }
 
     function saveSvg() {
@@ -986,6 +555,7 @@
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
+        $('#imageDownload').toggleClass('hidden')
     }
 </script>
 
