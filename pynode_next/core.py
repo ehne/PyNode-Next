@@ -9,7 +9,7 @@ class Core:
         self.port = port
         base_path = os.path.relpath(__file__)
         self.custom_ui = f"{Path(base_path).parent}/ui.html"
-        self.callback = None
+        self.callback = lambda: None
       
 
     def run(self, func, check_for_new_version):
