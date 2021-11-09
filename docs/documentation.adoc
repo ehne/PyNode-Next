@@ -21,19 +21,17 @@ toc::[]
 === add_node
 [source, python]
 ----
-graph.add_node(node) # <.>
-graph.add_node(id, value) # <.>
 graph.add_node(id) # <.>
+graph.add_node(id, value) # <.>
 ----
 
-. Adds `node` to the graph. Will raise an error if that node object has been added to the graph before.
+. Adds a node to the graph with the `id` and `value` set to `id`.
 +
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
-| `node` | {t_node}
+| `id` | {t_generic_text}
 |===
-
 . Adds a node to the graph with the `id` and `value` set to their corresponding arguments.
 +
 [cols="a,a", width="100%", options="header"]
@@ -43,13 +41,6 @@ graph.add_node(id) # <.>
 | `value` | {t_generic_text}
 |===
 
-. Adds a node to the graph with the `id` and `value` set to `id`.
-+
-[cols="a,a", width="100%", options="header"]
-|===
-| Argument | Accepted Types
-| `id` | {t_generic_text}
-|===
 
 === remove_node
 [source, python]
@@ -100,13 +91,11 @@ Returns a list of all the nodes currently in the graph as `Node` objects.
 [source, python]
 ----
 graph.add_edge(source, target, weight="", directed=False) # <.>
-graph.add_edge(edge) # <.>
 ----
 
-. Adds an edge between the `source` and `target` nodes. To make the edge directed, set `directed` to `True`. `weight` sets the label of the edge.
-+
-WARNING: This is one of the methods that is a little annoying with keyword arguments. If you are going to set `directed`, you need to make sure that you *also* set `weight`. Otherwise, the overloader will raise an error.
-+
+Adds an edge between the `source` and `target` nodes. To make the edge directed, set `directed` to `True`. `weight` sets the label of the edge.
+
+
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -116,13 +105,6 @@ WARNING: This is one of the methods that is a little annoying with keyword argum
 | `directed` | `bool`
 |===
 
-. Adds the `Edge` object specified to the graph.
-+
-[cols="a,a", width="100%", options="header"]
-|===
-| Argument | Accepted Types
-| `edge` | `Edge`
-|===
 
 === remove_edge
 [source, python]
@@ -147,6 +129,19 @@ graph.remove_edge(edge) # <.>
 |===
 | Argument | Accepted Types
 | `edge` | `Edge`
+|===
+
+=== add
+[source, python]
+----
+graph.add(element)
+----
+Adds the specified element to the graph. Can either be a `Node` object, or an `Edge` object. Raises an error if the element has been added to the graph before.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `element` | {t_node} or {t_edge}
 |===
 
 === has_node
