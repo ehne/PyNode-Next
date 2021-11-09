@@ -3,27 +3,15 @@ from sys import excepthook
 from types import DynamicClassAttribute
 from typing import Iterable, List, Union, final, get_args
 from pynode_next import *
+import pynode_next
 
 
 def test():
-    global z
-    a = Node('a')
-    b = Node('b')
-    e = Edge('a', 'b').set_color(Color.RED)
-
-    graph.add_all([a, b, e])
-    z = 1
-    def func():
-        global z
-        graph.add_node(z)
-        z = z + 1
-        core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": 'hi'}))
-
+    graph.add_node('a', None)
     
-    t = delay(func, 1000, repeat=True)
+    graph.add_node('b', 'hello')
 
-    register_click_handler(lambda x: cancel_delay(t))
-    core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "error", "message": 'hi'}))
+    graph.add_edge('a', 'b', directed=True)
     
 
 begin_pynode_next(test)
