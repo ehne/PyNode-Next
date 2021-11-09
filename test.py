@@ -1,12 +1,10 @@
-import inspect
-from sys import excepthook
-from types import DynamicClassAttribute
-from typing import Iterable, List, Union, final, get_args
 from pynode_next import *
+import time
 
 
 def test():
-    a = graph.add_node('a')
-    a.set_position(0,0)
+    graph.add_node('a')
+    graph.add_node('b')
+    graph.add_edge('a', 'b', 'hello!')
 
 begin_pynode_next(test)
