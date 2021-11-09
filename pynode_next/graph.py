@@ -75,7 +75,7 @@ class Graph:
         return list(self._nodes.values())
 
     @overloaded
-    def add_edge(self, source, target, weight=None, directed: bool = False):
+    def add_edge(self, source, target, weight="", directed: bool = False):
         """Adds an edge by defining it's relation to other nodes."""
         return self.add_edge(Edge(source, target, weight, directed))
 

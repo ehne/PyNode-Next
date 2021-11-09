@@ -99,7 +99,7 @@ Returns a list of all the nodes currently in the graph as `Node` objects.
 === add_edge
 [source, python]
 ----
-graph.add_edge(source, target, weight=None, directed=False) # <.>
+graph.add_edge(source, target, weight="", directed=False) # <.>
 graph.add_edge(edge) # <.>
 ----
 
@@ -598,12 +598,10 @@ Plays a highlight animation where the node's color changes to that specified.
 === \\__init__
 [source, python]
 ----
-Edge(source, target, weight=None, directed=False)
+Edge(source, target, weight="", directed=False)
 ----
 
 Creates an edge between the `source` and `target` nodes. If `weight` is set, the edge will display it as a label. If `directed` is set, the edge will be directed, starting at the `source` node.
-
-CAUTION: If `weight` is initially set to `None`, there will be no label text. However, if you later use `edge.set_weight()` to change it to `None`, then it will display "None" as a label.
 
 [cols="a,a", width="100%", options="header"]
 |===

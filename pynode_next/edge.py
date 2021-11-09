@@ -5,14 +5,12 @@ from .core import core
 
 
 class Edge:
-    def __init__(self, source, target, weight=None, directed=False):
+    def __init__(self, source, target, weight="", directed=False):
         self._source = source
         self._target = target
         self._directed = directed
 
         self._weight = weight
-        if weight is None:
-            self._weight = ""
 
         self._thickness = 2
         self._priority = 0
