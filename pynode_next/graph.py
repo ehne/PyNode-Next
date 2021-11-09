@@ -86,18 +86,17 @@ class Graph:
         core.ax(lambda x: x.node(str(n._id)).remove())
         return n
 
-    @overloaded
-    def node(self, id: _generic_text):
-        """Returns the node with the id specified."""
-        if id in self._nodes:
-            return self._nodes[id]
-        raise NodeDoesntExistError(f"The node '{id}' <{type(id).__name__}> does not exist in the graph")
-
-    @overloads(node)
-    def node(self, node: Node):
-        if node._id in self._nodes:
-            return node
-        raise NodeDoesntExistError(f"The node '{node._id}' <{type(id).__name__}> does not exist in the graph")
+    def node(self, node):
+        """Returns the node specified"""
+        node_id = ""
+        if isinstance(node, Node):
+            node_id = node._id
+        else:
+            node_id = node
+        
+        if node_id in self._nodes:
+            return self._nodes[node_id]
+        raise NodeDoesntExistError(f"The node '{node_id}' <{type(node).__name__}> does not exist in the graph")
 
     def nodes(self):
         """Returns all of the graph's nodes."""
