@@ -32,7 +32,7 @@ class Graph:
             # sets the node's click handler
             if core.callback != None:
                 core.ax(lambda x: x.nodes([element._id]).onclick(core.callback))
-            return Node
+            return element
         elif elem_type == Edge:
             e = element
             if self.has_edge(e):
