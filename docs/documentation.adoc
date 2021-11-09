@@ -99,7 +99,7 @@ Returns a list of all the nodes currently in the graph as `Node` objects.
 === add_edge
 [source, python]
 ----
-graph.add_edge(source, target, weight=None, directed=False) # <.>
+graph.add_edge(source, target, weight="", directed=False) # <.>
 graph.add_edge(edge) # <.>
 ----
 
@@ -454,13 +454,10 @@ Gets the node's priority value.
 === set_position
 [source, python]
 ----
-node.set_position(x, y, relative=True)
+node.set_position(x, y)
 ----
 
 Sets the node's position on the canvas. Uses relative positions whereby (0, 0) is the bottom-left corner and (1, 1) is the top-right corner.
-
-WARNING: The relative option is a legacy argument from PyNode. PyNode Next only supports the relative positioning system. If you try to set relative to `False`, it will throw an error.
-
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -558,8 +555,6 @@ node.set_value_style(size=13, color=Color.WHITE)
 
 Sets the appearance of the node's value text.
 
-WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
-
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -574,10 +569,6 @@ node.set_label_style(size=10, color=Color.GREY, label_id=0)
 ----
 
 Sets the appearance of the node's label text.
-
-WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
-
-CAUTION: Always use the keyword argument to choose the `label_id`. This is because PyNode placed the `outline` argument in the third argument location (`node.set_label_style(size=10, color=Color.GREY, outline=None, label_id=None)`). And to maintain backwards compatibility with PyNode, PyNode Next still has the `outline` argument in that position, even though it does nothing. 
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -607,12 +598,10 @@ Plays a highlight animation where the node's color changes to that specified.
 === \\__init__
 [source, python]
 ----
-Edge(source, target, weight=None, directed=False)
+Edge(source, target, weight="", directed=False)
 ----
 
 Creates an edge between the `source` and `target` nodes. If `weight` is set, the edge will display it as a label. If `directed` is set, the edge will be directed, starting at the `source` node.
-
-CAUTION: If `weight` is initially set to `None`, there will be no label text. However, if you later use `edge.set_weight()` to change it to `None`, then it will display "None" as a label.
 
 [cols="a,a", width="100%", options="header"]
 |===
@@ -802,8 +791,6 @@ edge.set_weight_style(size=10, color=Color.GREY)
 ----
 
 Sets the appearance of the edge's weight label.
-
-WARNING: PyNode supported an argument `outline` to change the text outline's color. PyNode Next does not support this argument, and will print a warning if you try to set it.
 
 [cols="a,a", width="100%", options="header"]
 |===
