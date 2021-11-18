@@ -122,34 +122,6 @@ Removes the edge(s) between `nodeA` and `nodeB` from the graph. If `directed` is
 | `directed` | `bool`
 |===
 
-
-=== add
-[source, python]
-----
-graph.add(element)
-----
-Adds the specified element to the graph. Can either be a `Node` object, or an `Edge` object. Raises an error if the element has been added to the graph before.
-
-[cols="a,a", width="100%", options="header"]
-|===
-| Argument | Accepted Types
-| `element` | {t_node} or {t_edge}
-|===
-
-
-=== remove
-[source, python]
-----
-graph.remove(element)
-----
-Removes the specified element from the graph. Can either be a `Node` or an `Edge` object, and will return said object.
-
-[cols="a,a", width="100%", options="header"]
-|===
-| Argument | Accepted Types
-| `element` | {t_node} or {t_edge}
-|===
-
 === has_node
 [source, python]
 ----
@@ -176,6 +148,33 @@ Checks if a given `edge` exists in the graph.
 |===
 | Argument | Accepted Types
 | `edge` | `Edge`
+|===
+
+=== add
+[source, python]
+----
+graph.add(element)
+----
+Adds the specified element to the graph. Can either be a `Node` object, or an `Edge` object. Raises an error if the element has been added to the graph before.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `element` | {t_node} or {t_edge}
+|===
+
+
+=== remove
+[source, python]
+----
+graph.remove(element)
+----
+Removes the specified element from the graph. Can either be a `Node` or an `Edge` object, and will return said object.
+
+[cols="a,a", width="100%", options="header"]
+|===
+| Argument | Accepted Types
+| `element` | {t_node} or {t_edge}
 |===
 
 === add_all
