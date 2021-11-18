@@ -1,8 +1,7 @@
 import webbrowser
-from .misc import *
-from .node import *
-from .errors import *
-from .edge import *
+from .misc import Color, delay, pause, cancel_delay, alert
+from .node import Node
+from .edge import Edge
 from .core import core
 from .graph import graph, register_click_handler
 
