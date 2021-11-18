@@ -233,6 +233,13 @@
 
         text {
             font-family: var(--font-stack);
+            /*paint-order: stroke;
+            stroke: black;
+            stroke-width: 2px;
+            fill: #fff;
+            stroke-linejoin: round;*/
+            fill: #fff;
+            text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.98);
         }
 
         .header__row.-versionWarning {
@@ -268,15 +275,7 @@
             width: calc(var(--navbar-width) - 4px);
             border-radius: 8px;
         }
-        text {
-            /*paint-order: stroke;
-            stroke: black;
-            stroke-width: 2px;
-            fill: #fff;
-            stroke-linejoin: round;*/
-            fill: #fff;
-            text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.98);
-        }
+        
 
         @keyframes mmslideIn {
             from {
