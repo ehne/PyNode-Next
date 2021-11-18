@@ -19,5 +19,6 @@ def test():
     pause(1000)
 
     graph.remove(b)
+    alert('hello')
 
 begin_pynode_next(test)
