@@ -1,6 +1,5 @@
 from typing import Union, Iterable
 from random import randint, choices
-from .overloading import overloaded, overloads
 
 from .misc import Color, pause
 from .node import Node
