@@ -198,6 +198,8 @@ a[href="#_color_3"]::before {
 <li><a href="#_remove_edge">remove_edge</a></li>
 <li><a href="#_has_node">has_node</a></li>
 <li><a href="#_has_edge">has_edge</a></li>
+<li><a href="#_add">add</a></li>
+<li><a href="#_remove">remove</a></li>
 <li><a href="#_add_all">add_all</a></li>
 <li><a href="#_remove_all">remove_all</a></li>
 <li><a href="#_adjacent">adjacent</a></li>
@@ -268,6 +270,7 @@ a[href="#_color_3"]::before {
 <ul class="sectlevel2">
 <li><a href="#_color_3">Color</a></li>
 <li><a href="#_pause">pause</a></li>
+<li><a href="#_alert">alert</a></li>
 <li><a href="#_delay">delay</a></li>
 <li><a href="#_cancel_delay">cancel_delay</a></li>
 <li><a href="#_register_click_listener">register_click_listener</a></li>
@@ -285,15 +288,14 @@ a[href="#_color_3"]::before {
 <h3 id="_add_node">add_node</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_node(node) # <b class="conum">(1)</b>
-graph.add_node(id, value) # <b class="conum">(2)</b>
-graph.add_node(id) # <b class="conum">(3)</b></code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_node(id) # <b class="conum">(1)</b>
+graph.add_node(id, value) # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Adds <code>node</code> to the graph. Will raise an error if that node object has been added to the graph before.</p>
+<p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to <code>id</code>.</p>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -308,10 +310,10 @@ graph.add_node(id) # <b class="conum">(3)</b></code></pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>node</code></p>
+<p><code>id</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code class="literal">Node</code></p>
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -350,31 +352,6 @@ graph.add_node(id) # <b class="conum">(3)</b></code></pre>
 </tbody>
 </table>
 </li>
-<li>
-<p>Adds a node to the graph with the <code>id</code> and <code>value</code> set to <code>id</code>.</p>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Argument</th>
-<th class="tableblock halign-left valign-top">Accepted Types</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>id</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</li>
 </ol>
 </div>
 </div>
@@ -386,7 +363,7 @@ graph.add_node(id) # <b class="conum">(3)</b></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Removes the specified node from the graph.</p>
+<p>Removes the node with the specified id from the graph.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -405,7 +382,7 @@ graph.add_node(id) # <b class="conum">(3)</b></code></pre>
 <p><code>node</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code class="literal">Node</code>, <code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
+<p><code class="literal">str</code>, <code class="literal">int</code> or <code class="literal">float</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -489,25 +466,11 @@ graph.node(node) # <b class="conum">(2)</b></code></pre>
 <h3 id="_add_edge">add_edge</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_edge(source, target, weight=None, directed=False) # <b class="conum">(1)</b>
-graph.add_edge(edge) # <b class="conum">(2)</b></code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add_edge(source, target, weight="", directed=False) # <b class="conum">(1)</b></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Adds an edge between the <code>source</code> and <code>target</code> nodes. To make the edge directed, set <code>directed</code> to <code>True</code>. <code>weight</code> sets the label of the edge.</p>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-This is one of the methods that is a little annoying with keyword arguments. If you are going to set <code>directed</code>, you need to make sure that you <strong>also</strong> set <code>weight</code>. Otherwise, the overloader will raise an error.
-</td>
-</tr>
-</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -555,47 +518,20 @@ This is one of the methods that is a little annoying with keyword arguments. If 
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>Adds the <code>Edge</code> object specified to the graph.</p>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Argument</th>
-<th class="tableblock halign-left valign-top">Accepted Types</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>edge</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>Edge</code></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_remove_edge">remove_edge</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.remove_edge(nodeA, nodeB, directed=False) # <b class="conum">(1)</b>
-graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.remove_edge(nodeA, nodeB, directed=False)</code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Removes the edge(s) between <code>nodeA</code> and <code>nodeB</code> from the graph. If <code>directed</code> is set, only edges starting at <code>nodeA</code> will be removed.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -634,34 +570,6 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>Removes the <code>Edge</code> object specified from the graph.</p>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Argument</th>
-<th class="tableblock halign-left valign-top">Accepted Types</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>edge</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>Edge</code></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_has_node">has_node</h3>
@@ -724,6 +632,72 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>Edge</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_add">add</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.add(element)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adds the specified element to the graph. Can either be a <code>Node</code> object, or an <code>Edge</code> object. Raises an error if the element has been added to the graph before.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>element</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code> or <code class="literal">Edge</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_remove">remove</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="shiki highlight"><code class="language-python" data-lang="python">graph.remove(element)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Removes the specified element from the graph. Can either be a <code>Node</code> or an <code>Edge</code> object, and will return said object.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Accepted Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>element</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code class="literal">Node</code> or <code class="literal">Edge</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1284,23 +1258,11 @@ graph.remove_edge(edge) # <b class="conum">(2)</b></code></pre>
 <h3 id="_set_position">set_position</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">node.set_position(x, y, relative=True)</code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">node.set_position(x, y)</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Sets the node&#8217;s position on the canvas. Uses relative positions whereby (0, 0) is the bottom-left corner and (1, 1) is the top-right corner.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-The relative option is a legacy argument from PyNode. PyNode Next only supports the relative positioning system. If you try to set relative to <code>False</code>, it will throw an error.
-</td>
-</tr>
-</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1516,18 +1478,6 @@ The relative option is a legacy argument from PyNode. PyNode Next only supports 
 <div class="paragraph">
 <p>Sets the appearance of the node&#8217;s value text.</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-PyNode supported an argument <code>outline</code> to change the text outline&#8217;s color. PyNode Next does not support this argument, and will print a warning if you try to set it.
-</td>
-</tr>
-</table>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1568,30 +1518,6 @@ PyNode supported an argument <code>outline</code> to change the text outline&#82
 </div>
 <div class="paragraph">
 <p>Sets the appearance of the node&#8217;s label text.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-PyNode supported an argument <code>outline</code> to change the text outline&#8217;s color. PyNode Next does not support this argument, and will print a warning if you try to set it.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Caution</div>
-</td>
-<td class="content">
-Always use the keyword argument to choose the <code>label_id</code>. This is because PyNode placed the <code>outline</code> argument in the third argument location (<code>node.set_label_style(size=10, color=Color.GREY, outline=None, label_id=None)</code>). And to maintain backwards compatibility with PyNode, PyNode Next still has the <code>outline</code> argument in that position, even though it does nothing.
-</td>
-</tr>
-</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1682,23 +1608,11 @@ Always use the keyword argument to choose the <code>label_id</code>. This is bec
 <h3 id="_init_2">__init__</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="shiki highlight"><code class="language-python" data-lang="python">Edge(source, target, weight=None, directed=False)</code></pre>
+<pre class="shiki highlight"><code class="language-python" data-lang="python">Edge(source, target, weight="", directed=False)</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Creates an edge between the <code>source</code> and <code>target</code> nodes. If <code>weight</code> is set, the edge will display it as a label. If <code>directed</code> is set, the edge will be directed, starting at the <code>source</code> node.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Caution</div>
-</td>
-<td class="content">
-If <code>weight</code> is initially set to <code>None</code>, there will be no label text. However, if you later use <code>edge.set_weight()</code> to change it to <code>None</code>, then it will display "None" as a label.
-</td>
-</tr>
-</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2106,18 +2020,6 @@ If <code>weight</code> is initially set to <code>None</code>, there will be no l
 <div class="paragraph">
 <p>Sets the appearance of the edge&#8217;s weight label.</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-PyNode supported an argument <code>outline</code> to change the text outline&#8217;s color. PyNode Next does not support this argument, and will print a warning if you try to set it.
-</td>
-</tr>
-</table>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -2280,6 +2182,17 @@ This <strong>does not</strong> pause code execution.
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alert">alert</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="shiki highlight"><code class="language-python" data-lang="python">alert(message)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Displays the message as an alert notification on the PyNode Next interface.</p>
 </div>
 </div>
 <div class="sect2">
