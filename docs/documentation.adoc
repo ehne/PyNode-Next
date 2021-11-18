@@ -48,7 +48,7 @@ graph.add_node(id, value) # <.>
 graph.remove_node(node)
 ----
 
-Removes the specified node id from the graph.
+Removes the node with the specified id from the graph.
 
 [cols="a,a", width="100%", options="header"]
 |===
