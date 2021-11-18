@@ -55,3 +55,6 @@ def delay(func, time, args=[], repeat=False):
 def cancel_delay(delay_id):
     """Cancels the given delay."""
     __intervals[delay_id].cancel()
+
+def alert(message: str):
+    core.ax(lambda x: x.dispatch({"isPyNodeNext": True, "type": "alert", "message": message}))

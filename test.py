@@ -7,9 +7,8 @@ from pynode_next import *
 
 def test():
     a = Node('a')
-    b = Node('b')
-    e = Edge('a', 'b').set_color(Color.RED)
-
-    graph.add_all([a, b, e])    
+    a.set_position(0.5, 0.75)
+    print(a._data())
+    graph.add_node(a)
 
 begin_pynode_next(test)

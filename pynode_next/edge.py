@@ -5,14 +5,12 @@ from .core import core
 
 
 class Edge:
-    def __init__(self, source, target, weight=None, directed=False):
+    def __init__(self, source, target, weight="", directed=False):
         self._source = source
         self._target = target
         self._directed = directed
 
         self._weight = weight
-        if weight is None:
-            self._weight = ""
 
         self._thickness = 2
         self._priority = 0
@@ -93,10 +91,8 @@ class Edge:
         """Returns the edge's weight. Returns an empty string if weight wasn't defined at init and hasn't been changed since."""
         return self._weight
 
-    def set_weight_style(self, size=10, color=Color.GREY, outline=None):
+    def set_weight_style(self, size=10, color=Color.GREY):
         """Sets the edge's weight text style. These styles are not saved."""
-        if outline is not None:
-            print("set_weight_style(outline) is not supported by PyNode_Next")
 
         self.__ax(
             lambda x: self._dispatch_wrapper(

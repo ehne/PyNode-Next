@@ -47,9 +47,7 @@ class Node:
         """Returns the node's value."""
         return self._value
 
-    def set_value_style(self, size=13, color=Color.WHITE, outline=None):
-        if outline is not None:
-            print("set_value_style(outline) is not supported by PyNode_Next")
+    def set_value_style(self, size=13, color=Color.WHITE):
         self.__ax(lambda x: x.node(self._id).label().size(size).color(str(color)))
         return self
 
@@ -127,10 +125,8 @@ class Node:
     def label(self, label_id=0):
         return self._labels[label_id]
 
-    def set_label_style(self, size=10, color=Color.GREY, outline=None, label_id=None):
+    def set_label_style(self, size=10, color=Color.GREY, label_id=None):
         """Sets the style of any labels"""
-        if outline is not None:
-            print("set_label_style(outline) is not supported by PyNode Next")
         if label_id is None:
             self.__ax(lambda x: x.node(self._id).label('tr').size(size).color(str(color)))
             self.__ax(lambda x: x.node(self._id).label('tl').size(size).color(str(color)))
@@ -191,11 +187,8 @@ class Node:
                 node_list.append(e._target)
         return node_list
 
-    def set_position(self, x, y, relative=True):
-        """Sets the node's position. Relative is the only style you can use"""
-        if not relative:
-            raise NodePositionError("Cannot call node.set_position() with relative=False")
-        
+    def set_position(self, x, y):
+        """Sets the node's position. (0, 0) is the bottom left of the screen, (1, 1) is the top right"""
         self._pos = [x, y]
         
         x_norm = core.normalise_to_canvas(x)
