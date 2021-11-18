@@ -953,6 +953,7 @@ code:not(pre>code)::before, code:not(pre>code)::after {
   margin-bottom: 16px;
   border-radius: 6px;
   cursor: pointer;
+  position: relative
 }
 .banner > * {
   color: #fff
