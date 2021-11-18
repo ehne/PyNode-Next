@@ -24,7 +24,7 @@ class Core:
         
         self.canvas = self.server.canvas()
         def pynode_func():
-            self.canvas.duration(0).zoom(1.7)
+            # self.canvas.duration(0).zoom(1.7)
             func()
         self.canvas.onmessage("start", pynode_func)
 
