@@ -3,22 +3,12 @@ from sys import excepthook
 from types import DynamicClassAttribute
 from typing import Iterable, List, Union, final, get_args
 from pynode_next import *
-import pynode_next
 
 
 def test():
-    graph.add_node('a', None)
-    
-    b = graph.add_node('b', 'hello')
-
-    e = graph.add_edge('a', 'b', directed=True)
-
-    print(graph.node('a'))
-    print(graph.node(b))
-
-    pause(1000)
-
-    graph.remove(b)
-    alert('hello')
+    a = Node('a')
+    a.set_position(0.5, 0.75)
+    print(a._data())
+    graph.add_node(a)
 
 begin_pynode_next(test)
