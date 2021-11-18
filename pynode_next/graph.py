@@ -69,6 +69,32 @@ class Graph:
             core.ax(lambda x: x.dispatch(e._data()))
             return e
 
+    def remove(self, element):
+        """Removes the specified element (either a Node or an Edge object) from the graph."""
+        elem_type = type(element)
+        if elem_type == Node:
+            for edge in element._incident_edges:
+                self.remove(edge)
+
+            del self._nodes[element._id]
+            core.ax(lambda x: x.node(str(element._id)).remove())
+
+            return element
+        elif elem_type == Edge:
+            element._source._incident_edges.remove(element)
+            element._target._incident_edges.remove(element)
+
+            self._edges.remove(element)
+            del self._has_edge_cache[element]
+
+            core.ax(
+                lambda x: x.dispatch(
+                    {"attrs": {"edges": {str(element._internal_id): {"remove": True}}}}
+                )
+            )
+
+            return element
+
     def add_node(self, id, value=None):
         """Adds a node to the graph using an id."""
         if value is None:
@@ -76,15 +102,8 @@ class Graph:
         return self.add(Node(id, value))
 
     def remove_node(self, node):
-        """Removes the specified node from the graph"""
-        n = self.node(node)
-
-        for edge in n._incident_edges:
-            self.remove_edge(edge)
-
-        del self._nodes[n._id]
-        core.ax(lambda x: x.node(str(n._id)).remove())
-        return n
+        """Removes the specified node id from the graph"""
+        return self.remove(self.node(node))
 
     def node(self, node):
         """Returns the node specified"""
@@ -106,31 +125,14 @@ class Graph:
         """Adds an edge by defining it's relation to other nodes."""
         return self.add(Edge(source, target, weight, directed))
 
-    @overloaded
     def remove_edge(self, nodeA, nodeB, directed: bool = False):
+        """Removes the specified edge(s) between two nodes from the graph"""
         edges_between = self.edges_between(nodeA, nodeB, directed)
         edge_list = []
         for edge in edges_between:
             edge_list.append(edge_list)
-            self.remove_edge(edge)
+            self.remove(edge)
         return edge_list
-
-    @overloads(remove_edge)
-    def remove_edge(self, edge: Edge):
-        """Removes an edge object from the graph"""
-        edge._source._incident_edges.remove(edge)
-        edge._target._incident_edges.remove(edge)
-
-        self._edges.remove(edge)
-        del self._has_edge_cache[edge]
-
-        core.ax(
-            lambda x: x.dispatch(
-                {"attrs": {"edges": {str(edge._internal_id): {"remove": True}}}}
-            )
-        )
-
-        return edge
 
     def has_node(self, node):
         """Checks if a node exists in the graph."""
