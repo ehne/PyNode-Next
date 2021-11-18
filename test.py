@@ -9,9 +9,15 @@ import pynode_next
 def test():
     graph.add_node('a', None)
     
-    graph.add_node('b', 'hello')
+    b = graph.add_node('b', 'hello')
 
-    graph.add_edge('a', 'b', directed=True)
-    
+    e = graph.add_edge('a', 'b', directed=True)
+
+    print(graph.node('a'))
+    print(graph.node(b))
+
+    pause(1000)
+
+    graph.remove(b)
 
 begin_pynode_next(test)
