@@ -930,8 +930,22 @@ code:not(pre>code)::before, code:not(pre>code)::after {
 
 .banner-link, .banner-link:hover {
   text-decoration: none;
+  position: relative;
 }
 
+.banner-chevrons {
+  background-image: url('https://github.com/static/images/icons/spotlight/chevron-up-pattern.svg');
+  mix-blend-mode: soft-light;
+  background-position: 0px 0px;
+  background-size: 35px;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 5px;
+  top: 12px;
+  pointer-events: none;
+}
 .banner {
   background-image: linear-gradient(to right, #7928ca, #eb367f);
   color: #fff;
