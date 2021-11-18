@@ -113,7 +113,7 @@ graph.remove_edge(nodeA, nodeB, directed=False)
 ----
 
 Removes the edge(s) between `nodeA` and `nodeB` from the graph. If `directed` is set, only edges starting at `nodeA` will be removed.
-+
+
 [cols="a,a", width="100%", options="header"]
 |===
 | Argument | Accepted Types
@@ -266,22 +266,6 @@ graph.adjacency_matrix()
 ----
 
 Returns the adjacency matrix of the graph as a dictionary.
-
-=== random
-[source, python]
-----
-graph.random(order, size)
-----
-
-Returns a list of random `Node` and `Edge` elements that makes a graph with the order and size specified. The graph may or may not be fully connected.
-
-[cols="a,a", width="100%", options="header"]
-|===
-| Argument | Accepted Types
-| `order` | `int`
-| `size` | `int`
-|===
-
 
 == Node
 
