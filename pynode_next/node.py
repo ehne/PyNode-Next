@@ -231,7 +231,8 @@ class Node:
             base['attrs']['nodes'][self._id]['labels']['tl'] = { 'angle': 135, 'text': self._labels[1] }
 
         if self._pos != []:
-            base["attrs"]["nodes"][self._id]["pos"] = [core.normalise_to_canvas(i) for i in self._pos]
+            norm = [core.normalise_to_canvas(i) for i in self._pos]
+            base["attrs"]["nodes"][self._id]["pos"] = [f"{norm[0]}cx", f"{norm[1]}cy"]
 
         return base
 
