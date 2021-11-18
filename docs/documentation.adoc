@@ -853,6 +853,14 @@ Delays the next visual event for the specified number of milliseconds.
 
 NOTE: This *does not* pause code execution.
 
+=== alert
+[source, python]
+----
+alert(message)
+----
+
+Displays the message as an alert notification on the PyNode Next interface.
+
 === delay 
 [source, python]
 ----
