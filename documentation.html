@@ -2109,11 +2109,20 @@ graph.node(node) # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Custom color for use in node and edge animations, using <code>0-255</code> integers for each argument.</p>
+<p>Custom colour for use in node and edge animations, using <code>0-255</code> integers for each argument.</p>
 </div>
 <div class="paragraph">
 <p>There are some predefined colours:
 <code>Color.RED</code>, <code>Color.GREEN</code>, <code>Color.BLUE</code>, <code>Color.YELLOW</code>, <code>Color.WHITE</code>, <code>Color.LIGHT_GREY</code>, <code>Color.GREY</code>, <code>Color.DARK_GREY</code>, <code>Color.BLACK</code>, <code>Color.TRANSPARENT</code></p>
+</div>
+<div class="paragraph">
+<p>You can also create colours from their hex values by using the <code>from_hex_int</code> method. The hex value needs to be entered as a number in python (this is what the <code>0x</code> does in the snippet below). The hex value needs to be 6 digits long.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="shiki highlight"><code class="language-python" data-lang="python"># creates a blue colour
+Color.from_hex_int(0x0055ff)</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
