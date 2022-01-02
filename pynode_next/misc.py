@@ -7,6 +7,14 @@ class Color:
         self._red = red
         self._green = green
         self._blue = blue
+    
+    @classmethod
+    def from_hex_int(cls, hex_int):
+        # factory method
+        r = (hex_int >> 16) & 0xFF
+        g = (hex_int >> 8) & 0xFF
+        b = (hex_int) & 0xFF
+        return cls(r, g, b)
         
     def hex_string(self):
         return "#%02x%02x%02x" % (self._red, self._green, self._blue)
