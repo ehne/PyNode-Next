@@ -6,9 +6,7 @@ from pynode_next import *
 
 
 def test():
-    a = Node('a')
-    a.set_position(0.5, 0.75)
-    print(a._data())
-    graph.add_node(a)
+    a = graph.add_node('a')
+    a.set_color(Color.from_hex_int(0x0055ff))
 
 begin_pynode_next(test)
