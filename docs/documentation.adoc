@@ -838,10 +838,18 @@ Performs a traversal animation on the edge, beginning at `initial_node`, using t
 Color(red, green, blue)
 ----
 
-Custom color for use in node and edge animations, using `0-255` integers for each argument.
+Custom colour for use in node and edge animations, using `0-255` integers for each argument.
 
 There are some predefined colours:
 `Color.RED`, `Color.GREEN`, `Color.BLUE`, `Color.YELLOW`, `Color.WHITE`, `Color.LIGHT_GREY`, `Color.GREY`, `Color.DARK_GREY`, `Color.BLACK`, `Color.TRANSPARENT`
+
+You can also create colours from their hex values by using the `from_hex_int` method. The hex value needs to be entered as a number in python (this is what the `0x` does in the snippet below). The hex value needs to be 6 digits long.
+
+[source, python]
+----
+# creates a blue colour
+Color.from_hex_int(0x0055ff) 
+----
 
 === pause
 [source, python]
