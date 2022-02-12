@@ -12,7 +12,7 @@ class Edge:
 
         self._weight = weight
 
-        self._thickness = 2
+        self._width = 2
         self._priority = 0
         self._color = Color.LIGHT_GREY
 
@@ -111,15 +111,15 @@ class Edge:
         """Returns whether or not the edge is directed"""
         return self._directed
 
-    def set_width(self, weight=2):
+    def set_width(self, width=2):
         """Sets the thickness of the edge."""
-        self._thickness = weight
-        self.__ax(lambda x: self._dispatch_wrapper(x, {"thickness": weight}))
+        self._width = width
+        self.__ax(lambda x: self._dispatch_wrapper(x, {"thickness": width}))
         return self
 
     def width(self):
         """Returns the thickness of the edge."""
-        return self._weight
+        return self._width
 
     def set_priority(self, value):
         """Sets the edge's priority value."""
@@ -134,7 +134,7 @@ class Edge:
         if color is None:
             color = self._color
         if width is None:
-            width = self._thickness * 2
+            width = self._width * 2
 
         self.__ax(
             lambda x: self._dispatch_wrapper(
@@ -145,7 +145,7 @@ class Edge:
         pause(500)
         self.__ax(
             lambda x: self._dispatch_wrapper(
-                x, {"color": str(self._color), "thickness": self._thickness}
+                x, {"color": str(self._color), "thickness": self._width}
             )
         )
         return self
@@ -196,7 +196,7 @@ class Edge:
                         "target": str(self._target),
                         "directed": self._directed,
                         "labels": {1: {"text": str(self._weight)}},
-                        "thickness": self._thickness,
+                        "thickness": self._width,
                     }
                 }
             }
