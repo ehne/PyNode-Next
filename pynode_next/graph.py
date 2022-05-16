@@ -134,7 +134,11 @@ class Graph:
 
     def has_node(self, node):
         """Checks if a node exists in the graph."""
-        return self.node(node) is not None
+        try:
+            self.node(node)
+            return True
+        except NodeDoesntExistError:
+            return False
 
     def add_all(self, elements: Iterable[Union[Node, Edge]]):
         """Adds all node and edge objects from an iterable. all elements need to be of the type `Node` or `Edge`"""
